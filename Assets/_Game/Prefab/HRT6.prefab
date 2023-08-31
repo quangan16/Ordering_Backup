@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7144860828027681221}
   - component: {fileID: 7144860828027681218}
   - component: {fileID: 7144860828027681219}
-  - component: {fileID: 7144860828027681216}
+  - component: {fileID: 2132979516982115540}
   m_Layer: 0
   m_Name: HRT6
   m_TagString: Untagged
@@ -307,7 +307,7 @@ PolygonCollider2D:
       - {x: 0.06, y: -1.52}
       - {x: -0.049999997, y: -1.53}
       - {x: -0.06, y: -1.52}
---- !u!114 &7144860828027681216
+--- !u!114 &2132979516982115540
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,11 +316,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7144860828027681217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09d60dfacf30ab42b7aee99997eac50, type: 3}
+  m_Script: {fileID: 11500000, guid: 50dc69dd1ed9955438cf5488fb85d92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   triggered: []
   locked: []
+  lastPosition: {x: 0, y: 0, z: 0}
   isTouch: 0
   isDead: 0
+  canClick: 0

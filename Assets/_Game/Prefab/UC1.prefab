@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4777818409283792713}
   - component: {fileID: 3597554189476362339}
-  - component: {fileID: 3480546503738672957}
   - component: {fileID: 7099294701229312313}
   - component: {fileID: 2095575442942000627}
+  - component: {fileID: 7715293275645781128}
   m_Layer: 0
   m_Name: UC1
   m_TagString: Untagged
@@ -87,23 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3480546503738672957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4435571046340391270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09d60dfacf30ab42b7aee99997eac50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  triggered: []
-  locked: []
-  isTouch: 0
-  isDead: 0
 --- !u!50 &7099294701229312313
 Rigidbody2D:
   serializedVersion: 4
@@ -233,3 +216,22 @@ PolygonCollider2D:
       - {x: 1.38, y: -1.56}
       - {x: 1.35, y: -1.5999999}
       - {x: -1.35, y: -1.5999999}
+--- !u!114 &7715293275645781128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4435571046340391270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50dc69dd1ed9955438cf5488fb85d92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  triggered: []
+  locked: []
+  lastPosition: {x: 0, y: 0, z: 0}
+  isTouch: 0
+  isDead: 0
+  canClick: 0

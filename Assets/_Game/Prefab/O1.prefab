@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8746948501064051878}
   - component: {fileID: 8746948501064051877}
-  - component: {fileID: 8746948501064051876}
   - component: {fileID: 8746948501064051883}
   - component: {fileID: 8746948501064051882}
+  - component: {fileID: 2853977890794453014}
+  - component: {fileID: 7816526256536266760}
   m_Layer: 3
   m_Name: O1
   m_TagString: Untagged
@@ -87,23 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8746948501064051876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8746948501064051881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3844bad3f4ac048a23d70395187878, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  triggered: []
-  locked: []
-  isTouch: 0
-  isDead: 0
 --- !u!50 &8746948501064051883
 Rigidbody2D:
   serializedVersion: 4
@@ -333,3 +317,38 @@ PolygonCollider2D:
       - {x: 0.059246384, y: -1.6581345}
       - {x: -0.042937104, y: -1.6521425}
       - {x: -0.140277, y: -1.6458327}
+--- !u!58 &2853977890794453014
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746948501064051881}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.89
+--- !u!114 &7816526256536266760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746948501064051881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb54f62f23cc994886c7a0b3a1c4b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  triggered: []
+  locked: []
+  lastPosition: {x: 0, y: 0, z: 0}
+  isTouch: 0
+  isDead: 0
+  canClick: 0
