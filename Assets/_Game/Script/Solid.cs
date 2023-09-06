@@ -7,20 +7,21 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Solid : MonoBehaviour
 {
-    public AudioSource blinkVoice => GetComponent<AudioSource>();
     public Rigidbody2D rb;
     public ParticleSystem ps;
-    public List<SpriteRenderer> spriteShadow = new List<SpriteRenderer>();
     public SpriteRenderer shadow;
+    public List<SpriteRenderer> spriteShadow = new List<SpriteRenderer>();
+    public List<Clamp> triggered = new List<Clamp>();
+    public List<Clamp> locked;
+    public Vector3 lastPosition;
+    public AudioSource blinkVoice => GetComponent<AudioSource>();
     public Collider2D[] colliders => GetComponentsInChildren<Collider2D>();
     public SpriteRenderer[] spriteRenderers => GetComponentsInChildren<SpriteRenderer>();
     //public HashSet<Collider2D> triggered = new HashSet<Collider2D>();
-    public List<Clamp> triggered = new List<Clamp>();
-    public List<Clamp> locked ;
-    public Vector3 lastPosition;
+    
     public bool isTouch = false;
     public bool isDead = false;
-    public bool canClick = true;
+    public static bool canClick = true;
     Level level => GetComponentInParent<Level>();
     private void Start()
     {
@@ -35,14 +36,23 @@ public class Solid : MonoBehaviour
                 Solid solid = Cache.GetSolid(hit.collider);
                 if (solid != null)
                 {
-                    solid.isTouch = true;
-                    solid.OnSelected();
-                    MobileInput.target = solid;
-                    MobileInput.anchor = Input.mousePosition;
-
+                    if(UIControl.getHint && (solid is Line || solid is Circle))
+                    {
+                        UIControl.getHint = false;
+                        solid.OnDespawn();
+                    }
+                    else
+                    {
+                        solid.isTouch = true;
+                        solid.OnSelected();
+                        MobileInput.target = solid;
+                        MobileInput.anchor = (Input.mousePosition);
+                        
+                    }
+                    
                 }
             }
-            UIControl.HintOff();
+            //UIControl.HintOff();
         }
         
     }
@@ -55,6 +65,7 @@ public class Solid : MonoBehaviour
         canClick = true;
         spriteShadow = GetComponentsInChildren<Clamp>().ToList().Select(x => x.shadow).ToList();
         spriteShadow.Add(shadow);
+        lastPosition = transform.position;
     }
     public void SetLastPosition(Vector3 position)
     { lastPosition = position; }
@@ -66,6 +77,7 @@ public class Solid : MonoBehaviour
             level.solidList.Remove(this);
             if (level.isWin)
             {
+                canClick= false;
                 UIControl.Instance.OnWin();
             }
         }
@@ -99,6 +111,7 @@ public class Solid : MonoBehaviour
     }
     public virtual void OnSelected()
     {
+        if(this is Circle || this is Line)
         foreach(var sp in spriteShadow)
         {
             sp.enabled = true;
@@ -107,14 +120,16 @@ public class Solid : MonoBehaviour
     }
     public virtual void OffSelected()
     {
-        foreach (var sp in spriteShadow)
+        if (this is Circle || this is Line)
+            foreach (var sp in spriteShadow)
         {
             sp.enabled = false;
         }
     }
     public virtual void MoveDeath()
     {
-        if(CompareTag("Lock"))
+        Instantiate(ps, transform.position, Quaternion.identity);
+        if (CompareTag("Lock"))
         {
             transform.DORotate(Vector3.forward * 720, 1f, RotateMode.FastBeyond360);
             transform.DOScale(0.2f, 1f);

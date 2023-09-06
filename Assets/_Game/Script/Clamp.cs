@@ -23,6 +23,14 @@ public class Clamp : MonoBehaviour
             CheckTarget();
 
         }
+        else
+        {
+            if(target!= null)
+            {
+                FreeTarget();
+            }
+            
+        }
        
     }
     void CheckTarget()
@@ -52,11 +60,7 @@ public class Clamp : MonoBehaviour
             {
                 if (target != null)
                 {
-                    target.SetLastPosition(transform.position);
-                    target.RemoveTrigger(this);
-                    
-                    target.CheckFree();
-                    target = null;
+                   FreeTarget();
                 }
                 else
                 {
@@ -78,6 +82,13 @@ public class Clamp : MonoBehaviour
             parent.CheckFree();
         }
        
+    }
+    void FreeTarget()
+    {
+        target.SetLastPosition(transform.position);
+        target.RemoveTrigger(this);
+        target.CheckFree();
+        target = null;
     }
 
 }

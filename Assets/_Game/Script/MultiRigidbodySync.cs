@@ -37,9 +37,9 @@ public class MultiRigidbodySync : Solid
         foreach (var c in colorCs)
         {
             c.isTouch = false;
-            c.rb.bodyType = RigidbodyType2D.Static;
-            c.OffSelected();
+            c.rb.bodyType = RigidbodyType2D.Static;          
             c.CheckFree();
+
         }
     }
     public override void OffSelected()
@@ -61,7 +61,7 @@ public class MultiRigidbodySync : Solid
     public static void SetSign()
     {
        // sign =  angle > 0 ? 1 : -1;
-        print(sign + ",  " + angle);
+        //print(sign + ",  " + angle);
        // angle = 0;
     }
     public static void SetNegativeSign()

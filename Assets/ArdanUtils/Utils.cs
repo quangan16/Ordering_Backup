@@ -60,9 +60,9 @@ public static class Utils
         {
             return input / 1_000_000 + "M";
         }
-        else if (input < 1_000_000_000_000)
+        else //if (input < 1_000_000_000_000)
         {
-            return input / 1_000_000_000 + "B";
+           // return input / 1_000_000_000 + "B";
         }
 
         return input.ToString();
@@ -102,9 +102,9 @@ public static class Utils
         {
             return (input / 1_000_000) * 1_000_000;
         }
-        else if (input < 1_000_000_000_000)
+        else //if (input < 1_000_000_000_000)
         {
-            return (input / 1_000_000_000) * 1_000_000_000;
+            //return (input / 1_000_000_000) * 1_000_000_000;
         }
     
         return input;

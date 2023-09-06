@@ -8,15 +8,16 @@ public class Circle : Solid
 {
     [SerializeField] AudioClip stuckAu;
     float x;
-    float y => transform.localPosition.y;
+    Quaternion z;
     private void Start()
     {
         OnInit();
         x = transform.localPosition.x;
+        z = transform.rotation;
     }
+    
     public override void SetUp()
     {
-        base.SetUp();
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
 
@@ -27,7 +28,13 @@ public class Circle : Solid
         if(locked.Count == 0)
         {
             float angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);
+
+            if(Mathf.Abs(transform.rotation.y)>0)
+            {
+                angle= -angle;
+            }
             rb.MoveRotation(rb.rotation + angle);
+            
         }
         else
         {
@@ -36,15 +43,16 @@ public class Circle : Solid
     }
     public override void MoveDeath()
     {
-        Instantiate(ps,lastPosition,Quaternion.identity);
+        Instantiate(ps, transform.position, Quaternion.identity);
         blinkVoice.Play();
         transform.DOMove((transform.position*2 - lastPosition), 1f);
         Invoke(nameof(OnDeath), 1.5f);
     }
     void ShakeOff()
     {
+        StopCollision();
         blinkVoice.PlayOneShot(stuckAu);
-        StopCollision();       
+             
         transform.DOLocalMoveX(x+0.015f, 0.2f).OnComplete(()=> transform.DOLocalMoveX(x - 0.03f, 0.2f).OnComplete(() => StartCollision()   ));
         
     }
@@ -56,6 +64,7 @@ public class Circle : Solid
     private void StartCollision()
     {
         transform.DOLocalMoveX(x, 0.2f);
+        transform.rotation = z;
         canClick = true;      
         isTouch = false;
     }
