@@ -26,6 +26,7 @@ public class MultiRigidbodySync : Solid
             foreach (var c in colorCs)
             {
                 c.isTouch = true;
+                c.OnSelected();
                 c.MoveNotSync(angle);
             }
         }
@@ -37,18 +38,35 @@ public class MultiRigidbodySync : Solid
         {
             c.isTouch = false;
             c.rb.bodyType = RigidbodyType2D.Static;
+            c.OffSelected();
             c.CheckFree();
+        }
+    }
+    public override void OffSelected()
+    {
+        foreach (var c in colorCs)
+        {           
+            c.OffSelected();       
+        }
+    }
+    public override void OnSelected()
+    {
+        foreach (var c in colorCs)
+        {
+            
+            c.OnSelected();
+           
         }
     }
     public static void SetSign()
     {
-        sign =  angle > 0 ? 1 : -1;
-        print(sign + ",  " + angle.ToString());
-        angle = 0;
+       // sign =  angle > 0 ? 1 : -1;
+        print(sign + ",  " + angle);
+       // angle = 0;
     }
     public static void SetNegativeSign()
     {
-        sign = 0;
+       // sign = 0;
     }
 
 

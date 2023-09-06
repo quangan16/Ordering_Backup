@@ -81,7 +81,8 @@ public class Line : Solid
     {
         base.Move(vectorA, vectorB);
         rb.bodyType = RigidbodyType2D.Dynamic;
-        //Vector3 endPoint = Vector3.Project(vectorB - vectorA, direct);//* Time.fixedDeltaTime;
+        //Vector3 endPoint = Vector3.Project(vectorB - vectorA, direct)* Time.fixedDeltaTime;
+        //rb.MovePosition(rb.position + new Vector2(endPoint.x, endPoint.y));
         //rb.velocity = new Vector3(endPoint.x, endPoint.y);
         Vector3 endPoint = Vector3.Project(vectorB - vectorA, direct);
         target = new Vector2(endPoint.x, endPoint.y);
@@ -89,6 +90,8 @@ public class Line : Solid
     }
     public override void MoveDeath()
     {
+        Instantiate(ps, lastPosition, Quaternion.identity);
+        blinkVoice.Play();
         transform.DOLocalMove((transform.localPosition*2 - startPosition), 1f);
         Invoke(nameof(OnDeath), 1.5f);
     }

@@ -6,7 +6,8 @@ using UnityEngine;
 public class Clamp : MonoBehaviour
 {
     [SerializeField] Transform checkPosition;
-    [SerializeField] LayerMask layer;   
+    [SerializeField] LayerMask layer;
+    public SpriteRenderer shadow;
     public Solid target;
     Solid parent => GetComponentInParent<Solid>();
     public float time;
@@ -33,14 +34,14 @@ public class Clamp : MonoBehaviour
             if (target != null)
             {
                 time = 0;
-                if (!target.triggered.Contains(this))
+                if (!target.ContainTrigger(this))
                 { 
-                    target.triggered.Add(this); 
+                    target.AddTrigger(this); 
                 }
 
-                if (parent != null && !parent.locked.Contains(this))
+                if (parent != null && !parent.ContainLock(this))
                 {
-                    parent.locked.Add(this);
+                    parent.AddLock(this);
                 }
             }
         }
@@ -52,7 +53,7 @@ public class Clamp : MonoBehaviour
                 if (target != null)
                 {
                     target.SetLastPosition(transform.position);
-                    target.triggered.Remove(this);
+                    target.RemoveTrigger(this);
                     
                     target.CheckFree();
                     target = null;
@@ -70,7 +71,7 @@ public class Clamp : MonoBehaviour
     {
         if (parent != null)
         {
-            if(parent.locked.Remove(this))           
+            if(parent.RemoveLock(this))           
             {
                 parent.SetLastPosition(transform.position);
             }

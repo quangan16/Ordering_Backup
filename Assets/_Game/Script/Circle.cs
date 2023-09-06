@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Circle : Solid
 {
+    [SerializeField] AudioClip stuckAu;
     float x;
     float y => transform.localPosition.y;
     private void Start()
@@ -35,11 +36,14 @@ public class Circle : Solid
     }
     public override void MoveDeath()
     {
+        Instantiate(ps,lastPosition,Quaternion.identity);
+        blinkVoice.Play();
         transform.DOMove((transform.position*2 - lastPosition), 1f);
         Invoke(nameof(OnDeath), 1.5f);
     }
     void ShakeOff()
-    {       
+    {
+        blinkVoice.PlayOneShot(stuckAu);
         StopCollision();       
         transform.DOLocalMoveX(x+0.015f, 0.2f).OnComplete(()=> transform.DOLocalMoveX(x - 0.03f, 0.2f).OnComplete(() => StartCollision()   ));
         

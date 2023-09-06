@@ -7,7 +7,11 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Solid : MonoBehaviour
 {
+    public AudioSource blinkVoice => GetComponent<AudioSource>();
     public Rigidbody2D rb;
+    public ParticleSystem ps;
+    public List<SpriteRenderer> spriteShadow = new List<SpriteRenderer>();
+    public SpriteRenderer shadow;
     public Collider2D[] colliders => GetComponentsInChildren<Collider2D>();
     public SpriteRenderer[] spriteRenderers => GetComponentsInChildren<SpriteRenderer>();
     //public HashSet<Collider2D> triggered = new HashSet<Collider2D>();
@@ -32,13 +36,13 @@ public class Solid : MonoBehaviour
                 if (solid != null)
                 {
                     solid.isTouch = true;
+                    solid.OnSelected();
                     MobileInput.target = solid;
                     MobileInput.anchor = Input.mousePosition;
 
                 }
             }
-
-
+            UIControl.HintOff();
         }
         
     }
@@ -49,11 +53,23 @@ public class Solid : MonoBehaviour
         rb.centerOfMass = Vector2.zero;
         isTouch = false;
         canClick = true;
+        spriteShadow = GetComponentsInChildren<Clamp>().ToList().Select(x => x.shadow).ToList();
+        spriteShadow.Add(shadow);
     }
     public void SetLastPosition(Vector3 position)
     { lastPosition = position; }
     public virtual void OnDespawn()
     {
+        if (level != null)
+        {
+            
+            level.solidList.Remove(this);
+            if (level.isWin)
+            {
+                UIControl.Instance.OnWin();
+            }
+        }
+            
         if (!isDead)
         {
             Clamp[] clamps= GetComponentsInChildren<Clamp>();
@@ -77,9 +93,24 @@ public class Solid : MonoBehaviour
             
         }
         isDead = true;
-       
-    
+        
 
+
+    }
+    public virtual void OnSelected()
+    {
+        foreach(var sp in spriteShadow)
+        {
+            sp.enabled = true;
+        }
+   
+    }
+    public virtual void OffSelected()
+    {
+        foreach (var sp in spriteShadow)
+        {
+            sp.enabled = false;
+        }
     }
     public virtual void MoveDeath()
     {
@@ -97,10 +128,29 @@ public class Solid : MonoBehaviour
        
         Destroy(this);
         gameObject.SetActive(false);
-        if(level != null)
-        level.solidList.Remove(this);
-       
+        
+        
     }
+    public bool RemoveTrigger(Clamp clamp)
+    {
+       return triggered.Remove(clamp);
+    }
+    public void AddTrigger(Clamp clamp)
+    {
+        triggered.Add(clamp);
+    }
+    public bool ContainTrigger(Clamp clamp)
+    {
+        return triggered.Contains(clamp);
+    }
+    public void AddLock(Clamp clamp)
+    {
+        locked.Add(clamp);
+    }
+    public bool ContainLock(Clamp clamp)
+    { return locked.Contains(clamp); }
+    public bool RemoveLock(Clamp clamp)
+    { return locked.Remove(clamp); }
     public virtual void CheckFree()
     {
         if (triggered.Count == 0 && ! isTouch )
