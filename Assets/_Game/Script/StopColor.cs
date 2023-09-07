@@ -7,13 +7,13 @@ public class StopColor : MonoBehaviour
     ColorC colorC => GetComponentInParent<ColorC>();
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        MultiRigidbodySync.SetSign();
+       // MultiRigidbodySync.SetSign();
         //colorC.SetOnTrigger();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        MultiRigidbodySync.SetNegativeSign();
+       // MultiRigidbodySync.SetNegativeSign();
        // colorC.SetOffTrigger();
 
     }

@@ -8,15 +8,20 @@ using static UnityEngine.GraphicsBuffer;
 public class Solid : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public ParticleSystem ps;
+    public SpriteRenderer shadow;
+    public List<SpriteRenderer> spriteShadow = new List<SpriteRenderer>();
+    public List<Clamp> triggered = new List<Clamp>();
+    public List<Clamp> locked;
+    public Vector3 lastPosition;
+    public AudioSource blinkVoice => GetComponent<AudioSource>();
     public Collider2D[] colliders => GetComponentsInChildren<Collider2D>();
     public SpriteRenderer[] spriteRenderers => GetComponentsInChildren<SpriteRenderer>();
     //public HashSet<Collider2D> triggered = new HashSet<Collider2D>();
-    public List<Clamp> triggered = new List<Clamp>();
-    public List<Clamp> locked ;
-    public Vector3 lastPosition;
+    
     public bool isTouch = false;
     public bool isDead = false;
-    public bool canClick = true;
+    public static bool canClick = true;
     Level level => GetComponentInParent<Level>();
     private void Start()
     {
@@ -31,14 +36,23 @@ public class Solid : MonoBehaviour
                 Solid solid = Cache.GetSolid(hit.collider);
                 if (solid != null)
                 {
-                    solid.isTouch = true;
-                    MobileInput.target = solid;
-                    MobileInput.anchor = Input.mousePosition;
-
+                    if(UIControl.getHint && (solid is Line || solid is Circle))
+                    {
+                        UIControl.getHint = false;
+                        solid.OnDespawn();
+                    }
+                    else
+                    {
+                        solid.isTouch = true;
+                        solid.OnSelected();
+                        MobileInput.target = solid;
+                        MobileInput.anchor = (Input.mousePosition);
+                        
+                    }
+                    
                 }
             }
-
-
+            //UIControl.HintOff();
         }
         
     }
@@ -49,11 +63,25 @@ public class Solid : MonoBehaviour
         rb.centerOfMass = Vector2.zero;
         isTouch = false;
         canClick = true;
+        spriteShadow = GetComponentsInChildren<Clamp>().ToList().Select(x => x.shadow).ToList();
+        spriteShadow.Add(shadow);
+        lastPosition = transform.position;
     }
     public void SetLastPosition(Vector3 position)
     { lastPosition = position; }
     public virtual void OnDespawn()
     {
+        if (level != null)
+        {
+            
+            level.solidList.Remove(this);
+            if (level.isWin)
+            {
+                canClick= false;
+                UIControl.Instance.OnWin();
+            }
+        }
+            
         if (!isDead)
         {
             Clamp[] clamps= GetComponentsInChildren<Clamp>();
@@ -77,13 +105,31 @@ public class Solid : MonoBehaviour
             
         }
         isDead = true;
-       
-    
+        
 
+
+    }
+    public virtual void OnSelected()
+    {
+        if(this is Circle || this is Line)
+        foreach(var sp in spriteShadow)
+        {
+            sp.enabled = true;
+        }
+   
+    }
+    public virtual void OffSelected()
+    {
+        if (this is Circle || this is Line)
+            foreach (var sp in spriteShadow)
+        {
+            sp.enabled = false;
+        }
     }
     public virtual void MoveDeath()
     {
-        if(CompareTag("Lock"))
+        Instantiate(ps, transform.position, Quaternion.identity);
+        if (CompareTag("Lock"))
         {
             transform.DORotate(Vector3.forward * 720, 1f, RotateMode.FastBeyond360);
             transform.DOScale(0.2f, 1f);
@@ -97,10 +143,29 @@ public class Solid : MonoBehaviour
        
         Destroy(this);
         gameObject.SetActive(false);
-        if(level != null)
-        level.solidList.Remove(this);
-       
+        
+        
     }
+    public bool RemoveTrigger(Clamp clamp)
+    {
+       return triggered.Remove(clamp);
+    }
+    public void AddTrigger(Clamp clamp)
+    {
+        triggered.Add(clamp);
+    }
+    public bool ContainTrigger(Clamp clamp)
+    {
+        return triggered.Contains(clamp);
+    }
+    public void AddLock(Clamp clamp)
+    {
+        locked.Add(clamp);
+    }
+    public bool ContainLock(Clamp clamp)
+    { return locked.Contains(clamp); }
+    public bool RemoveLock(Clamp clamp)
+    { return locked.Remove(clamp); }
     public virtual void CheckFree()
     {
         if (triggered.Count == 0 && ! isTouch )

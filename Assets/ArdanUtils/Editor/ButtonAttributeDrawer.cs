@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Linq;
 using System;
 using System.Reflection;
-using UnityEditor;
 using UnityEngine.UI;
 
 [CustomPropertyDrawer(typeof(ButtonAttribute))]

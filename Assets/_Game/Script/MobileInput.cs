@@ -11,9 +11,12 @@ public class MobileInput : MonoBehaviour
     public static Solid target;
     public static Vector3 anchor;
     public static bool isStopped ;
+
+
     private void Start()
     {
         Application.targetFrameRate= 60;
+       // Screen.SetResolution(1080, 1920, true);
     }
     void Update()
     {
@@ -23,6 +26,7 @@ public class MobileInput : MonoBehaviour
            if(target!=null)
             {
                 target.isTouch = false;
+                target.OffSelected();
                 target.rb.bodyType = RigidbodyType2D.Static;
                 target.CheckFree();
             }
@@ -41,8 +45,11 @@ public class MobileInput : MonoBehaviour
 
             Vector3 rPosition = Camera.main.WorldToScreenPoint(target.transform.position);
             Vector3 ray1 = anchor - rPosition;
+            ray1.z = 0;
             Vector3 mouse = Input.mousePosition - rPosition;
-            target.Move(ray1,mouse);
+            mouse.z = 0;
+
+            target.Move(ray1/2,mouse/2);
             anchor = Input.mousePosition;
 
         }

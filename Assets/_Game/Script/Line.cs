@@ -22,7 +22,6 @@ public class Line : Solid
     }
     public override void SetUp()
     {
-        base.SetUp();
         if(isVertical)
         {
             direct = transform.up;
@@ -45,29 +44,7 @@ public class Line : Solid
         }
        
     }
-    private void FixedUpdate()
-    {
-        if (rb.bodyType == RigidbodyType2D.Dynamic)
 
-        {
-
-            Vector3 localVelocity = transform.InverseTransformDirection(target);
-            {
-                if (isVertical)
-                {
-                    localVelocity.x = 0;
-                }
-                else
-                {
-                    localVelocity.y = 0;
-                }
-            }
-
-            localVelocity.z = 0;
-            rb.velocity = transform.TransformDirection(localVelocity);
-
-        }
-    }
  
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -81,14 +58,16 @@ public class Line : Solid
     {
         base.Move(vectorA, vectorB);
         rb.bodyType = RigidbodyType2D.Dynamic;
-        //Vector3 endPoint = Vector3.Project(vectorB - vectorA, direct);//* Time.fixedDeltaTime;
-        //rb.velocity = new Vector3(endPoint.x, endPoint.y);
+       
         Vector3 endPoint = Vector3.Project(vectorB - vectorA, direct);
         target = new Vector2(endPoint.x, endPoint.y);
+        rb.velocity = target;
 
     }
     public override void MoveDeath()
     {
+        Instantiate(ps, transform.position, Quaternion.identity);
+        blinkVoice.Play();
         transform.DOLocalMove((transform.localPosition*2 - startPosition), 1f);
         Invoke(nameof(OnDeath), 1.5f);
     }

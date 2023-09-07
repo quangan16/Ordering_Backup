@@ -9,12 +9,13 @@ public class ColorC : Circle
     public List<ColorC> colorCs => FindObjectsOfType<ColorC>().ToList() ;
     public static float angle;
     public static float sign;
-   
+    
     public void Sync()
     {       
         foreach (var c in colorCs)
         {
             c.isTouch = true;
+            c.OnSelected();
             //c.MoveNotSync(angle);
         }
         
@@ -33,17 +34,17 @@ public class ColorC : Circle
         {
             rb.MoveRotation(rb.rotation + angle);
         }
-
-
     }
+   
+
     public void SetOnTrigger()
     {
-        sign = Mathf.Sign(angle);
-        angle = 0;      
+       // sign = Mathf.Sign(angle);
+       // angle = 0;      
     }
     public void SetOffTrigger()
     {
-        sign = -Mathf.Sign(angle);        
+        //sign = -Mathf.Sign(angle);        
     }
 
    
