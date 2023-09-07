@@ -7,9 +7,9 @@ using static UnityEngine.GraphicsBuffer;
 public class Line : Solid
 {
     public bool isVertical;
-    Vector2 target;
     Vector3 direct;
     Vector3 startPosition;
+    Vector2 target;
     private void Start()
     {
         OnInit();
@@ -56,12 +56,12 @@ public class Line : Solid
     }
     public override void Move(Vector3 vectorA, Vector3 vectorB)
     {
-        base.Move(vectorA, vectorB);
         rb.bodyType = RigidbodyType2D.Dynamic;
-       
         Vector3 endPoint = Vector3.Project(vectorB - vectorA, direct);
         target = new Vector2(endPoint.x, endPoint.y);
-        rb.velocity = target;
+      
+        rb.velocity = target/Time.fixedDeltaTime;
+        //rb.MovePosition(target + rb.position);
 
     }
     public override void MoveDeath()

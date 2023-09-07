@@ -24,16 +24,12 @@ public class Circle : Solid
     }
     public override void Move(Vector3 vectorA, Vector3 vectorB)
     {
-        base.Move(vectorA, vectorB);
         if(locked.Count == 0)
         {
-            float angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);
-
-            if(Mathf.Abs(transform.rotation.y)>0)
-            {
-                angle= -angle;
-            }
-            rb.MoveRotation(rb.rotation + angle);
+       
+            float angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);    
+            //rb.MoveRotation(rb.rotation + angle);
+            rb.angularVelocity = angle/Time.fixedDeltaTime;
             
         }
         else

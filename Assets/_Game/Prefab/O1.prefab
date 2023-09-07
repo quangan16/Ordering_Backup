@@ -162,7 +162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c52028d12ec96e8458a99c0e80b03cb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -433,14 +433,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   ps: {fileID: 7487279630823553328, guid: 8f36647b8ca7f06459e426e390592e2c, type: 3}
-  spriteShadow: []
   shadow: {fileID: 4858806335521921427}
+  spriteShadow: []
   triggered: []
   locked: []
   lastPosition: {x: 0, y: 0, z: 0}
   isTouch: 0
   isDead: 0
-  canClick: 0
   stuckAu: {fileID: 8300000, guid: 5b3a3d5a03dc63b4da5c95790a9972fc, type: 3}
 --- !u!82 &7672725717936494119
 AudioSource:

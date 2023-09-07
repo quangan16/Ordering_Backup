@@ -11,49 +11,73 @@ public class MobileInput : MonoBehaviour
     public static Solid target;
     public static Vector3 anchor;
     public static bool isStopped ;
-
-
     private void Start()
     {
         Application.targetFrameRate= 60;
-       // Screen.SetResolution(1080, 1920, true);
     }
     void Update()
     {
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            GetOnClick();
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
-           if(target!=null)
+            if (target != null)
             {
-                target.isTouch = false;
                 target.OffSelected();
-                target.rb.bodyType = RigidbodyType2D.Static;
                 target.CheckFree();
             }
             target = null;
-            ColorC.sign = 0;
         }
-       
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         
-        if (target != null)
+        if (target)
         {
 
-            target.SetUp();
-
-            Vector3 rPosition = Camera.main.WorldToScreenPoint(target.transform.position);
+            Vector3 rPosition = (target.transform.position);
             Vector3 ray1 = anchor - rPosition;
             ray1.z = 0;
-            Vector3 mouse = Input.mousePosition - rPosition;
+            Vector3 mouse =  Camera.main.ScreenToWorldPoint(Input.mousePosition) - rPosition;
             mouse.z = 0;
-
-            target.Move(ray1/2,mouse/2);
-            anchor = Input.mousePosition;
-
+            target.Move(ray1, mouse);
+            anchor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-        
+
+    }
+    public  void GetOnClick()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if (hit.collider != null)
+        {
+            Solid solid = Cache.GetSolid(hit.collider);
+            if (solid != null)
+            {
+                if (UIControl.getHint && (solid is Line || solid is Circle))
+                {
+                    UIControl.getHint = false;
+                    solid.OnDespawn();
+                }
+                else
+                {
+                    solid.isTouch = true;
+                    solid.OnSelected();
+                    solid.SetUp();
+                    
+                    target = solid;
+                    
+                    
+                   anchor = Camera.main.ScreenToWorldPoint( Input.mousePosition);     
+                    //anchor = ( Input.mousePosition);
+
+                }
+
+            }
+        }
     }
 
 
