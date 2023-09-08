@@ -33,7 +33,7 @@ public class WinUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         enabled = true;
-        indi.Move();
+        // indi.Move();
         
     }
 
