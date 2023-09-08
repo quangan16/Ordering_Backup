@@ -12,11 +12,11 @@ public class TutoMove : MonoBehaviour
     {
         if(vertical)
         {
-            transform.DOLocalMoveY(transform.localPosition.y + 0.5f,1f).SetLoops(-1, LoopType.Yoyo);
+            transform.DOLocalMoveY(transform.localPosition.y + 0.5f,1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         }
         else if(horizontal)
         {
-            transform.DOLocalMoveX(transform.localPosition.x + 0.5f, 1f).SetLoops(-1, LoopType.Yoyo);
+            transform.DOLocalMoveX(transform.localPosition.x + 0.5f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
 
         }
         else if (rotate)
@@ -29,7 +29,7 @@ public class TutoMove : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            DOTween.Clear();
+            transform.DOKill();
             Destroy(gameObject);
             Destroy(this);
         }

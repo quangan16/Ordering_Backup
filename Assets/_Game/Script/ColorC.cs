@@ -23,6 +23,7 @@ public class ColorC : Circle
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
+       
     }
 
     public override void OnInit()

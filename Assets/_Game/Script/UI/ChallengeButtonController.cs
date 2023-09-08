@@ -12,6 +12,5 @@ public class ChallengeButtonController : MonoBehaviour
     {
         fadePopup.gameObject.SetActive(true);
         fadePopup.Show(null);
-        Debug.Log("ehe");
     }
 }

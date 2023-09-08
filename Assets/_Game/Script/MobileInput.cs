@@ -57,9 +57,9 @@ public class MobileInput : MonoBehaviour
             Solid solid = Cache.GetSolid(hit.collider);
             if (solid != null)
             {
-                if (UIControl.getHint && (solid is Line || solid is Circle))
+                if (UIGamePlay.getHint && (solid is Line || solid is Circle))
                 {
-                    UIControl.getHint = false;
+                    UIGamePlay.getHint = false;
                     solid.OnDespawn();
                 }
                 else
@@ -67,7 +67,7 @@ public class MobileInput : MonoBehaviour
                     solid.isTouch = true;
                     solid.OnSelected();
                     solid.SetUp();
-                    
+                    UIChallengeGameplay.isTouch = true;
                     target = solid;
                     
                     

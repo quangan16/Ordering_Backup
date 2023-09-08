@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,24 @@ public class Level : MonoBehaviour
     public List<Solid> solidList ;
     public bool isWin => solidList.Count == 0;
     public float cameraDist = 10;
+    public int moves;
+    public float time;
     private void Start()
     {
-        solidList = GetComponentsInChildren<Solid>().ToList();
+        OnInit();
+    }
+    private void OnDestroy()
+    {
         
     }
-    
-    
-   
+    public virtual void OnInit()
+    {
+        solidList = GetComponentsInChildren<Solid>().ToList();
+
+    }
+
+
+
 }
 public class HintSorter : IComparer<Hint>
 {

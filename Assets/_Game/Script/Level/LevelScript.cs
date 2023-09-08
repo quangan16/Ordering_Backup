@@ -7,3 +7,9 @@ public class LevelScript : ScriptableObject
     public Level[] levels;
     public string modeName;
 }
+[System.Serializable]
+public class LevelData
+{
+    public Level level;
+}
+

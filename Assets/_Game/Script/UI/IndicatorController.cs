@@ -13,10 +13,12 @@ public class IndicatorController : MonoBehaviour
     [SerializeField] private GameObject multiplierBar;
     // [SerializeField] private Transform startPoint;
     [SerializeField] private Transform  endPoint;
+    [SerializeField] private Transform startPoint;
+
     [SerializeField] private float slideDuration;
     [SerializeField] private TextMeshProUGUI adsCOinTxt;
     [SerializeField] private TextMeshProUGUI normalCOinTxt;
-
+    Vector2 pos;
     private float multiplierBarLength;
 
     void Start()
@@ -26,15 +28,31 @@ public class IndicatorController : MonoBehaviour
 
     private void OnEnable()
     {
-        SlideAndBounce();
+       //SlideAndBounce();
+    }
+
+    private void OnDisable()
+    {
+        transform.DOPause();
     }
 
 
-    void SlideAndBounce()
+    public void SlideAndBounce()
     {
+        //DOTween.Clear();
         var startPositionX = gameObject.GetComponent<RectTransform>().rect.x;
-        transform.DOLocalMoveX(endPoint.position.x - transform.localPosition.x, slideDuration).SetLoops(-1, LoopType.Yoyo)
-            .SetEase(Ease.Linear);
+        var endPositionX = endPoint.GetComponent<RectTransform>().rect.x;
+        transform.DOLocalMoveX(endPoint.position.x - transform.localPosition.x, slideDuration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        //transform.DOMoveX(endPoint.position.x-pos.x, slideDuration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        //transform.DOMoveX(endPositionX-startPositionX, slideDuration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+
+
+
+    }
+    public void Move()
+    {
+        transform.position = startPoint.position;
+        transform.DOMove(endPoint.position,slideDuration).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.Linear);
     }
 
     void OnTriggerEnter2D(Collider2D other)
