@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,42 +10,37 @@ public class ColorC : Circle
     public ColorC[] colorCs => FindObjectsOfType<ColorC>() ;
     public static float angle;
     public bool isMove = true;
-    float torque;
-
+    float[] rotationDiffernce;
+ 
     public void OnCollisionStay2D(Collision2D collision)
     {
-        //// print(collision.relativeVelocity);
-        //ContactPoint2D contact =  collision.GetContact(0);
-        //Vector2 offset = contact.point - rb.position;
-
-        //foreach(var c in colorCs)
-        //{
-        //    //  c.rb.AddForceAtPosition(offset+c.rb.position,-contact.normal*contact.normalImpulse);
-        //    c.rb.AddTorque(contact.normalImpulse * -160);
-        //}
-        
-       
+        Keep();
     }
-    
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        //ContactPoint2D contact = collision.GetContact(0);
-        //Vector2 offset = contact.point - rb.position;
-
-        //foreach (var c in colorCs)
-        //{
-        //    //c.rb.AddForceAtPosition(offset + c.rb.position, -contact.normal * contact.normalImpulse);
-        //    c.rb.AddTorque(contact.normalImpulse*-160);
-        //}
+        Keep();
     }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
-
     }
+
     public override void OnInit()
     {
-        base.OnInit();        
+        base.OnInit();
+        rotationDiffernce = new float[colorCs.Length];
+        for (int i = 0; i< colorCs.Length; i++)
+        {
+            rotationDiffernce[i] = colorCs[i].rb.rotation - rb.rotation;
+        }
+    }
+    void Keep()
+    {
+        for (int i = 0; i < colorCs.Length; i++)
+        {
+             colorCs[i].rb.rotation =  rb.rotation + rotationDiffernce[i];
+        }
+
     }
     public void Sync()
     {       
@@ -54,11 +50,7 @@ public class ColorC : Circle
             c.OnSelected();                    
             c.MoveNotSync(angle);
         }
-
-
-
-    }
-    
+    }   
 
     public override void Move(Vector3 vectorA, Vector3 vectorB)
     {
@@ -72,7 +64,8 @@ public class ColorC : Circle
     public void MoveNotSync(float angle)
     {
         base.SetUp();
-        rb.angularVelocity = angle/Time.fixedDeltaTime;
+        rb.angularVelocity = angle / Time.fixedDeltaTime;
+
     }
     public override void CheckFree()
     {
