@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ChallengeUI : MonoBehaviour,IUIControl
+public class ChallengeUI : MonoBehaviour, IUIControl
 {
 
     [SerializeField] List<Level> levels;
@@ -14,15 +14,16 @@ public class ChallengeUI : MonoBehaviour,IUIControl
     private void Start()
     {
         coin.text = PlayerPrefs.GetInt("coin", 0).ToString();
-        for (int i = 0; i< levels.Count;i++)
+        for (int i = 0; i < levels.Count; i++)
         {
             int j = i;
-            ChallegeItemAnimation challenge = Instantiate(challengeItem,layout.transform);
+            ChallegeItemAnimation challenge = Instantiate(challengeItem, layout.transform);
             challenge.playButton.onClick.AddListener(
-                () => OpenLevel(j)) ;
-            challenge.SetData((i+1).ToString());
+                () => OpenLevel(j));
+            challenge.SetData((i + 1).ToString());
         }
     }
+
     public void BackBtn()
     {
         UIManager.Instance.OpenGameplay();
@@ -37,6 +38,7 @@ public class ChallengeUI : MonoBehaviour,IUIControl
     {
         gameObject.SetActive(false);
     }
+
     public void OpenLevel(int level)
     {
 
