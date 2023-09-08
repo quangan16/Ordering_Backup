@@ -53,15 +53,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   ps: {fileID: 7487279630823553328, guid: 8f36647b8ca7f06459e426e390592e2c, type: 3}
+  shadow: {fileID: 2418467956378945577}
   spriteShadow:
   - {fileID: 0}
-  shadow: {fileID: 2418467956378945577}
   triggered: []
   locked: []
   lastPosition: {x: 0, y: 0, z: 0}
   isTouch: 0
   isDead: 0
-  canClick: 0
   isVertical: 1
 --- !u!212 &2126495855542555415
 SpriteRenderer:
@@ -103,7 +102,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 52e13f763c188fa4798d0f7ae373d8f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -417,7 +416,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 52e13f763c188fa4798d0f7ae373d8f0, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0

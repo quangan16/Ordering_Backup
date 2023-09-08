@@ -6,25 +6,16 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     public List<Solid> solidList ;
-    public List<Hint> hintList  = new List<Hint>();
     public bool isWin => solidList.Count == 0;
     public float cameraDist = 10;
     private void Start()
     {
         solidList = GetComponentsInChildren<Solid>().ToList();
-        Sort();
+        
     }
-    void Sort()
-    {
-        hintList.Sort(new HintSorter());
-    }
-    // Update is called once per frame
-    public Vector3[] HintPosition()
-    {
-        Sort();
-
-        return hintList[0].Hints();
-    }
+    
+    
+   
 }
 public class HintSorter : IComparer<Hint>
 {

@@ -7,7 +7,6 @@ using UnityEngine;
 public class MultiRigidbodySync : Solid
 {
     public static MultiRigidbodySync instance;
-    public static float sign;
     static float angle;
     public static List<ColorC> colorCs => FindObjectsOfType<ColorC>().ToList();
 
@@ -16,18 +15,29 @@ public class MultiRigidbodySync : Solid
         instance = this;
         OnInit();
     }
-    public override void Move(Vector3 vectorA, Vector3 vectorB)
+       
+    private void FixedUpdate()
     {
-        angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);
-        if(sign * angle <= 0)
+        bool shouldStopAll = false; 
+        if(isTouch)
         {
-            
-        
             foreach (var c in colorCs)
             {
-                c.isTouch = true;
-                c.OnSelected();
-                c.MoveNotSync(angle);
+               
+                if (!c.isMove)
+                {
+                    shouldStopAll = true; // Set the flag to true if any Rigidbody2D has stopped
+                    break;
+                }
+            }
+
+            if (shouldStopAll)
+            {
+                // If any Rigidbody2D has stopped, set the velocity of all Rigidbody2D components to zero
+                foreach (var c in colorCs)
+                {
+                    c.rb.angularVelocity = 0;
+                }
             }
         }
         
@@ -44,6 +54,7 @@ public class MultiRigidbodySync : Solid
     }
     public override void OffSelected()
     {
+        isTouch = false;
         foreach (var c in colorCs)
         {           
             c.OffSelected();       
@@ -51,6 +62,7 @@ public class MultiRigidbodySync : Solid
     }
     public override void OnSelected()
     {
+        
         foreach (var c in colorCs)
         {
             
@@ -58,16 +70,19 @@ public class MultiRigidbodySync : Solid
            
         }
     }
-    public static void SetSign()
+    public override void Move(Vector3 vectorA, Vector3 vectorB)
     {
-       // sign =  angle > 0 ? 1 : -1;
-        //print(sign + ",  " + angle);
-       // angle = 0;
+        isTouch = true;
+        angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);
+        foreach (var c in colorCs)
+        {
+            c.isTouch = true;
+            c.OnSelected();
+            //  c.MoveNotSync(angle);
+        }
+
     }
-    public static void SetNegativeSign()
-    {
-       // sign = 0;
-    }
+
 
 
 

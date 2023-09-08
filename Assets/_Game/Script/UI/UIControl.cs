@@ -9,30 +9,23 @@ using UnityEngine;
 public class UIControl : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] GameObject arrow;
-    public static UIControl Instance;
-    public static List<GameObject> hints = new List<GameObject>();
+    [SerializeField] GameObject setting;
     public List<Level> levels = new List<Level>();
     public LevelScript level;
     public TextMeshProUGUI tmp;
-    public TextMeshProUGUI modeName;
-    Level current;
     public List<ParticleSystem> winEff;
     public int currentLevel;
+    Level current;
     public static bool getHint = false;
     void Start()
     {
-        Instance = this;
         currentLevel = 0;
-        ChangeMode(level);
-        
-        
+        ChangeMode(level);            
     }
 
     // Update is called once per frame
     public void NextLevel()
-    {
-        Solid.canClick = true;
+    {        
         currentLevel++;
         DOTween.Clear();
         Destroy(current.gameObject);
@@ -41,9 +34,6 @@ public class UIControl : MonoBehaviour
             currentLevel = 0;
         }
         Invoke(nameof(Load), 0.1f);
-
-
-
     }
     public void PrevLevel()
     {
@@ -65,15 +55,15 @@ public class UIControl : MonoBehaviour
         Solid.canClick = true;
         DOTween.Clear();
         Destroy(current.gameObject);
+        UIManager.Instance.ShowAds();
         Invoke(nameof(Load), 0.1f);
-        
-        
+              
 
 
     }
     void Load()
     {
-
+        Solid.canClick = true;
         tmp.text = "Level: "+ (currentLevel+1);
         current = Instantiate(levels[currentLevel]);
 
@@ -83,7 +73,6 @@ public class UIControl : MonoBehaviour
     {
         if(Solid.canClick)
         {
-            modeName.text = script.modeName + " Mode";
             DOTween.Clear();
             levels = script.levels.ToList();
             if (current != null)
@@ -99,25 +88,7 @@ public class UIControl : MonoBehaviour
     public void CallHint()
     {
         getHint = true;
-        //foreach( var p in current.HintPosition())
-        //{
-        //    GameObject g = Instantiate(arrow, p, Quaternion.identity);
-        //    hints.Add(g);
-        //    g.transform.DOLocalMoveX(g.transform.localPosition.x - 0.7f, 0.5f).SetLoops(-1, LoopType.Yoyo);
-        //}        
-    }
-    public static void HintOff()
-    {
-        if (hints.Count > 0)
-        {
-            foreach(var hint in hints)
-            {
-
-                hint.transform.DOKill();
-                Destroy(hint.gameObject);
-            }
-            hints.Clear();
-        }
+           
     }
     public void OnWin()
     {
@@ -125,11 +96,15 @@ public class UIControl : MonoBehaviour
         {
             ef.Play();
         }
-        Invoke(nameof(NextLevel), 2f);
+        Invoke(nameof(OpenWin), 2f);
     }
-    public void ShowAds()
+    public void OpenSetting()
     {
-
+        setting.gameObject.SetActive(!setting.activeSelf);
+    }
+    void OpenWin()
+    {
+        UIManager.Instance.ShowWin();
     }
  
     

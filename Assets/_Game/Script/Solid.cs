@@ -27,35 +27,7 @@ public class Solid : MonoBehaviour
     {
        OnInit();
     }        
-    private void OnMouseDown()
-    {   if(canClick)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider != null)
-            {
-                Solid solid = Cache.GetSolid(hit.collider);
-                if (solid != null)
-                {
-                    if(UIControl.getHint && (solid is Line || solid is Circle))
-                    {
-                        UIControl.getHint = false;
-                        solid.OnDespawn();
-                    }
-                    else
-                    {
-                        solid.isTouch = true;
-                        solid.OnSelected();
-                        MobileInput.target = solid;
-                        MobileInput.anchor = (Input.mousePosition);
-                        
-                    }
-                    
-                }
-            }
-            //UIControl.HintOff();
-        }
-        
-    }
+    
     public virtual void OnInit()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -78,7 +50,7 @@ public class Solid : MonoBehaviour
             if (level.isWin)
             {
                 canClick= false;
-                UIControl.Instance.OnWin();
+                UIManager.Instance.OnWin();
             }
         }
             
@@ -125,6 +97,8 @@ public class Solid : MonoBehaviour
         {
             sp.enabled = false;
         }
+        rb.bodyType = RigidbodyType2D.Static;
+        isTouch = false;
     }
     public virtual void MoveDeath()
     {
