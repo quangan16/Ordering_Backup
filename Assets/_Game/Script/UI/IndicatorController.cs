@@ -12,7 +12,7 @@ public class IndicatorController : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject multiplierBar;
 
-    // [SerializeField] private Transform startPoint;
+    [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
     [SerializeField] private float slideDuration;
     [SerializeField] private TextMeshProUGUI adsCoinTxt;
@@ -20,6 +20,11 @@ public class IndicatorController : MonoBehaviour
 
     private float multiplierBarLength;
 
+
+    void Awake()
+    {
+        
+    }
     void Start()
     {
         // multiplierBarLength = MultiplierBar.GetComponent<RectTransform>().rect.width;
@@ -27,17 +32,22 @@ public class IndicatorController : MonoBehaviour
 
     private void OnEnable()
     {
+        ResetPosition();
         SlideAndBounce();
     }
 
-    private void OnDisable()
+    private void ResetPosition()
     {
-        transform.DOPause();
+       transform.position = startPoint.position;
     }
+    // private void OnDisable()
+    // {
+    //     transform.DOPause();
+    // }
 
     void SlideAndBounce()
     {
-        // var startPositionX = gameObject.GetComponent<RectTransform>().rect.x;
+        
         transform.DOLocalMoveX(endPoint.position.x - transform.localPosition.x, slideDuration)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.Linear);

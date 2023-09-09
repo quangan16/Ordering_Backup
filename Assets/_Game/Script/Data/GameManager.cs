@@ -27,6 +27,17 @@ public class GameManager : MonoBehaviour
     {
         SaveSystem.SaveData();
     }
+
+    [Button]
+    public void AddCoin(int amount)
+    {
+        GameManager.Instance.Coin += amount;
+    }
+
+    public void MinusCoin(int amount)
+    {
+        GameManager.Instance.Coin -= amount;
+    }
     
     
 }
