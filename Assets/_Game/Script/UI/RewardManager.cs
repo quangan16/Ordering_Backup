@@ -69,9 +69,9 @@ public class RewardManager : MonoBehaviour
             Transform currentChild = coinPilePrefab.transform.GetChild(i);
            
             Sequence tweenAnim = DOTween.Sequence();
-            if (tweenAnim.IsPlaying())
+            if (!tweenAnim.IsComplete())
             {
-                tweenAnim.Append(currentChild.DOScale(Vector3.one, 0.3f)).AppendInterval(0.7f).Append(currentChild.DOMove(coinDestPos.position, 1.2f).SetEase(Ease.InQuart)).Join(currentChild.DOScale(Vector3.zero, 1.0f).SetEase(Ease.InQuart)).OnComplete(
+                tweenAnim.Append(currentChild.DOScale(Vector3.one, 0.2f)).AppendInterval(0.5f).Append(currentChild.DOMove(coinDestPos.position, 1.2f).SetEase(Ease.InQuart)).Join(currentChild.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuart)).OnComplete(
                     () =>
                     {
                         GameManager.Instance.AddCoin(2);
