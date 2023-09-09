@@ -39,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -245, y: 89.8}
+  m_AnchoredPosition: {x: -245, y: 22.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1232018842804461615
@@ -360,11 +360,11 @@ RectTransform:
   m_Father: {fileID: 7706352736859627571}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: 458.475}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 224.43001, y: 458.475}
   m_SizeDelta: {x: 131.14, y: 56.37}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6400017186026126319
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -472,7 +472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -241, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5030387627529001802
@@ -656,7 +656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.799988, y: 394.44}
+  m_AnchoredPosition: {x: 6.799988, y: 357.45}
   m_SizeDelta: {x: 458.4, y: 115.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7706352735094353321
@@ -1594,7 +1594,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7706352735881901490}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8948082877415380828}
+        m_TargetAssemblyTypeName: RewardManager, Assembly-CSharp
+        m_MethodName: GetCoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &903258660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,7 +1821,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -7.5}
+  m_AnchoredPosition: {x: 0, y: 17.6}
   m_SizeDelta: {x: 495, y: 78.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7706352735966896998
@@ -1986,6 +1998,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8948082877415380828}
+        m_TargetAssemblyTypeName: RewardManager, Assembly-CSharp
+        m_MethodName: GetCoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2025350103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2064,8 +2088,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleAlpha: {fileID: 7706352735094353320}
   adsButton: {fileID: 7706352735881901452}
-  victoryCanvas: {fileID: 0}
-  CoinBanner: {fileID: 0}
+  victoryCanvas: {fileID: 1631978585}
+  CoinBanner: {fileID: 5007110702832161165}
 --- !u!1 &7706352736465911624
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,7 +2287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -7, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7706352736550447422
@@ -2991,6 +3015,18 @@ PrefabInstance:
       objectReference: {fileID: 8948082877415380802}
     - target: {fileID: 8654657978657938868, guid: 6ce9c24b0a3ec1e4c966fb76500c9bb2, type: 3}
       propertyPath: coinInitPos.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654657978657938868, guid: 6ce9c24b0a3ec1e4c966fb76500c9bb2, type: 3}
+      propertyPath: coinInitPos.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654657978657938868, guid: 6ce9c24b0a3ec1e4c966fb76500c9bb2, type: 3}
+      propertyPath: coinInitPos.Array.data[0].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654657978657938868, guid: 6ce9c24b0a3ec1e4c966fb76500c9bb2, type: 3}
+      propertyPath: coinInitPos.Array.data[0].z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3005,3 +3041,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8654657978657938859, guid: 6ce9c24b0a3ec1e4c966fb76500c9bb2, type: 3}
   m_PrefabInstance: {fileID: 303566794225961704}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8948082877415380828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8654657978657938868, guid: 6ce9c24b0a3ec1e4c966fb76500c9bb2, type: 3}
+  m_PrefabInstance: {fileID: 303566794225961704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948082877415380802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e41d33ea002af4b9f4db1aa5efc14b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
