@@ -16,6 +16,15 @@ public class EaseIn : MonoBehaviour
         Invoke("SlideIn", startTime);
     }
 
+    private void OnDisable()
+    {
+        DOTween.Clear();
+    }
+
+    private void OnDestroy()
+    {
+        DOTween.Clear();
+    }
     public void SlideIn()
     {
         CoinHolder.transform.position = new Vector2(CoinHolder.transform.position.x + initialOffsetPosition,

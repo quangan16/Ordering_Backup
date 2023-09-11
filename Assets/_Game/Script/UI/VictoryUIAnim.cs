@@ -50,7 +50,7 @@ public class VictoryUIAnim : MonoBehaviour
         Sequence tweenSequence = DOTween.Sequence();
         tweenSequence.Append(adsButton.transform.DOScale(1.1f, 1.5f).SetEase(Ease.OutElastic)).Append(adsButton
             .transform
-            .DOScale(1.0f, 0.2f)).SetDelay(1.0f).SetLoops(-1);
+            .DOScale(1.0f, 0.2f)).SetDelay(1.0f).SetLoops(-1).OnComplete(()=>{tweenSequence.Kill();});
 
 
         tweenSequence.Play();

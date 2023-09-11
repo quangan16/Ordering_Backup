@@ -142,6 +142,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 1311525807}
     m_Modifications:
     - target: {fileID: 903258659, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 903258659, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 903258659, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 903258659, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 903258659, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -168,6 +184,26 @@ PrefabInstance:
     - target: {fileID: 903258659, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025350102, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025350102, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025350102, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025350102, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025350102, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2025350102, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2682,6 +2718,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4697606371893123308, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
+--- !u!114 &1170866563 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 903258659, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+  m_PrefabInstance: {fileID: 44645644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1190254872 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4697606372963975976, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
@@ -4022,6 +4069,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indi: {fileID: 981532351}
+  adsButton: {fileID: 1170866563}
+  normalButton: {fileID: 1832448128}
 --- !u!225 &1751583428 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 1631978585, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
@@ -4162,6 +4211,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825360401}
   m_CullTransparentMesh: 1
+--- !u!114 &1832448128 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2025350102, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+  m_PrefabInstance: {fileID: 44645644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1918279180
 GameObject:
   m_ObjectHideFlags: 0
