@@ -10,7 +10,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 {
 
     [SerializeField] List<Level> levels;
-    [SerializeField] ChallegeItemAnimation challengeItem;
+    [SerializeField] ItemScript challengeItem;
     [SerializeField] GameObject layout;
     [SerializeField] TextMeshProUGUI heartText;
     [SerializeField] TextMeshProUGUI timeTxt;
@@ -23,20 +23,58 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
     private void Start()
     {
-
+        
         levels = GameManager.Instance.challenge.levels.ToList();
         
         for (int i = 0; i < levels.Count; i++)
         {
             int j = i;
-            ChallegeItemAnimation challenge = Instantiate(challengeItem, layout.transform);
-            challenge.playButton.onClick.AddListener( () => OpenLevel(j));
+            Mode mode = DataManager.Instance.GetLevelMode(j);          
+            ChallegeItemAnimation challenge = Instantiate(challengeItem.GetItem(mode), layout.transform);
+            challenge.level= j;
+            switch (mode)
+            {
+                case Mode.Locked:
+                    {
+                        
+                        break;
+                    }
+                case Mode.Unlocked:
+                    {
+                        challenge.playButton.onClick.AddListener(() => BuyLevel(j));
+                        break;
+                    }
+                case Mode.Bought:
+                    {
+                        challenge.playButton.onClick.AddListener(() => OpenLevel(j));
+                        break;
+                    }
+                case Mode.Pass:
+                    {
+                        challenge.playButton.onClick.AddListener(() => OpenLevel(j));
+                        break;
+                    }
+                case Mode.Fail:
+                    {
+                        challenge.playButton.onClick.AddListener(() => OpenLevel(j));
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+
+            }
             challenge.SetData(j);
         }
     }
     private void FixedUpdate()
     {
         CheckHeart();
+    }
+    void BuyLevel(int level)
+    {
+        
     }
     void SetTime(TimeSpan time)
     {
