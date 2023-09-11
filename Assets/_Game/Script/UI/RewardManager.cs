@@ -22,14 +22,15 @@ public class RewardManager : MonoBehaviour
     
     private void OnEnable()
     {
-        // Reset();
+        Reset();
       
     }
     private void OnDisable()
     {
         
     }
-    // Start is called before the first frame update
+
+  
 
     public void GetCoin()
     {
@@ -46,11 +47,19 @@ public class RewardManager : MonoBehaviour
         }
     }
 
-
+    private void Reset()
+    {
+        for (int i = 0; i < coinPilePrefab.transform.childCount; i++)
+        {
+            coinPilePrefab.transform.GetChild(i).localPosition = coinInitPos[i];
+            coinPilePrefab.transform.GetChild(i).localScale = Vector3.zero;
+        }
+    }
+    
     [Button]
     IEnumerator RewardAnim()
     {
-        for (int i = 0; i < coinPilePrefab.transform.childCount - 1; i++)
+        for (int i = 0; i < coinPilePrefab.transform.childCount; i++)
         {
             coinPilePrefab.transform.GetChild(i).position = coinInitPos[i];
         }
@@ -73,8 +82,9 @@ public class RewardManager : MonoBehaviour
             }
 
             WinUI win = GetComponentInParent<WinUI>();
-            tweenAnim.Play().OnComplete(() =>win.Close());
+           
             yield return new WaitForSeconds(intervalDelay);
+            tweenAnim.Play().OnComplete(() => { win.Close(); });
         }
         
         
