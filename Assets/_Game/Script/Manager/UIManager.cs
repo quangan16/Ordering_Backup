@@ -17,7 +17,6 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         current = control;
         GameManager.Instance.OpenGamePlay(GameMode.Normal, 0);
-
     }
     public void ShowAds()
     {
