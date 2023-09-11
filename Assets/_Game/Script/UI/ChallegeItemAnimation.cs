@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ChallegeItemAnimation : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI timeTxt;
     private float scaleDuration = 0.5f;
     public Button playButton;
     public int level;
@@ -19,27 +20,35 @@ public class ChallegeItemAnimation : MonoBehaviour
 
     private void OnDisable()
     {
-        DOTween.Clear();
+        transform.DOKill();
     }
 
     private void OnDestroy()
     {
-        DOTween.Clear();
+       transform.DOKill();
     }
 
     void EmergeEaseOutBack()
     {
         transform.DOScale(Vector3.one, scaleDuration).SetEase(Ease.OutBack);
     }
-    public void SetData(int i)
+    public void SetData(int time)
     {
-        Mode mode = DataManager.Instance.GetLevelMode(i);       
+        timeTxt.text =  time.ToString();
     }
     public void BuyLevel()
-    {
-        
+    {       
         DataManager.Instance.AddCoin(-200);
+        DataManager.Instance.SetLevel(level, Mode.Bought, 0);
+        UIManager.Instance.RePlay();
     }
+    public void Play()
+    {
+        DataManager.Instance.SetLevel(level, Mode.Fail, 0);
+    }
+
+
+
 
 
 

@@ -19,29 +19,38 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public int heart;
     DateTime dateTime;
     string format = "dd-MM-yyyy HH:mm:ss";
-    
-
     private void Start()
     {
-        
         levels = GameManager.Instance.challenge.levels.ToList();
-        
+    }
+    private void FixedUpdate()
+    {
+        CheckHeart();
+    }
+    void OnInit()
+    {
+        ChallegeItemAnimation[] challegeItems = layout.transform.GetComponentsInChildren<ChallegeItemAnimation>();
+        foreach(var challegeItem in challegeItems)
+        {
+            Destroy(challegeItem.gameObject);
+            Destroy(challegeItem);
+        }
+
         for (int i = 0; i < levels.Count; i++)
         {
+
             int j = i;
-            Mode mode = DataManager.Instance.GetLevelMode(j);          
+            (Mode mode, int time) = DataManager.Instance.GetLevelMode(j);
             ChallegeItemAnimation challenge = Instantiate(challengeItem.GetItem(mode), layout.transform);
-            challenge.level= j;
+            challenge.level = j;
             switch (mode)
             {
                 case Mode.Locked:
                     {
-                        
                         break;
                     }
                 case Mode.Unlocked:
                     {
-                        challenge.playButton.onClick.AddListener(() => BuyLevel(j));
                         break;
                     }
                 case Mode.Bought:
@@ -52,6 +61,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
                 case Mode.Pass:
                     {
                         challenge.playButton.onClick.AddListener(() => OpenLevel(j));
+                        challenge.SetData(time);
                         break;
                     }
                 case Mode.Fail:
@@ -65,16 +75,8 @@ public class ChallengeUI : MonoBehaviour, IUIControl
                     }
 
             }
-            challenge.SetData(j);
+
         }
-    }
-    private void FixedUpdate()
-    {
-        CheckHeart();
-    }
-    void BuyLevel(int level)
-    {
-        
     }
     void SetTime(TimeSpan time)
     {
@@ -123,6 +125,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
     public void Open()
     {
+        OnInit();
         coin.text = DataManager.Instance.GetCoin().ToString();
         heart = DataManager.Instance.GetHeart();
         gameObject.SetActive(true);

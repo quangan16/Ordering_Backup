@@ -305,8 +305,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000023842, y: 71.1}
-  m_SizeDelta: {x: 86.1, y: 163}
+  m_AnchoredPosition: {x: 0.00000023842, y: 67.1}
+  m_SizeDelta: {x: 86.1, y: 99.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1892496515
 CanvasRenderer:
@@ -439,9 +439,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94b287193135f24c93532dd150f35c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeTxt: {fileID: 0}
   playButton: {fileID: 2146623629232788581}
-  tmp: {fileID: 0}
-  mode: 0
+  level: 0
 --- !u!1001 &3788378260105800032
 PrefabInstance:
   m_ObjectHideFlags: 0
