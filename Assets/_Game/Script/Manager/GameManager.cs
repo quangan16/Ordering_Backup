@@ -67,9 +67,9 @@ public class GameManager : SingletonBehivour<GameManager>
             case GameMode.Normal:
                 {
                     normalLevel++;
-                    if (currentLevel >= normal.levels.Length)
+                    if (normalLevel >= normal.levels.Length)
                     {
-                        currentLevel = 0;
+                        normalLevel = 0;
                     }
                     Invoke(nameof(nextLevel), 0.1f);
                     break;

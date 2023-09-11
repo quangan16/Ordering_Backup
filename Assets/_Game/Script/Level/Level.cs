@@ -11,6 +11,8 @@ public class Level : MonoBehaviour
     public float cameraDist = 10;
     public int moves;
     public float time;
+    public int price;
+    public int rewards;
     private void Start()
     {
         OnInit();

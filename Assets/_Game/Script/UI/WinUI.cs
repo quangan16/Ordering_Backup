@@ -23,7 +23,7 @@ public class WinUI : MonoBehaviour
 
         Clicked();
         DataManager.Instance.AddCoin(int.Parse(indi.achievedCoinTxt.text));
-
+        DataManager.Instance.SetNormalLevel(GameManager.Instance.normalLevel+1);
 
     }
     public void GetCoinAds()
@@ -31,6 +31,8 @@ public class WinUI : MonoBehaviour
         Clicked();
         UIManager.Instance.ShowAds();
         DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
+        DataManager.Instance.SetNormalLevel(GameManager.Instance.normalLevel+1);
+
     }
     public void Close()
     {

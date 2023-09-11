@@ -16,20 +16,25 @@ public class UIManager : SingletonBehivour<UIManager>
     private void Start()
     {
         current = control;
-        GameManager.Instance.OpenGamePlay(GameMode.Normal, 0);
+        GameManager.Instance.OpenGamePlay(GameMode.Normal, DataManager.Instance.GetNormalLevel());
     }
     public void ShowAds()
     {
 
     }
 
-    public void ShowWin()
-    {
-        win.Open();
-    }
+ 
     public void OnWin()
     {
         win.Open();
+        PlayEffect();
+        if(current is UIChallengeGameplay)
+        {
+            UIChallengeGameplay.isTouch = false;
+            int level = GameManager.Instance.currentLevel;
+            (Mode mode, int time) = DataManager.Instance.GetLevelMode(level);
+            DataManager.Instance.SetLevel(level, Mode.Pass, Mathf.RoundToInt(UIChallengeGameplay.timer) < time?time: Mathf.RoundToInt(UIChallengeGameplay.timer));
+        }
     }
     public void OpenUI(IUIControl control)
     {
@@ -38,7 +43,10 @@ public class UIManager : SingletonBehivour<UIManager>
         current= control;
         current.Open();
     }
-
+    public void RePlay()
+    {
+        OpenUI(current);
+    }
     public void OpenChallenge()
     {
         OpenUI(challenge);

@@ -7,12 +7,10 @@ using UnityEngine.UI;
 
 public class ChallegeItemAnimation : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI timeTxt;
     private float scaleDuration = 0.5f;
     public Button playButton;
-    [SerializeField] TextMeshProUGUI tmp;
-    [SerializeField] Button replay;
-    public Mode mode;
-
+    public int level;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -22,63 +20,40 @@ public class ChallegeItemAnimation : MonoBehaviour
 
     private void OnDisable()
     {
-        DOTween.Clear();
+        transform.DOKill();
     }
 
     private void OnDestroy()
     {
-        DOTween.Clear();
+       transform.DOKill();
     }
 
     void EmergeEaseOutBack()
     {
         transform.DOScale(Vector3.one, scaleDuration).SetEase(Ease.OutBack);
     }
-    public void SetData(int i)
+    public void SetData(int time)
     {
-        Mode mode = (Mode)DataManager.Instance.GetLevelMode(i);
-        switch (mode)
-        {
-            case Mode.Locked:
-                {
-                    playButton.gameObject.SetActive(false);
-                    break;
-                }
-            case Mode.Unlocked:
-                {
-                    playButton.gameObject.SetActive(false);
-                    break;
-                }
-            case Mode.Bought:
-                {
-                    playButton.gameObject.SetActive(true);
-                    break;
-                }
-            case Mode.Pass:
-                {
-                    playButton.gameObject.SetActive(true);
-                    break;
-                }
-            case Mode.Fail:
-                {
-                    playButton.gameObject.SetActive(true);
-                    break;
-                }
-            default:
-                {
-
-                    break;
-                }
-
-
-
-
-
-
-
-        }
-        //tmp.text = s;
+        timeTxt.text =  time.ToString();
     }
+    public void BuyLevel()
+    {       
+        DataManager.Instance.AddCoin(-200);
+        DataManager.Instance.SetLevel(level, Mode.Bought, 0);
+        UIManager.Instance.RePlay();
+    }
+    public void Play()
+    {
+        DataManager.Instance.SetLevel(level, Mode.Fail, 0);
+    }
+
+
+
+
+
+
+
+
 }
 public enum Mode
 {
@@ -87,11 +62,5 @@ public enum Mode
     Bought, //Bought, didn't play => show play
     Pass, //Play and passed => show replay 
     Fail // Play and fail => show replay
-
-
-
-
-
-
 
 }

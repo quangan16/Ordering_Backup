@@ -32,17 +32,26 @@ public class DataManager : SingletonBehivour<DataManager>
     {
         return PlayerPrefs.GetInt("heart", 3);
     }
-    public int GetLevelMode(int level)
+    public (Mode,int) GetLevelMode(int level)
     {
         string name = "level" + level;
-        int t = PlayerPrefs.GetInt(name, 0);
+        string[] t = PlayerPrefs.GetString(name, "").Split(" ");
 
 
-        return t;
+        return ((Mode)int.Parse(t[0]), int.Parse(t[1]));
     }
-    public void SetLevel(int level,int mode)
+    public void SetLevel(int level,Mode mode, int time)
     {
         string name = "level" + level;
-        PlayerPrefs.SetInt(name, level);
+        string t = (int)mode + " " + time;
+        PlayerPrefs.SetString(name, t);
+    }
+    public int GetNormalLevel()
+    {
+       return PlayerPrefs.GetInt("normal", 0);
+    }
+    public void SetNormalLevel(int level)
+    {
+        PlayerPrefs.SetInt("normal", level);
     }
 }

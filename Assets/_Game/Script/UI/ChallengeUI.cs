@@ -10,7 +10,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 {
 
     [SerializeField] List<Level> levels;
-    [SerializeField] ChallegeItemAnimation challengeItem;
+    [SerializeField] ItemScript challengeItem;
     [SerializeField] GameObject layout;
     [SerializeField] TextMeshProUGUI heartText;
     [SerializeField] TextMeshProUGUI timeTxt;
@@ -19,24 +19,64 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public int heart;
     DateTime dateTime;
     string format = "dd-MM-yyyy HH:mm:ss";
-    
-
     private void Start()
     {
-
         levels = GameManager.Instance.challenge.levels.ToList();
-        
-        for (int i = 0; i < levels.Count; i++)
-        {
-            int j = i;
-            ChallegeItemAnimation challenge = Instantiate(challengeItem, layout.transform);
-            challenge.playButton.onClick.AddListener( () => OpenLevel(j));
-            challenge.SetData(j);
-        }
     }
     private void FixedUpdate()
     {
         CheckHeart();
+    }
+    void OnInit()
+    {
+        ChallegeItemAnimation[] challegeItems = layout.transform.GetComponentsInChildren<ChallegeItemAnimation>();
+        foreach(var challegeItem in challegeItems)
+        {
+            Destroy(challegeItem.gameObject);
+            Destroy(challegeItem);
+        }
+
+        for (int i = 0; i < levels.Count; i++)
+        {
+
+            int j = i;
+            (Mode mode, int time) = DataManager.Instance.GetLevelMode(j);
+            ChallegeItemAnimation challenge = Instantiate(challengeItem.GetItem(mode), layout.transform);
+            challenge.level = j;
+            switch (mode)
+            {
+                case Mode.Locked:
+                    {
+                        break;
+                    }
+                case Mode.Unlocked:
+                    {
+                        break;
+                    }
+                case Mode.Bought:
+                    {
+                        challenge.playButton.onClick.AddListener(() => OpenLevel(j));
+                        break;
+                    }
+                case Mode.Pass:
+                    {
+                        challenge.playButton.onClick.AddListener(() => OpenLevel(j));
+                        challenge.SetData(time);
+                        break;
+                    }
+                case Mode.Fail:
+                    {
+                        challenge.playButton.onClick.AddListener(() => OpenLevel(j));
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+
+            }
+
+        }
     }
     void SetTime(TimeSpan time)
     {
@@ -85,6 +125,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
     public void Open()
     {
+        OnInit();
         coin.text = DataManager.Instance.GetCoin().ToString();
         heart = DataManager.Instance.GetHeart();
         gameObject.SetActive(true);
