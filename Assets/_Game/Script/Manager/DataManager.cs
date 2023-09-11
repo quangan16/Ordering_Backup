@@ -8,9 +8,13 @@ public class DataManager : SingletonBehivour<DataManager>
     {
         PlayerPrefs.SetInt("coin", coin);
     }
-    public int GetCoin(int coin)
+    public int GetCoin()
     {
         return PlayerPrefs.GetInt("coin", 0);
+    }
+    public void AddCoin(int coin)
+    {
+        SetCoin(GetCoin() + coin);
     }
     public void SetTime(string time)
     {
@@ -27,5 +31,18 @@ public class DataManager : SingletonBehivour<DataManager>
     public int GetHeart()
     {
         return PlayerPrefs.GetInt("heart", 3);
+    }
+    public int GetLevelMode(int level)
+    {
+        string name = "level" + level;
+        int t = PlayerPrefs.GetInt(name, 0);
+
+
+        return t;
+    }
+    public void SetLevel(int level,int mode)
+    {
+        string name = "level" + level;
+        PlayerPrefs.SetInt(name, level);
     }
 }

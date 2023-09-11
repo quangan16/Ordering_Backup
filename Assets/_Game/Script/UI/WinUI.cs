@@ -20,15 +20,19 @@ public class WinUI : MonoBehaviour
     }
     public void GetCoinDefault()
     {
+
         adsButton.interactable = false;
         normalButton.interactable = false;
+        DataManager.Instance.AddCoin(int.Parse(indi.achievedCoinTxt.text));
+
+
     }
     public void GetCoinAds()
     {
         adsButton.interactable = false;
         normalButton.interactable = false;
         UIManager.Instance.ShowAds();
-        
+        DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
     }
     public void Close()
     {

@@ -57,7 +57,7 @@ public class RewardManager : MonoBehaviour
     }
     
     [Button]
-    IEnumerator RewardAnim()
+     IEnumerator RewardAnim()
     {
         for (int i = 0; i < coinPilePrefab.transform.childCount; i++)
         {

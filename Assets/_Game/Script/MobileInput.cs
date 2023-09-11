@@ -44,7 +44,12 @@ public class MobileInput : MonoBehaviour
             ray1.z = 0;
             Vector3 mouse =  Camera.main.ScreenToWorldPoint(Input.mousePosition) - rPosition;
             mouse.z = 0;
-            target.Move(ray1, mouse);
+            if(Solid.canClick)
+            {
+                target.Move(ray1, mouse);
+
+            }
+
             anchor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
@@ -52,7 +57,7 @@ public class MobileInput : MonoBehaviour
     public  void GetOnClick()
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (hit.collider != null)
+        if (hit.collider != null )
         {
             Solid solid = Cache.GetSolid(hit.collider);
             if (solid != null)
