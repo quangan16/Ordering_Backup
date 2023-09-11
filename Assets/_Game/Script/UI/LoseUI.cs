@@ -7,7 +7,7 @@ public class LoseUI : MonoBehaviour
     public void AddMoves()
     {
         UIManager.Instance.ShowAds();
-        UIChallengeGameplay.timer += 15;
+        UIManager.Instance.SetTime(15);
         Close();
     }
     public void Deny()
@@ -18,13 +18,11 @@ public class LoseUI : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
-        enabled = false;
         
 
     }
     public void Open()
     {
         gameObject.SetActive(true);
-        enabled = true;
     }
 }

@@ -23,6 +23,6 @@ public class ChallegeItemAnimation : MonoBehaviour
     }
     public void SetData(string s)
     {
-        tmp.text = s;
+        //tmp.text = s;
     }
 }

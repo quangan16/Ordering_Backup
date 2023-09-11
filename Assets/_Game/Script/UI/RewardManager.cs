@@ -25,7 +25,10 @@ public class RewardManager : MonoBehaviour
         // Reset();
       
     }
-
+    private void OnDisable()
+    {
+        
+    }
     // Start is called before the first frame update
 
     public void GetCoin()
@@ -43,43 +46,34 @@ public class RewardManager : MonoBehaviour
         }
     }
 
-    void Reset()
-    {
-        for (int i = 0; i < coinPilePrefab.transform.childCount-1; i++)
-        {
-            coinPilePrefab.transform.GetChild(i).position = coinInitPos[i];
-        }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     [Button]
     IEnumerator RewardAnim()
     {
-        Reset();
-        
+        for (int i = 0; i < coinPilePrefab.transform.childCount - 1; i++)
+        {
+            coinPilePrefab.transform.GetChild(i).position = coinInitPos[i];
+        }
+
         float intervalDelay = 0.1f;
         coinPilePrefab.SetActive(true);
-        
+
         for (int i = 0; i < coinPilePrefab.transform.childCount; i++)
         {
             Transform currentChild = coinPilePrefab.transform.GetChild(i);
-           
+
             Sequence tweenAnim = DOTween.Sequence();
             if (!tweenAnim.IsComplete())
             {
                 tweenAnim.Append(currentChild.DOScale(Vector3.one, 0.2f)).AppendInterval(0.5f).Append(currentChild.DOMove(coinDestPos.position, 1.2f).SetEase(Ease.InQuart)).Join(currentChild.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuart)).OnComplete(
                     () =>
                     {
-                        GameManager.Instance.AddCoin(2);
+                        //GameManager.Instance.AddCoin(2);
                     });
             }
-            
-               
-            tweenAnim.Play();
+
+            WinUI win = GetComponentInParent<WinUI>();
+            tweenAnim.Play().OnComplete(() =>win.Close());
             yield return new WaitForSeconds(intervalDelay);
         }
         

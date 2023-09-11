@@ -4,17 +4,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UIChallengeGameplay : UIGamePlay,IUIControl
+public class UIChallengeGameplay : MonoBehaviour,IUIControl
 {
 
     [SerializeField] TextMeshProUGUI time;
+    public TextMeshProUGUI tmp;
+    public TextMeshProUGUI coin;
     public static float timer;
-    public static bool isTouch = false;
-    
-    private void Start()
-    {
-        coin.text = PlayerPrefs.GetInt("coin", 0).ToString();
-    }
+    public static bool isTouch = false;   
     private void Update()
     {
         if (isTouch)
@@ -28,15 +25,17 @@ public class UIChallengeGameplay : UIGamePlay,IUIControl
                 timer = 0;
             }
 
+            if (Mathf.Abs(timer) < 0.01f)
+            {
+                timer = 0;
+                UIManager.Instance.OpenLose();
+                isTouch = false;
+            }
 
+            
         }
-        if (Mathf.Abs(timer)<0.01f )
-        {
-            UIManager.Instance.OpenLose();
-            isTouch= false;
-        }
-        
         DisplayTime(timer);
+
     }
     void DisplayTime(float timeToDisplay)
     {
@@ -44,27 +43,37 @@ public class UIChallengeGameplay : UIGamePlay,IUIControl
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         time.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
-    public override void Open()
+    public void Open()
     {
-        enabled = true;
         isTouch = false;
         gameObject.SetActive(true);
     }
-    public override void Close()
+    public void Close()
     {
-        enabled = false;
-        if (current)
-        {
-            current.gameObject.SetActive(false);
-        }
         isTouch = false;
         gameObject.SetActive(false);
     }
-    public void InitLevel(int level)
+    public void Replay()
     {
-        currentLevel= level;
-        Load();
-        timer = current.time;
+        isTouch = false;
+        GameManager.Instance.Replay();
+    }
+    public void OpenChallenge()
+    {
+        UIManager.Instance.OpenChallenge();
+
+    }
+    public void SetText(string text)
+    {
+        tmp.text = text;
+    }
+    public void SetCoin(int coin)
+    {
+        this.coin.text = coin.ToString();
+    }
+    public void SetTime(float time)
+    {
+        timer = time;
     }
 
 }

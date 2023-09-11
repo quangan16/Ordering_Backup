@@ -10,29 +10,23 @@ public class WinUI : MonoBehaviour
     // Start is called before the first frame update
     public void GetCoinDefault()
     {
-        int coin = PlayerPrefs.GetInt("coin", 0);
-        coin += 12;
-        PlayerPrefs.SetInt("coin",coin);
-        Close();
+       
 
     }
     public void GetCoinAds()
     {
         UIManager.Instance.ShowAds();
-        GetCoinDefault();
         
     }
     public void Close()
     {
         gameObject.SetActive(false);
-        enabled= false;
-        UIManager.Instance.NextLevel();
+        GameManager.Instance.NextLevel();
 
     }
     public void Open()
     {
         gameObject.SetActive(true);
-        enabled = true;
         // indi.Move();
         
     }

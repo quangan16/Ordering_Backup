@@ -10,20 +10,24 @@ public class ColorC : Circle
     public ColorC[] colorCs => FindObjectsOfType<ColorC>() ;
     public static float angle;
     public bool isMove = true;
+    public static float speed = 1;
     float[] rotationDiffernce;
  
     public void OnCollisionStay2D(Collision2D collision)
     {
+        speed = 0.1f;
         Keep();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        speed = 0.1f;
+
         Keep();
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-       
+        speed = 1;
     }
 
     public override void OnInit()
@@ -49,7 +53,7 @@ public class ColorC : Circle
         {
             c.isTouch = true;
             c.OnSelected();                    
-            c.MoveNotSync(angle);
+            c.MoveNotSync(angle*speed);
         }
     }   
 
