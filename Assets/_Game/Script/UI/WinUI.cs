@@ -10,13 +10,13 @@ public class WinUI : MonoBehaviour
     // Start is called before the first frame update
     public void GetCoinDefault()
     {
-       
+        DataManager.Instance.AddCoin(int.Parse(indi.achievedCoinTxt.text));
 
     }
     public void GetCoinAds()
     {
         UIManager.Instance.ShowAds();
-        
+        DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
     }
     public void Close()
     {

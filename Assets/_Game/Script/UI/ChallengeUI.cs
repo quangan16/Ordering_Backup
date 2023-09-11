@@ -12,11 +12,11 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     [SerializeField] List<Level> levels;
     [SerializeField] ChallegeItemAnimation challengeItem;
     [SerializeField] GameObject layout;
-    public TextMeshProUGUI coin;
-    public int heart;
     [SerializeField] TextMeshProUGUI heartText;
     [SerializeField] TextMeshProUGUI timeTxt;
     [SerializeField] Button add;
+    public TextMeshProUGUI coin;
+    public int heart;
     DateTime dateTime;
     string format = "dd-MM-yyyy HH:mm:ss";
     
@@ -25,13 +25,13 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     {
 
         levels = GameManager.Instance.challenge.levels.ToList();
-        coin.text = PlayerPrefs.GetInt("coin", 0).ToString();
+        
         for (int i = 0; i < levels.Count; i++)
         {
             int j = i;
             ChallegeItemAnimation challenge = Instantiate(challengeItem, layout.transform);
             challenge.playButton.onClick.AddListener( () => OpenLevel(j));
-            challenge.SetData((j + 1).ToString());
+            challenge.SetData(j);
         }
     }
     private void FixedUpdate()
@@ -40,7 +40,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     }
     void SetTime(TimeSpan time)
     {
-        TimeSpan timeSpan = new TimeSpan(0, 0, 15);
+        TimeSpan timeSpan = new TimeSpan(0,30, 0);
         while (timeSpan<time && heart <3)
         {
             time -= timeSpan;
@@ -85,6 +85,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
     public void Open()
     {
+        coin.text = DataManager.Instance.GetCoin().ToString();
         heart = DataManager.Instance.GetHeart();
         gameObject.SetActive(true);
         string s = DataManager.Instance.GetTime();

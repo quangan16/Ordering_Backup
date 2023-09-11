@@ -15,16 +15,13 @@ public class IndicatorController : MonoBehaviour
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
     [SerializeField] private float slideDuration;
-    [SerializeField] private TextMeshProUGUI adsCoinTxt;
-    [SerializeField] private TextMeshProUGUI achievedCoinTxt;
+    [SerializeField] public TextMeshProUGUI adsCoinTxt;
+    [SerializeField] public TextMeshProUGUI achievedCoinTxt;
 
     private float multiplierBarLength;
 
 
-    void Awake()
-    {
-        
-    }
+
     void Start()
     {
         // multiplierBarLength = MultiplierBar.GetComponent<RectTransform>().rect.width;

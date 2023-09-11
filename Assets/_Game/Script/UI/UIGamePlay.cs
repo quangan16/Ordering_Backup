@@ -29,13 +29,14 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public void OpenChallenge()
     {
         UIManager.Instance.OpenChallenge();
-       
+
     }
     public void NextLevel()
     {
         UIManager.Instance.ShowAds();
-        GameManager.Instance.NextLevel();   
+        GameManager.Instance.NextLevel();
     }
+
     public virtual void CallHint()
     {
         getHint = true;

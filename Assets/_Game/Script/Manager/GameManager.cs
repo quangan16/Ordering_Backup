@@ -44,7 +44,8 @@ public class GameManager : SingletonBehivour<GameManager>
         }
         gameMode= mode;
         currentLevel = level;
-        UIManager.Instance.SetCoin(0);
+        int coin = DataManager.Instance.GetCoin();
+        UIManager.Instance.SetCoin(coin);
         UIManager.Instance.SetText("Level " + (currentLevel+1));
         UIManager.Instance.SetTime(current.time);
         Camera.main.orthographicSize = current.cameraDist;
@@ -70,7 +71,7 @@ public class GameManager : SingletonBehivour<GameManager>
                     {
                         currentLevel = 0;
                     }
-                    OpenGamePlay(GameMode.Normal,normalLevel);
+                    Invoke(nameof(nextLevel), 0.1f);
                     break;
                 }
                 case GameMode.Challenge:
@@ -81,7 +82,6 @@ public class GameManager : SingletonBehivour<GameManager>
                 case GameMode.Boss:
                 {
                     UIManager.Instance.OpenGameplay();
-                    current = Instantiate(normal.levels[normalLevel]);
                     break;
                 }
                 default:
@@ -89,6 +89,10 @@ public class GameManager : SingletonBehivour<GameManager>
                     break;
                 }
         }
+    }
+    void nextLevel()
+    {
+        OpenGamePlay(GameMode.Normal, normalLevel);
     }
     public void Replay()
     {
