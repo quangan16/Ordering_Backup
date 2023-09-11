@@ -73,7 +73,10 @@ public class RewardManager : MonoBehaviour
             }
 
             WinUI win = GetComponentInParent<WinUI>();
-            tweenAnim.Play().OnComplete(() =>win.Close());
+            tweenAnim.Play().OnComplete(() =>
+            {
+                win.Close();
+            });
             yield return new WaitForSeconds(intervalDelay);
         }
         
