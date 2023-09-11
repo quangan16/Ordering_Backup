@@ -19,8 +19,11 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     [SerializeField] Button add;
     DateTime dateTime;
     string format = "dd-MM-yyyy HH:mm:ss";
+    
+
     private void Start()
     {
+
         levels = GameManager.Instance.challenge.levels.ToList();
         coin.text = PlayerPrefs.GetInt("coin", 0).ToString();
         for (int i = 0; i < levels.Count; i++)
@@ -28,19 +31,34 @@ public class ChallengeUI : MonoBehaviour, IUIControl
             int j = i;
             ChallegeItemAnimation challenge = Instantiate(challengeItem, layout.transform);
             challenge.playButton.onClick.AddListener( () => OpenLevel(j));
-            challenge.SetData((i + 1).ToString());
+            challenge.SetData((j + 1).ToString());
         }
     }
-    private void Update()
+    private void FixedUpdate()
     {
         CheckHeart();
     }
     void SetTime(TimeSpan time)
     {
-        float timeToDisplay = (float)(time.TotalSeconds);
+        TimeSpan timeSpan = new TimeSpan(0, 0, 15);
+        while (timeSpan<time && heart <3)
+        {
+            time -= timeSpan;
+            heart++;
+            dateTime = DateTime.Now;
+            DataManager.Instance.SetTime(dateTime.ToString(format));
+            if (heart == 3)
+            {
+                return;
+            }
+
+        }
+        timeSpan -= time;
+        float timeToDisplay = (float)(timeSpan.TotalSeconds);
         int minutes = Mathf.FloorToInt(timeToDisplay / 60);
         int seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timeTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
 
     }
     void CheckHeart()
@@ -53,20 +71,8 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         }
         else
         {
-            TimeSpan timespan = DateTime.Now - dateTime;
-            TimeSpan time = new TimeSpan(0, 0, 15);
-            while (time < timespan)
-            {
-                timespan -= time;
-                heart++;
-                if (heart == 3)
-                {
-                    return;
 
-                }
-            }
-            time -= timespan;
-            SetTime(time);
+            SetTime(DateTime.Now - dateTime);
             add.gameObject.SetActive(true);
         }
         heartText.text = heart.ToString();
@@ -79,19 +85,20 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
     public void Open()
     {
-        heart = PlayerPrefs.GetInt("heart", 0);
+        heart = DataManager.Instance.GetHeart();
         gameObject.SetActive(true);
-
-        string s = PlayerPrefs.GetString("time", "");
+        string s = DataManager.Instance.GetTime();
         string[] day = s.Split(" ")[0].Split("-");
         string[] hour = s.Split(" ")[1].Split(":");
         dateTime = new DateTime(int.Parse(day[2]), int.Parse(day[1]), int.Parse(day[0]), int.Parse(hour[0]), int.Parse(hour[1]), int.Parse(hour[2]));
-      
+   
+
+
     }
 
     public void Close()
     {
-        PlayerPrefs.SetInt("heart", heart);
+        DataManager.Instance.SetHeart(heart);
         gameObject.SetActive(false);
     }
 
@@ -103,8 +110,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
            if(heart == 2)
             {
                 dateTime= DateTime.Now;
-                print(dateTime);
-                PlayerPrefs.SetString("time", dateTime.ToString(format));
+                DataManager.Instance.SetTime(dateTime.ToString(format));
             }
 
             

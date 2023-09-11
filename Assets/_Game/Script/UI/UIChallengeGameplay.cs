@@ -24,16 +24,14 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
             {
                 timer = 0;
             }
-
             if (Mathf.Abs(timer) < 0.01f)
             {
                 timer = 0;
                 UIManager.Instance.OpenLose();
                 isTouch = false;
             }
-
-            
         }
+        
         DisplayTime(timer);
 
     }

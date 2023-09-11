@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataManager : MonoBehaviour
+public class DataManager : SingletonBehivour<DataManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public void SetCoin(int coin)
     {
-        
+        PlayerPrefs.SetInt("coin", coin);
     }
-
-    // Update is called once per frame
-    void Update()
+    public int GetCoin(int coin)
     {
-        
+        return PlayerPrefs.GetInt("coin", 0);
+    }
+    public void SetTime(string time)
+    {
+        PlayerPrefs.SetString("time", time);
+    }
+    public string GetTime()
+    {
+        return PlayerPrefs.GetString("time","");
+    }
+    public void SetHeart(int heart)
+    {
+        PlayerPrefs.SetInt("heart", heart);
+    }
+    public int GetHeart()
+    {
+        return PlayerPrefs.GetInt("heart", 3);
     }
 }

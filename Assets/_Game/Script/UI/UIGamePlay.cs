@@ -31,7 +31,11 @@ public class UIGamePlay : MonoBehaviour,IUIControl
         UIManager.Instance.OpenChallenge();
        
     }
-
+    public void NextLevel()
+    {
+        UIManager.Instance.ShowAds();
+        GameManager.Instance.NextLevel();   
+    }
     public virtual void CallHint()
     {
         getHint = true;
