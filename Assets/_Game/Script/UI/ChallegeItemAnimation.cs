@@ -17,6 +17,16 @@ public class ChallegeItemAnimation : MonoBehaviour
         EmergeEaseOutBack();
     }
 
+    private void OnDisable()
+    {
+        DOTween.Clear();
+    }
+
+    private void OnDestroy()
+    {
+        DOTween.Clear();
+    }
+
     void EmergeEaseOutBack()
     {
         transform.DOScale(Vector3.one, scaleDuration).SetEase(Ease.OutBack);
