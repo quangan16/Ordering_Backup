@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -13,6 +14,15 @@ public class FadePopup : MonoBehaviour
     {
     }
 
+    public void OnDisable()
+    {
+        DOTween.Clear();
+    }
+
+    public void OnDestroy()
+    {
+        DOTween.Clear();
+    }
     public void Show(object data)
     {
         challengeCanvas.transform.localPosition = new Vector3(0, 30.0f);

@@ -12,7 +12,7 @@ public class WinUI : MonoBehaviour
 
     [SerializeField] private Button normalButton;
     // Start is called before the first frame update
-
+    
     private void OnEnable()
     {
         adsButton.interactable = true;
@@ -21,23 +21,21 @@ public class WinUI : MonoBehaviour
     public void GetCoinDefault()
     {
 
-        adsButton.interactable = false;
-        normalButton.interactable = false;
+        Clicked();
         DataManager.Instance.AddCoin(int.Parse(indi.achievedCoinTxt.text));
 
 
     }
     public void GetCoinAds()
     {
-        adsButton.interactable = false;
-        normalButton.interactable = false;
+        Clicked();
         UIManager.Instance.ShowAds();
         DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
     }
     public void Close()
     {
         gameObject.SetActive(false);
-        GameManager.Instance.NextLevel();
+        // GameManager.Instance.NextLevel();
 
     }
     public void Open()
@@ -47,7 +45,11 @@ public class WinUI : MonoBehaviour
         
     }
 
-    
+    public void Clicked()
+    {
+        adsButton.interactable = false;
+        normalButton.interactable = false;
+    }
 
 
 }
