@@ -391,11 +391,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7706352736780835533, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 108.24286
+      value: 108.24287
       objectReference: {fileID: 0}
     - target: {fileID: 7706352736780835533, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -39.425
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948082877415380802, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
@@ -2508,6 +2512,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7421612749413506124, guid: 6a28904c81a4d62459593f72df86ec2b, type: 3}
+      propertyPath: m_Name
+      value: buttonBG
+      objectReference: {fileID: 0}
     - target: {fileID: 8060445995705529812, guid: 6a28904c81a4d62459593f72df86ec2b, type: 3}
       propertyPath: m_Name
       value: NormalGameplayGUI
@@ -2720,6 +2728,10 @@ PrefabInstance:
     - target: {fileID: 5746618866691794587, guid: 8fe521fdba04d7a4889a1e5a145ff1b1, type: 3}
       propertyPath: m_Name
       value: BossGameplayGUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746618866691794587, guid: 8fe521fdba04d7a4889a1e5a145ff1b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe521fdba04d7a4889a1e5a145ff1b1, type: 3}

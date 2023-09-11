@@ -45,7 +45,7 @@ public class RewardManager : MonoBehaviour
 
     void Reset()
     {
-        for (int i = 0; i < coinPilePrefab.transform.childCount-1; i++)
+        for (int i = 0; i < coinPilePrefab.transform.childCount; i++)
         {
             coinPilePrefab.transform.GetChild(i).position = coinInitPos[i];
         }
