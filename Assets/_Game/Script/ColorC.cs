@@ -16,13 +16,14 @@ public class ColorC : Circle
     public void OnCollisionStay2D(Collision2D collision)
     {
         speed = 0.1f;
+        print(name);
         Keep();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         speed = 0.1f;
-
+        print(name);
         Keep();
     }
     private void OnCollisionExit2D(Collision2D collision)

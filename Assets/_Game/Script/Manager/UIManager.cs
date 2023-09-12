@@ -39,6 +39,7 @@ public class UIManager : SingletonBehivour<UIManager>
     public void OpenUI(IUIControl control)
     {
         GameManager.Instance.CloseGamePlay();
+        GameManager.Instance.StopAllCoroutines();
         if(current!= null)
         {
             current.Close();           

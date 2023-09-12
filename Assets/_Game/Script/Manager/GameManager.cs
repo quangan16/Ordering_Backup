@@ -8,6 +8,7 @@ public class GameManager : SingletonBehivour<GameManager>
     [SerializeField] LevelScript boss;
     [SerializeField] TutoMove tutorial;
     [SerializeField] Transform tutoPos;
+    public GameObject sprite;
     public GameMode gameMode;
     public Level current;
     public int currentLevel;
