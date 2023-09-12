@@ -40,7 +40,7 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     }
     public void SetText(string text)
     {
-        tmp.text = text;
+        tmp.text = "Challenge "+ text;
     }
     public void SetCoin(int coin)
     {

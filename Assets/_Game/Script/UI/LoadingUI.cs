@@ -46,6 +46,6 @@ public class LoadingUI : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
-        GameManager.Instance.NextLevel();
+        
     }
 }

@@ -1,11 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 public class GameManager : SingletonBehivour<GameManager>
 {
     [SerializeField] LevelScript normal;
     public LevelScript challenge;
     [SerializeField] LevelScript boss;
-
+    [SerializeField] TutoMove tutorial;
+    [SerializeField] Transform tutoPos;
     public GameMode gameMode;
     public Level current;
     public int currentLevel;
@@ -35,6 +37,17 @@ public class GameManager : SingletonBehivour<GameManager>
             }
         }
     }
+    IEnumerator CountDown()
+    {
+        yield return new WaitForSeconds(10);
+        Instantiate(tutorial,tutoPos);
+
+    }
+    public void StartCountDown()
+    {
+        StopAllCoroutines();
+        StartCoroutine(CountDown());
+    }
     public void OpenGamePlay(GameMode mode, int level)
     {
         isTouch = false;
@@ -43,6 +56,7 @@ public class GameManager : SingletonBehivour<GameManager>
             case GameMode.Normal:
                 {
                     current = Instantiate(normal.levels[level]);
+                    StartCountDown();
                     break;
                 }
             case GameMode.Challenge:
@@ -122,6 +136,7 @@ public class GameManager : SingletonBehivour<GameManager>
     }
     public void OnWin()
     {
+        StopAllCoroutines();
         isTouch = false;
     }
 

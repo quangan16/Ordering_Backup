@@ -42,7 +42,7 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
     }
     public void SetText(string text)
     {
-        level.text = text;
+        level.text = "Boss " + text;
     }
     public void SetCoin(int coin)
     {
