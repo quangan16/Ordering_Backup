@@ -21,7 +21,6 @@ public class Circle : Solid
     {
         if(isTouch && locked.Count == 0)
         {
-            GameManager.Instance.sprite.gameObject.SetActive(true);
             Stretch(GameManager.Instance.sprite, MobileInput.anchor);
         }
     }
@@ -38,7 +37,10 @@ public class Circle : Solid
        
             float angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);    
             //rb.MoveRotation(rb.rotation + angle);
-            rb.angularVelocity = angle/Time.fixedDeltaTime;           
+            rb.angularVelocity = angle/Time.fixedDeltaTime;
+            GameManager.Instance.sprite.transform.position = transform.position;
+            GameManager.Instance.sprite.gameObject.SetActive(true);
+
         }
         else
         {
@@ -47,14 +49,14 @@ public class Circle : Solid
     }
     public void Stretch(GameObject _sprite, Vector3 _finalPosition)
     {
-        _sprite.transform.position = transform.position;
+        
 
-        Vector3 direction = transform.position- _finalPosition;
+        Vector3 direction = _sprite.transform.position- _finalPosition;
         direction.z = 0;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         _sprite.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward); 
-        Vector3 scale = Vector3.one;
 
+        Vector3 scale = Vector3.one;
         scale.y = Vector3.Magnitude(direction);
         _sprite.transform.localScale = scale;
     }
