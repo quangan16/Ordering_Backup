@@ -869,6 +869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5746618866691794584}
   - component: {fileID: 1611295394281112976}
+  - component: {fileID: 1693286259974278868}
   m_Layer: 0
   m_Name: BossGameplayGUIVariant
   m_TagString: Untagged
@@ -914,6 +915,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1693286259974278868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746618866691794587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9f98c6101d7b6419d0f8c9689f08ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: {fileID: 0}
+  move: {fileID: 7813650372499196563}
+  coin: {fileID: 0}
+  level: {fileID: 0}
 --- !u!1 &5746618866908052072
 GameObject:
   m_ObjectHideFlags: 0

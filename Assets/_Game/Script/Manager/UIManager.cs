@@ -15,8 +15,8 @@ public class UIManager : SingletonBehivour<UIManager>
     IUIControl current;
     private void Start()
     {
-        current = control;
-        GameManager.Instance.OpenGamePlay(GameMode.Normal, DataManager.Instance.GetNormalLevel());
+        OpenGameplay();
+        
     }
     public void ShowAds()
     {
@@ -28,20 +28,24 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         win.Open();
         PlayEffect();
-        if(current is UIChallengeGameplay)
+        if(GameManager.Instance.gameMode == GameMode.Challenge)
         {
-            UIChallengeGameplay.isTouch = false;
+            GameManager.isTouch = false;
             int level = GameManager.Instance.currentLevel;
             (Mode mode, int time) = DataManager.Instance.GetLevelMode(level);
-            DataManager.Instance.SetLevel(level, Mode.Pass, Mathf.RoundToInt(UIChallengeGameplay.timer) < time?time: Mathf.RoundToInt(UIChallengeGameplay.timer));
+            DataManager.Instance.SetLevel(level, Mode.Pass, Mathf.RoundToInt(GameManager.timer) < time?time: Mathf.RoundToInt(GameManager.timer));
         }
     }
     public void OpenUI(IUIControl control)
     {
         GameManager.Instance.CloseGamePlay();
-        current.Close();
-        current= control;
+        if(current!= null)
+        {
+            current.Close();           
+        }
+        current = control;
         current.Open();
+
     }
     public void RePlay()
     {
@@ -56,9 +60,13 @@ public class UIManager : SingletonBehivour<UIManager>
         OpenUI(control);
 
     }
-    public void OpenLose()
+    public void OpenBoss()
     {
-        lose.Open();
+        OpenUI(boss);
+    }
+    public void OpenLose(Type type)
+    {
+        lose.Open(type);
     }
     public void OpenChallengeGameplay(int level)
     {
@@ -78,10 +86,10 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         current.SetCoin(coin);
     }
-    public void SetTime(float time)
-    {
-        current.SetTime(time);  
-    }
+    //public void SetTime(float time)
+    //{
+    //    current.SetTime(time);  
+    //}
 
 
 

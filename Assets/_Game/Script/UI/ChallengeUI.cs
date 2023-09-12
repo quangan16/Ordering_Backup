@@ -38,7 +38,6 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
         for (int i = 0; i < levels.Count; i++)
         {
-
             int j = i;
             (Mode mode, int time) = DataManager.Instance.GetLevelMode(j);
             ChallegeItemAnimation challenge = Instantiate(challengeItem.GetItem(mode), layout.transform);

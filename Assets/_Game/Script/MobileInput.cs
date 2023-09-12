@@ -72,7 +72,7 @@ public class MobileInput : MonoBehaviour
                     solid.isTouch = true;
                     solid.OnSelected();
                     solid.SetUp();
-                    UIChallengeGameplay.isTouch = true;
+                    GameManager.isTouch = true;
                     target = solid;
                     
                     

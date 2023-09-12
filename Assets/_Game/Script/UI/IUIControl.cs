@@ -11,6 +11,6 @@ public interface IUIControl
     void Close() { }
     void SetText(string text) { }
     void SetCoin(int coin) { }
-    void SetTime(float time) { }
+    //void SetTime(float time) { }
 
 }

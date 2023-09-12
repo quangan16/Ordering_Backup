@@ -10,29 +10,9 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     [SerializeField] TextMeshProUGUI time;
     public TextMeshProUGUI tmp;
     public TextMeshProUGUI coin;
-    public static float timer;
-    public static bool isTouch = false;   
     private void Update()
-    {
-        if (isTouch)
-        {
-            if (timer > 0)
-            {
-                timer -= Time.deltaTime;
-            }
-            else
-            {
-                timer = 0;
-            }
-            if (Mathf.Abs(timer) < 0.01f)
-            {
-                timer = 0;
-                UIManager.Instance.OpenLose();
-                isTouch = false;
-            }
-        }
-        
-        DisplayTime(timer);
+    {   
+        DisplayTime(GameManager.timer);
 
     }
     void DisplayTime(float timeToDisplay)
@@ -43,17 +23,14 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     }
     public void Open()
     {
-        isTouch = false;
         gameObject.SetActive(true);
     }
     public void Close()
     {
-        isTouch = false;
         gameObject.SetActive(false);
     }
     public void Replay()
     {
-        isTouch = false;
         GameManager.Instance.Replay();
     }
     public void OpenChallenge()
@@ -69,9 +46,9 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     {
         this.coin.text = coin.ToString();
     }
-    public void SetTime(float time)
-    {
-        timer = time;
-    }
+    //public void SetTime(float time)
+    //{
+    //    timer = time;
+    //}
 
 }
