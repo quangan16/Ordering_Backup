@@ -169,7 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94b287193135f24c93532dd150f35c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeTxt: {fileID: 0}
   playButton: {fileID: 6947871794812333010}
+  level: 0
 --- !u!1 &6947871794812333004
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +294,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6947871794812333009}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3627618510561267229}
+        m_TargetAssemblyTypeName: ChallegeItemAnimation, Assembly-CSharp
+        m_MethodName: BuyLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6947871794971164544
 GameObject:
   m_ObjectHideFlags: 0

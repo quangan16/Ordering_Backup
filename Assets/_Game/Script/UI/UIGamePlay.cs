@@ -16,7 +16,8 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public virtual void Open()
     {
         gameObject.SetActive(true);
-        GameManager.Instance.OpenGamePlay(GameMode.Normal, GameManager.Instance.normalLevel);
+        //GameManager.Instance.OpenGamePlay(GameMode.Normal, GameManager.Instance.normalLevel);
+        GameManager.Instance.OpenGamePlay(GameMode.Normal, DataManager.Instance.GetNormalLevel());
     }
     public virtual void Close()
     {
@@ -36,7 +37,10 @@ public class UIGamePlay : MonoBehaviour,IUIControl
         UIManager.Instance.ShowAds();
         GameManager.Instance.NextLevel();
     }
-
+    public void OpenBoss()
+    {
+        UIManager.Instance.OpenBoss();
+    }
     public virtual void CallHint()
     {
         getHint = true;

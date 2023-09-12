@@ -51,6 +51,7 @@ public class Solid : MonoBehaviour
             {
                 canClick= false;
                 UIManager.Instance.OnWin();
+                GameManager.Instance.OnWin();
             }
         }
             
@@ -93,10 +94,14 @@ public class Solid : MonoBehaviour
     public virtual void OffSelected()
     {
         if (this is Circle || this is Line)
-            foreach (var sp in spriteShadow)
         {
-            sp.enabled = false;
+            foreach (var sp in spriteShadow)
+            {
+                sp.enabled = false;
+            }
+            GameManager.Instance.SubtractMove();
         }
+          
         rb.bodyType = RigidbodyType2D.Static;
         isTouch = false;
     }

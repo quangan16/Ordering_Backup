@@ -12,7 +12,7 @@ public class WinUI : MonoBehaviour
 
     [SerializeField] private Button normalButton;
     // Start is called before the first frame update
-    
+
     private void OnEnable()
     {
         adsButton.interactable = true;
@@ -20,24 +20,51 @@ public class WinUI : MonoBehaviour
     }
     public void GetCoinDefault()
     {
-
-        Clicked();
+        adsButton.interactable = false;
+        normalButton.interactable = false;
         DataManager.Instance.AddCoin(int.Parse(indi.achievedCoinTxt.text));
-        DataManager.Instance.SetNormalLevel(GameManager.Instance.normalLevel+1);
+       
+
 
     }
     public void GetCoinAds()
     {
-        Clicked();
+        adsButton.interactable = false;
+        normalButton.interactable = false;
         UIManager.Instance.ShowAds();
         DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
-        DataManager.Instance.SetNormalLevel(GameManager.Instance.normalLevel+1);
+        
 
+    }
+    public void OnNext()
+    {
+        
+        switch (GameManager.Instance.gameMode)
+        {
+            case GameMode.Normal:
+                {
+                    DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
+                    GameManager.Instance.NextLevel();
+                    break;
+                }
+            case GameMode.Boss:
+                {
+                    DataManager.Instance.SetBossLevel(GameManager.Instance.currentLevel + 1);
+                    UIManager.Instance.OpenGameplay();
+                    break;
+                }
+            case GameMode.Challenge:
+                {
+                    UIManager.Instance.OpenChallenge();
+                    break;
+                }
+
+        }
     }
     public void Close()
     {
         gameObject.SetActive(false);
-        // GameManager.Instance.NextLevel();
+        OnNext();
 
     }
     public void Open()
@@ -47,11 +74,7 @@ public class WinUI : MonoBehaviour
         
     }
 
-    public void Clicked()
-    {
-        adsButton.interactable = false;
-        normalButton.interactable = false;
-    }
+    
 
 
 }
