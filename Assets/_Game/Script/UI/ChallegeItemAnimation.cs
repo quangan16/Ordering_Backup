@@ -37,15 +37,16 @@ public class ChallegeItemAnimation : MonoBehaviour
         timeTxt.text =  time.ToString();
     }
     public void BuyLevel()
-    {       
+    {
+        
         if(DataManager.Instance.GetCoin()>=200)
         {
             DataManager.Instance.AddCoin(-200);
+            DataManager.Instance.SetLevel(level, Mode.Bought, 0);
+            UIManager.Instance.RePlay();
 
         }
-        DataManager.Instance.SetLevel(level, Mode.Bought, 0);
-        UIManager.Instance.RePlay();
-       
+
     }
     public void Play()
     {
