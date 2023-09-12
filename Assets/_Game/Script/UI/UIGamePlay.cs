@@ -33,6 +33,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     }
     public void NextLevel()
     {
+        DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
         UIManager.Instance.ShowAds();
         GameManager.Instance.NextLevel();
     }

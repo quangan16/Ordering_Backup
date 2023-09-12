@@ -39,9 +39,9 @@ public class ChallegeItemAnimation : MonoBehaviour
     public void BuyLevel()
     {
         
-        if(DataManager.Instance.GetCoin()>=200)
+        if(DataManager.Instance.GetCoin()>=00)
         {
-            DataManager.Instance.AddCoin(-200);
+            DataManager.Instance.AddCoin(00);
             DataManager.Instance.SetLevel(level, Mode.Bought, 0);
             UIManager.Instance.RePlay();
 

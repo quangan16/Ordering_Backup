@@ -100,8 +100,9 @@ public class Solid : MonoBehaviour
                 sp.enabled = false;
             }
             GameManager.Instance.SubtractMove();
+            GameManager.Instance.StopAllCoroutines();
         }
-          
+        GameManager.Instance.sprite.gameObject.SetActive(false);
         rb.bodyType = RigidbodyType2D.Static;
         isTouch = false;
     }

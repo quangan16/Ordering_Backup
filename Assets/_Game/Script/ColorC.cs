@@ -16,13 +16,14 @@ public class ColorC : Circle
     public void OnCollisionStay2D(Collision2D collision)
     {
         speed = 0.1f;
+        print(name);
         Keep();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         speed = 0.1f;
-
+        print(name);
         Keep();
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -59,12 +60,12 @@ public class ColorC : Circle
 
     public override void Move(Vector3 vectorA, Vector3 vectorB)
     {
+        GameManager.Instance.sprite.transform.position = transform.position;
+        GameManager.Instance.sprite.gameObject.SetActive(true);
 
-        //MobileInput.target = MultiRigidbodySync.instance;
-        //MultiRigidbodySync.instance.transform.position = transform.position;
-        //MultiRigidbodySync.instance.isTouch = true;
         angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);
         Sync();
+
     }
     public void MoveNotSync(float angle)
     {
