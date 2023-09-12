@@ -9,10 +9,11 @@ public class EaseIn : MonoBehaviour
     [SerializeField] private GameObject LiveHolder;
     [SerializeField] private float moveDuration = 2.0f;
     [SerializeField] private float startTime;
-    private float initialOffsetPosition = 5.0f;
+    private float offset = 5.0f;
+    private float initialPosX = 8.23f;
     void OnEnable()
     {
-      
+        Reset();
         Invoke("SlideIn", startTime);
     }
 
@@ -25,13 +26,20 @@ public class EaseIn : MonoBehaviour
     {
         DOTween.Clear();
     }
+
+    private void Reset()
+    {
+        CoinHolder.transform.position = new Vector3(initialPosX,
+            CoinHolder.transform.position.y,0);
+        LiveHolder.transform.position = new Vector3(initialPosX,
+            LiveHolder.transform.position.y,0);
+    
+    }
     public void SlideIn()
     {
-        CoinHolder.transform.position = new Vector2(CoinHolder.transform.position.x + initialOffsetPosition,
-            CoinHolder.transform.position.y);
-        LiveHolder.transform.position = new Vector2(LiveHolder.transform.position.x + initialOffsetPosition,
-            LiveHolder.transform.position.y);
-        CoinHolder.transform.DOMoveX(CoinHolder.transform.position.x - initialOffsetPosition, moveDuration).SetEase(Ease.OutBack);
-        LiveHolder.transform.DOMoveX(LiveHolder.transform.position.x - initialOffsetPosition, moveDuration).SetEase(Ease.OutBack).SetDelay(0.3f);
+        
+      
+        CoinHolder.transform.DOMoveX(CoinHolder.transform.position.x - offset, moveDuration).SetEase(Ease.OutBack);
+        LiveHolder.transform.DOMoveX(LiveHolder.transform.position.x - offset, moveDuration).SetEase(Ease.OutBack).SetDelay(0.3f);
     }
 }
