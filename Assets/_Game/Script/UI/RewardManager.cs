@@ -15,6 +15,8 @@ public class RewardManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI coinAmountTxt;
 
+    [SerializeField] private LoadingUI loading;
+
     void Awake()
     {
         SetUpInitPos();
@@ -81,8 +83,11 @@ public class RewardManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1.5f);
+        //
         WinUI win = GetComponentInParent<WinUI>();
         win.Close();
-       
+
+        loading.Open();
+
     }
 }
