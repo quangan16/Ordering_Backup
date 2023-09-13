@@ -213,6 +213,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4135903979550098294, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 245.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135903979550098294, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4626505401963697436, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
       propertyPath: winUI
       value: 
@@ -225,6 +233,10 @@ PrefabInstance:
       propertyPath: victoryCanvas
       value: 
       objectReference: {fileID: 1751583428}
+    - target: {fileID: 7661451611672781786, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7706352735306122738, guid: d0a8b8676be33a14b8dff2c05bb637a2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -984,6 +996,10 @@ PrefabInstance:
     - target: {fileID: 994410547130007230, guid: 38428b48029628f44bb2586f2869603c, type: 3}
       propertyPath: m_Name
       value: Effect (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 994410547130007230, guid: 38428b48029628f44bb2586f2869603c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38428b48029628f44bb2586f2869603c, type: 3}
@@ -2915,7 +2931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8060445995705529812, guid: 6a28904c81a4d62459593f72df86ec2b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8060445995705529815, guid: 6a28904c81a4d62459593f72df86ec2b, type: 3}
       propertyPath: m_Pivot.x

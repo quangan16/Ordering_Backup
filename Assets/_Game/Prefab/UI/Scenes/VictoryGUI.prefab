@@ -68,6 +68,7 @@ MonoBehaviour:
   slideDuration: 1.3
   adsCoinTxt: {fileID: 7706352736827581605}
   achievedCoinTxt: {fileID: 7706352735352649651}
+  winUI: {fileID: 0}
 --- !u!61 &1488565194
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -267,7 +268,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -353,7 +354,7 @@ RectTransform:
   m_GameObject: {fileID: 2673836528891897459}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99968, y: 0.99968, z: 0.99968}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3703518280536696793}
@@ -656,7 +657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.799988, y: 357.45}
+  m_AnchoredPosition: {x: 6.799988, y: 270}
   m_SizeDelta: {x: 458.4, y: 115.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7706352735094353321

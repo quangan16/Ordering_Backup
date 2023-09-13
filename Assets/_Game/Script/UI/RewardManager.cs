@@ -22,6 +22,7 @@ public class RewardManager : MonoBehaviour
     void Awake()
     {
         SetUpInitPos();
+        coinAmountTxt.text = DataManager.Instance.GetCoin().ToString();
     }
     
     private void OnEnable()
@@ -33,7 +34,8 @@ public class RewardManager : MonoBehaviour
     {
         
     }
-
+    
+    
     public void GetCoin()
     {
         StartCoroutine(RewardAnim());
@@ -83,10 +85,14 @@ public class RewardManager : MonoBehaviour
                 currentChild.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuart);
         }
 
+        yield return new WaitForSeconds(0.5f);
         int targetCoinAmount = int.Parse(coinAmountTxt.text) + GameManager.Instance.current.rewards;
         while (int.Parse(coinAmountTxt.text) < targetCoinAmount)
         {
-            coinAmountTxt.text = (int.Parse(coinAmountTxt.text) + 1).ToString();
+            yield return new WaitForSeconds(0.05f);
+            coinAmountTxt.text = (int.Parse(coinAmountTxt.text) + 2).ToString();
+            yield return null;
+
         }
        
      

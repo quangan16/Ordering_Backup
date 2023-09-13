@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
- enum PageState
+public enum PageState
 {
     SKIN,
     BACKGROUND
@@ -18,9 +18,9 @@ public class ShopGUI : MonoBehaviour
 {
     public static ShopGUI Instance;
 
-    private PageState currentPage;
+    public static PageState currentPage;
    
-
+    
 
     [SerializeField] private Image skinButtonImg;
 
@@ -37,12 +37,7 @@ public class ShopGUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skinTxt;
     [SerializeField] private TextMeshProUGUI backgroundTxt;
 
-    [SerializeField] private GameObject[] shopItems;
-
-    public GameObject selectedObjectItem;
-    private int selectedItemIndex = 0;
-
-    [SerializeField] private Image ringSkin;
+    
 
     void Awake()
     {
@@ -56,17 +51,17 @@ public class ShopGUI : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        ShopItem.OnItemSelected += GetSelectItem;
-        ShopItem.OnItemSelected += SelectItem;
-    }
+    // private void OnEnable()
+    // {
+    //     ShopItem.OnItemSelected += GetSelectItem;
+    //     ShopItem.OnItemSelected += SelectItem;
+    // }
 
-    private void OnDisable()
-    {
-        ShopItem.OnItemSelected -= SelectItem;
-        ShopItem.OnItemSelected -= GetSelectItem;
-    }
+    // private void OnDisable()
+    // {
+    //     ShopItem.OnItemSelected -= SelectItem;
+    //     ShopItem.OnItemSelected -= GetSelectItem;
+    // }
 
     void Start()
     {
@@ -75,11 +70,20 @@ public class ShopGUI : MonoBehaviour
         currentPage = PageState.SKIN;
     }
 
-    public void GetSelectItem()
-    {
-        selectedItemIndex = System.Array.IndexOf(shopItems, selectedObjectItem);
-        // Debug.Log(selectedItemIndex);
-    }
+    // public void GetSelectItem()
+    // {
+    //     try
+    //     {
+    //         selectedItemIndex = System.Array.IndexOf(shopItems, selectedObjectItem);
+    //         Debug.Log(selectedItemIndex);
+    //     }
+    //     catch (Exception e)
+    //     {
+    //         Console.WriteLine(e);
+    //         throw;
+    //     }
+    //   
+    // }
 
     public void OnSkinPageSelect()
     {
@@ -109,19 +113,19 @@ public class ShopGUI : MonoBehaviour
         
     }
 
-    public void DeselectItem()
-    {
-        shopItems[selectedItemIndex].transform.GetChild(0).GetChild(2).gameObject.SetActive(false); 
-    }
-
-    public void SelectItem()
-    {
-        
-        shopItems[selectedItemIndex].transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
-        if (currentPage == PageState.SKIN)
-        {
-            ringSkin.sprite = shopItems[selectedItemIndex].transform.GetChild(0).GetChild(1).GetComponent<Image>()
-                .sprite;
-        }
-    }
+    // public void DeselectItem()
+    // {
+    //     shopItems[selectedItemIndex].transform.GetChild(0).GetChild(2).gameObject.SetActive(false); 
+    // }
+    //
+    // public void SelectItem()
+    // {
+    //     
+    //     shopItems[selectedItemIndex].transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+    //     if (currentPage == PageState.SKIN)
+    //     {
+    //         ringSkin.sprite = shopItems[selectedItemIndex].transform.GetChild(0).GetChild(1).GetComponent<Image>()
+    //             .sprite;
+    //     }
+    // }
 }

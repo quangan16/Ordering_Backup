@@ -12,6 +12,7 @@ public class WinUI : MonoBehaviour
     [SerializeField] private Button adsButton;
 
     [SerializeField] private Button normalButton;
+   
     // Start is called before the first frame update
 
     private void OnEnable()
