@@ -116,7 +116,13 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             normalLevel = 0;
         }
-        currentLevel= normalLevel;
+        int level = normalLevel / 3;
+        (Mode mode, int time) = DataManager.Instance.GetLevelMode(level);
+        if (mode == Mode.Locked)
+        {
+            DataManager.Instance.SetLevel(level, Mode.Unlocked, 0);
+        }
+        currentLevel = normalLevel;
         Invoke(nameof(nextLevel), 0.1f);
     }
     void nextLevel()

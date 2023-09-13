@@ -26,8 +26,7 @@ public class Solid : MonoBehaviour
     private void Start()
     {
        OnInit();
-    }        
-    
+    }           
     public virtual void OnInit()
     {
         rb = GetComponent<Rigidbody2D>();

@@ -41,11 +41,39 @@ public class LoadingUI : MonoBehaviour
     public void Open()
     {
         gameObject.SetActive(true);
+
     }
 
     public void Close()
     {
         gameObject.SetActive(false);
-        
+        OnNext();
+
+
+    }
+    public void OnNext()
+    {
+
+        switch (GameManager.Instance.gameMode)
+        {
+            case GameMode.Normal:
+                {
+                    DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
+                    GameManager.Instance.NextLevel();
+                    break;
+                }
+            case GameMode.Boss:
+                {
+                    DataManager.Instance.SetBossLevel(GameManager.Instance.currentLevel + 1);
+                    UIManager.Instance.OpenGameplay();
+                    break;
+                }
+            case GameMode.Challenge:
+                {
+                    UIManager.Instance.OpenChallenge();
+                    break;
+                }
+
+        }
     }
 }

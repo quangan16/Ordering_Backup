@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -8,9 +9,11 @@ using UnityEngine.UI;
 public class ChallegeItemAnimation : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timeTxt;
+
     private float scaleDuration = 0.5f;
     public Button playButton;
     public int level;
+    int price;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -35,17 +38,27 @@ public class ChallegeItemAnimation : MonoBehaviour
     public void SetData(int time)
     {
         timeTxt.text =  time.ToString();
+        price = time;
     }
     public void BuyLevel()
     {
         
-        if(DataManager.Instance.GetCoin()>=00)
+        if(DataManager.Instance.GetCoin()>=price)
         {
-            DataManager.Instance.AddCoin(00);
+            DataManager.Instance.AddCoin(-price);
             DataManager.Instance.SetLevel(level, Mode.Bought, 0);
             UIManager.Instance.RePlay();
 
         }
+
+    }
+    public void SetPrice(int price)
+    {
+        this.price = price;
+        timeTxt.text = price.ToString();
+    }
+    public void SetLevel(int Level)
+    {
 
     }
     public void Play()

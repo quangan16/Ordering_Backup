@@ -19,7 +19,7 @@ public class Circle : Solid
     }
     private void LateUpdate()
     {
-        if(isTouch && locked.Count == 0)
+        if(isTouch)
         {
             Stretch(GameManager.Instance.sprite, MobileInput.anchor);
         }
@@ -32,7 +32,8 @@ public class Circle : Solid
     }
     public override void Move(Vector3 vectorA, Vector3 vectorB)
     {
-        if(locked.Count == 0)
+        z = transform.rotation;
+        if (locked.Count == 0)
         {
        
             float angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);    

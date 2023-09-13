@@ -28,7 +28,8 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         win.Open();
         PlayEffect();
-        if(GameManager.Instance.gameMode == GameMode.Challenge)
+       
+        if (GameManager.Instance.gameMode == GameMode.Challenge)
         {
             GameManager.isTouch = false;
             int level = GameManager.Instance.currentLevel;

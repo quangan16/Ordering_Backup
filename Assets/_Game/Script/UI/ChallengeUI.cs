@@ -46,10 +46,13 @@ public class ChallengeUI : MonoBehaviour, IUIControl
             {
                 case Mode.Locked:
                     {
+                        challenge.SetData(j * 3+2);
                         break;
                     }
                 case Mode.Unlocked:
                     {
+                        int price = levels[j].price;
+                        challenge.SetData(price);
                         break;
                     }
                 case Mode.Bought:

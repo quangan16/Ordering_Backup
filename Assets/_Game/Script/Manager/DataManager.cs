@@ -37,7 +37,7 @@ public class DataManager : SingletonBehivour<DataManager>
     public (Mode,int) GetLevelMode(int level)
     {
         string name = "level" + level;
-        string[] t = PlayerPrefs.GetString(name, "1 0").Split(" ");
+        string[] t = PlayerPrefs.GetString(name, "0 0").Split(" ");
 
 
         return ((Mode)int.Parse(t[0]), int.Parse(t[1]));

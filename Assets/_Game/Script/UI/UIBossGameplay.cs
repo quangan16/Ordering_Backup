@@ -30,7 +30,12 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
     public void Open()
     {
         gameObject.SetActive(true);
+        Invoke(nameof(OpenGamePlay), 0.1f);
+    }
+    public void OpenGamePlay()
+    {
         GameManager.Instance.OpenGamePlay(GameMode.Boss, DataManager.Instance.GetBossLevel());
+
     }
     public void Close()
     {
