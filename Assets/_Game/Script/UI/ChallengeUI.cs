@@ -58,6 +58,8 @@ public class ChallengeUI : MonoBehaviour, IUIControl
                 case Mode.Bought:
                     {
                         challenge.playButton.onClick.AddListener(() => OpenLevel(j));
+                        int rewards = levels[j].rewards;
+                        challenge.SetData(rewards);
                         break;
                     }
                 case Mode.Pass:

@@ -32,7 +32,7 @@ public class Circle : Solid
     }
     public override void Move(Vector3 vectorA, Vector3 vectorB)
     {
-        z = transform.rotation;
+        
         if (locked.Count == 0)
         {
        
@@ -45,6 +45,7 @@ public class Circle : Solid
         }
         else
         {
+           
             ShakeOff();
         }
     }
@@ -81,11 +82,11 @@ public class Circle : Solid
         canClick= false;
         isTouch = true;      
     }
-    private void StartCollision()
+    void StartCollision()
     {
         transform.DOLocalMoveX(x, 0.2f);
         transform.rotation = z;
-          
+        OffSelected();  
         isTouch = false;
     }
     private void OnMouseUp()
