@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class WinUI : MonoBehaviour
 {
+    public bool ButtonClicked { get; private set; }
     [SerializeField] IndicatorController indi;
 
     [SerializeField] private Button adsButton;
@@ -15,26 +16,37 @@ public class WinUI : MonoBehaviour
 
     private void OnEnable()
     {
+        ButtonClicked = false;
         adsButton.interactable = true;
         normalButton.interactable = true;
     }
     public void GetCoinDefault()
     {
-        adsButton.interactable = false;
-        normalButton.interactable = false;
+        OnContinue();
         DataManager.Instance.AddCoin(int.Parse(indi.achievedCoinTxt.text));
-       
-
 
     }
     public void GetCoinAds()
     {
-        adsButton.interactable = false;
-        normalButton.interactable = false;
+        OnContinue();
         UIManager.Instance.ShowAds();
         DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
-        
+    }
 
+    public void PauseAnim()
+    {
+        if (ButtonClicked)
+        {
+            Debug.Log(DOTween.PauseAll());
+        }
+    }
+
+    public void OnContinue()
+    {
+        ButtonClicked = true;
+        adsButton.interactable = false;
+        normalButton.interactable = false;
+        PauseAnim();
     }
 
     public void Close()

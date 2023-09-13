@@ -17,7 +17,7 @@ public class IndicatorController : MonoBehaviour
     [SerializeField] private float slideDuration;
     [SerializeField] public TextMeshProUGUI adsCoinTxt;
     [SerializeField] public TextMeshProUGUI achievedCoinTxt;
-
+    [SerializeField] private WinUI winUI;
     private float multiplierBarLength;
 
 
@@ -45,33 +45,41 @@ public class IndicatorController : MonoBehaviour
     void SlideAndBounce()
     {
         
-        transform.DOLocalMoveX(endPoint.position.x - transform.localPosition.x, slideDuration)
-            .SetLoops(-1, LoopType.Yoyo)
-            .SetEase(Ease.Linear);
+            transform.DOLocalMoveX(endPoint.position.x - transform.localPosition.x, slideDuration)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.Linear);
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Multiplier") && other.TryGetComponent(out TextMeshProUGUI text))
-        {
-            float targetTextSize = 48;
-            float scaleDuration = 0.3f;
-            var multiplier = text.text[1] - '0';
-            adsCoinTxt.text = (int.Parse(achievedCoinTxt.text) * multiplier).ToString();
-            DOTween.To(() => text.fontSize, x => text.fontSize = x, targetTextSize, scaleDuration);
+        // if (winUI.ButtonClicked == false)
+        // {
+            if (other.CompareTag("Multiplier") && other.TryGetComponent(out TextMeshProUGUI text))
+            {
+                float targetTextSize = 48;
+                float scaleDuration = 0.3f;
+                var multiplier = text.text[1] - '0';
+                adsCoinTxt.text = (int.Parse(achievedCoinTxt.text) * multiplier).ToString();
+                DOTween.To(() => text.fontSize, x => text.fontSize = x, targetTextSize, scaleDuration);
 
-        }
+            }
+        // }
+       
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        float normalTextSize = 34;
-        float scaleDuration = 0.3f;
-        if (other.CompareTag("Multiplier") && other.TryGetComponent(out TextMeshProUGUI text))
-        {
-            DOTween.To(() => text.fontSize, x => text.fontSize = x, normalTextSize, scaleDuration);
+        // if (winUI.ButtonClicked == false)
+        // {
+            float normalTextSize = 34;
+            float scaleDuration = 0.3f;
+            if (other.CompareTag("Multiplier") && other.TryGetComponent(out TextMeshProUGUI text))
+            {
+                DOTween.To(() => text.fontSize, x => text.fontSize = x, normalTextSize, scaleDuration);
 
-        }
+            }
+        // }
     }
 
     // public void Move()
