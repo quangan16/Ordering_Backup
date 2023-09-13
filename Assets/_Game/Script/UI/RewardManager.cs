@@ -17,7 +17,7 @@ public class RewardManager : MonoBehaviour
 
     [SerializeField] private LoadingUI loading;
 
-    [SerializeField] private WinUI winUI;
+    [SerializeField] private WinUI winUI => GetComponentInParent<WinUI>();
 
     void Awake()
     {
