@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,6 +42,7 @@ public class VictoryUIAnim : MonoBehaviour
         victoryCanvas.transform.DOLocalMove(new Vector3(0, 0, 0), 0.7f);
         victoryCanvas.DOFade(1f, fadeInDuration);
         CoinBanner.DOFade(1, 0.5f).SetDelay(1.0f);
+        CoinBanner.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(1, 0.5f).SetDelay(1.0f);
         titleAlpha.DOFade(1, 0.7f);
         titleAlpha.transform.DOScale(1, 1.0f).SetEase(Ease.OutBounce).SetDelay(0.5f);
     }
