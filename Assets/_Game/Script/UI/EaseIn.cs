@@ -9,7 +9,7 @@ public class EaseIn : MonoBehaviour
     [SerializeField] private GameObject LiveHolder;
     [SerializeField] private float moveDuration = 2.0f;
     [SerializeField] private float startTime;
-    private float offset = 5.0f;
+    private float offset = 6.0f;
     private float initialPosX = 8.23f;
     void OnEnable()
     {
