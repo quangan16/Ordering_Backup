@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     [SerializeField] TextMeshProUGUI heartText;
     [SerializeField] TextMeshProUGUI timeTxt;
     [SerializeField] Button add;
+    public int totalChallengePassed;
     public TextMeshProUGUI coin;
     public int heart;
     DateTime dateTime;
@@ -25,6 +27,9 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     }
     void OnInit()
     {
+        totalChallengePassed = DataManager.Instance.GetTotalChallenge();
+        coin.text = DataManager.Instance.GetCoin().ToString();
+        heart = DataManager.Instance.GetHeart();
         levels = GameManager.Instance.challenge.levels.ToList();
         ChallegeItemAnimation[] challegeItems = layout.transform.GetComponentsInChildren<ChallegeItemAnimation>();
         foreach(var challegeItem in challegeItems)
@@ -130,9 +135,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public void Open()
     {
         OnInit();
-        coin.text = DataManager.Instance.GetCoin().ToString();
-        heart = DataManager.Instance.GetHeart();
-        print(heart);
+
         gameObject.SetActive(true);
         string s = DataManager.Instance.GetTime();
         string[] day = s.Split(" ")[0].Split("-");

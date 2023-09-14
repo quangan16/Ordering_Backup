@@ -167,6 +167,12 @@ public class GameManager : SingletonBehivour<GameManager>
         if (gameMode == GameMode.Challenge)
         {
             (Mode mode, int time) = DataManager.Instance.GetLevelMode(currentLevel);
+            if(mode != Mode.Pass)
+            {
+                int i = DataManager.Instance.GetTotalChallenge();
+                i++;
+                DataManager.Instance.SetTotalChallenge(i);
+            }
             DataManager.Instance.SetLevel(currentLevel, Mode.Pass, Mathf.RoundToInt(timer) < time ? time : Mathf.RoundToInt(timer));
         }
     }
