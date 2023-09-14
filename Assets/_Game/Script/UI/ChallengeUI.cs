@@ -132,6 +132,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         OnInit();
         coin.text = DataManager.Instance.GetCoin().ToString();
         heart = DataManager.Instance.GetHeart();
+        print(heart);
         gameObject.SetActive(true);
         string s = DataManager.Instance.GetTime();
         string[] day = s.Split(" ")[0].Split("-");

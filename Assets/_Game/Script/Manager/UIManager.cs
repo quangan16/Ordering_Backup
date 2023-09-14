@@ -10,6 +10,8 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] UIChallengeGameplay challengeGameplay;
     [SerializeField] UIGamePlay control;
     [SerializeField] Effect effect;
+    [SerializeField] PopupBoss popupBoss;
+    [SerializeField] ChallengeUnlockPopup popupChallenge;
 
     IUIControl current;
     private void Start()
@@ -61,13 +63,12 @@ public class UIManager : SingletonBehivour<UIManager>
     }
     public void RecommendChallenge()
     {
-        //popupChallenge.Open(); => todo
-        print("rcmd challenge");
+        popupChallenge.Open(); 
     }
     public void RecommendBoss()
     {
-        //popupBoss.Open(); => todo
-        print("rcmd boss");
+        popupBoss.Open();
+       
 
     }
     public void OpenChallengeGameplay(int level)

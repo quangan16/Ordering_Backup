@@ -37,10 +37,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
         UIManager.Instance.ShowAds();
         GameManager.Instance.NextLevel();
     }
-    public void OpenBoss()
-    {
-        UIManager.Instance.OpenBoss();
-    }
+
     public virtual void CallHint()
     {
         getHint = true;

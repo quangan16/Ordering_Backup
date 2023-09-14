@@ -12,22 +12,24 @@ public class ChallengeUnlockPopup : MonoBehaviour
 
     private float DesPosX = 90.0f;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void OnEnable()
     {
         ResetPos();
         CollapseAnimate();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Open()
     {
-        
+        gameObject.SetActive(true);
     }
+    public void Close()
+    { gameObject.SetActive(false); }
+    public void OpenChallenge()
+    {
+        UIManager.Instance.OpenChallenge();
+        Close();
+    }
+
+ 
 
     void ResetPos()
     {
