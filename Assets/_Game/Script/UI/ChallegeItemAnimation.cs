@@ -12,8 +12,9 @@ public class ChallegeItemAnimation : MonoBehaviour
 
     private float scaleDuration = 0.5f;
     public Button playButton;
+    public Level dataLevel;
     public int level;
-    int price;
+    public int price;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -39,27 +40,6 @@ public class ChallegeItemAnimation : MonoBehaviour
     {
         timeTxt.text =  time.ToString();
         price = time;
-    }
-    public void BuyLevel()
-    {
-        
-        if(DataManager.Instance.GetCoin()>=price)
-        {
-            DataManager.Instance.AddCoin(-price);
-            DataManager.Instance.SetLevel(level, Mode.Bought, 0);
-            UIManager.Instance.RePlay();
-
-        }
-
-    }
-    public void SetPrice(int price)
-    {
-        this.price = price;
-        timeTxt.text = price.ToString();
-    }
-    public void SetLevel(int Level)
-    {
-
     }
     public void Play()
     {

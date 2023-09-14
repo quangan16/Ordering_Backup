@@ -42,6 +42,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
             (Mode mode, int time) = DataManager.Instance.GetLevelMode(j);
             ChallegeItemAnimation challenge = Instantiate(challengeItem.GetItem(mode), layout.transform);
             challenge.level = j;
+            challenge.dataLevel = levels[i];
             switch (mode)
             {
                 case Mode.Locked:
@@ -53,6 +54,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
                     {
                         int price = levels[j].price;
                         challenge.SetData(price);
+                        (challenge as ChallengeBought).SetChildren(() => OpenLevel(j));
                         break;
                     }
                 case Mode.Bought:

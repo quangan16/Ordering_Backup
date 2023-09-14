@@ -56,6 +56,10 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             case GameMode.Normal:
                 {
+                    if (level >= normal.levels.Length)
+                    {
+                        level = 0;
+                    }
                     current = Instantiate(normal.levels[level]);
                     StartCountDown();
                     break;
@@ -67,7 +71,10 @@ public class GameManager : SingletonBehivour<GameManager>
                 }
             case GameMode.Boss:
                 {
-
+                    if (level >= boss.levels.Length)
+                    {
+                        level = 0;
+                    }
                     current = Instantiate(boss.levels[level]);
                     break;
                 }

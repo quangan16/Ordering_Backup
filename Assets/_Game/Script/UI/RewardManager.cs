@@ -96,11 +96,10 @@ public class RewardManager : MonoBehaviour
         }
        
      
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         //
        
         winUI.Close();
-
         loading.Open();
 
     }
