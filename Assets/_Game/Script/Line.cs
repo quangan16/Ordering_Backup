@@ -66,10 +66,11 @@ public class Line : Solid
     }
     public override void MoveDeath()
     {
-        Instantiate(ps, transform.position, Quaternion.identity);
-        blinkVoice.Play();
+        //Instantiate(ps, transform.position, Quaternion.identity);
+        //blinkVoice.Play();
+
         transform.DOLocalMove((transform.localPosition*2 - startPosition), 1f);
-        Invoke(nameof(OnDeath), 1.5f);
+        base.MoveDeath();
     }
 
 

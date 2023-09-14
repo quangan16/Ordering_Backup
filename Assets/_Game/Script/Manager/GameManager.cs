@@ -17,7 +17,6 @@ public class GameManager : SingletonBehivour<GameManager>
     public static bool isTouch = false;
     public static int moves;
 
-
     private void Update()
     {
         if (isTouch && (gameMode == GameMode.Challenge|| gameMode == GameMode.Boss))
@@ -56,6 +55,10 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             case GameMode.Normal:
                 {
+                    if (level >= normal.levels.Length)
+                    {
+                        level = 0;
+                    }
                     current = Instantiate(normal.levels[level]);
                     StartCountDown();
                     break;
@@ -67,7 +70,10 @@ public class GameManager : SingletonBehivour<GameManager>
                 }
             case GameMode.Boss:
                 {
-
+                    if (level >= boss.levels.Length)
+                    {
+                        level = 0;
+                    }
                     current = Instantiate(boss.levels[level]);
                     break;
                 }
@@ -81,7 +87,7 @@ public class GameManager : SingletonBehivour<GameManager>
         timer = (current.time);
         moves = current.moves;
         int coin = DataManager.Instance.GetCoin();
-        UIManager.Instance.SetCoin(coin);
+        UIManager.Instance.SetCoin();
         UIManager.Instance.SetText("Level " + (currentLevel+1));
         Camera.main.orthographicSize = current.cameraDist;
 
@@ -112,20 +118,33 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         CloseGamePlay();
         int normalLevel = DataManager.Instance.GetNormalLevel();    
+        //Debug out range
         if (normalLevel >= normal.levels.Length)
         {
             normalLevel = 0;
         }
-        int level = normalLevel / 3;
-        (Mode mode, int time) = DataManager.Instance.GetLevelMode(level);
-        if (mode == Mode.Locked)
+        //Open challenge each 3 levels 2,5,8,...
+        
+        if ((normalLevel-1)%3==0 && (normalLevel-1)/3 <= challenge.levels.Length-1)
         {
+            int level = (normalLevel-1) / 3;
+            (Mode mode, int time) = DataManager.Instance.GetLevelMode(level);
             DataManager.Instance.SetLevel(level, Mode.Unlocked, 0);
+            UIManager.Instance.RecommendChallenge();
         }
+        //Open boss each 6 levels 4,10,16,...
+        if ((normalLevel-3)%6 == 0 && (normalLevel-3)/6 <= boss.levels.Length-1)
+        {
+
+            UIManager.Instance.RecommendBoss();
+        }
+
+
+
         currentLevel = normalLevel;
-        Invoke(nameof(nextLevel), 0.1f);
+        Invoke(nameof(OnNextLevel), 0.1f);
     }
-    void nextLevel()
+    void OnNextLevel()
     {
         OpenGamePlay(GameMode.Normal, currentLevel);
     }
@@ -145,6 +164,11 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         StopAllCoroutines();
         isTouch = false;
+        if (gameMode == GameMode.Challenge)
+        {
+            (Mode mode, int time) = DataManager.Instance.GetLevelMode(currentLevel);
+            DataManager.Instance.SetLevel(currentLevel, Mode.Pass, Mathf.RoundToInt(timer) < time ? time : Mathf.RoundToInt(timer));
+        }
     }
 
 

@@ -19,29 +19,26 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public int heart;
     DateTime dateTime;
     string format = "dd-MM-yyyy HH:mm:ss";
-    private void Start()
-    {
-        levels = GameManager.Instance.challenge.levels.ToList();
-    }
     private void FixedUpdate()
     {
         CheckHeart();
     }
     void OnInit()
     {
+        levels = GameManager.Instance.challenge.levels.ToList();
         ChallegeItemAnimation[] challegeItems = layout.transform.GetComponentsInChildren<ChallegeItemAnimation>();
         foreach(var challegeItem in challegeItems)
         {
             Destroy(challegeItem.gameObject);
             Destroy(challegeItem);
         }
-
         for (int i = 0; i < levels.Count; i++)
         {
             int j = i;
             (Mode mode, int time) = DataManager.Instance.GetLevelMode(j);
             ChallegeItemAnimation challenge = Instantiate(challengeItem.GetItem(mode), layout.transform);
             challenge.level = j;
+            challenge.dataLevel = levels[i];
             switch (mode)
             {
                 case Mode.Locked:
@@ -53,6 +50,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
                     {
                         int price = levels[j].price;
                         challenge.SetData(price);
+                        (challenge as ChallengeBought).SetChildren(() => OpenLevel(j));
                         break;
                     }
                 case Mode.Bought:
@@ -71,6 +69,8 @@ public class ChallengeUI : MonoBehaviour, IUIControl
                 case Mode.Fail:
                     {
                         challenge.playButton.onClick.AddListener(() => OpenLevel(j));
+                        int rewards = levels[j].rewards;
+                        challenge.SetData(rewards);
                         break;
                     }
                 default:
@@ -174,6 +174,9 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     {
         Close();
     }
-
+    public void SetCoin(int coin)
+    {
+        this.coin.text = coin.ToString();
+    }
 
 }

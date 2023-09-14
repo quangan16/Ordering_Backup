@@ -9,7 +9,7 @@ public interface IUIControl
 
     }
     void Close() { }
-    void SetText(string text) { }
+    void SetText(string text) { } //Set levelText
     void SetCoin(int coin) { }
     //void SetTime(float time) { }
 
