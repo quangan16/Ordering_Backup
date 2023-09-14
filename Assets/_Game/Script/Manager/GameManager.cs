@@ -119,20 +119,32 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         CloseGamePlay();
         int normalLevel = DataManager.Instance.GetNormalLevel();    
+        //Debug out range
         if (normalLevel >= normal.levels.Length)
         {
             normalLevel = 0;
         }
-        int level = normalLevel / 3;
-        (Mode mode, int time) = DataManager.Instance.GetLevelMode(level);
-        if (mode == Mode.Locked)
+        //Open challenge each 3 levels 2,5,8,...
+        
+        if ((normalLevel-1)%3==0 )
         {
+            int level = (normalLevel-1) / 3;
+            (Mode mode, int time) = DataManager.Instance.GetLevelMode(level);
             DataManager.Instance.SetLevel(level, Mode.Unlocked, 0);
+            UIManager.Instance.RecommendChallenge();
         }
+        //Open boss each 6 levels 4,10,16,...
+        if ((normalLevel-3)%6 == 0)
+        {
+            UIManager.Instance.RecommendBoss();
+        }
+
+
+
         currentLevel = normalLevel;
-        Invoke(nameof(nextLevel), 0.1f);
+        Invoke(nameof(OnNextLevel), 0.1f);
     }
-    void nextLevel()
+    void OnNextLevel()
     {
         OpenGamePlay(GameMode.Normal, currentLevel);
     }

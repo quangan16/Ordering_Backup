@@ -100,7 +100,7 @@ public class RewardManager : MonoBehaviour
         //
        
         winUI.Close();
-        loading.Open();
+        //loading.Open();
 
     }
 }

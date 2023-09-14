@@ -70,6 +70,17 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         lose.Open(type);
     }
+    public void RecommendChallenge()
+    {
+        //popupChallenge.Open(); => todo
+        print("rcmd challenge");
+    }
+    public void RecommendBoss()
+    {
+        //popupBoss.Open(); => todo
+        print("rcmd boss");
+
+    }
     public void OpenChallengeGameplay(int level)
     {
         OpenUI(challengeGameplay);
