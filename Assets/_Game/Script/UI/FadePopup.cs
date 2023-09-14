@@ -36,7 +36,7 @@ public class FadePopup : MonoBehaviour
 
         challengeCanvas.DOFade(0f, fadeOutDuration).OnComplete(() =>
         {
-            gameObject.SetActive(false);
+            UIManager.Instance.OpenGameplay();
         });
     }
 
