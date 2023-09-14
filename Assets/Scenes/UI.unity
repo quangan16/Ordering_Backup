@@ -1966,6 +1966,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossGameplayGUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5746618866691794587, guid: 8fe521fdba04d7a4889a1e5a145ff1b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe521fdba04d7a4889a1e5a145ff1b1, type: 3}
 --- !u!1001 &3300069843897543223
@@ -2086,6 +2090,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740052521}
     m_Modifications:
+    - target: {fileID: 921320423, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
+      propertyPath: desPos
+      value: 
+      objectReference: {fileID: 4697606372662214711}
+    - target: {fileID: 921320423, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
+      propertyPath: initPos
+      value: 
+      objectReference: {fileID: 4697606372662214710}
+    - target: {fileID: 921320423, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
+      propertyPath: CoinHolder
+      value: 
+      objectReference: {fileID: 4697606372662214709}
+    - target: {fileID: 921320423, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
+      propertyPath: LiveHolder
+      value: 
+      objectReference: {fileID: 4697606372662214707}
     - target: {fileID: 198345433252873352, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2497,6 +2517,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2283627255290969677, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
   m_PrefabInstance: {fileID: 4697606372662214705}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &4697606372662214707 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4697606371506263852, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
+  m_PrefabInstance: {fileID: 4697606372662214705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4697606372662214708 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4697606372662214708, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
@@ -2508,6 +2533,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852016359881f0c4093893be68b59dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &4697606372662214709 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4697606372448150087, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
+  m_PrefabInstance: {fileID: 4697606372662214705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4697606372662214710 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1305284238879026080, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
+  m_PrefabInstance: {fileID: 4697606372662214705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4697606372662214711 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3477623443196275803, guid: d62ca1a7f2fe1b04298223bfaa069366, type: 3}
+  m_PrefabInstance: {fileID: 4697606372662214705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4963660439858719585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2602,6 +2642,18 @@ PrefabInstance:
     - target: {fileID: 3752229121537601475, guid: ffdaa6eae090e8d40b8fb3c7a74bdca4, type: 3}
       propertyPath: m_Name
       value: BossPopupGUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3752229121537601475, guid: ffdaa6eae090e8d40b8fb3c7a74bdca4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963660439726909578, guid: ffdaa6eae090e8d40b8fb3c7a74bdca4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -51.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963660439726909581, guid: ffdaa6eae090e8d40b8fb3c7a74bdca4, type: 3}
+      propertyPath: m_characterSpacing
+      value: -8.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffdaa6eae090e8d40b8fb3c7a74bdca4, type: 3}

@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class EaseIn : MonoBehaviour
 {
-    [SerializeField] private GameObject CoinHolder;
-    [SerializeField] private GameObject LiveHolder;
+    [SerializeField] private RectTransform CoinHolder;
+    [SerializeField] private RectTransform LiveHolder;
     [SerializeField] private float moveDuration = 2.0f;
     [SerializeField] private float startTime;
-    private float offset = 6.0f;
-    private float initialPosX = 8.23f;
+    private float offsetX = 100.0f;
+    [SerializeField] private Transform initPos;
+    [SerializeField] private Transform desPos;
+ 
     void OnEnable()
     {
         Reset();
@@ -29,17 +31,18 @@ public class EaseIn : MonoBehaviour
 
     private void Reset()
     {
-        CoinHolder.transform.position = new Vector3(initialPosX,
-            CoinHolder.transform.position.y,0);
-        LiveHolder.transform.position = new Vector3(initialPosX,
-            LiveHolder.transform.position.y,0);
+        CoinHolder.localPosition = new Vector3(initPos.localPosition.x,
+            CoinHolder.localPosition.y, initPos.localPosition.z);
+        LiveHolder.localPosition = new Vector3(initPos.localPosition.x,
+            LiveHolder.localPosition.y, initPos.localPosition.z);
     
     }
     public void SlideIn()
     {
         
       
-        CoinHolder.transform.DOMoveX(CoinHolder.transform.position.x - offset, moveDuration).SetEase(Ease.OutBack);
-        LiveHolder.transform.DOMoveX(LiveHolder.transform.position.x - offset, moveDuration).SetEase(Ease.OutBack).SetDelay(0.3f);
+        CoinHolder.transform.DOLocalMove(new Vector3(desPos.localPosition.x, CoinHolder.localPosition.y, CoinHolder.localPosition.z)  , moveDuration).SetEase(Ease.OutBack);
+        LiveHolder.transform.DOLocalMove(new Vector3(desPos.localPosition.x, LiveHolder.localPosition.y,
+            LiveHolder.localPosition.z), moveDuration).SetEase(Ease.OutBack).SetDelay(0.3f);
     }
 }
