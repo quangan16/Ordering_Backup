@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 2283627255290969677}
   - component: {fileID: 4697606372662214709}
   - component: {fileID: 4697606372662214708}
-  - component: {fileID: 4605941499391662385}
+  - component: {fileID: 6472009314378954127}
   m_Layer: 0
   m_Name: ChallengesGUI
   m_TagString: Untagged
@@ -719,7 +719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   main: {fileID: 2283627255290969677}
   challengeCanvas: {fileID: 4697606372662214709}
---- !u!114 &4605941499391662385
+--- !u!114 &6472009314378954127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -764,9 +764,10 @@ MonoBehaviour:
   - {fileID: 7822275667511012547, guid: 262b32bf12f98e5489052c5d4d4d2afe, type: 3}
   challengeItem: {fileID: 11400000, guid: 276c09feb6c71264eb0a6a4d60a797af, type: 2}
   layout: {fileID: 4697606371893123307}
-  heartText: {fileID: 8443332803938495916}
+  heartText: {fileID: 0}
   timeTxt: {fileID: 4697606372963975976}
   add: {fileID: 939622363}
+  totalChallengePassed: 0
   coin: {fileID: 4697606373175283055}
   heart: 0
 --- !u!1 &4697606372448150084

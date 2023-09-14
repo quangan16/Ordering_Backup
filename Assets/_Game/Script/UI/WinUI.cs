@@ -16,7 +16,7 @@ public class WinUI : MonoBehaviour
 
     public void Start()
     {
-        normalButton.GetComponentInChildren<TextMeshProUGUI>().text = GameManager.Instance.current.rewards.ToString();
+        
     }
    
     // Start is called before the first frame update
@@ -26,6 +26,7 @@ public class WinUI : MonoBehaviour
         ButtonClicked = false;
         adsButton.interactable = true;
         normalButton.interactable = true;
+        normalButton.GetComponentInChildren<TextMeshProUGUI>().text = GameManager.Instance.current.rewards.ToString();
     }
     public void GetCoinDefault()
     {
@@ -65,6 +66,7 @@ public class WinUI : MonoBehaviour
     public void Open()
     {
         gameObject.SetActive(true);
+
         
     }
     public void OnNext()

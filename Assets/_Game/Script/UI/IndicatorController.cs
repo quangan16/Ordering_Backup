@@ -42,8 +42,7 @@ public class IndicatorController : MonoBehaviour
     // }
 
     void SlideAndBounce()
-    {
-        
+    {     
             transform.DOLocalMoveX(endPoint.position.x - transform.localPosition.x, slideDuration)
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetEase(Ease.Linear);

@@ -22,13 +22,14 @@ public class RewardManager : MonoBehaviour
     void Awake()
     {
         SetUpInitPos();
-        coinAmountTxt.text = DataManager.Instance.GetCoin().ToString();
     }
     
     private void OnEnable()
     {
         Reset();
-      
+        coinAmountTxt.text = DataManager.Instance.GetCoin().ToString();
+
+
     }
     private void OnDisable()
     {

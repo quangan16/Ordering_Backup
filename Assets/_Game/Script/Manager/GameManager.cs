@@ -65,7 +65,8 @@ public class GameManager : SingletonBehivour<GameManager>
                 }
             case GameMode.Challenge:
                 {                    
-                    current = Instantiate(challenge.levels[level]);                   
+                    current = Instantiate(challenge.levels[level]);
+                    print(current.rewards);
                     break;
                 }
             case GameMode.Boss:
@@ -86,7 +87,6 @@ public class GameManager : SingletonBehivour<GameManager>
         currentLevel = level;
         timer = (current.time);
         moves = current.moves;
-        int coin = DataManager.Instance.GetCoin();
         UIManager.Instance.SetCoin();
         UIManager.Instance.SetText("Level " + (currentLevel+1));
         Camera.main.orthographicSize = current.cameraDist;
