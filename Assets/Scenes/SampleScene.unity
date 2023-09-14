@@ -1208,6 +1208,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8694616687078825754, guid: 38428b48029628f44bb2586f2869603c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a547f0516430564dbdbb9210d9162ae, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38428b48029628f44bb2586f2869603c, type: 3}
 --- !u!114 &690017789 stripped
@@ -2944,7 +2948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1311525804
 MonoBehaviour:
   m_ObjectHideFlags: 0

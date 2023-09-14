@@ -74,7 +74,9 @@ public class Solid : MonoBehaviour
                 sprite.DOFade(0, 1f);
             }
             MoveDeath();
-            
+            Instantiate(ps, transform.position, Quaternion.identity);
+            blinkVoice.Play();
+
         }
         isDead = true;
         
@@ -107,12 +109,11 @@ public class Solid : MonoBehaviour
     }
     public virtual void MoveDeath()
     {
-        Instantiate(ps, transform.position, Quaternion.identity);
+
         if (CompareTag("Lock"))
         {
             transform.DORotate(Vector3.forward * 720, 1f, RotateMode.FastBeyond360);
             transform.DOScale(0.2f, 1f);
-
         }
         
         Invoke(nameof(OnDeath), 1.5f);

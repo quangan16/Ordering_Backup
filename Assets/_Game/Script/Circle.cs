@@ -64,10 +64,11 @@ public class Circle : Solid
     }
     public override void MoveDeath()
     {
-        Instantiate(ps, transform.position, Quaternion.identity);
-        blinkVoice.Play();
+        //Instantiate(ps, transform.position, Quaternion.identity);
+        //blinkVoice.Play();
+
         transform.DOMove((transform.position*2 - lastPosition), 1f);
-        Invoke(nameof(OnDeath), 1.5f);
+        base.MoveDeath();
     }
     void ShakeOff()
     {
