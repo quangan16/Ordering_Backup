@@ -66,7 +66,6 @@ public class GameManager : SingletonBehivour<GameManager>
             case GameMode.Challenge:
                 {                    
                     current = Instantiate(challenge.levels[level]);
-                    print(current.rewards);
                     break;
                 }
             case GameMode.Boss:

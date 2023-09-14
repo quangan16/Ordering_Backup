@@ -16,12 +16,15 @@ public class FadePopup : MonoBehaviour
 
     public void OnDisable()
     {
-        DOTween.Clear();
+        challengeCanvas.DOKill();
+
+        challengeCanvas.transform.DOKill();
     }
 
     public void OnDestroy()
     {
-        DOTween.Clear();
+        challengeCanvas.DOKill();
+        challengeCanvas.transform.DOKill(); 
     }
     public void Show(object data)
     {
