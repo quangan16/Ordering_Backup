@@ -38,7 +38,7 @@ public class WinUI : MonoBehaviour
     {
         if (ButtonClicked)
         {
-            Debug.Log(DOTween.PauseAll());
+           DOTween.PauseAll();
         }
     }
 
