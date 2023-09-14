@@ -27,7 +27,6 @@ public class FadePopup : MonoBehaviour
     {
         challengeCanvas.transform.localPosition = new Vector3(0, 30.0f);
         challengeCanvas.transform.DOLocalMove(new Vector3(0, 0, 0), 0.7f);
-        // Use DOTween to fade in the popup over a specified duration
         challengeCanvas.DOFade(1f, fadeOutDuration);
     }
 
