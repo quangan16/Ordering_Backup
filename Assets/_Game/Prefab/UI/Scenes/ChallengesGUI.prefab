@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 4697606371893123306}
   - component: {fileID: 4697606371893123309}
   - component: {fileID: 1517200659}
+  - component: {fileID: 351509994937059844}
   m_Layer: 5
   m_Name: ChalengesGrid
   m_TagString: Untagged
@@ -460,6 +461,20 @@ MonoBehaviour:
   m_Constraint: 1
   m_ConstraintCount: 3
 --- !u!114 &1517200659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697606371893123307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
+--- !u!114 &351509994937059844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -764,7 +779,7 @@ MonoBehaviour:
   - {fileID: 7822275667511012547, guid: 262b32bf12f98e5489052c5d4d4d2afe, type: 3}
   challengeItem: {fileID: 11400000, guid: 276c09feb6c71264eb0a6a4d60a797af, type: 2}
   layout: {fileID: 4697606371893123307}
-  heartText: {fileID: 0}
+  heartText: {fileID: 8443332803938495916}
   timeTxt: {fileID: 4697606372963975976}
   add: {fileID: 939622363}
   totalChallengePassed: 0
@@ -1139,7 +1154,7 @@ GameObject:
   - component: {fileID: 4697606372963975979}
   - component: {fileID: 4697606372963975976}
   m_Layer: 5
-  m_Name: LivesAmountTxt
+  m_Name: LivesTimeTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1492,7 +1507,7 @@ GameObject:
   - component: {fileID: 1549171223378198227}
   - component: {fileID: 8443332803938495916}
   m_Layer: 5
-  m_Name: heart
+  m_Name: LivesAmountTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1515,7 +1530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42, y: 2.4350014}
+  m_AnchoredPosition: {x: 39, y: 2.4350014}
   m_SizeDelta: {x: 20.38, y: 45.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1549171223378198227
