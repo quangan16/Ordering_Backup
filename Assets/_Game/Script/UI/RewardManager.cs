@@ -90,10 +90,11 @@ public class RewardManager : MonoBehaviour
         while (int.Parse(coinAmountTxt.text) < targetCoinAmount - 1)
         {
             yield return new WaitForSeconds(0.05f);
-            coinAmountTxt.text = (int.Parse(coinAmountTxt.text) + 2).ToString();
+            coinAmountTxt.text = (int.Parse(coinAmountTxt.text) + 2).ToString();            
             yield return null;
 
         }
+        UIManager.Instance.SetCoin();
        
      
         yield return new WaitForSeconds(0.5f);

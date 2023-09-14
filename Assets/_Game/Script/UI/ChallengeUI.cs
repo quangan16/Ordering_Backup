@@ -19,23 +19,19 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public int heart;
     DateTime dateTime;
     string format = "dd-MM-yyyy HH:mm:ss";
-    private void Start()
-    {
-        levels = GameManager.Instance.challenge.levels.ToList();
-    }
     private void FixedUpdate()
     {
         CheckHeart();
     }
     void OnInit()
     {
+        levels = GameManager.Instance.challenge.levels.ToList();
         ChallegeItemAnimation[] challegeItems = layout.transform.GetComponentsInChildren<ChallegeItemAnimation>();
         foreach(var challegeItem in challegeItems)
         {
             Destroy(challegeItem.gameObject);
             Destroy(challegeItem);
         }
-
         for (int i = 0; i < levels.Count; i++)
         {
             int j = i;
@@ -73,6 +69,8 @@ public class ChallengeUI : MonoBehaviour, IUIControl
                 case Mode.Fail:
                     {
                         challenge.playButton.onClick.AddListener(() => OpenLevel(j));
+                        int rewards = levels[j].rewards;
+                        challenge.SetData(rewards);
                         break;
                     }
                 default:
@@ -176,6 +174,9 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     {
         Close();
     }
-
+    public void SetCoin(int coin)
+    {
+        this.coin.text = coin.ToString();
+    }
 
 }

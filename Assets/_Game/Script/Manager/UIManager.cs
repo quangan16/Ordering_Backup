@@ -9,7 +9,6 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] UIBossGameplay boss;
     [SerializeField] UIChallengeGameplay challengeGameplay;
     [SerializeField] UIGamePlay control;
-
     [SerializeField] Effect effect;
 
     IUIControl current;
@@ -29,13 +28,7 @@ public class UIManager : SingletonBehivour<UIManager>
         win.Open();
         PlayEffect();
        
-        if (GameManager.Instance.gameMode == GameMode.Challenge)
-        {
-            GameManager.isTouch = false;
-            int level = GameManager.Instance.currentLevel;
-            (Mode mode, int time) = DataManager.Instance.GetLevelMode(level);
-            DataManager.Instance.SetLevel(level, Mode.Pass, Mathf.RoundToInt(GameManager.timer) < time?time: Mathf.RoundToInt(GameManager.timer));
-        }
+        
     }
     public void OpenUI(IUIControl control)
     {
@@ -48,10 +41,6 @@ public class UIManager : SingletonBehivour<UIManager>
         current = control;
         current.Open();
 
-    }
-    public void RePlay()
-    {
-        OpenUI(current);
     }
     public void OpenChallenge()
     {
@@ -95,9 +84,9 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         current.SetText(text);
     }
-    public void SetCoin(int coin)
+    public void SetCoin()
     {
-        current.SetCoin(coin);
+        current.SetCoin(DataManager.Instance.GetCoin());
     }
     //public void SetTime(float time)
     //{

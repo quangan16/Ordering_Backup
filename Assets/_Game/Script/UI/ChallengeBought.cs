@@ -15,10 +15,11 @@ public class ChallengeBought :  ChallegeItemAnimation
     public void BuyLevel()
     {
 
-        if (DataManager.Instance.GetCoin() >= price)
+        if (DataManager.Instance.GetCoin() >= dataLevel.price)
         {
-            DataManager.Instance.AddCoin(-price);
+            DataManager.Instance.AddCoin(-dataLevel.price);
             DataManager.Instance.SetLevel(level, Mode.Bought, 0);
+            UIManager.Instance.SetCoin();
 
         }
         bought.gameObject.SetActive(true);
@@ -29,5 +30,7 @@ public class ChallengeBought :  ChallegeItemAnimation
     public void SetChildren(UnityAction listener)
     {
         bought.playButton.onClick.AddListener(listener);
+        bought.level = level;
+        bought.SetData(dataLevel.rewards);
     }
 }

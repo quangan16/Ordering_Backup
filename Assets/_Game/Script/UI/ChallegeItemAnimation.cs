@@ -14,7 +14,6 @@ public class ChallegeItemAnimation : MonoBehaviour
     public Button playButton;
     public Level dataLevel;
     public int level;
-    public int price;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -36,10 +35,9 @@ public class ChallegeItemAnimation : MonoBehaviour
     {
         transform.DOScale(Vector3.one, scaleDuration).SetEase(Ease.OutBack);
     }
-    public void SetData(int time)
+    public virtual void SetData(int data)
     {
-        timeTxt.text =  time.ToString();
-        price = time;
+        timeTxt.text =  data.ToString();
     }
     public void Play()
     {

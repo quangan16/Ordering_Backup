@@ -59,7 +59,6 @@ public class WinUI : MonoBehaviour
     public void Open()
     {
         gameObject.SetActive(true);
-        // indi.Move();
         
     }
     public void OnNext()
