@@ -17,6 +17,7 @@ public class DataManager : SingletonBehivour<DataManager>
     {
         SetCoin(GetCoin() + coin);
     }
+
     public void SetTime(string time)
     {
         PlayerPrefs.SetString("time", time);
@@ -25,6 +26,7 @@ public class DataManager : SingletonBehivour<DataManager>
     {
         return PlayerPrefs.GetString("time",DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"));
     }
+
     public void SetHeart(int heart)
     {
         PlayerPrefs.SetInt("heart", heart);
@@ -32,6 +34,15 @@ public class DataManager : SingletonBehivour<DataManager>
     public int GetHeart()
     {
         return PlayerPrefs.GetInt("heart", 3);
+    }
+
+    public void SetTotalChallenge(int totalChallenge)
+    {
+        PlayerPrefs.SetInt("totalchallenge", totalChallenge);
+    }    
+    public int GetTotalChallenge()
+    {
+        return PlayerPrefs.GetInt("totalchallenge", 0);
     }
 
     public (Mode,int) GetLevelMode(int level)
@@ -47,7 +58,7 @@ public class DataManager : SingletonBehivour<DataManager>
         string name = "level" + level;
         string t = (int)mode + " " + time;
         PlayerPrefs.SetString(name, t);
-    }
+    } //challlenge
 
     public int GetNormalLevel()
     {
@@ -57,6 +68,7 @@ public class DataManager : SingletonBehivour<DataManager>
     {
         PlayerPrefs.SetInt("normal", level);
     }
+
     public int GetBossLevel()
     {
         return PlayerPrefs.GetInt("boss", 0);
