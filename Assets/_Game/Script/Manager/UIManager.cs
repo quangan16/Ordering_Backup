@@ -88,6 +88,7 @@ public class UIManager : SingletonBehivour<UIManager>
     public void SetCoin()
     {
         current.SetCoin(DataManager.Instance.GetCoin());
+        print(DataManager.Instance.GetCoin());
     }
     //public void SetTime(float time)
     //{

@@ -25,6 +25,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public void Replay()
     {
         GameManager.Instance.Replay();
+        
     }
     public void OpenChallenge()
     {
