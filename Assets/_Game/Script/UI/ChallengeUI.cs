@@ -129,7 +129,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
     public void BackBtn()
     {
-        UIManager.Instance.OpenGameplay();
+        
     }
 
     public void Open()
