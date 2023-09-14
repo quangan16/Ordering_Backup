@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,11 @@ public class WinUI : MonoBehaviour
     [SerializeField] private Button adsButton;
 
     [SerializeField] private Button normalButton;
+
+    public void Start()
+    {
+        normalButton.GetComponentInChildren<TextMeshProUGUI>().text = GameManager.Instance.current.rewards.ToString();
+    }
    
     // Start is called before the first frame update
 

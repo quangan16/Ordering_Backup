@@ -24,7 +24,6 @@ public class IndicatorController : MonoBehaviour
 
     void Start()
     {
-        // multiplierBarLength = MultiplierBar.GetComponent<RectTransform>().rect.width;
     }
 
     private void OnEnable()
