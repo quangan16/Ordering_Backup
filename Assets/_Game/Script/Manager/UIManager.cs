@@ -12,6 +12,7 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] Effect effect;
     [SerializeField] PopupBoss popupBoss;
     [SerializeField] ChallengeUnlockPopup popupChallenge;
+    //[SerializeField] shop 
 
     IUIControl current;
     private void Start()
@@ -23,8 +24,6 @@ public class UIManager : SingletonBehivour<UIManager>
     {
 
     }
-
- 
     public void OnWin()
     {
         if(GameManager.Instance.isWin)
@@ -94,6 +93,14 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         current.SetCoin(DataManager.Instance.GetCoin());
     }
+    public void OpenShop()
+    {
+        //shop.Open();
+    }
+
+
+
+
     //public void SetTime(float time)
     //{
     //    current.SetTime(time);  

@@ -52,6 +52,10 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     {
         this.coin.text = coin.ToString();
     }
+    public void OpenShop()
+    {
+        UIManager.Instance.OpenShop();
+    }
 
 
 
