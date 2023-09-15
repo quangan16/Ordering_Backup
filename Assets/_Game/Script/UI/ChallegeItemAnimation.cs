@@ -41,6 +41,7 @@ public class ChallegeItemAnimation : MonoBehaviour
     }
     public void Play()
     {
+        if(UIManager.Instance.challenge.heart>0)
         DataManager.Instance.SetLevel(level, Mode.Fail, 0);
     }
 

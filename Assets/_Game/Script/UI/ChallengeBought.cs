@@ -15,7 +15,8 @@ public class ChallengeBought :  ChallegeItemAnimation
     public void BuyLevel()
     {
 
-        if (DataManager.Instance.GetCoin() >= dataLevel.price)
+        if (DataManager.Instance.GetCoin() 
+            >= dataLevel.price)
         {
             DataManager.Instance.AddCoin(-dataLevel.price);
             DataManager.Instance.SetLevel(level, Mode.Bought, 0);

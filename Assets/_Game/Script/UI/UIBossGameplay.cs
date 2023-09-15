@@ -57,10 +57,7 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
     {
         this.coin.text = coin.ToString();
     }
-    public void Exit()
-    {
-        UIManager.Instance.OpenGameplay();
-    }
+
 
 
 
