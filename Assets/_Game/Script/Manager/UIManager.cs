@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UIManager : SingletonBehivour<UIManager>
 {
-    [SerializeField] ChallengeUI challenge;
+    public ChallengeUI challenge;
     [SerializeField] WinUI win;
     [SerializeField] LoseUI lose;
     [SerializeField] UIBossGameplay boss;
