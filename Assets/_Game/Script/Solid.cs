@@ -71,16 +71,18 @@ public class Solid : MonoBehaviour
             }
             for (int i = 0; i < spriteRenderers.Length; i++)
             {
-                SpriteRenderer sprite = spriteRenderers[i];
-                sprite.DOFade(0, 1f);
+                //SpriteRenderer sprite = spriteRenderers[i];
+                //sprite.DOFade(0, 1f);
             }
+            
             MoveDeath();
             Instantiate(ps, transform.position, Quaternion.identity);
             blinkVoice.Play();
 
         }
         isDead = true;
-        
+
+
 
 
     }
@@ -110,17 +112,36 @@ public class Solid : MonoBehaviour
     public virtual void MoveDeath()
     {
 
-        if (CompareTag("Lock"))
+        //if (CompareTag("Lock"))
+        //{
+        //    transform.DORotate(Vector3.forward * 720, 1f, RotateMode.FastBeyond360);
+        //    transform.DOScale(0.2f, 1f);
+        //}
+        float random = Random.Range(-60,60);
+        Vector3 pos = new Vector3( Mathf.Sin(random), Mathf.Cos(random),0);
+        rb.gravityScale = 1f;
+        for (int i = 0; i < spriteRenderers.Length; i++)
         {
-            transform.DORotate(Vector3.forward * 720, 1f, RotateMode.FastBeyond360);
-            transform.DOScale(0.2f, 1f);
+            SpriteRenderer sprite = spriteRenderers[i];
+            sprite.DOFade(0, 1.5f);
         }
-        
-        Invoke(nameof(OnDeath), 1.5f);
+      
+        transform.DOLocalRotate( Vector3.forward*random+transform.rotation.y*Vector3.up+transform.rotation.x*Vector3.right, 0.5f);
+        transform.DOScale(0.45f, 0.5f);     
+        transform.DOJump(transform.position + pos, 1f, 1, 0.8f).OnComplete(() =>
+        {
+            OnDeath();
+        }
+        );
+
+
+
+
+
     }
     public void OnDeath()
     {
-       
+        
         Destroy(this);
         gameObject.SetActive(false);
         

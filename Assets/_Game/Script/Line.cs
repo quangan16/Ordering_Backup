@@ -34,14 +34,19 @@ public class Line : Solid
     }
     private void Update()
     {
-        if (isVertical)
+        if(!isDead)
         {
-            transform.localPosition = new Vector3(startPosition.x, transform.localPosition.y);
+            if (isVertical)
+            {
+                transform.localPosition = new Vector3(startPosition.x, transform.localPosition.y);
+            }
+            else
+            {
+                transform.localPosition = new Vector3(transform.localPosition.x, startPosition.y);
+            }
+
         }
-        else
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x, startPosition.y);
-        }
+       
        
     }
 
@@ -69,7 +74,7 @@ public class Line : Solid
         //Instantiate(ps, transform.position, Quaternion.identity);
         //blinkVoice.Play();
 
-        transform.DOLocalMove((transform.localPosition*2 - startPosition), 1f);
+        //transform.DOLocalMove((transform.localPosition*2 - startPosition), 1f);
         base.MoveDeath();
     }
 
