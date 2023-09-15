@@ -55,7 +55,7 @@ public class IndicatorController : MonoBehaviour
         // {
             if (other.CompareTag("Multiplier") && other.TryGetComponent(out TextMeshProUGUI text))
             {
-                float targetTextSize = 48;
+                float targetTextSize = 50;
                 float scaleDuration = 0.3f;
                 var multiplier = text.text[1] - '0';
                 adsCoinTxt.text = (int.Parse(achievedCoinTxt.text) * multiplier).ToString();
@@ -70,7 +70,7 @@ public class IndicatorController : MonoBehaviour
     {
         // if (winUI.ButtonClicked == false)
         // {
-            float normalTextSize = 34;
+            float normalTextSize = 39;
             float scaleDuration = 0.3f;
             if (other.CompareTag("Multiplier") && other.TryGetComponent(out TextMeshProUGUI text))
             {
