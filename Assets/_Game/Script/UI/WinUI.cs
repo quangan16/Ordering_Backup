@@ -82,7 +82,7 @@ public class WinUI : MonoBehaviour
                 }
             case GameMode.Boss:
                 {
-                    DataManager.Instance.SetBossLevel(GameManager.Instance.currentLevel + 1);
+                    
                     UIManager.Instance.OpenGameplay();
                     break;
                 }

@@ -12,7 +12,7 @@ public class GameManager : SingletonBehivour<GameManager>
     public GameMode gameMode;
     public Level current;
     public int currentLevel;
-
+    public bool isWin => current.isWin;
     public static float timer;
     public static bool isTouch = false;
     public static int moves;
@@ -29,7 +29,7 @@ public class GameManager : SingletonBehivour<GameManager>
             {
                 timer = 0;
             }
-            if (Mathf.Abs(timer) < 0.01f)
+            if (Mathf.Abs(timer) < 0.01f && !isWin)
             {
                 timer = 0;
                 UIManager.Instance.OpenLose(Type.time);
@@ -59,6 +59,23 @@ public class GameManager : SingletonBehivour<GameManager>
                     {
                         level = 0;
                     }
+                   
+
+                    //Open challenge each 3 levels 2,5,8,...
+
+                    if ((level - 1) % 3 == 0 && (level - 1) / 3 <= challenge.levels.Length - 1)
+                    {
+                        int levelChallenge = (level - 1) / 3;
+                        (Mode challengeMode,int time) = DataManager.Instance.GetLevelMode(levelChallenge);
+                        if(challengeMode == Mode.Locked)
+                        {
+                            DataManager.Instance.SetLevel(levelChallenge, Mode.Unlocked, 0);
+                            UIManager.Instance.RecommendChallenge();
+                        }
+                        
+                    }
+                    //Open boss each 6 levels 4,10,16,...
+                   
                     current = Instantiate(normal.levels[level]);
                     StartCountDown();
                     break;
@@ -95,14 +112,22 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         if( gameMode == GameMode.Boss )        
         {
-            moves--;
-            if (moves == 0)
+            moves--;      
+           
+            if (moves <= 0 )
             {
                 isTouch = false;
-                UIManager.Instance.OpenLose(Type.move); // 
+                Invoke(nameof(OpenLoseMove), 0.1f);
+                
             }
+        }     
+    }
+    void OpenLoseMove()
+    {
+        if (!isWin)
+        {
+            UIManager.Instance.OpenLose(Type.move); // 
         }
-       
     }
     public void CloseGamePlay()
     {
@@ -122,24 +147,12 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             normalLevel = 0;
         }
-        //Open challenge each 3 levels 2,5,8,...
-        
-        if ((normalLevel-1)%3==0 && (normalLevel-1)/3 <= challenge.levels.Length-1)
-        {
-            int level = (normalLevel-1) / 3;
-            (Mode mode, int time) = DataManager.Instance.GetLevelMode(level);
-            DataManager.Instance.SetLevel(level, Mode.Unlocked, 0);
-            UIManager.Instance.RecommendChallenge();
-        }
-        //Open boss each 6 levels 4,10,16,...
-        if ((normalLevel-3)%6 == 0 && (normalLevel-3)/6 <= boss.levels.Length-1)
+        if ((normalLevel - 3) % 6 == 0 && (normalLevel - 3) / 6 <= boss.levels.Length - 1)
         {
 
             UIManager.Instance.RecommendBoss();
+            DataManager.Instance.SetBossLevel((normalLevel - 3) / 6);
         }
-
-
-
         currentLevel = normalLevel;
         Invoke(nameof(OnNextLevel), 0.1f);
     }

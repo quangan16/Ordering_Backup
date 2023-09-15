@@ -27,8 +27,13 @@ public class UIManager : SingletonBehivour<UIManager>
  
     public void OnWin()
     {
-        win.Open();
-        PlayEffect();
+        if(GameManager.Instance.isWin)
+        {
+            win.Open();
+            PlayEffect();
+            GameManager.Instance.OnWin();
+        }
+
        
         
     }

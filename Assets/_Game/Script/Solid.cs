@@ -50,7 +50,7 @@ public class Solid : MonoBehaviour
             {
                 canClick= false;
                 UIManager.Instance.OnWin();
-                GameManager.Instance.OnWin();
+                
             }
         }
             
@@ -59,7 +59,8 @@ public class Solid : MonoBehaviour
             Clamp[] clamps= GetComponentsInChildren<Clamp>();
             for (int i = 0;i<clamps.Length;i++)
             {
-                clamps[i].isDead = true;               
+                clamps[i].isDead = true;
+                clamps[i].ChangeGreen(false);
             }
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.constraints = RigidbodyConstraints2D.None;
@@ -100,8 +101,7 @@ public class Solid : MonoBehaviour
             {
                 sp.enabled = false;
             }
-            GameManager.Instance.SubtractMove();
-            GameManager.Instance.StopAllCoroutines();
+  
         }
         GameManager.Instance.sprite.gameObject.SetActive(false);
         rb.bodyType = RigidbodyType2D.Static;
@@ -155,8 +155,21 @@ public class Solid : MonoBehaviour
     }
     public void CheckLocked()
     {
-        if(locked.Count == 0)
-        OnDespawn();
+        if (locked.Count == 0)
+        {
+            if (GameManager.Instance.gameMode == GameMode.Normal)
+            {
+                OnDespawn();
+            }
+            else
+            {
+                if (GameManager.timer > 0)
+                {
+                    OnDespawn();
+                }
+            }
+        }
+        
     }
     public virtual void SetUp()
     {
@@ -165,5 +178,10 @@ public class Solid : MonoBehaviour
     {
        
     }
-
+    private void OnMouseUp()
+    {
+        canClick = true;        
+        GameManager.Instance.SubtractMove();
+        GameManager.Instance.StopAllCoroutines();
+    }
 }

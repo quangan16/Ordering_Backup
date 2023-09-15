@@ -37,6 +37,10 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
         GameManager.Instance.OpenGamePlay(GameMode.Boss, DataManager.Instance.GetBossLevel());
 
     }
+    public void CloseGamePlay()
+    {
+        UIManager.Instance.OpenGameplay();
+    }
     public void Close()
     {
         gameObject.SetActive(false);

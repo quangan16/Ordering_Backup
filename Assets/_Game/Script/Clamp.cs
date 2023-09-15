@@ -7,7 +7,9 @@ public class Clamp : MonoBehaviour
 {
     [SerializeField] Transform checkPosition;
     [SerializeField] LayerMask layer;
+    [SerializeField] SpriteRenderer green;
     public SpriteRenderer shadow;
+
     public Solid target;
     Solid parent => GetComponentInParent<Solid>();
     public float time;
@@ -42,6 +44,7 @@ public class Clamp : MonoBehaviour
             if (target != null)
             {
                 time = 0;
+                ChangeGreen(false);
                 if (!target.ContainTrigger(this))
                 { 
                     target.AddTrigger(this); 
@@ -64,6 +67,7 @@ public class Clamp : MonoBehaviour
                 }
                 else
                 {
+                    ChangeGreen(true);
                     CheckParent();
                 }
 
@@ -90,5 +94,9 @@ public class Clamp : MonoBehaviour
         target.CheckFree();
         target = null;
     }
+    public void ChangeGreen(bool isGreen)
+    {
+        green.enabled = isGreen;
+    } 
 
 }
