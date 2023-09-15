@@ -32,13 +32,12 @@ public class Circle : Solid
     }
     public override void Move(Vector3 vectorA, Vector3 vectorB)
     {
-        
         if (locked.Count == 0)
         {
-       
+            
             float angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);    
             //rb.MoveRotation(rb.rotation + angle);
-            rb.angularVelocity = angle/Time.fixedDeltaTime;
+            rb.angularVelocity = angle/Time.deltaTime;
             GameManager.Instance.sprite.transform.position = transform.position;
             GameManager.Instance.sprite.gameObject.SetActive(true);
 
@@ -67,15 +66,15 @@ public class Circle : Solid
         //Instantiate(ps, transform.position, Quaternion.identity);
         //blinkVoice.Play();
 
-        transform.DOMove((transform.position*2 - lastPosition), 1f);
+        //transform.DOMove((transform.position*2 - lastPosition), 1f);
         base.MoveDeath();
     }
     void ShakeOff()
     {
         StopCollision();
         blinkVoice.PlayOneShot(stuckAu);
-             
-        transform.DOLocalMoveX(x+0.015f, 0.2f).OnComplete(()=> transform.DOLocalMoveX(x - 0.03f, 0.2f).OnComplete(() => StartCollision()   ));
+            
+        transform.DOLocalMoveX(x+0.015f, 0.15f).OnComplete(()=> transform.DOLocalMoveX(x - 0.03f, 0.15f).OnComplete(() => StartCollision()   ));
         
     }
     public override void OffSelected()
@@ -85,14 +84,32 @@ public class Circle : Solid
     }
     void StopCollision()
     {
+        MobileInput.target = null;
+        Collider2D[] collider = GetComponentsInChildren<Collider2D>();
+        foreach(var col in collider)
+        {
+            col.isTrigger = true;
+        }
+        rb.angularVelocity = 0;
         canClick= false;
         isTouch = true;      
     }
     void StartCollision()
     {
+        Collider2D[] collider = GetComponentsInChildren<Collider2D>();
+        OffSelected();
+
+        foreach (var col in collider)
+        {
+            if(col.gameObject.CompareTag("Block"))
+            {
+                col.isTrigger = false;
+
+            }
+        }
         transform.DOLocalMoveX(x, 0.2f);
         transform.rotation = z;
-        OffSelected();  
+        canClick = true;
         isTouch = false;
     }
 

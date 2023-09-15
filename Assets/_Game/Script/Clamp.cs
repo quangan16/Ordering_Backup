@@ -58,6 +58,7 @@ public class Clamp : MonoBehaviour
         }
         else
         {
+            ChangeGreen(true);
             time += Time.deltaTime;   
             if(time > 0.4f)
             {
@@ -67,7 +68,7 @@ public class Clamp : MonoBehaviour
                 }
                 else
                 {
-                    ChangeGreen(true);
+                    
                     CheckParent();
                 }
 
