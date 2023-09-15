@@ -37,7 +37,7 @@ public class Circle : Solid
             
             float angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);    
             //rb.MoveRotation(rb.rotation + angle);
-            rb.angularVelocity = angle/Time.fixedDeltaTime;
+            rb.angularVelocity = angle/Time.deltaTime;
             GameManager.Instance.sprite.transform.position = transform.position;
             GameManager.Instance.sprite.gameObject.SetActive(true);
 
@@ -73,7 +73,7 @@ public class Circle : Solid
     {
         StopCollision();
         blinkVoice.PlayOneShot(stuckAu);
-             
+            
         transform.DOLocalMoveX(x+0.015f, 0.15f).OnComplete(()=> transform.DOLocalMoveX(x - 0.03f, 0.15f).OnComplete(() => StartCollision()   ));
         
     }
@@ -84,6 +84,7 @@ public class Circle : Solid
     }
     void StopCollision()
     {
+        OffSelected();
         Collider2D[] collider = GetComponentsInChildren<Collider2D>();
         foreach(var col in collider)
         {
@@ -106,7 +107,7 @@ public class Circle : Solid
         }
         transform.DOLocalMoveX(x, 0.2f);
         transform.rotation = z;
-        OffSelected();  
+        canClick = true;
         isTouch = false;
     }
 

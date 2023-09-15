@@ -22,7 +22,22 @@ public class MobileInput : MonoBehaviour
         {
             GetOnClick();
         }
+        if (target)
+        {
 
+            Vector3 rPosition = (target.transform.position);
+            Vector3 ray1 = anchor - rPosition;
+            ray1.z = 0;
+            Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - rPosition;
+            mouse.z = 0;
+            if (Solid.canClick)
+            {
+                target.Move(ray1, mouse);
+
+            }
+
+            anchor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
         if (Input.GetMouseButtonUp(0))
         {
             if (target != null)
@@ -36,22 +51,7 @@ public class MobileInput : MonoBehaviour
     void FixedUpdate()
     {
         
-        if (target)
-        {
-
-            Vector3 rPosition = (target.transform.position);
-            Vector3 ray1 = anchor - rPosition;
-            ray1.z = 0;
-            Vector3 mouse =  Camera.main.ScreenToWorldPoint(Input.mousePosition) - rPosition;
-            mouse.z = 0;
-            if(Solid.canClick)
-            {
-                target.Move(ray1, mouse);
-
-            }
-
-            anchor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
+        
 
     }
     public  void GetOnClick()

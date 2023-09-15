@@ -123,10 +123,10 @@ public class Solid : MonoBehaviour
         for (int i = 0; i < spriteRenderers.Length; i++)
         {
             SpriteRenderer sprite = spriteRenderers[i];
-            sprite.DOFade(0, 1.5f);
+            sprite.DOFade(0.2f, 1.3f);
         }
       
-        transform.DOLocalRotate( Vector3.forward*random+transform.rotation.y*Vector3.up+transform.rotation.x*Vector3.right, 0.5f);
+        transform.DOLocalRotate( Vector3.forward*random+transform.rotation.y*Vector3.up+transform.rotation.x*Vector3.right, 0.5f,RotateMode.LocalAxisAdd);
         transform.DOScale(0.45f, 0.5f);     
         transform.DOJump(transform.position + pos, 1f, 1, 0.8f).OnComplete(() =>
         {
