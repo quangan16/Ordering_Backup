@@ -84,7 +84,7 @@ public class Circle : Solid
     }
     void StopCollision()
     {
-        OffSelected();
+        MobileInput.target = null;
         Collider2D[] collider = GetComponentsInChildren<Collider2D>();
         foreach(var col in collider)
         {
@@ -97,6 +97,8 @@ public class Circle : Solid
     void StartCollision()
     {
         Collider2D[] collider = GetComponentsInChildren<Collider2D>();
+        OffSelected();
+
         foreach (var col in collider)
         {
             if(col.gameObject.CompareTag("Block"))
