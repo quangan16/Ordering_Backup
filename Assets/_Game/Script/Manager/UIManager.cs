@@ -27,8 +27,13 @@ public class UIManager : SingletonBehivour<UIManager>
  
     public void OnWin()
     {
-        win.Open();
-        PlayEffect();
+        if(GameManager.Instance.isWin)
+        {
+            win.Open();
+            PlayEffect();
+            GameManager.Instance.OnWin();
+        }
+
        
         
     }
@@ -88,7 +93,6 @@ public class UIManager : SingletonBehivour<UIManager>
     public void SetCoin()
     {
         current.SetCoin(DataManager.Instance.GetCoin());
-        print(DataManager.Instance.GetCoin());
     }
     //public void SetTime(float time)
     //{

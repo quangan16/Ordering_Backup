@@ -20,11 +20,11 @@ public class ChallengeBought :  ChallegeItemAnimation
             DataManager.Instance.AddCoin(-dataLevel.price);
             DataManager.Instance.SetLevel(level, Mode.Bought, 0);
             UIManager.Instance.SetCoin();
-
+            bought.gameObject.SetActive(true);
+            bought.SetData(dataLevel.rewards);
+            holder.SetActive(false);
         }
-        bought.gameObject.SetActive(true);
-        bought.SetData(dataLevel.rewards);
-        holder.SetActive(false);
+        
         
     }
     public void SetChildren(UnityAction listener)

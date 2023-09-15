@@ -78,6 +78,11 @@ public class Circle : Solid
         transform.DOLocalMoveX(x+0.015f, 0.2f).OnComplete(()=> transform.DOLocalMoveX(x - 0.03f, 0.2f).OnComplete(() => StartCollision()   ));
         
     }
+    public override void OffSelected()
+    {
+        base.OffSelected();
+
+    }
     void StopCollision()
     {
         canClick= false;
@@ -90,8 +95,6 @@ public class Circle : Solid
         OffSelected();  
         isTouch = false;
     }
-    private void OnMouseUp()
-    {
-        canClick = true;
-    }
+
+
 }

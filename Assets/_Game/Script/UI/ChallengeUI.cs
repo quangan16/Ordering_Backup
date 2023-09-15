@@ -135,7 +135,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public void Open()
     {
         OnInit();
-
+        GetComponent<CanvasGroup>().alpha = 1f;
         gameObject.SetActive(true);
         string s = DataManager.Instance.GetTime();
         string[] day = s.Split(" ")[0].Split("-");
