@@ -71,6 +71,10 @@ public class Circle : Solid
     }
     void ShakeOff()
     {
+        if(GameManager.isVibrate)
+        {
+            Handheld.Vibrate();
+        }
         StopCollision();
         blinkVoice.PlayOneShot(stuckAu);
             

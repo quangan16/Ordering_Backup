@@ -14,11 +14,15 @@ public class Level : MonoBehaviour
     public float time;
     public int price;
     public int rewards;
-    private void Start()
+    private void Awake()
     {
         OnInit();
     }
     private void OnDestroy()
+    {
+        
+    }
+    private void OnDisable()
     {
         
     }
@@ -35,6 +39,13 @@ public class Level : MonoBehaviour
             int remove = UnityEngine.Random.Range(0, solidList.Count);
             solidList[remove].OnDespawn();
             
+        }
+    }
+    public void ChangeSkin(int i)
+    {
+        foreach(var sol in solidList)
+        {
+            sol.ChangeSkin(i);
         }
     }
 

@@ -17,6 +17,7 @@ public class GameManager : SingletonBehivour<GameManager>
     public static bool isTouch = false;
     public static int moves;
     public float adsCountdown;
+    public static bool isVibrate = true;
     private void Update()
     {
         if (isTouch && (gameMode == GameMode.Challenge || gameMode == GameMode.Boss))
@@ -44,7 +45,7 @@ public class GameManager : SingletonBehivour<GameManager>
     IEnumerator CountDown()
     {
         yield return new WaitForSeconds(10);
-        Instantiate(tutorial, tutoPos);
+        //Instantiate(tutorial, tutoPos);
 
     }
     public void StartCountDown()
@@ -105,6 +106,7 @@ public class GameManager : SingletonBehivour<GameManager>
         }
         gameMode = mode;
         currentLevel = level;
+        current.ChangeSkin(0);
         timer = (current.time);
         moves = current.moves;
         UIManager.Instance.SetCoin();
