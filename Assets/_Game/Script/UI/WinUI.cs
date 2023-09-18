@@ -31,7 +31,7 @@ public class WinUI : MonoBehaviour
     public void GetCoinDefault()
     {
         OnContinue();
-        DataManager.Instance.AddCoin(int.Parse(indi.achievedCoinTxt.text));
+        DataManager.Instance.AddCoin(int.Parse(indi.defaultCoinTxt.text));
 
     }
     public void GetCoinAds()
