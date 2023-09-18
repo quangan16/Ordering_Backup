@@ -77,6 +77,8 @@ public class WinUI : MonoBehaviour
             case GameMode.Normal:
                 {
                     DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
+                    
+                    GameManager.Instance.OnWinNormal();
                     GameManager.Instance.NextLevel();
                     break;
                 }
