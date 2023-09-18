@@ -77,4 +77,24 @@ public class DataManager : SingletonBehivour<DataManager>
     {
         PlayerPrefs.SetInt("boss", level);
     }
+
+    public void SetRingSkin(int skinID)
+    {
+        PlayerPrefs.SetInt("skin", skinID);
+    }
+
+    public void GetRingSkin()
+    {
+        PlayerPrefs.GetInt("skin");
+    }
+
+    public void SetBackground(int backgroundID)
+    {
+        PlayerPrefs.SetInt("background", backgroundID);
+    }
+
+    public int GetBackground()
+    {
+        return PlayerPrefs.GetInt("background");
+    }
 }

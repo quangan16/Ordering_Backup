@@ -32,12 +32,10 @@ public class SkinPage : MonoBehaviour
         try
         {
             selectedItemIndex = System.Array.IndexOf(shopItems, selectedObjectItem);
-            Debug.Log(selectedItemIndex);
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-            throw;
         }
 
     }

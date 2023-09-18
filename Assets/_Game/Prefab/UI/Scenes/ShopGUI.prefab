@@ -2156,6 +2156,8 @@ MonoBehaviour:
   textInactiveColor: {r: 0.2901961, g: 0.2901961, b: 0.2901961, a: 1}
   skinTxt: {fileID: 9034245014341398537}
   backgroundTxt: {fileID: 9034245014704433029}
+  shopItemData: {fileID: 11400000, guid: ea6a061e94a7b7e45bbcc2c0727c2f62, type: 2}
+  backgroundImg: {fileID: 9034245013900941991}
   LightSFX: {fileID: 8584271960565033834}
 --- !u!1 &9034245015267790724
 GameObject:
@@ -2279,7 +2281,8 @@ MonoBehaviour:
   - {fileID: 9161063612405635250}
   - {fileID: 3416441079018212616}
   selectedObjectItem: {fileID: 0}
-  background: {fileID: 0}
+  backgroundItemData: {fileID: 11400000, guid: ea6a061e94a7b7e45bbcc2c0727c2f62, type: 2}
+  background: {fileID: 9034245013900941991}
 --- !u!1 &9034245015488602055
 GameObject:
   m_ObjectHideFlags: 0

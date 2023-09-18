@@ -32,10 +32,13 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] private TextMeshProUGUI skinTxt;
     [SerializeField] private TextMeshProUGUI backgroundTxt;
 
+    [SerializeField] private ShopItemSO shopItemData;
+    [SerializeField] private Image backgroundImg;
     [SerializeField] private Image LightSFX;
 
     void OnEnable()
     {
+        backgroundImg.sprite = shopItemData.shopItems[DataManager.Instance.GetBackground()].itemContent;
         LightEffect();
     }
 

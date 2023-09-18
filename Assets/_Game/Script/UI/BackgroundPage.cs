@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,10 +14,14 @@ public class BackgroundPage : MonoBehaviour
     public GameObject selectedObjectItem;
     private int selectedItemIndex = 0;
 
+    [SerializeField] private ShopItemSO backgroundItemData;
+
     [SerializeField] private Image background;
 
     private void OnEnable()
     {
+        selectedItemIndex = DataManager.Instance.GetBackground();
+        SelectItem();
         ShopItem.OnItemSelected += GetSelectItem;
         ShopItem.OnItemSelected += SelectItem;
     }
@@ -27,12 +32,13 @@ public class BackgroundPage : MonoBehaviour
         ShopItem.OnItemSelected -= GetSelectItem;
     }
 
+    
+
     public void GetSelectItem()
     {
         try
         {
             selectedItemIndex = System.Array.IndexOf(shopItems, selectedObjectItem);
-            Debug.Log(selectedItemIndex);
         }
         catch (Exception e)
         {
@@ -53,8 +59,11 @@ public class BackgroundPage : MonoBehaviour
         shopItems[selectedItemIndex].transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
         if (ShopGUI.currentPage == PageState.BACKGROUND)
         {
-            background.color= shopItems[selectedItemIndex].transform.GetChild(0).GetChild(0).GetComponent<Image>()
-                .color;
+            // background.color= shopItems[selectedItemIndex].transform.GetChild(0).GetChild(0).GetComponent<Image>()
+            //     .color;
+
+            background.sprite = backgroundItemData.shopItems[selectedItemIndex].itemContent;
+            DataManager.Instance.SetBackground(selectedItemIndex);
         }
     }
 }
