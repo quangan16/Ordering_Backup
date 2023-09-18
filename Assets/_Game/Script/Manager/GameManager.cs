@@ -16,10 +16,10 @@ public class GameManager : SingletonBehivour<GameManager>
     public static float timer;
     public static bool isTouch = false;
     public static int moves;
-
+    public float adsCountdown;
     private void Update()
     {
-        if (isTouch && (gameMode == GameMode.Challenge|| gameMode == GameMode.Boss))
+        if (isTouch && (gameMode == GameMode.Challenge || gameMode == GameMode.Boss))
         {
             if (timer > 0)
             {
@@ -36,11 +36,15 @@ public class GameManager : SingletonBehivour<GameManager>
                 isTouch = false;
             }
         }
+        else if (gameMode == GameMode.Normal)
+        {
+            adsCountdown += Time.deltaTime;
+        }
     }
     IEnumerator CountDown()
     {
         yield return new WaitForSeconds(10);
-        Instantiate(tutorial,tutoPos);
+        Instantiate(tutorial, tutoPos);
 
     }
     public void StartCountDown()
@@ -59,29 +63,29 @@ public class GameManager : SingletonBehivour<GameManager>
                     {
                         level = 0;
                     }
-                   
+
 
                     //Open challenge each 3 levels 2,5,8,...
 
                     if ((level - 1) % 3 == 0 && (level - 1) / 3 <= challenge.levels.Length - 1)
                     {
                         int levelChallenge = (level - 1) / 3;
-                        (Mode challengeMode,int time) = DataManager.Instance.GetLevelMode(levelChallenge);
-                        if(challengeMode == Mode.Locked)
+                        (Mode challengeMode, int time) = DataManager.Instance.GetLevelMode(levelChallenge);
+                        if (challengeMode == Mode.Locked)
                         {
                             DataManager.Instance.SetLevel(levelChallenge, Mode.Unlocked, 0);
                             UIManager.Instance.RecommendChallenge();
                         }
-                        
+
                     }
                     //Open boss each 6 levels 4,10,16,...
-                   
+
                     current = Instantiate(normal.levels[level]);
                     StartCountDown();
                     break;
                 }
             case GameMode.Challenge:
-                {                    
+                {
                     current = Instantiate(challenge.levels[level]);
                     break;
                 }
@@ -99,28 +103,29 @@ public class GameManager : SingletonBehivour<GameManager>
                     break;
                 }
         }
-        gameMode= mode;
+        gameMode = mode;
         currentLevel = level;
         timer = (current.time);
         moves = current.moves;
         UIManager.Instance.SetCoin();
-        UIManager.Instance.SetText("Level " + (currentLevel+1));
+        UIManager.Instance.SetText("Level " + (currentLevel + 1));
         Camera.main.orthographicSize = current.cameraDist;
 
     }
+
     public void SubtractMove()
     {
-        if( gameMode == GameMode.Boss )        
+        if (gameMode == GameMode.Boss)
         {
-            moves--;      
-           
-            if (moves <= 0 )
+            moves--;
+
+            if (moves <= 0)
             {
                 isTouch = false;
                 Invoke(nameof(OpenLoseMove), 0.1f);
-                
+
             }
-        }     
+        }
     }
     void OpenLoseMove()
     {
@@ -129,19 +134,21 @@ public class GameManager : SingletonBehivour<GameManager>
             UIManager.Instance.OpenLose(Type.move); // 
         }
     }
+
     public void CloseGamePlay()
     {
-        isTouch= false;
+        isTouch = false;
         if (current != null)
         {
             Destroy(current);
             Destroy(current.gameObject);
         }
     }
+
     public void NextLevel()
     {
         CloseGamePlay();
-        int normalLevel = DataManager.Instance.GetNormalLevel();    
+        int normalLevel = DataManager.Instance.GetNormalLevel();
         //Debug out range
         if (normalLevel >= normal.levels.Length)
         {
@@ -160,6 +167,7 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         OpenGamePlay(GameMode.Normal, currentLevel);
     }
+
     public void Replay()
     {
         Solid.canClick = true;
@@ -172,6 +180,7 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         OpenGamePlay(gameMode, currentLevel);
     }
+
     public void OnWin()
     {
         StopAllCoroutines();
@@ -179,7 +188,7 @@ public class GameManager : SingletonBehivour<GameManager>
         if (gameMode == GameMode.Challenge)
         {
             (Mode mode, int time) = DataManager.Instance.GetLevelMode(currentLevel);
-            if(mode != Mode.Pass)
+            if (mode != Mode.Pass)
             {
                 int i = DataManager.Instance.GetTotalChallenge();
                 i++;
@@ -187,6 +196,19 @@ public class GameManager : SingletonBehivour<GameManager>
             }
             DataManager.Instance.SetLevel(currentLevel, Mode.Pass, Mathf.RoundToInt(timer) < time ? time : Mathf.RoundToInt(timer));
         }
+
+    }
+    public void OnWinNormal()
+    {
+        if (adsCountdown >= 60)
+        {
+            adsCountdown = 0;
+            UIManager.Instance.ShowAds();
+        }
+    }
+    public void DiscardRandom()
+    {
+        current.DiscardRandom();
     }
 
 

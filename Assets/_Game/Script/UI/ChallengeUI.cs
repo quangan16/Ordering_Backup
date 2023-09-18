@@ -173,8 +173,12 @@ public class ChallengeUI : MonoBehaviour, IUIControl
                 DataManager.Instance.SetTime(dateTime.ToString(format));
             }
 
-            
+            DataManager.Instance.SetLevel(level, Mode.Fail, 0);
             UIManager.Instance.OpenChallengeGameplay(level);
+        }
+        else
+        {
+            UIManager.Instance.OpenNotEnough(NotEnoughType.Heart);
         }
 
     }

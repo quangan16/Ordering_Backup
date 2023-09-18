@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,20 @@ public class Level : MonoBehaviour
     {
         
     }
-    public virtual void OnInit()
+    public void OnInit()
     {
         solidList = GetComponentsInChildren<Solid>().ToList();
 
+    }
+    public void DiscardRandom()
+    {
+        
+        if(!isWin)
+        {
+            int remove = UnityEngine.Random.Range(0, solidList.Count);
+            solidList[remove].OnDespawn();
+            
+        }
     }
 
 

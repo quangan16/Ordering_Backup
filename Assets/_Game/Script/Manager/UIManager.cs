@@ -14,6 +14,7 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] ChallengeUnlockPopup popupChallenge;
     [SerializeField] ShopGUI shop;
     [SerializeField] MainGUI mainMenu;
+    [SerializeField] NotEnoughUI notEnough;
     //[SerializeField] shop 
 
     IUIControl current;
@@ -103,6 +104,10 @@ public class UIManager : SingletonBehivour<UIManager>
     public void OpenMain()
     {
         OpenUI(mainMenu);
+    }
+    public void OpenNotEnough(NotEnoughType type)
+    {
+        notEnough.Open(type);
     }
 
 
