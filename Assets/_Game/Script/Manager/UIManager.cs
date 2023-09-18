@@ -58,6 +58,7 @@ public class UIManager : SingletonBehivour<UIManager>
     public void OpenGameplay()
     {
         OpenUI(control);
+        GameManager.Instance.ResetCountDown();
 
     }
     public void OpenBoss()

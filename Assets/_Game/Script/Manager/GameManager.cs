@@ -202,9 +202,13 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         if (adsCountdown >= 60)
         {
-            adsCountdown = 0;
+            ResetCountDown();
             UIManager.Instance.ShowAds();
         }
+    }
+    public void ResetCountDown()
+    {
+        adsCountdown = 0;
     }
     public void DiscardRandom()
     {
