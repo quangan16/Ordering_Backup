@@ -108,6 +108,7 @@ public class GameManager : SingletonBehivour<GameManager>
         Camera.main.orthographicSize = current.cameraDist;
 
     }
+
     public void SubtractMove()
     {
         if( gameMode == GameMode.Boss )        
@@ -129,6 +130,7 @@ public class GameManager : SingletonBehivour<GameManager>
             UIManager.Instance.OpenLose(Type.move); // 
         }
     }
+
     public void CloseGamePlay()
     {
         isTouch= false;
@@ -138,6 +140,7 @@ public class GameManager : SingletonBehivour<GameManager>
             Destroy(current.gameObject);
         }
     }
+
     public void NextLevel()
     {
         CloseGamePlay();
@@ -160,6 +163,7 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         OpenGamePlay(GameMode.Normal, currentLevel);
     }
+
     public void Replay()
     {
         Solid.canClick = true;
@@ -172,6 +176,7 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         OpenGamePlay(gameMode, currentLevel);
     }
+
     public void OnWin()
     {
         StopAllCoroutines();
@@ -187,6 +192,10 @@ public class GameManager : SingletonBehivour<GameManager>
             }
             DataManager.Instance.SetLevel(currentLevel, Mode.Pass, Mathf.RoundToInt(timer) < time ? time : Mathf.RoundToInt(timer));
         }
+    }
+    public void DiscardRandom()
+    {
+        current.DiscardRandom();
     }
 
 

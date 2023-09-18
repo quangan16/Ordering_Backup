@@ -43,7 +43,8 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
     public virtual void CallHint()
     {
-        getHint = true;
+        //getHint = true;
+        GameManager.Instance.DiscardRandom();
            
     }
     public void SetText(string text)
