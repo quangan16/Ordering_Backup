@@ -33,7 +33,7 @@ public class GameManager : SingletonBehivour<GameManager>
             if (Mathf.Abs(timer) < 0.01f && !isWin)
             {
                 timer = 0;
-                UIManager.Instance.OpenLose(Type.TimeOut);
+                UIManager.Instance.OpenLose(TypeOut.TimeOut);
                 isTouch = false;
             }
         }
@@ -133,7 +133,7 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         if (!isWin)
         {
-            UIManager.Instance.OpenLose(Type.MoveOut); // 
+            UIManager.Instance.OpenLose(TypeOut.MoveOut); // 
         }
     }
 
