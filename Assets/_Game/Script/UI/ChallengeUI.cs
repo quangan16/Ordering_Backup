@@ -172,8 +172,12 @@ public class ChallengeUI : MonoBehaviour, IUIControl
                 dateTime= DateTime.Now;
                 DataManager.Instance.SetTime(dateTime.ToString(format));
             }
+            (Mode mode, int t) = DataManager.Instance.GetLevelMode(level);
+           if ( mode == Mode.Bought)
+            {
+                DataManager.Instance.SetLevel(level, Mode.Fail, 0);
 
-            DataManager.Instance.SetLevel(level, Mode.Fail, 0);
+            }
             UIManager.Instance.OpenChallengeGameplay(level);
         }
         else

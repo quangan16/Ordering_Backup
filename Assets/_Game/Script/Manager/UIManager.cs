@@ -67,7 +67,7 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         OpenUI(boss);
     }
-    public void OpenLose(Type type)
+    public void OpenLose(TypeOut type)
     {
         lose.Open(type);
     }

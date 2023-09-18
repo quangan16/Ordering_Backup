@@ -9,11 +9,11 @@ public class LoseUI : MonoBehaviour
     [SerializeField] Image OutOfTime;
     [SerializeField] Image OutOfMove;
     [SerializeField] TextMeshProUGUI AddWhat;
-    Type type;
+    TypeOut type;
     public void AddMoves()
     {
         UIManager.Instance.ShowAds();
-        if(type == Type.time)
+        if(type == TypeOut.TimeOut)
         {
             GameManager.timer = 15;
 
@@ -43,10 +43,10 @@ public class LoseUI : MonoBehaviour
         
 
     }
-    public void Open(Type type)
+    public void Open(TypeOut type)
     {
         this.type = type;
-        if(type == Type.time)
+        if(type == TypeOut.TimeOut)
         {
             OutOfTime.gameObject.SetActive(true);
             OutOfMove.gameObject.SetActive(false);
@@ -62,8 +62,8 @@ public class LoseUI : MonoBehaviour
         gameObject.SetActive(true);
     }
 }
-public enum Type
+public enum TypeOut
 {
-    move,
-    time
+    MoveOut,
+    TimeOut
 }
