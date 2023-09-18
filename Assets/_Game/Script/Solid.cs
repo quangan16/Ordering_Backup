@@ -18,7 +18,8 @@ public class Solid : MonoBehaviour
     public Collider2D[] colliders => GetComponentsInChildren<Collider2D>();
     public SpriteRenderer[] spriteRenderers => GetComponentsInChildren<SpriteRenderer>();
     //public HashSet<Collider2D> triggered = new HashSet<Collider2D>();
-    
+    public Skin skin;
+    public SpriteRenderer currentSkin;
     public bool isTouch = false;
     public bool isDead = false;
     public static bool canClick = true;
@@ -26,7 +27,14 @@ public class Solid : MonoBehaviour
     private void Start()
     {
        OnInit();
-    }           
+    }
+    private void OnMouseUp()
+    {
+        canClick = true;
+        GameManager.Instance.SubtractMove();
+        GameManager.Instance.StopAllCoroutines();
+    }
+
     public virtual void OnInit()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,6 +45,10 @@ public class Solid : MonoBehaviour
         spriteShadow = GetComponentsInChildren<Clamp>().ToList().Select(x => x.shadow).ToList();
         spriteShadow.Add(shadow);
         lastPosition = transform.position;
+    }
+    public void ChangeSkin(int i)
+    {
+      //  currentSkin.sprite = skin.skins[i];
     }
     public void SetLastPosition(Vector3 position)
     { lastPosition = position; }
@@ -69,12 +81,7 @@ public class Solid : MonoBehaviour
             {
                 colid.enabled = false;
             }
-            for (int i = 0; i < spriteRenderers.Length; i++)
-            {
-                //SpriteRenderer sprite = spriteRenderers[i];
-                //sprite.DOFade(0, 1f);
-            }
-            
+
             MoveDeath();
             Instantiate(ps, transform.position, Quaternion.identity);
             blinkVoice.Play();
@@ -139,6 +146,10 @@ public class Solid : MonoBehaviour
 
 
     }
+    private void OnDisable()
+    {
+        transform.DOKill();
+    }
     public void OnDeath()
     {
         
@@ -198,11 +209,5 @@ public class Solid : MonoBehaviour
     public virtual void Move(Vector3 vectorA, Vector3 vectorB )
     {
        
-    }
-    private void OnMouseUp()
-    {
-        canClick = true;        
-        GameManager.Instance.SubtractMove();
-        GameManager.Instance.StopAllCoroutines();
     }
 }

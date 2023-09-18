@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3254388436024525463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 0.98, z: -19.912836}
+  m_LocalPosition: {x: -0.21, y: 0.64, z: -19.912836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solidList: []
-  cameraDist: 8
+  cameraDist: 9
   moves: 0
   time: 0
   price: 0
@@ -188,6 +188,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2091999603326088520}
     m_Modifications:
+    - target: {fileID: 2058348328604092611, guid: 6bb0529cd3e6a114b9dcd28c859615f6, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7144860828027681217, guid: 6bb0529cd3e6a114b9dcd28c859615f6, type: 3}
       propertyPath: m_Name
       value: HRT6

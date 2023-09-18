@@ -46,7 +46,7 @@ public class UIManager : SingletonBehivour<UIManager>
         if(current!= null)
         {
             current.Close();           
-        }
+        } 
         current = control;
         current.Open();
 
