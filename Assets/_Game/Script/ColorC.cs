@@ -52,7 +52,7 @@ public class ColorC : Circle
     {       
         foreach (var c in colorCs)
         {
-            c.isTouch = true;
+            //c.isTouch = true;
             c.OnSelected();                    
             c.MoveNotSync(angle*speed);
         }
@@ -77,7 +77,11 @@ public class ColorC : Circle
     {
         foreach (var c in colorCs)
         {
-            c.OffSelected();
+           if(!c.isTouch)
+            {
+                c.OffSelected();
+
+            }
         }
         base.CheckFree();
 

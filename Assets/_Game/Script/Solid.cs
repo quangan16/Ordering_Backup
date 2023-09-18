@@ -24,7 +24,7 @@ public class Solid : MonoBehaviour
     public bool isDead = false;
     public static bool canClick = true;
     Level level => GetComponentInParent<Level>();
-    private void Start()
+    private void Awake()
     {
        OnInit();
     }
@@ -112,7 +112,7 @@ public class Solid : MonoBehaviour
             }
   
         }
-        GameManager.Instance.sprite.gameObject.SetActive(false);
+        
         rb.bodyType = RigidbodyType2D.Static;
         isTouch = false;
     }
@@ -149,6 +149,12 @@ public class Solid : MonoBehaviour
     private void OnDisable()
     {
         transform.DOKill();
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            SpriteRenderer sprite = spriteRenderers[i];
+            sprite.DOKill();
+        }
+
     }
     public void OnDeath()
     {

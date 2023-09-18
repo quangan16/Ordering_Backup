@@ -114,7 +114,6 @@ public class Circle : Solid
         transform.DOLocalMoveX(x, 0.2f);
         transform.rotation = z;
         canClick = true;
-        isTouch = false;
     }
 
 

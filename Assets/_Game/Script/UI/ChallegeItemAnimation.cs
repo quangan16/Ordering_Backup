@@ -46,6 +46,10 @@ public class ChallegeItemAnimation : MonoBehaviour
             DataManager.Instance.SetLevel(level, Mode.Fail, 0);
 
         }
+        else
+        {
+
+        }
         
     }
 

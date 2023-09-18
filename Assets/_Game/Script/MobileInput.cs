@@ -46,6 +46,7 @@ public class MobileInput : MonoBehaviour
                 target.CheckFree();
             }
             target = null;
+            GameManager.Instance.sprite.gameObject.SetActive(false);
         }
     }
     void FixedUpdate()

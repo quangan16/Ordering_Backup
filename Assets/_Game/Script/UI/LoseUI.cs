@@ -13,7 +13,7 @@ public class LoseUI : MonoBehaviour
     public void AddMoves()
     {
         UIManager.Instance.ShowAds();
-        if(type == Type.time)
+        if(type == Type.TimeOut)
         {
             GameManager.timer = 15;
 
@@ -46,7 +46,7 @@ public class LoseUI : MonoBehaviour
     public void Open(Type type)
     {
         this.type = type;
-        if(type == Type.time)
+        if(type == Type.TimeOut)
         {
             OutOfTime.gameObject.SetActive(true);
             OutOfMove.gameObject.SetActive(false);
@@ -64,6 +64,6 @@ public class LoseUI : MonoBehaviour
 }
 public enum Type
 {
-    move,
-    time
+    MoveOut,
+    TimeOut
 }
