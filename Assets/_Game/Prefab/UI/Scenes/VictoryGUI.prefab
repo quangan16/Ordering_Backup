@@ -1596,7 +1596,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6594517454691165309}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WinUI, Assembly-CSharp
         m_MethodName: GetCoinAds
         m_Mode: 1
@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6594517454691165309}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WinUI, Assembly-CSharp
         m_MethodName: GetCoinDefault
         m_Mode: 1
@@ -2053,7 +2053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7706352736322591552
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3031,13 +3031,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8654657978657938868, guid: 6ce9c24b0a3ec1e4c966fb76500c9bb2, type: 3}
+      propertyPath: indi
+      value: 
+      objectReference: {fileID: 4626505401963697436}
+    - target: {fileID: 8654657978657938868, guid: 6ce9c24b0a3ec1e4c966fb76500c9bb2, type: 3}
       propertyPath: coinDestPos
       value: 
-      objectReference: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8654657978657938868, guid: 6ce9c24b0a3ec1e4c966fb76500c9bb2, type: 3}
       propertyPath: coinAmountTxt
       value: 
-      objectReference: {fileID: 7661451611672781786}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ce9c24b0a3ec1e4c966fb76500c9bb2, type: 3}
 --- !u!224 &8948082877415380803 stripped
