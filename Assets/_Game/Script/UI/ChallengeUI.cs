@@ -138,7 +138,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
     public void BackBtn()
     {
-        
+        UIManager.Instance.OpenMain();
     }
 
     public void Open()

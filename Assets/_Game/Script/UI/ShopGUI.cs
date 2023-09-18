@@ -102,4 +102,8 @@ public class ShopGUI : MonoBehaviour, IUIControl
     {
         gameObject.SetActive(false);
     }
+    public void BackBtn()
+    {
+        UIManager.Instance.OpenMain();
+    }
 }
