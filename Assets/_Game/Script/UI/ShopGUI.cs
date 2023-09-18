@@ -107,6 +107,14 @@ public class ShopGUI : MonoBehaviour, IUIControl
     }
     public void BackBtn()
     {
-        UIManager.Instance.OpenMain();
+        if (UIManager.Instance.PreviousScene is MainGUI)
+        {
+            UIManager.Instance.OpenMain();
+        }
+        else if (UIManager.Instance.PreviousScene is UIGamePlay)
+        {
+            UIManager.Instance.OpenGameplay(); 
+        }
+       
     }
 }

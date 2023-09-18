@@ -16,7 +16,7 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] MainGUI mainMenu;
     [SerializeField] NotEnoughUI notEnough;
     //[SerializeField] shop 
-
+    public IUIControl PreviousScene { get; private set; }
     IUIControl current;
     private void Start()
     {
@@ -47,6 +47,8 @@ public class UIManager : SingletonBehivour<UIManager>
         {
             current.Close();           
         }
+
+        PreviousScene = current;
         current = control;
         current.Open();
 
