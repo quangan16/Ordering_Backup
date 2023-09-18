@@ -272,7 +272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -18.829956}
+  m_AnchoredPosition: {x: 0, y: -18.829834}
   m_SizeDelta: {x: -60, y: -652.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5003487990115031716
@@ -1026,7 +1026,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3329212870620946235}
         m_TargetAssemblyTypeName: UIGamePlay, Assembly-CSharp
-        m_MethodName: CallHint
+        m_MethodName: Replay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1558,7 +1558,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_Pivot.y
@@ -1622,7 +1622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -88.5
       objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_AnchoredPosition.y
