@@ -11,11 +11,13 @@ public class VictoryUIAnim : MonoBehaviour
     [SerializeField] private GameObject adsButton;
     [SerializeField] private CanvasGroup victoryCanvas;
     [SerializeField] private Image CoinBanner;
+    
     private float fadeInDuration = 0.5f;
 
 
     void OnEnable()
     {
+        // CoinBanner.transform.SetParent(victoryCanvas.transform.GetChild(1));
         InitSetup();
         Show();
 
@@ -29,7 +31,8 @@ public class VictoryUIAnim : MonoBehaviour
 
     void InitSetup()
     {
-
+        // Vector3 initCoinPos = new Vector3(-212.7f, -75.0f, 0.0f);
+        // CoinBanner.transform.localPosition = initCoinPos;
         victoryCanvas.alpha = 0;
         victoryCanvas.transform.localPosition = new Vector3(0, -30.0f);
         titleAlpha.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);

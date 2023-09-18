@@ -16,7 +16,7 @@ public class IndicatorController : MonoBehaviour
     [SerializeField] private Transform endPoint;
     [SerializeField] private float slideDuration;
     [SerializeField] public TextMeshProUGUI adsCoinTxt;
-    [SerializeField] public TextMeshProUGUI achievedCoinTxt;
+    [SerializeField] public TextMeshProUGUI defaultCoinTxt;
     [SerializeField] private WinUI winUI;
     private float multiplierBarLength;
 
@@ -58,7 +58,7 @@ public class IndicatorController : MonoBehaviour
                 float targetTextSize = 50;
                 float scaleDuration = 0.3f;
                 var multiplier = text.text[1] - '0';
-                adsCoinTxt.text = (int.Parse(achievedCoinTxt.text) * multiplier).ToString();
+                adsCoinTxt.text = (int.Parse(defaultCoinTxt.text) * multiplier).ToString();
                 DOTween.To(() => text.fontSize, x => text.fontSize = x, targetTextSize, scaleDuration);
 
             }

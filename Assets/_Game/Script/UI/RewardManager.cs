@@ -17,7 +17,10 @@ public class RewardManager : MonoBehaviour
 
     [SerializeField] private LoadingUI loading;
 
+    [SerializeField] private IndicatorController indi;
     [SerializeField] private WinUI winUI => GetComponentInParent<WinUI>();
+
+    private int rewardAmount;
 
     void Awake()
     {
@@ -35,10 +38,15 @@ public class RewardManager : MonoBehaviour
     {
         
     }
-    
-    
-    public void GetCoin()
+
+    public void GetAdsCoin()
     {
+        rewardAmount = int.Parse(indi.adsCoinTxt.text);
+        StartCoroutine(RewardAnim());
+    }
+    public void GetDefaultCoin()
+    {
+        rewardAmount = int.Parse(indi.defaultCoinTxt.text);
         StartCoroutine(RewardAnim());
     }
     
@@ -87,17 +95,16 @@ public class RewardManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.5f);
-        int targetCoinAmount = int.Parse(coinAmountTxt.text) ;
-        while (int.Parse(coinAmountTxt.text) < targetCoinAmount - 1)
+        int targetCoinAmount = int.Parse(coinAmountTxt.text) + rewardAmount;
+        while (int.Parse(coinAmountTxt.text) < targetCoinAmount -1)
         {
             yield return new WaitForSeconds(0.05f);
-            coinAmountTxt.text = (int.Parse(coinAmountTxt.text) + GameManager.Instance.current.rewards/7).ToString();            
+            coinAmountTxt.text = (int.Parse(coinAmountTxt.text) + rewardAmount/7).ToString();            
             yield return null;
 
         }
         UIManager.Instance.SetCoin();
-       
-     
+
         yield return new WaitForSeconds(0.5f);
         //
        
