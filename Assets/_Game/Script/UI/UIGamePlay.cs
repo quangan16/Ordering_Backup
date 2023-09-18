@@ -6,6 +6,8 @@ using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
+
+
 public class UIGamePlay : MonoBehaviour,IUIControl
 {
     // Start is called before the first frame update
@@ -57,6 +59,11 @@ public class UIGamePlay : MonoBehaviour,IUIControl
         UIManager.Instance.OpenShop();
     }
 
+    public void BackToMain()
+    {
+        UIManager.Instance.OpenMain();
+        
+    }
 
 
 

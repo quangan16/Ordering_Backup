@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Image = UnityEngine.UI.Image;
 
 public enum PageState
 {
@@ -14,17 +9,17 @@ public enum PageState
     BACKGROUND
 }
 
-public class ShopGUI : MonoBehaviour
+public class ShopGUI : MonoBehaviour, IUIControl
 {
     public static ShopGUI Instance;
 
     public static PageState currentPage;
-   
-    
+
 
     [SerializeField] private Image skinButtonImg;
 
     [SerializeField] private Image backgroundButtonImg;
+
     // Start is called before the first frame update
     [SerializeField] private GameObject skinPage;
     [SerializeField] private GameObject backgroundPage;
@@ -33,11 +28,22 @@ public class ShopGUI : MonoBehaviour
     [SerializeField] private Color buttonInactiveColor;
     [SerializeField] private Color textActiveColor;
     [SerializeField] private Color textInactiveColor;
-    
+
     [SerializeField] private TextMeshProUGUI skinTxt;
     [SerializeField] private TextMeshProUGUI backgroundTxt;
 
-    
+    [SerializeField] private Image LightSFX;
+
+    void OnEnable()
+    {
+        LightEffect();
+    }
+
+    void OnDisable()
+    {
+        DOTween.KillAll();
+    }
+
 
     void Awake()
     {
@@ -51,18 +57,6 @@ public class ShopGUI : MonoBehaviour
         }
     }
 
-    // private void OnEnable()
-    // {
-    //     ShopItem.OnItemSelected += GetSelectItem;
-    //     ShopItem.OnItemSelected += SelectItem;
-    // }
-
-    // private void OnDisable()
-    // {
-    //     ShopItem.OnItemSelected -= SelectItem;
-    //     ShopItem.OnItemSelected -= GetSelectItem;
-    // }
-
     void Start()
     {
         skinPage.gameObject.SetActive(true);
@@ -70,20 +64,6 @@ public class ShopGUI : MonoBehaviour
         currentPage = PageState.SKIN;
     }
 
-    // public void GetSelectItem()
-    // {
-    //     try
-    //     {
-    //         selectedItemIndex = System.Array.IndexOf(shopItems, selectedObjectItem);
-    //         Debug.Log(selectedItemIndex);
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         Console.WriteLine(e);
-    //         throw;
-    //     }
-    //   
-    // }
 
     public void OnSkinPageSelect()
     {
@@ -98,7 +78,6 @@ public class ShopGUI : MonoBehaviour
 
     public void OnBackgroundPageSelect()
     {
-        
         skinButtonImg.gameObject.GetComponentInChildren<Image>().color = buttonInactiveColor;
         backgroundButtonImg.gameObject.GetComponentInChildren<Image>().color = buttonActiveColor;
         skinPage.gameObject.SetActive(false);
@@ -107,25 +86,20 @@ public class ShopGUI : MonoBehaviour
         backgroundTxt.color = textActiveColor;
         currentPage = PageState.BACKGROUND;
     }
-    // Update is called once per frame
-    void Update()
+
+    public void LightEffect()
     {
-        
+        LightSFX.transform.DOScale(Vector3.one * 0.5f, 0.8f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        LightSFX.transform.DORotate(Vector3.forward * 360.0f, 4.0f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1);
     }
 
-    // public void DeselectItem()
-    // {
-    //     shopItems[selectedItemIndex].transform.GetChild(0).GetChild(2).gameObject.SetActive(false); 
-    // }
-    //
-    // public void SelectItem()
-    // {
-    //     
-    //     shopItems[selectedItemIndex].transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
-    //     if (currentPage == PageState.SKIN)
-    //     {
-    //         ringSkin.sprite = shopItems[selectedItemIndex].transform.GetChild(0).GetChild(1).GetComponent<Image>()
-    //             .sprite;
-    //     }
-    // }
+    public void Open()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
 }

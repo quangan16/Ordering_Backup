@@ -12,12 +12,14 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] Effect effect;
     [SerializeField] PopupBoss popupBoss;
     [SerializeField] ChallengeUnlockPopup popupChallenge;
+    [SerializeField] ShopGUI shop;
+    [SerializeField] MainGUI mainMenu;
     //[SerializeField] shop 
 
     IUIControl current;
     private void Start()
     {
-        OpenGameplay();
+       OpenMain();
         
     }
     public void ShowAds()
@@ -95,9 +97,13 @@ public class UIManager : SingletonBehivour<UIManager>
     }
     public void OpenShop()
     {
-        //shop.Open();
+        OpenUI(shop);
     }
 
+    public void OpenMain()
+    {
+        OpenUI(mainMenu);
+    }
 
 
 

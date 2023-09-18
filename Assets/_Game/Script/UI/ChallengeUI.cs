@@ -21,6 +21,15 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public int heart;
     DateTime dateTime;
     string format = "dd-MM-yyyy HH:mm:ss";
+
+    [SerializeField] private Slider challengeBar;
+    [SerializeField] private TextMeshProUGUI passedChallengeTxt;
+
+    
+    private void OnEnable()
+    {
+        UpdateChallengeBar();
+    }
     private void FixedUpdate()
     {
         CheckHeart();
@@ -135,6 +144,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public void Open()
     {
         OnInit();
+        // UpdateChallengeBar();
         GetComponent<CanvasGroup>().alpha = 1f;
         gameObject.SetActive(true);
         string s = DataManager.Instance.GetTime();
@@ -181,6 +191,12 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public void SetCoin(int coin)
     {
         this.coin.text = coin.ToString();
+    }
+
+    public void UpdateChallengeBar()
+    {
+        challengeBar.value = totalChallengePassed;
+        passedChallengeTxt.text = totalChallengePassed.ToString() + "/20";
     }
 
 }
