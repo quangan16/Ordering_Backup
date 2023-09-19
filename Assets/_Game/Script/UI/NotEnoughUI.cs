@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NotEnoughUI : MonoBehaviour
 {
+    [SerializeField] private ChallengeBought bought;
     NotEnoughType type;
     [SerializeField] TextMeshProUGUI title;
     [SerializeField] TextMeshProUGUI content;
@@ -38,12 +39,34 @@ public class NotEnoughUI : MonoBehaviour
     {
         Close();
     }
-    public void Accept()
+
+    public void OnAccept()
+    {
+        WatchAds();
+    }
+
+
+    public void WatchAds()
+    {
+        AdsAdapter.Instance.ShowRewardedVideo(() =>
+            {
+
+                AdsAdapter.LogAFAndFB($"get_coins", "0",
+                    "0");
+                AddResources();
+            }, () =>
+            {
+                // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                Debug.Log("Failed to load");
+                
+            }, 0,
+            AdsAdapter.where.get_coins);
+    }
+    public void AddResources()
     {
         
         if(type == NotEnoughType.Coin)
         {
-            UIManager.Instance.ShowAds();
             DataManager.Instance.AddCoin(50);
             UIManager.Instance.SetCoin();
         }

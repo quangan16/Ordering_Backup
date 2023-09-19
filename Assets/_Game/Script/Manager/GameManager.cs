@@ -18,6 +18,13 @@ public class GameManager : SingletonBehivour<GameManager>
     public static int moves;
     public float adsCountdown;
     public static bool isVibrate = true;
+
+    private void Start()
+    {
+        AdsAdapter.Instance.ShowBanner();
+       // throw new NotImplementedException();
+    }
+
     private void Update()
     {
         if (isTouch && (gameMode == GameMode.Challenge || gameMode == GameMode.Boss))

@@ -37,10 +37,10 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public void NextLevel()
     {
         DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
-        UIManager.Instance.ShowAds();
+        AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.next_level);
         GameManager.Instance.NextLevel();
     }
-
+    
     public virtual void CallHint()
     {
         //getHint = true;
@@ -62,6 +62,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
     public void BackToMain()
     {
+        AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.back_to_main);
         UIManager.Instance.OpenMain();
         
     }
