@@ -60,8 +60,11 @@ public class Solid : MonoBehaviour
             if (level.isWin)
             {
                 canClick= false;
-                UIManager.Instance.OnWin();
-                
+                DOVirtual.DelayedCall(1.0f, () =>
+                {
+                    UIManager.Instance.OnWin();
+                });
+
             }
         }
             
