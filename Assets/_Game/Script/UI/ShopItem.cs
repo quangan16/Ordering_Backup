@@ -13,47 +13,24 @@ public enum ItemType
     BACKGROUND
 }
 
-[Serializable]
-public class ShopItem : MonoBehaviour, IPointerClickHandler
+public class ShopItem : MonoBehaviour
 {
-    public bool hasBought;
-    [SerializeField] private SkinPage skinPage;
-    [SerializeField] private BackgroundPage backgroundPage;
-    public static event Action OnItemSelected;
+
+
+
+    [SerializeField] GameObject borderSelect;
+
+    [SerializeField] Button selectBtn;
+    [SerializeField] Button buyBtn;
+    [SerializeField] Button equipBtn;
+    ItemType type;
     int price;
     int onSelect;
-    [SerializeField] Button selectBtn;
-    ItemType type;
 
 
 
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        switch (ShopGUI.currentPage)
-        {
-            case PageState.SKIN:
-                if (hasBought == true)
-                {
-                    skinPage.DeselectItem();
-                    skinPage.selectedObjectItem = gameObject;
-                    OnItemSelected?.Invoke();
-                }
-                break;
-            case PageState.BACKGROUND:
-                if (hasBought == true)
-                {
-                    backgroundPage.DeselectItem();
-                    backgroundPage.selectedObjectItem = gameObject;
-                    OnItemSelected?.Invoke();
-                }
 
-                break;
-        }
-
-
-
-    }
     //----------------------new-----------------------
     public void OnInit(SkinType type)
     {
@@ -61,8 +38,8 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
         SkinItem skinItem = DataManager.Instance.GetSkin(type);
         SetState(state);
         // change ring skin
-        // price = skinItem.price;
-        price = 0;
+        price = skinItem.price;
+        
         onSelect = (int)type;
         this.type = ItemType.SKIN;
 
@@ -73,7 +50,7 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(type);
         SetState(state);
         // change sprite background
-        //price = backGroundItem.price;
+        price = backGroundItem.price;
         onSelect = (int)type;
         this.type = ItemType.BACKGROUND;
 
@@ -100,7 +77,8 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
             }
             case ShopState.Equipped:
             {
-                //change Button equip => equipped
+                    //change Button equip => equipped
+                borderSelect.SetActive(true);
                 break;
             }
 
@@ -111,14 +89,7 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
         if(DataManager.Instance.GetCoin()>=price)
         {
             DataManager.Instance.AddCoin(-price);
-            if(type == ItemType.SKIN)
-            {
-                DataManager.Instance.SetRingSkinState(ShopState.Equipped, (SkinType)onSelect);
-            }
-            else
-            {
-                DataManager.Instance.SetBackGroundState(ShopState.Equipped,(BackGroundType)onSelect);   
-            }
+            Equip();
         }
         else
         {
@@ -142,11 +113,22 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
             DataManager.Instance.SetLastBackground((BackGroundType)onSelect);   
 
         }
+        //equipBtn => equipped 
+        GetComponentInParent<ShopGUI>().ReLoad();
     }
     public void AddEvent(UnityAction listener)
     {
-        selectBtn.onClick.RemoveAllListeners();
-        selectBtn.onClick.AddListener(listener);    
-    }
+        selectBtn.onClick.AddListener(listener);
+        
+        selectBtn.onClick.AddListener(() => borderSelect.SetActive(true));
 
+       // buyBtn.onClick.AddListener(listener);
+       // equipBtn.onClick.AddListener(listener); 
+
+
+    }
+    public void OffSelect()
+    {
+        borderSelect.SetActive(false);
+    }
 }
