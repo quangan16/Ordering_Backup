@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class DataManager : SingletonBehivour<DataManager>
 {
+    public Skin skins;
+    
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     public void SetCoin(int coin)
     {
         PlayerPrefs.SetInt("coin", coin);
@@ -78,15 +84,28 @@ public class DataManager : SingletonBehivour<DataManager>
         PlayerPrefs.SetInt("boss", level);
     }
 
-    public void SetRingSkin(int skinID)
+    public void SetLastRingSkin(SkinType type) //last
     {
-        PlayerPrefs.SetInt("skin", skinID);
+        PlayerPrefs.SetInt("LastSkin", (int)type);
     }
 
-    public void GetRingSkin()
+    public SkinType GetLastRingSkin() //last
     {
-        PlayerPrefs.GetInt("skin");
+        return (SkinType)PlayerPrefs.GetInt("LastSkin");
     }
+    public void SetRingSkinState(ShopState state,SkinType type)
+    {
+        PlayerPrefs.SetInt("skin" + type.ToString(), (int)state);
+    }   
+    public int GetRingSkinState(SkinType type)
+    {
+        return PlayerPrefs.GetInt("skin" + type.ToString(), 0);
+    }
+
+
+
+
+
 
     public void SetBackground(int backgroundID)
     {
@@ -97,4 +116,10 @@ public class DataManager : SingletonBehivour<DataManager>
     {
         return PlayerPrefs.GetInt("background");
     }
+}
+public enum ShopState
+{
+    UnBought,
+    Bought,
+    Equipped
 }

@@ -18,7 +18,7 @@ public abstract class UnitySingleton : BaseBehaviour
     #region Private Functions
     private void RegisterAsSingleInstanceAndInit()
     {
-        instances.Add(GetType(this), this);
+        instances.Add(GetType(), this);
         InnerInit();
     }
 
