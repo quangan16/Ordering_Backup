@@ -20,7 +20,7 @@ public class BackgroundPage : MonoBehaviour
 
     private void OnEnable()
     {
-        selectedItemIndex = DataManager.Instance.GetBackground();
+        //selectedItemIndex = DataManager.Instance.GetLastBackground();
         SelectItem();
         ShopItem.OnItemSelected += GetSelectItem;
         ShopItem.OnItemSelected += SelectItem;
@@ -63,7 +63,7 @@ public class BackgroundPage : MonoBehaviour
             //     .color;
 
             background.sprite = backgroundItemData.shopItems[selectedItemIndex].itemContent;
-            DataManager.Instance.SetBackground(selectedItemIndex);
+            //DataManager.Instance.SetLastBackground(selectedItemIndex);
         }
     }
 }

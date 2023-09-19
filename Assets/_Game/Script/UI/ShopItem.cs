@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,16 +18,16 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
     [SerializeField] private SkinPage skinPage;
     [SerializeField] private BackgroundPage backgroundPage;
     public static event Action OnItemSelected;
-
+    int price;
     [Serializable]
     public struct ShopItemData
     {
         public Sprite itemContent;
         public ItemType itemType;
     }
-   
-    
-  
+
+
+
     public void OnPointerClick(PointerEventData eventData)
     {
         switch (ShopGUI.currentPage)
@@ -49,9 +50,66 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
 
                 break;
         }
-        
-        
-       
+
+
+
     }
-   
+    //----------------------new-----------------------
+    public void OnInit(SkinType type)
+    {
+        ShopState state = DataManager.Instance.GetRingSkinState(type);
+        SkinItem skinItem = DataManager.Instance.GetSkin(type);
+        SetState(state);
+        price = skinItem.price;
+
+    }
+    public void OnInit(BackGroundType type)
+    {
+        ShopState state = DataManager.Instance.GetBackGroundState(type);
+        BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(type);
+        SetState(state);
+        price = backGroundItem.price;
+
+
+    }
+    void SetState(ShopState state)
+    {
+        switch (state)
+        {
+            case ShopState.Locked:
+            {
+                //active gameObject Locked
+                break;
+            }
+            case ShopState.UnBought:
+            {
+                    // active gameObject UnBought
+                    //priceText.text = price.ToString();
+                    break;
+            }
+            case ShopState.Bought:
+            {
+                // active gameObject bought
+                break;
+            }
+            case ShopState.Equipped:
+            {
+                //change Button equip => equipped
+                break;
+            }
+
+        }
+    }
+    public void Buy()
+    {
+        if(DataManager.Instance.GetCoin()>=price)
+        {
+            DataManager.Instance.AddCoin(-price);
+          //  DataManager.Instance.
+        }
+    }
+    public void Equip()
+    {
+
+    }
 }

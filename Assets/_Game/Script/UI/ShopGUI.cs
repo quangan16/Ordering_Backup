@@ -35,10 +35,11 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] private ShopItemSO shopItemData;
     [SerializeField] private Image backgroundImg;
     [SerializeField] private Image LightSFX;
+    [SerializeField] ShopItem itemPref;
 
     void OnEnable()
     {
-        backgroundImg.sprite = shopItemData.shopItems[DataManager.Instance.GetBackground()].itemContent;
+        //backgroundImg.sprite = shopItemData.shopItems[DataManager.Instance.GetBackground()].itemContent;
         LightEffect();
     }
 
@@ -124,4 +125,49 @@ public class ShopGUI : MonoBehaviour, IUIControl
         }
        
     }
+    //--------------------new-----------------
+    public void OnInit()
+    {
+        Skin skins = DataManager.Instance.skins;
+        N_BackGround backGround = DataManager.Instance.backGround;
+        ShopItem[] items = GetComponentsInChildren<ShopItem>();
+        foreach(ShopItem item in items)
+        {
+            Destroy(item.gameObject);
+            Destroy(item);
+        }
+
+
+
+
+
+        for (int i = 0; i< skins.skins.Length; i++)
+        {
+            int ii = i;
+            ShopItem shopItem = Instantiate(itemPref, skinPage.transform);           
+            shopItem.OnInit((SkinType)(ii));
+        }
+        for (int j = 0; j< backGround.BackGroundItems.Length; j++)
+        {
+            int jj = j;
+            ShopItem shopItem = Instantiate(itemPref, backgroundPage.transform);         
+            shopItem.OnInit((BackGroundType)jj);
+
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
