@@ -103,7 +103,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         {
             time -= timeSpan;
             heart++;
-            dateTime = DateTime.Now;
+            dateTime = DateTime.Now - time;
             DataManager.Instance.SetTime(dateTime.ToString(format));
             if (heart == 3)
             {
@@ -111,6 +111,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
             }
 
         }
+        
         timeSpan -= time;
         float timeToDisplay = (float)(timeSpan.TotalSeconds);
         int minutes = Mathf.FloorToInt(timeToDisplay / 60);
