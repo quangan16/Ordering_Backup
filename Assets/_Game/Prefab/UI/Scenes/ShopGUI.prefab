@@ -794,10 +794,10 @@ RectTransform:
   m_Father: {fileID: 9034245013984256824}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -304.85004}
-  m_SizeDelta: {x: 0, y: 609.71}
+  m_AnchoredPosition: {x: 0, y: 384.46002}
+  m_SizeDelta: {x: 0, y: -701.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9034245014106955376
 CanvasRenderer:
@@ -874,7 +874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 160}
+  m_AnchoredPosition: {x: 0, y: 215}
   m_SizeDelta: {x: 720, y: 899.2002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9034245014132550932
@@ -2110,7 +2110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9034245015041790845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2159,6 +2159,7 @@ MonoBehaviour:
   shopItemData: {fileID: 11400000, guid: ea6a061e94a7b7e45bbcc2c0727c2f62, type: 2}
   backgroundImg: {fileID: 9034245013900941991}
   LightSFX: {fileID: 8584271960565033834}
+  itemPref: {fileID: 0}
 --- !u!1 &9034245015267790724
 GameObject:
   m_ObjectHideFlags: 0
@@ -5738,7 +5739,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3464643996962226276, guid: 4500deeec7fe6494482468c7593a625e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4500deeec7fe6494482468c7593a625e, type: 3}
 --- !u!224 &6985406357291079765 stripped
 RectTransform:

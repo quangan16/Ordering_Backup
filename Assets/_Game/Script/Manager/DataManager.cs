@@ -135,6 +135,36 @@ public class DataManager : SingletonBehivour<DataManager>
         return (ShopState)PlayerPrefs.GetInt("Background"+type.ToString(),0);
     }
 
+    public void SetSoundState(int soundState)
+    {
+        PlayerPrefs.SetInt("Sound", soundState);
+    }
+
+    public int GetSoundState()
+    {
+        return PlayerPrefs.GetInt("Sound", 1);
+    }
+
+
+    public void SetMusicState(int musicState)
+    {
+        PlayerPrefs.SetInt("Music", musicState);
+    }
+
+    public int GetMusicState()
+    {
+        return PlayerPrefs.GetInt("Music", 1);
+    }
+
+    public void SetVibState(int vibState)
+    {
+        PlayerPrefs.SetInt("Vibration", vibState);
+    }
+
+    public int GetVibState()
+    {
+        return PlayerPrefs.GetInt("Vibration", 1);
+    }
 
 }
 public enum ShopState

@@ -52,7 +52,7 @@ public class GameManager : SingletonBehivour<GameManager>
     IEnumerator CountDown()
     {
         yield return new WaitForSeconds(10);
-        Instantiate(tutorial, tutoPos);
+        // Instantiate(tutorial, tutoPos);
 
     }
     public void StartCountDown()
