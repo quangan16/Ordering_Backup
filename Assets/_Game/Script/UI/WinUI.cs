@@ -71,7 +71,10 @@ public class WinUI : MonoBehaviour
     }
     public void OnNext()
     {
-
+        AdsAdapter.LogAFAndFB($"next_level", "0",
+            "0");
+        AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.next_level);
+        
         switch (GameManager.Instance.gameMode)
         {
             case GameMode.Normal:

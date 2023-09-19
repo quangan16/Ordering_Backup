@@ -7,11 +7,13 @@ using UnityEngine.Events;
 public class ChallengeBought :  ChallegeItemAnimation
 {
     public ChallegeItemAnimation bought;
+    public bool adWatched = false;
     [SerializeField] GameObject holder;
     private void Start()
     {
 
     }
+    
     public void BuyLevel()
     {
 
@@ -30,6 +32,15 @@ public class ChallengeBought :  ChallegeItemAnimation
         }
         
         
+    }
+
+    public void UnlockByAds()
+    {
+        DataManager.Instance.SetLevel(level, Mode.Bought, 0);
+        UIManager.Instance.SetCoin();
+        bought.gameObject.SetActive(true);
+        bought.SetData(dataLevel.rewards);
+        holder.SetActive(false);
     }
     public void SetChildren(UnityAction listener)
     {
