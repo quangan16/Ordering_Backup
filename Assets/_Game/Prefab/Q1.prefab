@@ -58,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7020025296720870179}
   - component: {fileID: 6953148155707214531}
+  - component: {fileID: 4495471451958280160}
   m_Layer: 3
   m_Name: Skin
   m_TagString: Untagged
@@ -132,6 +133,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &4495471451958280160
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477593567378114780}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4
 --- !u!1 &3675559554378065575
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +730,6 @@ MonoBehaviour:
   triggered: []
   locked: []
   lastPosition: {x: 0, y: 0, z: 0}
-  skin: {fileID: 11400000, guid: a92f82f8b0a8e374992430889956586f, type: 2}
   currentSkin: {fileID: 6953148155707214531}
   isTouch: 0
   isDead: 0

@@ -35,7 +35,7 @@ public class SkinPage : MonoBehaviour
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            print(e);
         }
 
     }

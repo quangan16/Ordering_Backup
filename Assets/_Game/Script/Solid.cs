@@ -18,7 +18,6 @@ public class Solid : MonoBehaviour
     public Collider2D[] colliders => GetComponentsInChildren<Collider2D>();
     public SpriteRenderer[] spriteRenderers => GetComponentsInChildren<SpriteRenderer>();
     //public HashSet<Collider2D> triggered = new HashSet<Collider2D>();
-    public Skin skin;
     public SpriteRenderer currentSkin;
     public bool isTouch = false;
     public bool isDead = false;
@@ -46,9 +45,9 @@ public class Solid : MonoBehaviour
         spriteShadow.Add(shadow);
         lastPosition = transform.position;
     }
-    public void ChangeSkin(int i)
+    public void ChangeSkin(Sprite sprite)
     {
-      //  currentSkin.sprite = skin.skins[i];
+      //  currentSkin.sprite = sprite;
     }
     public void SetLastPosition(Vector3 position)
     { lastPosition = position; }

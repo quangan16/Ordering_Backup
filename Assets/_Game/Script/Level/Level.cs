@@ -45,7 +45,7 @@ public class Level : MonoBehaviour
     {
         foreach(var sol in solidList)
         {
-            sol.ChangeSkin(i);
+           // sol.ChangeSkin(i);
         }
     }
 

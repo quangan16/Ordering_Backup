@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class DataManager : SingletonBehivour<DataManager>
 {
+    public Skin skins;
+    public N_BackGround backGround;
+    
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     public void SetCoin(int coin)
     {
         PlayerPrefs.SetInt("coin", coin);
@@ -78,23 +85,62 @@ public class DataManager : SingletonBehivour<DataManager>
         PlayerPrefs.SetInt("boss", level);
     }
 
-    public void SetRingSkin(int skinID)
+    
+    public SkinItem GetSkin(SkinType type)
     {
-        PlayerPrefs.SetInt("skin", skinID);
+        return skins.GetSkinItem(type);
+    }
+    public void SetLastRingSkin(SkinType type) //last
+    {
+        PlayerPrefs.SetInt("LastSkin", (int)type);
     }
 
-    public void GetRingSkin()
+    public SkinType GetLastRingSkin() //last
     {
-        PlayerPrefs.GetInt("skin");
+        return (SkinType)PlayerPrefs.GetInt("LastSkin");
+    }
+    public void SetRingSkinState(ShopState state,SkinType type)
+    {
+        PlayerPrefs.SetInt("skin" + type.ToString(), (int)state);
+    }   
+    public ShopState GetRingSkinState(SkinType type)
+    {
+        return (ShopState)PlayerPrefs.GetInt("skin" + type.ToString(), 0);
     }
 
-    public void SetBackground(int backgroundID)
+
+
+
+    public BackGroundItem GetBackGround(BackGroundType type)
     {
-        PlayerPrefs.SetInt("background", backgroundID);
+        return backGround.GetBackGround(type);
     }
 
-    public int GetBackground()
+    public void SetLastBackground(BackGroundType type)
     {
-        return PlayerPrefs.GetInt("background");
+        PlayerPrefs.SetInt("background", (int)type);
     }
+
+    public BackGroundType GetLastBackground()
+    {
+        return (BackGroundType)PlayerPrefs.GetInt("background",0);
+    }
+
+    public void SetBackGroundState(ShopState state, BackGroundType type)
+    {
+        PlayerPrefs.SetInt("Background"+type.ToString(),(int)state);
+    }
+    public ShopState GetBackGroundState(BackGroundType type)
+    {
+        return (ShopState)PlayerPrefs.GetInt("Background"+type.ToString(),0);
+    }
+
+
+}
+public enum ShopState
+{
+    Locked,
+    UnBought,
+    Bought,
+    Equipped
 }
