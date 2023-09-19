@@ -13,47 +13,23 @@ public enum ItemType
     BACKGROUND
 }
 
-[Serializable]
-public class ShopItem : MonoBehaviour, IPointerClickHandler
+public class ShopItem : MonoBehaviour
 {
-    public bool hasBought;
-    [SerializeField] private SkinPage skinPage;
-    [SerializeField] private BackgroundPage backgroundPage;
-    public static event Action OnItemSelected;
+
+
+
+    [SerializeField] GameObject borderSelect;
     int price;
     int onSelect;
     [SerializeField] Button selectBtn;
+    [SerializeField] Button buyBtn;
+    [SerializeField] Button equipBtn;
     ItemType type;
 
 
 
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        switch (ShopGUI.currentPage)
-        {
-            case PageState.SKIN:
-                if (hasBought == true)
-                {
-                    skinPage.DeselectItem();
-                    skinPage.selectedObjectItem = gameObject;
-                    OnItemSelected?.Invoke();
-                }
-                break;
-            case PageState.BACKGROUND:
-                if (hasBought == true)
-                {
-                    backgroundPage.DeselectItem();
-                    backgroundPage.selectedObjectItem = gameObject;
-                    OnItemSelected?.Invoke();
-                }
 
-                break;
-        }
-
-
-
-    }
     //----------------------new-----------------------
     public void OnInit(SkinType type)
     {
@@ -111,14 +87,7 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
         if(DataManager.Instance.GetCoin()>=price)
         {
             DataManager.Instance.AddCoin(-price);
-            if(type == ItemType.SKIN)
-            {
-                DataManager.Instance.SetRingSkinState(ShopState.Equipped, (SkinType)onSelect);
-            }
-            else
-            {
-                DataManager.Instance.SetBackGroundState(ShopState.Equipped,(BackGroundType)onSelect);   
-            }
+            Equip();
         }
         else
         {
@@ -142,11 +111,22 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
             DataManager.Instance.SetLastBackground((BackGroundType)onSelect);   
 
         }
+        //equipBtn => equipped 
+        GetComponentInParent<ShopGUI>().ReLoad();
     }
     public void AddEvent(UnityAction listener)
     {
-        selectBtn.onClick.RemoveAllListeners();
-        selectBtn.onClick.AddListener(listener);    
-    }
+        selectBtn.onClick.AddListener(listener);
+        selectBtn.onClick.AddListener(() => borderSelect.SetActive(true));
 
+        //buyBtn.onClick.AddListener(listener);
+        //buyBtn.onClick.AddListener(() => borderSelect.SetActive(true));
+
+        //equipBtn.onClick.AddListener(listener);
+        //equipBtn.onClick.AddListener(() => borderSelect.SetActive(true));
+    }
+    public void OffSelect()
+    {
+        borderSelect.SetActive(false);
+    }
 }

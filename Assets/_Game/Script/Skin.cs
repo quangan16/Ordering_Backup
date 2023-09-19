@@ -26,5 +26,7 @@ public enum SkinType
 {
     strip,
     dot,
+    abc,
+    xyz
 
 }

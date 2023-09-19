@@ -71,7 +71,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
     {
         skinPage.gameObject.SetActive(true);
         backgroundPage.gameObject.SetActive(false);
-        currentPage = PageState.SKIN;
+       // currentPage = PageState.SKIN;
     }
 
 
@@ -135,43 +135,54 @@ public class ShopGUI : MonoBehaviour, IUIControl
     //--------------------new----------------------
     public void OnInit()
     {
+        ringSkin.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).sprite;
+        backgroundImg.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
+        ReLoad();
+    }
+    public void ReLoad()
+    {
         Skin skins = DataManager.Instance.skins;
         N_BackGround backGround = DataManager.Instance.backGround;
         ShopItem[] items = GetComponentsInChildren<ShopItem>();
-        foreach(ShopItem item in items)
+        foreach (ShopItem item in items)
         {
             Destroy(item.gameObject);
             Destroy(item);
         }
 
-        for (int i = 0; i< skins.skins.Length; i++)
+        for (int i = 0; i < skins.skins.Length; i++)
         {
             int ii = i;
-            ShopItem shopItem = Instantiate(itemPref, skinLayout);           
+            ShopItem shopItem = Instantiate(itemPref, skinLayout);
             shopItem.OnInit((SkinType)(ii));
-            shopItem.AddEvent(()=>SelectSkin((SkinType)(ii)));
+            shopItem.AddEvent(() => SelectSkin((SkinType)(ii)));
         }
-        for (int j = 0; j< backGround.BackGroundItems.Length; j++)
+        for (int j = 0; j < backGround.BackGroundItems.Length; j++)
         {
             int jj = j;
-            ShopItem shopItem = Instantiate(itemPref, backgroundLayout);         
+            ShopItem shopItem = Instantiate(itemPref, backgroundLayout);
             shopItem.OnInit((BackGroundType)jj);
-            shopItem.AddEvent(()=> SelectBackGround((BackGroundType)jj));
+            shopItem.AddEvent(() => SelectBackGround((BackGroundType)jj));
         }
-
-
-
-
     }
     public void SelectSkin(SkinType skinType)
     {
+        ShopItem[] items = GetComponentsInChildren<ShopItem>();
+        foreach (ShopItem item in items)
+        {
+            item.OffSelect();
+        }
+
         ringSkin.sprite = DataManager.Instance.GetSkin(skinType).sprite;
-        print("?");
     }
     public void SelectBackGround(BackGroundType backGroundType)
     {
+        ShopItem[] items = GetComponentsInChildren<ShopItem>();
+        foreach (ShopItem item in items)
+        {
+            item.OffSelect();
+        }
         backgroundImg.sprite = DataManager.Instance.GetBackGround(backGroundType).sprite;
-        print("?");
     }
 
 
