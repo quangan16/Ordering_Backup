@@ -151,10 +151,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 792284510}
     m_Modifications:
+    - target: {fileID: 9034245014106955406, guid: c0308f1fbf27ca442b589c1a0acfbdad, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -304.8501
+      objectReference: {fileID: 0}
     - target: {fileID: 9034245015041790842, guid: c0308f1fbf27ca442b589c1a0acfbdad, type: 3}
       propertyPath: m_Name
       value: ShopGUI
       objectReference: {fileID: 0}
+    - target: {fileID: 9034245015041790844, guid: c0308f1fbf27ca442b589c1a0acfbdad, type: 3}
+      propertyPath: itemPref
+      value: 
+      objectReference: {fileID: 4823151627495479441, guid: 4500deeec7fe6494482468c7593a625e, type: 3}
+    - target: {fileID: 9034245015041790844, guid: c0308f1fbf27ca442b589c1a0acfbdad, type: 3}
+      propertyPath: ringSkin
+      value: 
+      objectReference: {fileID: 397497134}
+    - target: {fileID: 9034245015041790844, guid: c0308f1fbf27ca442b589c1a0acfbdad, type: 3}
+      propertyPath: skinLayout
+      value: 
+      objectReference: {fileID: 473914060}
+    - target: {fileID: 9034245015041790844, guid: c0308f1fbf27ca442b589c1a0acfbdad, type: 3}
+      propertyPath: backgroundLayout
+      value: 
+      objectReference: {fileID: 387528305}
     - target: {fileID: 9034245015041790845, guid: c0308f1fbf27ca442b589c1a0acfbdad, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -404,6 +424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99caad38bb90a4418f5e4df9b6d027e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skins: {fileID: 11400000, guid: 814b8233db023e040b4649f559964b8b, type: 2}
+  backGround: {fileID: 11400000, guid: db2a59904edfc9f4596925fac50ef120, type: 2}
 --- !u!4 &131283524
 Transform:
   m_ObjectHideFlags: 0
@@ -672,7 +694,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5212532553242005118, guid: 6a28904c81a4d62459593f72df86ec2b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -18.829895
+      value: -18.829834
       objectReference: {fileID: 0}
     - target: {fileID: 8060445995705529812, guid: 6a28904c81a4d62459593f72df86ec2b, type: 3}
       propertyPath: m_Name
@@ -889,6 +911,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31fadf9e9dbe5c1418cf9033f68c44d3, type: 3}
+--- !u!224 &387528305 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9034245014531966294, guid: c0308f1fbf27ca442b589c1a0acfbdad, type: 3}
+  m_PrefabInstance: {fileID: 30421116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &397497134 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9034245014329017898, guid: c0308f1fbf27ca442b589c1a0acfbdad, type: 3}
+  m_PrefabInstance: {fileID: 30421116}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &405438921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffdaa6eae090e8d40b8fb3c7a74bdca4, type: 3}
+--- !u!224 &473914060 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9034245014553874078, guid: c0308f1fbf27ca442b589c1a0acfbdad, type: 3}
+  m_PrefabInstance: {fileID: 30421116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,6 +1357,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 792284510}
     m_Modifications:
+    - target: {fileID: 495762843794364102, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -75.90015
+      objectReference: {fileID: 0}
     - target: {fileID: 495762844133020185, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: onDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1333,6 +1380,10 @@ PrefabInstance:
     - target: {fileID: 495762844281180840, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: onDown.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 495762844780829085, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 109.16992
       objectReference: {fileID: 0}
     - target: {fileID: 495762844925723441, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: onDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2626,8 +2677,8 @@ MonoBehaviour:
   normal: {fileID: 11400000, guid: 559235b6d1e8b3b44a33e83a8930a194, type: 2}
   challenge: {fileID: 11400000, guid: f0697a0411ab86b4e91d48fb48bdae5d, type: 2}
   boss: {fileID: 11400000, guid: 0f1fe7421e453b748b304054ab20a463, type: 2}
-  tutorial: {fileID: 7973625757501294418, guid: 861d488240f198949af39b844a9b5ccc, type: 3}
-  tutoPos: {fileID: 0}
+  tutorial: {fileID: 1691442582780711854, guid: c4cc59c284b38df4a9cbf2a97510c260, type: 3}
+  tutoPos: {fileID: 1056359640}
   sprite: {fileID: 1109166712}
   gameMode: 0
   current: {fileID: 0}

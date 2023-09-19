@@ -47,7 +47,7 @@ public class Solid : MonoBehaviour
     }
     public void ChangeSkin(Sprite sprite)
     {
-      //  currentSkin.sprite = sprite;
+        currentSkin.sprite = sprite;
     }
     public void SetLastPosition(Vector3 position)
     { lastPosition = position; }

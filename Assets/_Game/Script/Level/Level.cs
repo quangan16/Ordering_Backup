@@ -41,11 +41,12 @@ public class Level : MonoBehaviour
             
         }
     }
-    public void ChangeSkin(int i)
+    public void ChangeSkin()
     {
+        Sprite sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).sprite;
         foreach(var sol in solidList)
         {
-           // sol.ChangeSkin(i);
+            sol.ChangeSkin(sprite);
         }
     }
 

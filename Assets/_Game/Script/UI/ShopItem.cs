@@ -19,12 +19,13 @@ public class ShopItem : MonoBehaviour
 
 
     [SerializeField] GameObject borderSelect;
-    int price;
-    int onSelect;
+
     [SerializeField] Button selectBtn;
     [SerializeField] Button buyBtn;
     [SerializeField] Button equipBtn;
     ItemType type;
+    int price;
+    int onSelect;
 
 
 
@@ -38,7 +39,7 @@ public class ShopItem : MonoBehaviour
         SetState(state);
         // change ring skin
         price = skinItem.price;
-        price = 0;
+        
         onSelect = (int)type;
         this.type = ItemType.SKIN;
 
@@ -118,13 +119,13 @@ public class ShopItem : MonoBehaviour
     public void AddEvent(UnityAction listener)
     {
         selectBtn.onClick.AddListener(listener);
+        
         selectBtn.onClick.AddListener(() => borderSelect.SetActive(true));
 
-        //buyBtn.onClick.AddListener(listener);
-        //buyBtn.onClick.AddListener(() => borderSelect.SetActive(true));
+       // buyBtn.onClick.AddListener(listener);
+       // equipBtn.onClick.AddListener(listener); 
 
-        //equipBtn.onClick.AddListener(listener);
-        //equipBtn.onClick.AddListener(() => borderSelect.SetActive(true));
+
     }
     public void OffSelect()
     {
