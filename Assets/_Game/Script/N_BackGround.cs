@@ -28,4 +28,5 @@ public enum BackGroundType
     Red,
     Yellow,
     Blue,
+    Black
 }

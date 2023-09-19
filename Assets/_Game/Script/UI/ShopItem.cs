@@ -37,7 +37,7 @@ public class ShopItem : MonoBehaviour
         SkinItem skinItem = DataManager.Instance.GetSkin(type);
         SetState(state);
         // change ring skin
-        // price = skinItem.price;
+        price = skinItem.price;
         price = 0;
         onSelect = (int)type;
         this.type = ItemType.SKIN;
@@ -49,7 +49,7 @@ public class ShopItem : MonoBehaviour
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(type);
         SetState(state);
         // change sprite background
-        //price = backGroundItem.price;
+        price = backGroundItem.price;
         onSelect = (int)type;
         this.type = ItemType.BACKGROUND;
 
@@ -76,7 +76,8 @@ public class ShopItem : MonoBehaviour
             }
             case ShopState.Equipped:
             {
-                //change Button equip => equipped
+                    //change Button equip => equipped
+                borderSelect.SetActive(true);
                 break;
             }
 

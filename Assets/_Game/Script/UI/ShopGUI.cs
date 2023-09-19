@@ -143,7 +143,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
     {
         Skin skins = DataManager.Instance.skins;
         N_BackGround backGround = DataManager.Instance.backGround;
-        ShopItem[] items = GetComponentsInChildren<ShopItem>();
+        ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
         foreach (ShopItem item in items)
         {
             Destroy(item.gameObject);
@@ -177,7 +177,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
     }
     public void SelectBackGround(BackGroundType backGroundType)
     {
-        ShopItem[] items = GetComponentsInChildren<ShopItem>();
+        ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
         foreach (ShopItem item in items)
         {
             item.OffSelect();

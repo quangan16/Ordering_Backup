@@ -93,6 +93,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   borderSelect: {fileID: 3020620164085699818}
   selectBtn: {fileID: 8250583047676084891}
+  buyBtn: {fileID: 0}
+  equipBtn: {fileID: 0}
 --- !u!1 &3500004603071162763
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +495,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 587365976144047348, guid: b9cdc285bd985854bbb3c5dde4255cd7, type: 3}
       propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280257358112622318, guid: b9cdc285bd985854bbb3c5dde4255cd7, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3781429269964542560, guid: b9cdc285bd985854bbb3c5dde4255cd7, type: 3}
