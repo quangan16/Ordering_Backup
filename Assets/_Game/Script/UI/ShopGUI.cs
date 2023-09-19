@@ -32,10 +32,16 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] private TextMeshProUGUI skinTxt;
     [SerializeField] private TextMeshProUGUI backgroundTxt;
 
-    [SerializeField] private ShopItemSO shopItemData;
+
+    [SerializeField] private Image ringSkin;
     [SerializeField] private Image backgroundImg;
     [SerializeField] private Image LightSFX;
+
     [SerializeField] ShopItem itemPref;
+    [SerializeField] Transform skinLayout;
+    [SerializeField] Transform backgroundLayout;
+
+
 
     void OnEnable()
     {
@@ -107,6 +113,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
     public void Open()
     {
         gameObject.SetActive(true);
+        OnInit();
     }
 
     public void Close()
@@ -125,7 +132,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
         }
        
     }
-    //--------------------new-----------------
+    //--------------------new----------------------
     public void OnInit()
     {
         Skin skins = DataManager.Instance.skins;
@@ -137,27 +144,34 @@ public class ShopGUI : MonoBehaviour, IUIControl
             Destroy(item);
         }
 
-
-
-
-
         for (int i = 0; i< skins.skins.Length; i++)
         {
             int ii = i;
-            ShopItem shopItem = Instantiate(itemPref, skinPage.transform);           
+            ShopItem shopItem = Instantiate(itemPref, skinLayout);           
             shopItem.OnInit((SkinType)(ii));
+            shopItem.AddEvent(()=>SelectSkin((SkinType)(ii)));
         }
         for (int j = 0; j< backGround.BackGroundItems.Length; j++)
         {
             int jj = j;
-            ShopItem shopItem = Instantiate(itemPref, backgroundPage.transform);         
+            ShopItem shopItem = Instantiate(itemPref, backgroundLayout);         
             shopItem.OnInit((BackGroundType)jj);
-
+            shopItem.AddEvent(()=> SelectBackGround((BackGroundType)jj));
         }
 
 
 
 
+    }
+    public void SelectSkin(SkinType skinType)
+    {
+        ringSkin.sprite = DataManager.Instance.GetSkin(skinType).sprite;
+        print("?");
+    }
+    public void SelectBackGround(BackGroundType backGroundType)
+    {
+        backgroundImg.sprite = DataManager.Instance.GetBackGround(backGroundType).sprite;
+        print("?");
     }
 
 

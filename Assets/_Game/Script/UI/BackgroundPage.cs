@@ -14,7 +14,7 @@ public class BackgroundPage : MonoBehaviour
     public GameObject selectedObjectItem;
     private int selectedItemIndex = 0;
 
-    [SerializeField] private ShopItemSO backgroundItemData;
+
 
     [SerializeField] private Image background;
 
@@ -62,7 +62,7 @@ public class BackgroundPage : MonoBehaviour
             // background.color= shopItems[selectedItemIndex].transform.GetChild(0).GetChild(0).GetComponent<Image>()
             //     .color;
 
-            background.sprite = backgroundItemData.shopItems[selectedItemIndex].itemContent;
+            //background.sprite = backgroundItemData.shopItems[selectedItemIndex].itemContent;
             //DataManager.Instance.SetLastBackground(selectedItemIndex);
         }
     }

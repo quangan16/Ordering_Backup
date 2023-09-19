@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public enum ItemType
 {
@@ -19,12 +21,10 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
     [SerializeField] private BackgroundPage backgroundPage;
     public static event Action OnItemSelected;
     int price;
-    [Serializable]
-    public struct ShopItemData
-    {
-        public Sprite itemContent;
-        public ItemType itemType;
-    }
+    int onSelect;
+    [SerializeField] Button selectBtn;
+    ItemType type;
+
 
 
 
@@ -60,7 +60,11 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
         ShopState state = DataManager.Instance.GetRingSkinState(type);
         SkinItem skinItem = DataManager.Instance.GetSkin(type);
         SetState(state);
-        price = skinItem.price;
+        // change ring skin
+        // price = skinItem.price;
+        price = 0;
+        onSelect = (int)type;
+        this.type = ItemType.SKIN;
 
     }
     public void OnInit(BackGroundType type)
@@ -68,8 +72,10 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
         ShopState state = DataManager.Instance.GetBackGroundState(type);
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(type);
         SetState(state);
-        price = backGroundItem.price;
-
+        // change sprite background
+        //price = backGroundItem.price;
+        onSelect = (int)type;
+        this.type = ItemType.BACKGROUND;
 
     }
     void SetState(ShopState state)
@@ -105,11 +111,42 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
         if(DataManager.Instance.GetCoin()>=price)
         {
             DataManager.Instance.AddCoin(-price);
-          //  DataManager.Instance.
+            if(type == ItemType.SKIN)
+            {
+                DataManager.Instance.SetRingSkinState(ShopState.Equipped, (SkinType)onSelect);
+            }
+            else
+            {
+                DataManager.Instance.SetBackGroundState(ShopState.Equipped,(BackGroundType)onSelect);   
+            }
+        }
+        else
+        {
+
         }
     }
     public void Equip()
     {
+        if (type == ItemType.SKIN)
+        {
+            SkinType type = DataManager.Instance.GetLastRingSkin();
+            DataManager.Instance.SetRingSkinState(ShopState.Bought, type);
+            DataManager.Instance.SetRingSkinState(ShopState.Equipped, (SkinType)onSelect);
+            DataManager.Instance.SetLastRingSkin((SkinType)onSelect);
+        }
+        else
+        {
+            BackGroundType type = DataManager.Instance.GetLastBackground();
+            DataManager.Instance.SetBackGroundState(ShopState.Bought, type);
+            DataManager.Instance.SetBackGroundState(ShopState.Equipped, (BackGroundType)onSelect);
+            DataManager.Instance.SetLastBackground((BackGroundType)onSelect);   
 
+        }
     }
+    public void AddEvent(UnityAction listener)
+    {
+        selectBtn.onClick.RemoveAllListeners();
+        selectBtn.onClick.AddListener(listener);    
+    }
+
 }
