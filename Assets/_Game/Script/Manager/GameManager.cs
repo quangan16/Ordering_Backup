@@ -113,7 +113,7 @@ public class GameManager : SingletonBehivour<GameManager>
         }
         gameMode = mode;
         currentLevel = level;
-        current.ChangeSkin();
+        ChangeSkin();
         timer = (current.time);
         moves = current.moves;
         UIManager.Instance.SetCoin();
@@ -121,7 +121,10 @@ public class GameManager : SingletonBehivour<GameManager>
         Camera.main.orthographicSize = current.cameraDist;
 
     }
-
+    public void ChangeSkin()
+    {
+        current.ChangeSkin();
+    }    
     public void SubtractMove()
     {
         if (gameMode == GameMode.Boss)
