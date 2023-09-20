@@ -37,8 +37,8 @@ public class Clamp : MonoBehaviour
     }
     void CheckTarget()
     {
-        RaycastHit2D hit = Physics2D.Raycast(checkPosition.position, Vector2.zero);
-        if (hit.collider != null)
+        RaycastHit2D hit = Physics2D.Raycast(checkPosition.position, Vector2.zero,Mathf.Infinity,layer);
+        if (hit.collider != null )
         {
             target = Cache.GetSolid(hit.collider);  
             if (target != null)

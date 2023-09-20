@@ -18,7 +18,8 @@ public class Skin : ScriptableObject
 [System.Serializable]
 public class SkinItem
 {
-    public Sprite sprite;
+    public Sprite spriteC;
+    public Sprite spriteL;
     public int price;
     public SkinType type;
 }

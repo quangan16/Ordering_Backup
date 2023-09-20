@@ -9,7 +9,7 @@ public class Level : MonoBehaviour
 {
     public List<Solid> solidList ;
     public bool isWin => solidList.Count == 0;
-    public float cameraDist = 10;
+    public float cameraDist = 8;
     public int moves;
     public float time;
     public int price;
@@ -43,10 +43,21 @@ public class Level : MonoBehaviour
     }
     public void ChangeSkin()
     {
-        Sprite sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).sprite;
+        SkinItem skinItem = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin());
+        Sprite spriteC = skinItem.spriteC;
+        Sprite spriteL= skinItem.spriteL;
         foreach(var sol in solidList)
         {
-            sol.ChangeSkin(sprite);
+            if(sol is Line)
+            {
+                sol.ChangeSkin(spriteL);
+
+            }
+            else
+            {
+                sol.ChangeSkin(spriteC);
+
+            }
         }
     }
 

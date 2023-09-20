@@ -135,7 +135,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
     //--------------------new----------------------
     public void OnInit()
     {
-        ringSkin.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).sprite;
+        ringSkin.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).spriteC;
         backgroundImg.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
         ReLoad();
     }
@@ -173,7 +173,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
             item.OffSelect();
         }
 
-        ringSkin.sprite = DataManager.Instance.GetSkin(skinType).sprite;
+        ringSkin.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
     }
     public void SelectBackGround(BackGroundType backGroundType)
     {

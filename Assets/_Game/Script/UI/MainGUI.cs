@@ -22,4 +22,8 @@ public class MainGUI : MonoBehaviour, IUIControl
     {
         this.GameObject().SetActive(false);
     }
+    public void OpenGamePlay()
+    {
+        UIManager.Instance.OpenGameplay();
+    }    
 }
