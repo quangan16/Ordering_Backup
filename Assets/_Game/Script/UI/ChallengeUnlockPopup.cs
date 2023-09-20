@@ -10,30 +10,50 @@ public class ChallengeUnlockPopup : MonoBehaviour
 
     [SerializeField] private RectTransform botShape;
 
+    [SerializeField] private GameObject mainPanel;
+
     private float DesPosX = 90.0f;
+
+    private float scaleDuration = 0.5f;
     // Start is called before the first frame update
     private void OnEnable()
     {
-        ResetPos();
-        CollapseAnimate();
+        Reset();
+        OnOpen();
     }
     public void Open()
     {
-        gameObject.SetActive(true);
+       
+        OnOpen();
     }
+
     public void Close()
-    { gameObject.SetActive(false); }
+    {
+        OnClose();
+
+    }
     public void OpenChallenge()
     {
         UIManager.Instance.OpenChallenge();
-        Close();
+       
     }
 
- 
-
-    void ResetPos()
+    public void OnOpen()
     {
+        gameObject.SetActive(true);
+        mainPanel.transform.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack).OnComplete(() => CollapseAnimate());
+    }
+    public void OnClose()
+    {
+        mainPanel.transform.DOScale(0.0f, scaleDuration).SetEase(Ease.InBack)
+            .OnComplete(() => gameObject.SetActive(false));
+    }
+
+    void Reset()
+    {
+        mainPanel.transform.localScale = Vector3.zero;
         topShape.localPosition = new Vector3(0, 20.0f, 0);
+        botShape.localPosition = new Vector3(0, -20.0f, 0);
     }
 
     void CollapseAnimate()

@@ -39,8 +39,6 @@ public class EaseIn : MonoBehaviour
     }
     public void SlideIn()
     {
-        
-      
         CoinHolder.transform.DOLocalMove(new Vector3(desPos.localPosition.x, CoinHolder.localPosition.y, CoinHolder.localPosition.z)  , moveDuration).SetEase(Ease.OutBack);
         LiveHolder.transform.DOLocalMove(new Vector3(desPos.localPosition.x, LiveHolder.localPosition.y,
             LiveHolder.localPosition.z), moveDuration).SetEase(Ease.OutBack).SetDelay(0.3f);
