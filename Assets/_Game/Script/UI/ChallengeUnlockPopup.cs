@@ -11,8 +11,7 @@ public class ChallengeUnlockPopup : PopupManager
     [SerializeField] private RectTransform botShape;
 
     private float DesPosX = 90.0f;
-
-    private float scaleDuration = 0.5f;
+    
     // Start is called before the first frame update
     private void OnEnable()
     {

@@ -8,7 +8,7 @@ public abstract class PopupManager : MonoBehaviour
 {
     [SerializeField] protected RectTransform mainPanel;
     [SerializeField] protected Button backGround;
-    private float scaleDuration = 0.5f;
+    protected float scaleDuration = 0.5f;
     protected void OnEnable()
     {
         backGround.onClick.AddListener(OnClose);
