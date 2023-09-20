@@ -37,7 +37,11 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public void NextLevel()
     {
         DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
-        AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.next_level);
+        if(DataManager.Instance.GetNormalLevel()>=5)
+        {
+            AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.next_level);
+
+        }
         GameManager.Instance.NextLevel();
     }
     

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514923043795181554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: 0.58, z: -19.912836}
+  m_LocalPosition: {x: -0.2, y: 0.58, z: -19.912836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solidList: []
-  cameraDist: 10
+  cameraDist: 7
   moves: 0
   time: 0
   price: 0
@@ -247,6 +247,10 @@ PrefabInstance:
       value: TWO1
       objectReference: {fileID: 0}
     - target: {fileID: 5633624211508391636, guid: 2412f073ca4ff5445b312209c176cff4, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026940278582277729, guid: 2412f073ca4ff5445b312209c176cff4, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}

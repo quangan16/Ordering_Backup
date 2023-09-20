@@ -73,11 +73,11 @@ public class GameManager : SingletonBehivour<GameManager>
                     }
 
 
-                    //Open challenge each 3 levels 2,5,8,...
+                    //Open challenge each 4 levels 2,6,10,...
 
-                    if ((level - 1) % 3 == 0 && (level - 1) / 3 <= challenge.levels.Length - 1)
+                    if ((level - 1) % 4 == 0 && (level - 1) / 4 <= challenge.levels.Length - 1)
                     {
-                        int levelChallenge = (level - 1) / 3;
+                        int levelChallenge = (level - 1) / 4;
                         (Mode challengeMode, int time) = DataManager.Instance.GetLevelMode(levelChallenge);
                         if (challengeMode == Mode.Locked)
                         {
@@ -166,11 +166,11 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             normalLevel = 0;
         }
-        if ((normalLevel - 3) % 6 == 0 && (normalLevel - 3) / 6 <= boss.levels.Length - 1)
+        if ((normalLevel - 3) % 8 == 0 && (normalLevel - 3) / 8 <= boss.levels.Length - 1)
         {
 
             UIManager.Instance.RecommendBoss();
-            DataManager.Instance.SetBossLevel((normalLevel - 3) / 6);
+            DataManager.Instance.SetBossLevel((normalLevel - 3) / 8);
         }
         currentLevel = normalLevel;
         Invoke(nameof(OnNextLevel), 0.1f);
