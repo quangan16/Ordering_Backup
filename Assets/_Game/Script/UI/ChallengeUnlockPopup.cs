@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class ChallengeUnlockPopup : MonoBehaviour
+public class ChallengeUnlockPopup : PopupManager
 {
     [SerializeField] private RectTransform topShape;
 
     [SerializeField] private RectTransform botShape;
-
-    [SerializeField] private GameObject mainPanel;
 
     private float DesPosX = 90.0f;
 
@@ -34,20 +32,20 @@ public class ChallengeUnlockPopup : MonoBehaviour
     }
     public void OpenChallenge()
     {
+        OnClose();
         UIManager.Instance.OpenChallenge();
-       
+     
     }
 
-    public void OnOpen()
+    public new void  OnOpen()
     {
         gameObject.SetActive(true);
         mainPanel.transform.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack).OnComplete(() => CollapseAnimate());
     }
-    public void OnClose()
-    {
-        mainPanel.transform.DOScale(0.0f, scaleDuration).SetEase(Ease.InBack)
-            .OnComplete(() => gameObject.SetActive(false));
-    }
+
+   
+
+  
 
     void Reset()
     {

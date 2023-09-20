@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingGUI : MonoBehaviour
+public class SettingGUI : PopupManager
 {
 
     [SerializeField] private GameObject SoundOn;
@@ -21,6 +21,7 @@ public class SettingGUI : MonoBehaviour
 
     private void OnEnable()
     {
+        base.OnEnable();
         Init();
     }
 
@@ -48,7 +49,7 @@ public class SettingGUI : MonoBehaviour
         DataManager.Instance.SetSoundState(Convert.ToInt16(isSoundOn));
         DataManager.Instance.SetMusicState(Convert.ToInt16(isMusicOn));
         DataManager.Instance.SetVibState(Convert.ToInt16(isVibOn));
-        gameObject.SetActive(false);
+        OnClose();
     }
     
     public void ToggleSound()

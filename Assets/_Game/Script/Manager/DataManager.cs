@@ -97,7 +97,7 @@ public class DataManager : SingletonBehivour<DataManager>
 
     public SkinType GetLastRingSkin() //last
     {
-        return (SkinType)PlayerPrefs.GetInt("LastSkin");
+        return (SkinType)PlayerPrefs.GetInt("LastSkin", 0);
     }
     public void SetRingSkinState(ShopState state,SkinType type)
     {
