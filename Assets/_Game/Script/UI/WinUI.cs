@@ -12,7 +12,9 @@ public class WinUI : MonoBehaviour
 
     [SerializeField] private Button adsButton;
 
-    [SerializeField] private Button normalButton;
+    [SerializeField] private GameObject CoinRewardDisplay;
+
+    [SerializeField] private Button denyBtn;
 
     public void Start()
     {
@@ -25,8 +27,9 @@ public class WinUI : MonoBehaviour
     {
         ButtonClicked = false;
         adsButton.interactable = true;
-        normalButton.interactable = true;
-        normalButton.GetComponentInChildren<TextMeshProUGUI>().text = GameManager.Instance.current.rewards.ToString();
+        denyBtn.interactable = false;
+        CoinRewardDisplay.GetComponentInChildren<TextMeshProUGUI>().text = GameManager.Instance.current.rewards.ToString();
+        ShowDenyButton();
     }
     public void GetCoinDefault()
     {
@@ -41,6 +44,11 @@ public class WinUI : MonoBehaviour
         DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
     }
 
+    public void ShowDenyButton()
+    {
+        StartCoroutine(FadeIn());
+    }
+
     public void PauseAnim()
     {
         if (ButtonClicked)
@@ -53,7 +61,7 @@ public class WinUI : MonoBehaviour
     {
         ButtonClicked = true;
         adsButton.interactable = false;
-        normalButton.interactable = false;
+        denyBtn.interactable = false;
         PauseAnim();
     }
 
@@ -98,6 +106,27 @@ public class WinUI : MonoBehaviour
                 }
 
         }
+    }
+
+    public IEnumerator FadeIn()
+    {
+        float duration = 1f; 
+        float currentTime = 0f;
+        var textColor = denyBtn.GetComponent<TextMeshProUGUI>();
+        textColor.color = new Color(textColor.color.r, textColor.color.g, textColor.color.b, 0.0f);
+        yield return new WaitForSeconds(2.0f);
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                float alpha = Mathf.Lerp(0.0f,  1.0f, currentTime / duration);
+                textColor.color = new Color(textColor.color.r, textColor.color.g, textColor.color.b, alpha);
+                yield return null;
+            }
+
+            denyBtn.interactable = true;
+
+
+
     }
 
 

@@ -30,8 +30,8 @@ public abstract class PopupManager : MonoBehaviour
     public void OnOpen()
     {
         Reset();
-        mainPanel.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack) ;
-       
+        mainPanel.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack);
+        // mainPanel.localScale = Vector3.one;
     }
 
     public void OnClose()
