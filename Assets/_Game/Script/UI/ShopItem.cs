@@ -110,6 +110,7 @@ public class ShopItem : MonoBehaviour
         {
             DataManager.Instance.AddCoin(-price);
             Equip();
+            UIManager.Instance.SetCoin();
         }
         else
         {

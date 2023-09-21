@@ -12,7 +12,7 @@ public class NotEnoughUI : PopupManager
 
     public void OnEnable()
     {
-        base.OnEnable();
+
     }
     public void Open(NotEnoughType type)
     {

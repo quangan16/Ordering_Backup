@@ -113,7 +113,7 @@ public class LoseUI : MonoBehaviour
     public void OnClose()
     {
         //mainPanel.transform.DOScale(0.0f, scaleDuration).SetEase(Ease.InBack);
-            
+            gameObject.SetActive(false);
     }
 
     void Reset()

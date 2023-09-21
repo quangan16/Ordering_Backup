@@ -256,9 +256,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIGamePlay, Assembly-CSharp
-        m_MethodName: BackToMain
+      - m_Target: {fileID: 8300853721224373770}
+        m_TargetAssemblyTypeName: UIBossGameplay, Assembly-CSharp
+        m_MethodName: CloseGamePlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1065,7 +1065,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -160, y: -210.70001}
+  m_AnchoredPosition: {x: -160, y: -210.69995}
   m_SizeDelta: {x: 209, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8323025604177729031
@@ -2020,7 +2020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2232410382698979, guid: 59ddc175e392e6344992e75c421889eb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -207.79999
+      value: -207.80005
       objectReference: {fileID: 0}
     - target: {fileID: 2232410382698979, guid: 59ddc175e392e6344992e75c421889eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
