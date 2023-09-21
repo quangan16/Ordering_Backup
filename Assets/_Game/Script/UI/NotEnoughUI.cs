@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class NotEnoughUI : MonoBehaviour
+public class NotEnoughUI : PopupManager
 {
     [SerializeField] private ChallengeBought bought;
     NotEnoughType type;
@@ -11,6 +11,11 @@ public class NotEnoughUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI content;
     [SerializeField] GameObject addCoin;
     [SerializeField] GameObject addHeart;
+
+    public void OnEnable()
+    {
+        base.OnEnable();
+    }
     public void Open(NotEnoughType type)
     {
         this.type = type;
@@ -33,7 +38,7 @@ public class NotEnoughUI : MonoBehaviour
     }
     public void Close()
     {
-        gameObject.SetActive(false);
+        OnClose();
     }
     public void DenyBtn()
     {

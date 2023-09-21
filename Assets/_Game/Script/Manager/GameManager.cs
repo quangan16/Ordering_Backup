@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
+
 public class GameManager : SingletonBehivour<GameManager>
 {
     [SerializeField] LevelScript normal;
@@ -18,12 +20,17 @@ public class GameManager : SingletonBehivour<GameManager>
     public static int moves;
     public float adsCountdown;
     public static bool isVibrate = true;
+    public bool HasInternet { get; private set; }
+    private float timeInterval = 5.0f;
+    private float timeSinceLastCheck = 5.0f;
 
     private void Start()
     {
         AdsAdapter.Instance.ShowBanner();
        // throw new NotImplementedException();
     }
+
+    public static event Action OnInternetError;
 
     private void Update()
     {
@@ -48,6 +55,15 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             adsCountdown += Time.deltaTime;
         }
+
+        timeSinceLastCheck += Time.deltaTime;
+        if (timeSinceLastCheck >= timeInterval)
+        {
+            timeSinceLastCheck = 0;
+            StartCoroutine(CheckInternetConnection());
+            
+        }
+
     }
     IEnumerator CountDown()
     {
@@ -227,7 +243,25 @@ public class GameManager : SingletonBehivour<GameManager>
         current.DiscardRandom();
     }
 
-
+    public IEnumerator CheckInternetConnection()
+    {
+        using (UnityWebRequest req = UnityWebRequest.Get("www.google.com"))
+        {
+            yield return req.SendWebRequest();
+            if (req.result == UnityWebRequest.Result.Success)
+            {
+                HasInternet = true;
+                Debug.Log("true");
+            }
+            else
+            {
+                HasInternet = false;
+                Debug.Log("false");
+                OnInternetError?.Invoke();
+            }
+            
+        }
+    }
 
 
 

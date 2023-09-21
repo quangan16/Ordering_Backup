@@ -4,36 +4,53 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class ChallengeUnlockPopup : MonoBehaviour
+public class ChallengeUnlockPopup : PopupManager
 {
     [SerializeField] private RectTransform topShape;
 
     [SerializeField] private RectTransform botShape;
 
     private float DesPosX = 90.0f;
+    
     // Start is called before the first frame update
     private void OnEnable()
     {
-        ResetPos();
-        CollapseAnimate();
+        Reset();
+        OnOpen();
     }
     public void Open()
     {
-        gameObject.SetActive(true);
+       
+        OnOpen();
     }
+
     public void Close()
-    { gameObject.SetActive(false); }
+    {
+        OnClose();
+
+    }
     public void OpenChallenge()
     {
+        OnClose();
         UIManager.Instance.OpenChallenge();
-        Close();
+     
     }
 
- 
-
-    void ResetPos()
+    public new void  OnOpen()
     {
+        gameObject.SetActive(true);
+        mainPanel.transform.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack).OnComplete(() => CollapseAnimate());
+    }
+
+   
+
+  
+
+    void Reset()
+    {
+        mainPanel.transform.localScale = Vector3.zero;
         topShape.localPosition = new Vector3(0, 20.0f, 0);
+        botShape.localPosition = new Vector3(0, -20.0f, 0);
     }
 
     void CollapseAnimate()

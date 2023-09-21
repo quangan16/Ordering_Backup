@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RemoveAdsGUI : MonoBehaviour
+public class RemoveAdsGUI : PopupManager
 {
     public void Open()
     {
         gameObject.SetActive(true);
+        OnOpen();
 
     }
 
     public void Close()
     {
-        gameObject.SetActive(false);
+        OnClose();
     }
 
     public void DenyBtn()
     {
-        Close();
+       OnClose();
     }
 
     public void Accept()
