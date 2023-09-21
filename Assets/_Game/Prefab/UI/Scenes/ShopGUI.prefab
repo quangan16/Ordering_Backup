@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 4618356392462194871}
   - component: {fileID: 6128360752051735763}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: CoinTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,8 +233,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -796,7 +796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 352.21997}
+  m_AnchoredPosition: {x: 0, y: -304.85016}
   m_SizeDelta: {x: 0, y: -704.42993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9034245014106955376
@@ -2138,6 +2138,7 @@ MonoBehaviour:
   itemPref: {fileID: 4823151627495479441, guid: 4500deeec7fe6494482468c7593a625e, type: 3}
   skinLayout: {fileID: 9034245014553874078}
   backgroundLayout: {fileID: 9034245014531966294}
+  coinTxt: {fileID: 6128360752051735763}
 --- !u!1 &9034245015267790724
 GameObject:
   m_ObjectHideFlags: 0

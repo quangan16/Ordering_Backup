@@ -10,6 +10,7 @@ public class GameManager : SingletonBehivour<GameManager>
     [SerializeField] LevelScript boss;
     [SerializeField] TutoMove tutorial;
     [SerializeField] Transform tutoPos;
+    [SerializeField] private UIGamePlay normalGameplay;
     public GameObject sprite;
     public GameMode gameMode;
     public Level current;
@@ -130,6 +131,7 @@ public class GameManager : SingletonBehivour<GameManager>
         gameMode = mode;
         currentLevel = level;
         ChangeSkin();
+        ChangeBackground();
         
         timer = (current.time);
         moves = current.moves;
@@ -141,7 +143,12 @@ public class GameManager : SingletonBehivour<GameManager>
     public void ChangeSkin()
     {
         current.ChangeSkin();
-    }    
+    }
+
+    public void ChangeBackground()
+    {
+        normalGameplay.ChangeBackground();
+    }
     public void SubtractMove()
     {
         if (gameMode == GameMode.Boss)

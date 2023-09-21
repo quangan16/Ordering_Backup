@@ -41,12 +41,13 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] Transform skinLayout;
     [SerializeField] Transform backgroundLayout;
 
-
+    [SerializeField] private TextMeshProUGUI coinTxt;
 
     void OnEnable()
     {
         //backgroundImg.sprite = shopItemData.shopItems[DataManager.Instance.GetBackground()].itemContent;
         LightEffect();
+        coinTxt.text = DataManager.Instance.GetCoin().ToString();
     }
 
     void OnDisable()

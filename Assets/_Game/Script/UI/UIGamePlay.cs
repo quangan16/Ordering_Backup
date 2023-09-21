@@ -20,7 +20,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
     public void OnEnable()
     {
-        SetBackground();
+        
     }
 
     public virtual void Open()
@@ -81,7 +81,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     
    
 
-    private void SetBackground()
+    public void ChangeBackground()
     {
         background.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
     }
