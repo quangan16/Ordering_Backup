@@ -14,9 +14,16 @@ public class Level : MonoBehaviour
     public float time;
     public int price;
     public int rewards;
+    bool isHint ;
+    bool firstHint;
     private void Awake()
     {
         OnInit();
+    }
+    private void Start()
+    {
+        firstHint = DataManager.Instance.GetHint() == 0;
+        print(firstHint);
     }
     private void OnDestroy()
     {
@@ -28,6 +35,9 @@ public class Level : MonoBehaviour
     }
     public void OnInit()
     {
+        isHint = true;
+        
+        
         solidList = GetComponentsInChildren<Solid>().ToList();
 
     }
@@ -36,8 +46,40 @@ public class Level : MonoBehaviour
         
         if(!isWin)
         {
-            int remove = UnityEngine.Random.Range(0, solidList.Count);
-            solidList[remove].OnDespawn();
+            if(!firstHint)
+            {
+                if (isHint)
+                {
+                    if(DataManager.Instance.GetCoin()>=50)
+                    {
+                        DataManager.Instance.AddCoin(-50);
+                        UIManager.Instance.SetCoin();
+                        isHint = false;
+                        int remove = UnityEngine.Random.Range(0, solidList.Count);
+                        solidList[remove].OnDespawn();
+                    }    
+                    else
+                    {
+                        UIManager.Instance.OpenNotEnough(NotEnoughType.Coin);
+                    }    
+                   
+                }
+                else
+                {
+                    //showads
+                    int remove = UnityEngine.Random.Range(0, solidList.Count);
+                    solidList[remove].OnDespawn();
+                }
+            }
+            else
+            {
+                int remove = UnityEngine.Random.Range(0, solidList.Count);
+                solidList[remove].OnDespawn();
+                DataManager.Instance.SetHint();
+            }
+           
+           
+            
             
         }
     }
