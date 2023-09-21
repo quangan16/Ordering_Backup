@@ -159,7 +159,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
             if(item.state != ShopState.Equipped)
             item.OffSelect();
         }
-
+        
         ringSkin.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
     }
     public void SelectBackGround(BackGroundType backGroundType)
