@@ -52,19 +52,20 @@ public class NotEnoughUI : PopupManager
 
     public void WatchAds()
     {
-        AdsAdapter.Instance.ShowRewardedVideo(() =>
-            {
-
-                AdsAdapter.LogAFAndFB($"get_coins", "0",
-                    "0");
-                AddResources();
-            }, () =>
-            {
-                // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
-                Debug.Log("Failed to load");
-                
-            }, 0,
-            AdsAdapter.where.get_coins);
+        AddResources();
+        // AdsAdapter.Instance.ShowRewardedVideo(() =>
+        //     {
+        //
+        //         AdsAdapter.LogAFAndFB($"get_coins", "0",
+        //             "0");
+        //         AddResources();
+        //     }, () =>
+        //     {
+        //         // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+        //         Debug.Log("Failed to load");
+        //         
+        //     }, 0,
+        //     AdsAdapter.where.get_coins);
     }
     public void AddResources()
     {
