@@ -105,7 +105,7 @@ public class DataManager : SingletonBehivour<DataManager>
     }   
     public ShopState GetRingSkinState(SkinType type)
     {
-        return (ShopState)PlayerPrefs.GetInt("skin" + type.ToString(), 0);
+        return (ShopState)PlayerPrefs.GetInt("skin" + type.ToString(), 1);
     }
 
 
