@@ -19,7 +19,7 @@ public class ShopItem : MonoBehaviour
 
 
     [SerializeField] GameObject borderSelect;
-
+    [SerializeField] Image backGround;
     [SerializeField] Button selectBtn;
     [SerializeField] Button buyBtn;
     [SerializeField] Button equipBtn;
@@ -39,7 +39,7 @@ public class ShopItem : MonoBehaviour
         SetState(state);
         // change ring skin
         price = skinItem.price;
-        
+        backGround.sprite = skinItem.spriteL;
         onSelect = (int)type;
         this.type = ItemType.SKIN;
 
@@ -48,8 +48,11 @@ public class ShopItem : MonoBehaviour
     {
         ShopState state = DataManager.Instance.GetBackGroundState(type);
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(type);
+
         SetState(state);
         // change sprite background
+        backGround.sprite = backGroundItem.sprite;
+
         price = backGroundItem.price;
         onSelect = (int)type;
         this.type = ItemType.BACKGROUND;
@@ -68,7 +71,7 @@ public class ShopItem : MonoBehaviour
             {
                     // active gameObject UnBought
                     //priceText.text = price.ToString();
-                    break;
+                break;
             }
             case ShopState.Bought:
             {
