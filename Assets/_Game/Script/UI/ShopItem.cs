@@ -102,7 +102,7 @@ public class ShopItem : MonoBehaviour
         }
         else
         {
-
+            UIManager.Instance.OpenNotEnough(NotEnoughType.Coin);
         }
     }
     public void Equip()
