@@ -168,6 +168,15 @@ public class DataManager : SingletonBehivour<DataManager>
         return PlayerPrefs.GetInt("Vibration", 1);
     }
 
+    public int GetHint()
+    {
+       return PlayerPrefs.GetInt("hint", 0);
+    }    
+    public void SetHint()
+    {
+        PlayerPrefs.SetInt("hint", 1);
+    }    
+
 }
 public enum ShopState
 {
