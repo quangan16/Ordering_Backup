@@ -27,6 +27,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     {
         gameObject.SetActive(true);
         GameManager.Instance.OpenGamePlay(GameMode.Normal, DataManager.Instance.GetNormalLevel());
+        ChangeBackground();
     }
     public virtual void Close()
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,13 +21,11 @@ public class ShopItem : MonoBehaviour
 
     [SerializeField] GameObject borderSelect;
     [SerializeField] Image backGround;
-
+    [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] GameObject Locked;
     [SerializeField] GameObject Unlocked;
     [SerializeField] Button selectBtn;
     [SerializeField] Button buyBtn;
-    [SerializeField] Button equipBtn;
-    [SerializeField] Button equippedBtn;
     ItemType type;
     [SerializeField] int price;
     int onSelect;
@@ -41,9 +40,10 @@ public class ShopItem : MonoBehaviour
         ShopState state = DataManager.Instance.GetRingSkinState(type);
         this.state = state;
         SkinItem skinItem = DataManager.Instance.GetSkin(type);
-        SetState(state);
         // change ring skin
         price = skinItem.price;
+        SetState(state);
+
         backGround.sprite = skinItem.spriteL;
         onSelect = (int)type;
         this.type = ItemType.SKIN;
@@ -54,50 +54,38 @@ public class ShopItem : MonoBehaviour
         ShopState state = DataManager.Instance.GetBackGroundState(type);
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(type);
         this.state = state;
+        price = backGroundItem.price;
 
         SetState(state);
 
         // change sprite background
         backGround.sprite = backGroundItem.sprite;
 
-        price = backGroundItem.price;
         onSelect = (int)type;
         this.type = ItemType.BACKGROUND;
 
     }
     public void SetState(ShopState state)
     {
-        buyBtn.gameObject.SetActive(false);
-        equipBtn.gameObject.SetActive(false);
-        equippedBtn.gameObject.SetActive(false);
         Locked.SetActive(false);
-        Unlocked.SetActive(false);
         switch (state)
         {
             case ShopState.Locked:
-                {
-                    Locked.SetActive(true);
+                {                   
                     break;
                 }
             case ShopState.UnBought:
                 {
-                    Unlocked.SetActive(true);
-                    buyBtn.gameObject.SetActive(true);
-                    //priceText.text = price.ToString();
+                    Locked.SetActive(true);
+                    priceText.text = price.ToString();
                     break;
                 }
             case ShopState.Bought:
                 {
-                    Unlocked.SetActive(true);
-
-                    equipBtn.gameObject.SetActive(true);
                     break;
                 }
             case ShopState.Equipped:
                 {
-                    Unlocked.SetActive(true);
-
-                    equippedBtn.gameObject.SetActive(true);
                     borderSelect.SetActive(true);
                     break;
                 }
@@ -110,10 +98,11 @@ public class ShopItem : MonoBehaviour
         {
             DataManager.Instance.AddCoin(-price);
             Equip();
+            UIManager.Instance.SetCoin();
         }
         else
         {
-
+            UIManager.Instance.OpenNotEnough(NotEnoughType.Coin);
         }
     }
     public void Equip()
@@ -141,8 +130,6 @@ public class ShopItem : MonoBehaviour
 
         selectBtn.onClick.AddListener(() => borderSelect.SetActive(true));
 
-        equipBtn.onClick.AddListener(listener);
-        equipBtn.onClick.AddListener(() => borderSelect.SetActive(true));
 
 
     }

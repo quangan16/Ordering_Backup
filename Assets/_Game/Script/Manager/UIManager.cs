@@ -102,6 +102,8 @@ public class UIManager : SingletonBehivour<UIManager>
     public void OpenShop()
     {
         OpenUI(shop);
+        SetCoin();
+
     }
 
     public void OpenMain()

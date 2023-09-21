@@ -134,7 +134,7 @@ public class DataManager : SingletonBehivour<DataManager>
     }
     public ShopState GetBackGroundState(BackGroundType type)
     {
-        return (ShopState)PlayerPrefs.GetInt("Background"+type.ToString(),0);
+        return (ShopState)PlayerPrefs.GetInt("Background"+type.ToString(),1);
     }
 
     public void SetSoundState(int soundState)

@@ -12,7 +12,7 @@ public class NotEnoughUI : PopupManager
 
     public void OnEnable()
     {
-        base.OnEnable();
+
     }
     public void Open(NotEnoughType type)
     {
@@ -70,7 +70,7 @@ public class NotEnoughUI : PopupManager
         
         if(type == NotEnoughType.Coin)
         {
-            DataManager.Instance.AddCoin(50);
+            DataManager.Instance.AddCoin(100);
             UIManager.Instance.SetCoin();
         }
         else

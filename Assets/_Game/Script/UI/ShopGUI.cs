@@ -3,17 +3,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum PageState
-{
-    SKIN,
-    BACKGROUND
-}
+
 
 public class ShopGUI : MonoBehaviour, IUIControl
 {
-    public static ShopGUI Instance;
 
-    public static PageState currentPage;
 
 
     [SerializeField] private Image skinButtonImg;
@@ -47,26 +41,19 @@ public class ShopGUI : MonoBehaviour, IUIControl
     {
         //backgroundImg.sprite = shopItemData.shopItems[DataManager.Instance.GetBackground()].itemContent;
         LightEffect();
-        coinTxt.text = DataManager.Instance.GetCoin().ToString();
+        
     }
-
+    public void SetCoin(int coin)
+    {
+        coinTxt.text = coin.ToString();
+    }    
     void OnDisable()
     {
         DOTween.KillAll();
     }
 
 
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
+
 
     void Start()
     {
@@ -84,7 +71,6 @@ public class ShopGUI : MonoBehaviour, IUIControl
         backgroundPage.gameObject.SetActive(false);
         skinTxt.color = textActiveColor;
         backgroundTxt.color = textInactiveColor;
-        currentPage = PageState.SKIN;
     }
 
     public void OnBackgroundPageSelect()
@@ -95,7 +81,6 @@ public class ShopGUI : MonoBehaviour, IUIControl
         backgroundPage.gameObject.SetActive(true);
         skinTxt.color = textInactiveColor;
         backgroundTxt.color = textActiveColor;
-        currentPage = PageState.BACKGROUND;
     }
 
     public void ResetLightEffect()
