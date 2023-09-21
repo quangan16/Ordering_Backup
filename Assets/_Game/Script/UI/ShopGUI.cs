@@ -171,6 +171,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
         ShopItem[] items = GetComponentsInChildren<ShopItem>();
         foreach (ShopItem item in items)
         {
+            if(item.state != ShopState.Equipped)
             item.OffSelect();
         }
         
@@ -181,7 +182,8 @@ public class ShopGUI : MonoBehaviour, IUIControl
         ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
         foreach (ShopItem item in items)
         {
-            item.OffSelect();
+            if (item.state != ShopState.Equipped)
+                item.OffSelect();
         }
         backgroundImg.sprite = DataManager.Instance.GetBackGround(backGroundType).sprite;
     }
