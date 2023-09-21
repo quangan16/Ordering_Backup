@@ -23,6 +23,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] Button selectBtn;
     [SerializeField] Button buyBtn;
     [SerializeField] Button equipBtn;
+    [SerializeField] Button equippedBtn;
     ItemType type;
     int price;
     int onSelect;
@@ -60,26 +61,33 @@ public class ShopItem : MonoBehaviour
     }
     void SetState(ShopState state)
     {
+        buyBtn.gameObject.SetActive(false);
+        equipBtn.gameObject.SetActive(false);
+        equippedBtn.gameObject.SetActive(false);
         switch (state)
         {
             case ShopState.Locked:
             {
-                //active gameObject Locked
-                break;
+                    buyBtn.gameObject.SetActive(true);
+                    //active gameObject Locked
+                    break;
             }
             case ShopState.UnBought:
             {
+                    buyBtn.gameObject.SetActive(true);
                     // active gameObject UnBought
                     //priceText.text = price.ToString();
                 break;
             }
             case ShopState.Bought:
             {
+                equipBtn.gameObject.SetActive(true);
                 // active gameObject bought
                 break;
             }
             case ShopState.Equipped:
             {
+                equippedBtn.gameObject.SetActive(true); 
                     //change Button equip => equipped
                 borderSelect.SetActive(true);
                 break;
