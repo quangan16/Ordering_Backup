@@ -48,19 +48,19 @@ public class AdsAdapter : MonoBehaviour
 
     public static void LogAFAndFB(string eventName, string key, string value)
     {
-#if !UNITY_EDITOR
-        try
-        {
-            if (FireBaseRemote.initialized)
-            {
-                FirebaseAnalytics.LogEvent(eventName, key, value);
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e.StackTrace);
-        }
-#endif
+//#if !UNITY_EDITOR
+        //try
+        //{
+        //    if (FireBaseRemote.initialized)
+        //    {
+        //        FirebaseAnalytics.LogEvent(eventName, key, value);
+        //    }
+        //}
+        //catch (Exception e)
+        //{
+        //    Debug.LogError(e.StackTrace);
+        //}
+//#endif
     }
 
 #if EXISTED_IRON_SOURCE
@@ -80,7 +80,7 @@ public class AdsAdapter : MonoBehaviour
 
     private void OnDestroy()
     {
-        AppStateEventNotifier.AppStateChanged -= OnAppStateChanged;
+        //AppStateEventNotifier.AppStateChanged -= OnAppStateChanged;
     }
 
     private void OnAppStateChanged(GoogleMobileAds.Common.AppState state)
@@ -120,12 +120,15 @@ public class AdsAdapter : MonoBehaviour
 
         if (!PopupGDPR.rate_gdpr)
         {
-            var canvasGDPR = Instantiate(canvas_GDPR);
-            canvasGDPR.GetComponentInChildren<PopupGDPR>().onComplete += () =>
+            if (canvas_GDPR)
             {
-                Debug.Log("init ironsource");
-                adapter.Setup(true);
-            };
+                var canvasGDPR = Instantiate(canvas_GDPR);
+                canvasGDPR.GetComponentInChildren<PopupGDPR>().onComplete += () =>
+                {
+                    Debug.Log("init ironsource");
+                    adapter.Setup(true);
+                };
+            }
         }
         else
         {

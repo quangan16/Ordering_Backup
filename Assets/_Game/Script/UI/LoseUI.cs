@@ -68,12 +68,12 @@ public class LoseUI : MonoBehaviour
     public void Open(TypeOut type)
     {
         this.type = type;
+        OnOpen();
         if(type == TypeOut.TimeOut)
         {
             OutOfTime.gameObject.SetActive(true);
             OutOfTime.transform.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack);
             OutOfMove.gameObject.SetActive(false);
-            audioSource.PlayOneShot(outOfMoveSfx);
             
             AddWhat.text = "+15 SECS";
             
@@ -82,11 +82,12 @@ public class LoseUI : MonoBehaviour
         {
             OutOfTime.gameObject.SetActive(false);
             OutOfMove.gameObject.SetActive(true);
-            audioSource.PlayOneShot(overTimeSfx);
             VibrateClock();
             AddWhat.text = "+5 MOVES";
 
         }
+        //audioSource.PlayOneShot(outOfMoveSfx);
+        mainPanel.gameObject.SetActive(true);
         gameObject.SetActive(true);
     }
 
@@ -102,21 +103,23 @@ public class LoseUI : MonoBehaviour
 
     public void OnOpen()
     {
-        Reset();
+        //Reset();
+        clock.localEulerAngles = new Vector3(0, 0, -10.0f);
+
         gameObject.SetActive(true);
-        mainPanel.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack);
+       // mainPanel.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack);
     }
 
     public void OnClose()
     {
-        mainPanel.transform.DOScale(0.0f, scaleDuration).SetEase(Ease.InBack)
-            .OnComplete(() => gameObject.SetActive(false));
+        //mainPanel.transform.DOScale(0.0f, scaleDuration).SetEase(Ease.InBack);
+            
     }
 
     void Reset()
     {
         clock.localEulerAngles = new Vector3(0, 0, -10.0f);
-        mainPanel.transform.localScale = Vector3.zero;
+       // mainPanel.transform.localScale = Vector3.zero;
     }
 }
 public enum TypeOut
