@@ -995,6 +995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalGameplayGUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8060445995705529812, guid: 6a28904c81a4d62459593f72df86ec2b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8060445995705529815, guid: 6a28904c81a4d62459593f72df86ec2b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1611,6 +1615,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 792284510}
     m_Modifications:
+    - target: {fileID: 495762844925723441, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
+      propertyPath: onDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2062043574}
+    - target: {fileID: 495762844925723441, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
+      propertyPath: onDown.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenChallenge
+      objectReference: {fileID: 0}
+    - target: {fileID: 495762844925723441, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
+      propertyPath: onDown.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 495762845114336343, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: onDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
