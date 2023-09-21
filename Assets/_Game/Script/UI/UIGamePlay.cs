@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using System.Linq;
 using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 
 public class UIGamePlay : MonoBehaviour,IUIControl
@@ -14,6 +15,13 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public TextMeshProUGUI tmp;
     public TextMeshProUGUI coin;
     public static bool getHint = false;
+
+    [SerializeField] private Image background;
+
+    public void OnEnable()
+    {
+        SetBackground();
+    }
 
     public virtual void Open()
     {
@@ -69,6 +77,13 @@ public class UIGamePlay : MonoBehaviour,IUIControl
         AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.back_to_main);
         UIManager.Instance.OpenMain();
         
+    }
+    
+   
+
+    private void SetBackground()
+    {
+        background.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
     }
 
 

@@ -251,12 +251,12 @@ public class GameManager : SingletonBehivour<GameManager>
             if (req.result == UnityWebRequest.Result.Success)
             {
                 HasInternet = true;
-                Debug.Log("true");
+               
             }
             else
             {
                 HasInternet = false;
-                Debug.Log("false");
+              
                 OnInternetError?.Invoke();
             }
             
