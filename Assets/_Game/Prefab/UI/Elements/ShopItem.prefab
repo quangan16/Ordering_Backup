@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   borderSelect: {fileID: 3020620164085699818}
+  backGround: {fileID: 7619125893829146959}
   selectBtn: {fileID: 8250583047676084891}
   buyBtn: {fileID: 0}
   equipBtn: {fileID: 0}
@@ -499,6 +500,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3280257358112622318, guid: b9cdc285bd985854bbb3c5dde4255cd7, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3503884513651400295, guid: b9cdc285bd985854bbb3c5dde4255cd7, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3781429269964542560, guid: b9cdc285bd985854bbb3c5dde4255cd7, type: 3}

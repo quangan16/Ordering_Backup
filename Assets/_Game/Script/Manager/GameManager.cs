@@ -130,6 +130,7 @@ public class GameManager : SingletonBehivour<GameManager>
         gameMode = mode;
         currentLevel = level;
         ChangeSkin();
+        
         timer = (current.time);
         moves = current.moves;
         UIManager.Instance.SetCoin();
