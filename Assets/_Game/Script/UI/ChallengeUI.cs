@@ -57,7 +57,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
             {
                 case Mode.Locked:
                     {
-                        challenge.SetData(j * 4+2);
+                        challenge.SetData(j * 4+2+4);
                         break;
                     }
                 case Mode.Unlocked:

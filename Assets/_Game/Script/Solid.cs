@@ -48,6 +48,11 @@ public class Solid : MonoBehaviour
     public void ChangeSkin(Sprite sprite)
     {
         currentSkin.sprite = sprite;
+        foreach(Clamp clamp in GetComponentsInChildren<Clamp>())
+        {
+            clamp.ChangeSkin(sprite);
+        }
+
     }
     public void SetLastPosition(Vector3 position)
     { lastPosition = position; }

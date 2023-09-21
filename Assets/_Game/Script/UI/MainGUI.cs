@@ -25,15 +25,12 @@ public class MainGUI : MonoBehaviour, IUIControl
     public void OpenGamePlay()
     {
         UIManager.Instance.OpenGameplay();
-    }
-
+    }    
     public void OpenShop()
     {
-        UIManager.Instance.OpenShop();
-    }
+        UIManager.Instance.OpenShop();  
 
+    }   
     public void OpenChallenge()
-    {
-        UIManager.Instance.OpenChallenge();
-    }
+    { UIManager.Instance.OpenChallenge();}
 }

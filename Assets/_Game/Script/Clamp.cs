@@ -9,6 +9,7 @@ public class Clamp : MonoBehaviour
     [SerializeField] LayerMask layer;
     [SerializeField] SpriteRenderer green;
     public SpriteRenderer shadow;
+    public SpriteRenderer currentSkin;
 
     public Solid target;
     Solid parent => GetComponentInParent<Solid>();
@@ -99,5 +100,10 @@ public class Clamp : MonoBehaviour
     {
         green.enabled = isGreen;
     } 
+    public void ChangeSkin(Sprite sprite)
+    {
+        currentSkin.sprite = sprite;
+
+    }
 
 }
