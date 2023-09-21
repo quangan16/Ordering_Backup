@@ -93,10 +93,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   borderSelect: {fileID: 3020620164085699818}
   backGround: {fileID: 7619125893829146959}
+  Locked: {fileID: 7619125893286329389}
+  Unlocked: {fileID: 7619125892475918507}
   selectBtn: {fileID: 8250583047676084891}
   buyBtn: {fileID: 8897796551346594013}
   equipBtn: {fileID: 5839417698466852424}
   equippedBtn: {fileID: 8025549995333854328}
+  price: 0
+  state: 0
 --- !u!1 &3500004603071162763
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,19 +492,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5619867507035142973}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4823151627495479441}
-        m_TargetAssemblyTypeName: ShopItem, Assembly-CSharp
-        m_MethodName: Equip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4555906323454239495
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,6 +919,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -8555923106714208208, guid: e656ddd43ae416b47923e040f9702348, type: 2}
+    - target: {fileID: 7374234615964175700, guid: 8b93ec699f677854984104bd762e6ad6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8371524623171877120, guid: 8b93ec699f677854984104bd762e6ad6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1024,6 +1020,11 @@ PrefabInstance:
 --- !u!224 &7619125893060893452 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8371524623171877120, guid: 8b93ec699f677854984104bd762e6ad6, type: 3}
+  m_PrefabInstance: {fileID: 2130541185859084812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7619125893286329389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8371524623467519521, guid: 8b93ec699f677854984104bd762e6ad6, type: 3}
   m_PrefabInstance: {fileID: 2130541185859084812}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2130541186660009610
@@ -1174,6 +1175,11 @@ PrefabInstance:
 --- !u!1 &3020620164085699818 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3781429269964542560, guid: b9cdc285bd985854bbb3c5dde4255cd7, type: 3}
+  m_PrefabInstance: {fileID: 2130541186660009610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7619125892475918507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8371524623467519521, guid: b9cdc285bd985854bbb3c5dde4255cd7, type: 3}
   m_PrefabInstance: {fileID: 2130541186660009610}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &7619125892789174154 stripped

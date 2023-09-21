@@ -20,14 +20,17 @@ public class ShopItem : MonoBehaviour
 
     [SerializeField] GameObject borderSelect;
     [SerializeField] Image backGround;
+
+    [SerializeField] GameObject Locked;
+    [SerializeField] GameObject Unlocked;
     [SerializeField] Button selectBtn;
     [SerializeField] Button buyBtn;
     [SerializeField] Button equipBtn;
     [SerializeField] Button equippedBtn;
     ItemType type;
-    int price;
+    [SerializeField] int price;
     int onSelect;
-
+    public ShopState state;
 
 
 
@@ -36,6 +39,7 @@ public class ShopItem : MonoBehaviour
     public void OnInit(SkinType type)
     {
         ShopState state = DataManager.Instance.GetRingSkinState(type);
+        this.state = state;
         SkinItem skinItem = DataManager.Instance.GetSkin(type);
         SetState(state);
         // change ring skin
@@ -49,8 +53,10 @@ public class ShopItem : MonoBehaviour
     {
         ShopState state = DataManager.Instance.GetBackGroundState(type);
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(type);
+        this.state = state;
 
         SetState(state);
+
         // change sprite background
         backGround.sprite = backGroundItem.sprite;
 
@@ -59,45 +65,48 @@ public class ShopItem : MonoBehaviour
         this.type = ItemType.BACKGROUND;
 
     }
-    void SetState(ShopState state)
+    public void SetState(ShopState state)
     {
         buyBtn.gameObject.SetActive(false);
         equipBtn.gameObject.SetActive(false);
         equippedBtn.gameObject.SetActive(false);
+        Locked.SetActive(false);
+        Unlocked.SetActive(false);
         switch (state)
         {
             case ShopState.Locked:
-            {
-                    buyBtn.gameObject.SetActive(true);
-                    //active gameObject Locked
+                {
+                    Locked.SetActive(true);
                     break;
-            }
+                }
             case ShopState.UnBought:
-            {
+                {
+                    Unlocked.SetActive(true);
                     buyBtn.gameObject.SetActive(true);
-                    // active gameObject UnBought
                     //priceText.text = price.ToString();
-                break;
-            }
+                    break;
+                }
             case ShopState.Bought:
-            {
-                equipBtn.gameObject.SetActive(true);
-                // active gameObject bought
-                break;
-            }
+                {
+                    Unlocked.SetActive(true);
+
+                    equipBtn.gameObject.SetActive(true);
+                    break;
+                }
             case ShopState.Equipped:
-            {
-                equippedBtn.gameObject.SetActive(true); 
-                    //change Button equip => equipped
-                borderSelect.SetActive(true);
-                break;
-            }
+                {
+                    Unlocked.SetActive(true);
+
+                    equippedBtn.gameObject.SetActive(true);
+                    borderSelect.SetActive(true);
+                    break;
+                }
 
         }
     }
     public void Buy()
     {
-        if(DataManager.Instance.GetCoin()>=price)
+        if (DataManager.Instance.GetCoin() >= price)
         {
             DataManager.Instance.AddCoin(-price);
             Equip();
@@ -121,16 +130,15 @@ public class ShopItem : MonoBehaviour
             BackGroundType type = DataManager.Instance.GetLastBackground();
             DataManager.Instance.SetBackGroundState(ShopState.Bought, type);
             DataManager.Instance.SetBackGroundState(ShopState.Equipped, (BackGroundType)onSelect);
-            DataManager.Instance.SetLastBackground((BackGroundType)onSelect);   
+            DataManager.Instance.SetLastBackground((BackGroundType)onSelect);
 
         }
-        //equipBtn => equipped 
         GetComponentInParent<ShopGUI>().ReLoad();
     }
     public void AddEvent(UnityAction listener)
     {
         selectBtn.onClick.AddListener(listener);
-        
+
         selectBtn.onClick.AddListener(() => borderSelect.SetActive(true));
 
         equipBtn.onClick.AddListener(listener);
@@ -141,5 +149,6 @@ public class ShopItem : MonoBehaviour
     public void OffSelect()
     {
         borderSelect.SetActive(false);
+
     }
 }

@@ -11,6 +11,8 @@ public class DataManager : SingletonBehivour<DataManager>
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        SetBackGroundState(ShopState.Equipped, GetLastBackground());
+        SetRingSkinState(ShopState.Equipped, GetLastRingSkin());
     }
     public void SetCoin(int coin)
     {
