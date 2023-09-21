@@ -16,6 +16,7 @@ public class NotEnoughUI : PopupManager
     }
     public void Open(NotEnoughType type)
     {
+        OnOpen();
         this.type = type;
         if (type == NotEnoughType.Coin)
         {
