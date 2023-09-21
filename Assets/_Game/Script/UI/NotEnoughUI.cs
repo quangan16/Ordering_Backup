@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class NotEnoughUI : PopupManager
 {
-    [SerializeField] private ChallengeBought bought;
     NotEnoughType type;
-    [SerializeField] TextMeshProUGUI title;
-    [SerializeField] TextMeshProUGUI content;
+    [SerializeField] private TextMeshProUGUI title;
     [SerializeField] GameObject addCoin;
     [SerializeField] GameObject addHeart;
 
@@ -22,14 +20,14 @@ public class NotEnoughUI : PopupManager
         if (type == NotEnoughType.Coin)
         {
             title.text = "NOT ENOUGH MONEY";
-            content.text = "Watch ADs to earn more coins";
+          
             addCoin.SetActive(true);
             addHeart.SetActive(false);
         }
         else
         {
             title.text = "NOT ENOUGH HEART";
-            content.text = "Watch ADs to earn 1 heart";
+           
             addCoin.SetActive(false);
             addHeart.SetActive(true);
         }
