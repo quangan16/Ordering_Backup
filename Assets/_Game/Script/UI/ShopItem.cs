@@ -133,8 +133,8 @@ public class ShopItem : MonoBehaviour
         
         selectBtn.onClick.AddListener(() => borderSelect.SetActive(true));
 
-       // buyBtn.onClick.AddListener(listener);
-       // equipBtn.onClick.AddListener(listener); 
+        equipBtn.onClick.AddListener(listener);
+        equipBtn.onClick.AddListener(() => borderSelect.SetActive(true));
 
 
     }
