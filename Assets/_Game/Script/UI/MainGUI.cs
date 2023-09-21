@@ -26,4 +26,11 @@ public class MainGUI : MonoBehaviour, IUIControl
     {
         UIManager.Instance.OpenGameplay();
     }    
+    public void OpenShop()
+    {
+        UIManager.Instance.OpenShop();  
+
+    }   
+    public void OpenChallenge()
+    { UIManager.Instance.OpenChallenge();}
 }

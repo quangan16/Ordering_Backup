@@ -25,9 +25,12 @@ public class SkinItem
 }
 public enum SkinType
 {
-    strip,
-    dot,
-    abc,
-    xyz
+    Default,
+    Star,
+    Strip,
+    Wavy,
+    LeoPattern,
+    Snow
+    
 
 }

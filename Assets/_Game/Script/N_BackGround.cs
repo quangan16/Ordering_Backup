@@ -25,8 +25,10 @@ public class BackGroundItem
 }
 public enum BackGroundType
 {
+    Default,
     Red,
     Yellow,
     Blue,
-    Black
+    Green,
+    Brown
 }

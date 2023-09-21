@@ -48,14 +48,14 @@ public class Level : MonoBehaviour
         Sprite spriteL= skinItem.spriteL;
         foreach(var sol in solidList)
         {
-            if(sol is Line)
+            if(sol is Circle)
             {
-                sol.ChangeSkin(spriteL);
+                sol.ChangeSkin(spriteC);
 
             }
             else
             {
-                sol.ChangeSkin(spriteC);
+                sol.ChangeSkin(spriteL);
 
             }
         }

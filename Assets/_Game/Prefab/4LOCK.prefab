@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4841496324179918437
 Transform:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: a374b1cee96a5d7418e4e4907bf3fdca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dcf0cc5b1f5a1644a8cdf25ea6c95d53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -399,6 +399,7 @@ MonoBehaviour:
     m_Bits: 8
   green: {fileID: 6790133221249364005}
   shadow: {fileID: 0}
+  currentSkin: {fileID: 4842901751792299204}
   target: {fileID: 0}
   time: 0
   isDead: 0
@@ -453,6 +454,7 @@ MonoBehaviour:
     m_Bits: 8
   green: {fileID: 8701051294001361337}
   shadow: {fileID: 0}
+  currentSkin: {fileID: 4842901751792299204}
   target: {fileID: 0}
   time: 0
   isDead: 0
@@ -507,6 +509,7 @@ MonoBehaviour:
     m_Bits: 8
   green: {fileID: 5179780162525568336}
   shadow: {fileID: 0}
+  currentSkin: {fileID: 4842901751792299204}
   target: {fileID: 0}
   time: 0
   isDead: 0
@@ -561,6 +564,7 @@ MonoBehaviour:
     m_Bits: 8
   green: {fileID: 7449996281200453186}
   shadow: {fileID: 0}
+  currentSkin: {fileID: 4842901751792299204}
   target: {fileID: 0}
   time: 0
   isDead: 0
