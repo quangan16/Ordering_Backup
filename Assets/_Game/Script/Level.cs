@@ -18,12 +18,12 @@ public class Level : MonoBehaviour
     bool firstHint;
     private void Awake()
     {
-        OnInit();
+        
     }
     private void Start()
     {
         firstHint = DataManager.Instance.GetHint() == 0;
-        print(firstHint);
+        Invoke(nameof(OnInit), 1f);
     }
     private void OnDestroy()
     {
