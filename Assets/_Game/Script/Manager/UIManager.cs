@@ -130,7 +130,7 @@ public class UIManager : SingletonBehivour<UIManager>
     }
     public TextMeshProUGUI CoinText()
     {
-        return current.CoinText();
+        return current.GetCoinText();
     }
 
 

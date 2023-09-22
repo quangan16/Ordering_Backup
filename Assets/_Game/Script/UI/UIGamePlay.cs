@@ -13,12 +13,12 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 {
     // Start is called before the first frame update
     public TextMeshProUGUI tmp;
-    public TextMeshProUGUI coin;
     public static bool getHint = false;
     [SerializeField] private List<Button> buttonsList;
     
     [SerializeField] private Image background;
-
+    [SerializeField] private TextMeshProUGUI coinTxt;
+    
     public void OnEnable()
     {
         
@@ -70,7 +70,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     }
     public void SetCoin(int coin)
     {
-        this.coin.text = coin.ToString();
+        this.coinTxt.text = coin.ToString();
     }
     public void OpenShop()
     {
@@ -106,10 +106,11 @@ public class UIGamePlay : MonoBehaviour,IUIControl
             button.interactable = true;
         }
     }
-    public TextMeshProUGUI CoinText()
+    public TextMeshProUGUI GetCoinText()
     {
-        return coin;
+        return coinTxt;
     }
+    
 
 
 

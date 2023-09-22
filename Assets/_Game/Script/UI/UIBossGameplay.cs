@@ -9,7 +9,7 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
 {
     [SerializeField] TextMeshProUGUI time;
     [SerializeField] TextMeshProUGUI move;
-    public TextMeshProUGUI coin;
+    [SerializeField] TextMeshProUGUI coinTxt;
     public TextMeshProUGUI level;
     [SerializeField] private List<Button> buttonsList;
     
@@ -59,7 +59,7 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
     }
     public void SetCoin(int coin)
     {
-        this.coin.text = coin.ToString();
+        this.coinTxt.text = coin.ToString();
     }
 
     public void DeactiveButtons()
@@ -76,6 +76,11 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
         {
             button.interactable = true;
         }
+    }
+
+    public TextMeshProUGUI GetCoinText()
+    {
+        return coinTxt;
     }
 
 
