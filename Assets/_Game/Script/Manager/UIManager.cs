@@ -16,6 +16,7 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] ShopGUI shop;
     [SerializeField] MainGUI mainMenu;
     [SerializeField] NotEnoughUI notEnough;
+    [SerializeField] UIClamp uIClamp;
     //[SerializeField] shop 
     public IUIControl PreviousScene { get; private set; }
     IUIControl current;
@@ -134,8 +135,17 @@ public class UIManager : SingletonBehivour<UIManager>
     }
     public void ShowClamp()
     {
-
+        uIClamp.gameObject.SetActive(true);
+        
     }    
+    public void OnClampChange()
+    {
+        uIClamp.OnInit();
+    }
+    public void OffClamp()
+    {
+        uIClamp.gameObject.SetActive(false);
+    }
 
     //public void SetTime(float time)
     //{

@@ -7,7 +7,7 @@ public class Clamp : MonoBehaviour
 {
     [SerializeField] Transform checkPosition;
     [SerializeField] LayerMask layer;
-    [SerializeField] SpriteRenderer green;
+    public SpriteRenderer green;
     public SpriteRenderer shadow;
     public SpriteRenderer currentSkin;
 
@@ -48,7 +48,8 @@ public class Clamp : MonoBehaviour
                 ChangeGreen(false);
                 if (!target.ContainTrigger(this))
                 { 
-                    target.AddTrigger(this); 
+                    target.AddTrigger(this);
+                    target.OnClampChange();
                 }
 
                 if (parent != null && !parent.ContainLock(this))
@@ -93,13 +94,13 @@ public class Clamp : MonoBehaviour
     {
         target.SetLastPosition(transform.position);
         target.RemoveTrigger(this);
+        target.OnClampChange();
         target.CheckFree();
         target = null;
     }
-    public bool ChangeGreen(bool isGreen)
+    public void ChangeGreen(bool isGreen)
     {
         green.enabled = isGreen;
-        return isGreen;
     } 
     public void ChangeSkin(Sprite sprite)
     {
