@@ -30,12 +30,11 @@ public class NoInternetGUI : PopupManager
 
     public void Close()
     {
-        if (IsOpening)
-        {
-            IsOpening = false;
+        
+            
             gameObject.SetActive(false);
             OnClose();
-        }
+        
     }
 
     public void Retry()

@@ -24,11 +24,46 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
     [SerializeField] private Slider challengeBar;
     [SerializeField] private TextMeshProUGUI passedChallengeTxt;
+    public ScrollRect scrollRect;
+    public RectTransform content;
+    public int unlockedItemIndex; // Index of the unlocked item you want to scroll to.
 
+    private void Start()
+    {
+        
+    }
+
+    // Calculate the normalized Y position to scroll to a specific item index.
+    private float CalculateNormalizedYPosition(int itemIndex = 2)
+    {
+        if (itemIndex < 0 || itemIndex >= content.childCount)
+        {
+            Debug.LogWarning("Invalid item index.");
+            return 0f;
+        }
+
+      
+        float itemHeight = content.GetChild(unlockedItemIndex).rect().rect.height;
+        Debug.Log(itemHeight);
+        float contentHeight = itemHeight * content.childCount;
+        float yPosition = (itemIndex * itemHeight) / contentHeight;
+
+        return Mathf.Clamp01(1 - yPosition); 
+    }
+[Button]
+    private void Caculate()
+    {
+        // Calculate the normalized scroll position to reach the unlocked item.
+        float normalizedYPosition = CalculateNormalizedYPosition(unlockedItemIndex);
+
+        // Set the scroll position.
+        scrollRect.verticalNormalizedPosition = (normalizedYPosition);
+    }
     
     private void OnEnable()
     {
         UpdateChallengeBar();
+       
     }
     private void FixedUpdate()
     {
