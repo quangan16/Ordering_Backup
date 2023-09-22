@@ -27,7 +27,7 @@ public class GameManager : SingletonBehivour<GameManager>
     private void Start()
     {
 
-        // AdsAdapterAdmob.Instance.ShowBanner();
+        AdsAdapterAdmob.Instance.ShowBanner();
        // throw new NotImplementedException();
     }
 
@@ -188,6 +188,12 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         CloseGamePlay();
         int normalLevel = DataManager.Instance.GetNormalLevel();
+        if (normalLevel >= 5)
+        {
+            AdsAdapterAdmob.LogAFAndFB($"next_level", "0",
+                "0");
+            AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.next_level);
+        }
         //Debug out range
         if (normalLevel >= normal.levels.Length)
         {

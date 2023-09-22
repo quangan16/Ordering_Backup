@@ -110,30 +110,13 @@ public class AdsAdapterAdmob : MonoBehaviour
 
     public enum where
     {
-        rw_add_coin_in_home,
-        rw_x2_daily_reward,
-        rw_claim_gift_popup,
-        rw_buy_animal,
-        rw_buy_human,
-        rw_get_coin_new_ally_popup,
-        rw_x2_coin_win,
-        inter_next_level,
-        btn_get_more_key,
-        btn_spin_by_video,
-        btn_claim_daily_next_day,
-        no_touch,
-        btn_one1time,
-        offline_earning,
-        rw_go_bonus_level,
-        inter_bonus,
-        inter_delete,
-        inter_setting,
-        inter_dictionary,
-        inter_summon,
-        inter_new_level,
-        inter_offline_gift,
-        inter_luckywheel
-        
+        next_level,
+        back_to_main,
+        skip_level,
+        get_hint,
+        get_live,
+        unlock_challenge,
+        get_resources,
         
     }
 

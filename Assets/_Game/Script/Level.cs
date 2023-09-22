@@ -67,7 +67,9 @@ public class Level : MonoBehaviour
                 }
                 else
                 {
-                    //showads
+                    AdsAdapterAdmob.LogAFAndFB($"get_hint", "0",
+                        "0");
+                    AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.get_hint);
                     Discard();
                 }
             }
