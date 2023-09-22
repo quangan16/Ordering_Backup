@@ -40,7 +40,21 @@ public class WinUI : MonoBehaviour
     public void GetCoinAds()
     {
         OnContinue();
-        UIManager.Instance.ShowAds();
+        AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+            {
+
+                AdsAdapterAdmob.LogAFAndFB($"multiply_reward_coin", "0",
+                    "0");
+                DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
+                
+            }, () =>
+            {
+                // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                Debug.Log("Failed to load");
+
+            }, 0,
+            AdsAdapterAdmob.where.multiply_reward_coin);
+     
         DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
     }
 

@@ -57,7 +57,7 @@ public class NotEnoughUI : PopupManager
         AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
             {
 
-                AdsAdapterAdmob.LogAFAndFB($"get_resources", "0",
+                AdsAdapterAdmob.LogAFAndFB($"get_coin", "0",
                     "0");
                 AddResources();
             }, () =>
@@ -66,7 +66,7 @@ public class NotEnoughUI : PopupManager
                 Debug.Log("Failed to load");
                 
             }, 0,
-            AdsAdapterAdmob.where.get_resources);
+            AdsAdapterAdmob.where.get_coin);
         
     }
     public void AddResources()

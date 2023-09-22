@@ -50,12 +50,24 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public void NextLevel()
     {
         DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
-        // if(DataManager.Instance.GetNormalLevel()>=5)
-        // {
-        //     AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.next_level);
-        //
-        // }
-        GameManager.Instance.NextLevel();
+        if(DataManager.Instance.GetNormalLevel()>=5)
+        {
+            Debug.Log("lol");
+            AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                {
+
+                    AdsAdapterAdmob.LogAFAndFB($"skip_level", "0",
+                        "0");
+                    GameManager.Instance.NextLevel();
+                }, () =>
+                {
+                    // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                    Debug.Log("Failed to load");
+
+                }, 0,
+                AdsAdapterAdmob.where.skip_level);
+        }
+       
     }
     
     public virtual void CallHint()
@@ -79,10 +91,14 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
     public void BackToMain()
     {
-        AdsAdapterAdmob.LogAFAndFB($"back_to_main", "0",
-            "0");
-        AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.back_to_main);
-       
+        if (DataManager.Instance.GetNormalLevel() >= 6)
+        {
+            AdsAdapterAdmob.LogAFAndFB($"back_to_main", "0",
+                "0");
+            AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.back_to_main);
+
+           
+        }
         UIManager.Instance.OpenMain();
         
     }

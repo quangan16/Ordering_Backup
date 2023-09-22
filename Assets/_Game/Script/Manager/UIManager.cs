@@ -19,7 +19,7 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] UIClamp uIClamp;
     //[SerializeField] shop 
     public IUIControl PreviousScene { get; private set; }
-    IUIControl current;
+    public IUIControl current;
     private void Start()
     {
        OpenMain();

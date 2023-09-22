@@ -112,11 +112,11 @@ public class AdsAdapterAdmob : MonoBehaviour
     {
         next_level,
         back_to_main,
-        skip_level,
         get_hint,
         get_live,
-        unlock_challenge,
-        get_resources,
+        skip_level,
+        get_coin,
+        multiply_reward_coin,
         
     }
 
