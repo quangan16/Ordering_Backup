@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopupBoss : MonoBehaviour
+public class PopupBoss : PopupManager
 {
+    
     public void Open()
     {
         gameObject.SetActive(true);
+        OnOpen();
     }
     public void Close()
     {
-        gameObject.SetActive(false);
+
+        OnClose();
     }
     public void PlayBtn()
     {
-        Close();
+        OnClose();
         UIManager.Instance.OpenBoss();
     }
 

@@ -48,19 +48,19 @@ public class AdsAdapter : MonoBehaviour
 
     public static void LogAFAndFB(string eventName, string key, string value)
     {
-#if !UNITY_EDITOR
-        try
-        {
-            if (FireBaseRemote.initialized)
-            {
-                FirebaseAnalytics.LogEvent(eventName, key, value);
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e.StackTrace);
-        }
-#endif
+//#if !UNITY_EDITOR
+        //try
+        //{
+        //    if (FireBaseRemote.initialized)
+        //    {
+        //        FirebaseAnalytics.LogEvent(eventName, key, value);
+        //    }
+        //}
+        //catch (Exception e)
+        //{
+        //    Debug.LogError(e.StackTrace);
+        //}
+//#endif
     }
 
 #if EXISTED_IRON_SOURCE
@@ -80,7 +80,7 @@ public class AdsAdapter : MonoBehaviour
 
     private void OnDestroy()
     {
-        AppStateEventNotifier.AppStateChanged -= OnAppStateChanged;
+        //AppStateEventNotifier.AppStateChanged -= OnAppStateChanged;
     }
 
     private void OnAppStateChanged(GoogleMobileAds.Common.AppState state)
@@ -120,12 +120,15 @@ public class AdsAdapter : MonoBehaviour
 
         if (!PopupGDPR.rate_gdpr)
         {
-            var canvasGDPR = Instantiate(canvas_GDPR);
-            canvasGDPR.GetComponentInChildren<PopupGDPR>().onComplete += () =>
+            if (canvas_GDPR)
             {
-                Debug.Log("init ironsource");
-                adapter.Setup(true);
-            };
+                var canvasGDPR = Instantiate(canvas_GDPR);
+                canvasGDPR.GetComponentInChildren<PopupGDPR>().onComplete += () =>
+                {
+                    Debug.Log("init ironsource");
+                    adapter.Setup(true);
+                };
+            }
         }
         else
         {
@@ -181,49 +184,53 @@ public class AdsAdapter : MonoBehaviour
 
     public enum where
     {
-        home,
-        buy_skin,
-        get_coin,
-        main_game,
-        main_game_win,
-        main_game_lose,
-        main_game_add_damage,
-        main_game_play_level_bonus,
-        main_game_try_skin,
-        main_game_free_skin,
-        main_game_skip_level,
-        main_game_get_coin_piggy_bank,
-        main_game_try_again_level_challenge,
-        main_game_get_key,
-
-        tree_game,
-        tree_game_win,
-        tree_game_lose,
-
-        treasure_game,
-        treasure_game_win,
-        treasure_game_lose,
-
-        boss_game,
-        boss_game_win,
-        boss_game_lose,
-
-        area_game,
-        area_game_win,
-        area_game_lose,
-        area_game_add_power,
-        area_game_go_home,
-
-        merge_game,
-        merge_game_win,
-        merge_game_lose,
-        merge_game_gift_popup,
-        merge_game_daily_reward,
-        merge_game_new_ally,
-        merge_game_buy_animal,
-        merge_game_buy_animal_ingame,
-        merge_game_buy_human,
-        merge_game_home_buy_coin,
+        // home,
+        // buy_skin,
+        // get_coin,
+        // main_game,
+        // main_game_win,
+        // main_game_lose,
+        // main_game_add_damage,
+        // main_game_play_level_bonus,
+        // main_game_try_skin,
+        // main_game_free_skin,
+        // main_game_skip_level,
+        // main_game_get_coin_piggy_bank,
+        // main_game_try_again_level_challenge,
+        // main_game_get_key,
+        //
+        // tree_game,
+        // tree_game_win,
+        // tree_game_lose,
+        //
+        // treasure_game,
+        // treasure_game_win,
+        // treasure_game_lose,
+        //
+        // boss_game,
+        // boss_game_win,
+        // boss_game_lose,
+        //
+        // area_game,
+        // area_game_win,
+        // area_game_lose,
+        // area_game_add_power,
+        // area_game_go_home,
+        //
+        // merge_game,
+        // merge_game_win,
+        // merge_game_lose,
+        // merge_game_gift_popup,
+        // merge_game_daily_reward,
+        // merge_game_new_ally,
+        // merge_game_buy_animal,
+        // merge_game_buy_animal_ingame,
+        // merge_game_buy_human,
+        // merge_game_home_buy_coin,
+        
+        get_coins,
+        next_level,
+        back_to_main,
     }
 
     public void ShowRewardedVideo(Action onComplete, Action onFail, int level, where where)

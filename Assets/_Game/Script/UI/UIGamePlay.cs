@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using System.Linq;
 using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 
 public class UIGamePlay : MonoBehaviour,IUIControl
@@ -14,15 +15,27 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public TextMeshProUGUI tmp;
     public TextMeshProUGUI coin;
     public static bool getHint = false;
+    [SerializeField] private List<Button> buttonsList;
+    
+    [SerializeField] private Image background;
+
+    public void OnEnable()
+    {
+        
+    }
 
     public virtual void Open()
     {
         gameObject.SetActive(true);
         GameManager.Instance.OpenGamePlay(GameMode.Normal, DataManager.Instance.GetNormalLevel());
+        ActiveButtons();
+        ChangeBackground();
     }
     public virtual void Close()
     {
+      
         gameObject.SetActive(false);
+        
     }
     public void Replay()
     {
@@ -37,10 +50,14 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public void NextLevel()
     {
         DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
-        UIManager.Instance.ShowAds();
+        // if(DataManager.Instance.GetNormalLevel()>=5)
+        // {
+        //     AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.next_level);
+        //
+        // }
         GameManager.Instance.NextLevel();
     }
-
+    
     public virtual void CallHint()
     {
         //getHint = true;
@@ -62,10 +79,37 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
     public void BackToMain()
     {
+        // AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.back_to_main);
         UIManager.Instance.OpenMain();
         
     }
+    
+   
 
+    public void ChangeBackground()
+    {
+        background.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
+    }
+    
+    public void DeactiveButtons()
+    {
+        foreach (var button in buttonsList)
+        {
+            button.interactable = false;
+        }
+    }
+
+    public void ActiveButtons()
+    {
+        foreach (var button in buttonsList)
+        {
+            button.interactable = true;
+        }
+    }
+    public TextMeshProUGUI CoinText()
+    {
+        return coin;
+    }
 
 
 

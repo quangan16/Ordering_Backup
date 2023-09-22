@@ -57,7 +57,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
             {
                 case Mode.Locked:
                     {
-                        challenge.SetData(j * 3+2);
+                        challenge.SetData(j * 4+2+4);
                         break;
                     }
                 case Mode.Unlocked:
@@ -103,7 +103,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         {
             time -= timeSpan;
             heart++;
-            dateTime = DateTime.Now;
+            dateTime = DateTime.Now - time;
             DataManager.Instance.SetTime(dateTime.ToString(format));
             if (heart == 3)
             {
@@ -111,6 +111,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
             }
 
         }
+        
         timeSpan -= time;
         float timeToDisplay = (float)(timeSpan.TotalSeconds);
         int minutes = Mathf.FloorToInt(timeToDisplay / 60);
@@ -206,5 +207,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         challengeBar.value = totalChallengePassed;
         passedChallengeTxt.text = totalChallengePassed.ToString() + "/20";
     }
+
+   
 
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
+
 public class GameManager : SingletonBehivour<GameManager>
 {
     [SerializeField] LevelScript normal;
@@ -18,6 +20,20 @@ public class GameManager : SingletonBehivour<GameManager>
     public static int moves;
     public float adsCountdown;
     public static bool isVibrate = true;
+    public bool HasInternet { get; private set; }
+    private float timeInterval = 5.0f;
+    private float timeSinceLastCheck = 5.0f;
+
+    private void Start()
+    {
+
+        // AdsAdapter.Instance.ShowBanner();
+       // throw new NotImplementedException();
+    }
+
+    public static event Action OnInternetError;
+    public static event Action OnInternetSuccess;
+
     private void Update()
     {
         if (isTouch && (gameMode == GameMode.Challenge || gameMode == GameMode.Boss))
@@ -41,11 +57,20 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             adsCountdown += Time.deltaTime;
         }
+
+        timeSinceLastCheck += Time.deltaTime;
+        if (timeSinceLastCheck >= timeInterval)
+        {
+            timeSinceLastCheck = 0;
+            StartCoroutine(CheckInternetConnection());
+            
+        }
+
     }
     IEnumerator CountDown()
     {
         yield return new WaitForSeconds(10);
-        //Instantiate(tutorial, tutoPos);
+         Instantiate(tutorial, tutoPos);
 
     }
     public void StartCountDown()
@@ -66,11 +91,11 @@ public class GameManager : SingletonBehivour<GameManager>
                     }
 
 
-                    //Open challenge each 3 levels 2,5,8,...
+                    //Open challenge each 4 levels 2,6,10,...
 
-                    if ((level - 1) % 3 == 0 && (level - 1) / 3 <= challenge.levels.Length - 1)
+                    if (level>=5 &&(level - 1) % 4 == 0 && (level - 1) / 4 <= challenge.levels.Length - 1)
                     {
-                        int levelChallenge = (level - 1) / 3;
+                        int levelChallenge = (level - 1) / 4-1;
                         (Mode challengeMode, int time) = DataManager.Instance.GetLevelMode(levelChallenge);
                         if (challengeMode == Mode.Locked)
                         {
@@ -106,7 +131,8 @@ public class GameManager : SingletonBehivour<GameManager>
         }
         gameMode = mode;
         currentLevel = level;
-        current.ChangeSkin(0);
+        ChangeSkin();
+        
         timer = (current.time);
         moves = current.moves;
         UIManager.Instance.SetCoin();
@@ -114,7 +140,12 @@ public class GameManager : SingletonBehivour<GameManager>
         Camera.main.orthographicSize = current.cameraDist;
 
     }
+    public void ChangeSkin()
+    {
+        current.ChangeSkin();
+    }
 
+ 
     public void SubtractMove()
     {
         if (gameMode == GameMode.Boss)
@@ -156,11 +187,11 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             normalLevel = 0;
         }
-        if ((normalLevel - 3) % 6 == 0 && (normalLevel - 3) / 6 <= boss.levels.Length - 1)
+        if (normalLevel >= 8 && (normalLevel ) % 8 == 0 && (normalLevel ) / 8 <= boss.levels.Length - 1)
         {
 
             UIManager.Instance.RecommendBoss();
-            DataManager.Instance.SetBossLevel((normalLevel - 3) / 6);
+            DataManager.Instance.SetBossLevel((normalLevel ) / 8-1);
         }
         currentLevel = normalLevel;
         Invoke(nameof(OnNextLevel), 0.1f);
@@ -217,7 +248,24 @@ public class GameManager : SingletonBehivour<GameManager>
         current.DiscardRandom();
     }
 
-
+    public IEnumerator CheckInternetConnection()
+    {
+        using (UnityWebRequest req = UnityWebRequest.Get("www.google.com"))
+        {
+            yield return req.SendWebRequest();
+            if (req.result == UnityWebRequest.Result.Success)
+            {
+                HasInternet = true;
+                OnInternetSuccess?.Invoke();
+            }
+            else
+            {
+                HasInternet = false;
+                OnInternetError?.Invoke();
+            }
+            
+        }
+    }
 
 
 

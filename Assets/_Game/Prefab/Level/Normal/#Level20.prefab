@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solidList: []
-  cameraDist: 10
+  cameraDist: 8
   moves: 0
   time: 0
   price: 0
@@ -509,6 +509,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 531298029840545716}
     m_Modifications:
+    - target: {fileID: 422419283455168203, guid: 15e5db3823fbf5042971422c4c264697, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4435571046340391270, guid: 15e5db3823fbf5042971422c4c264697, type: 3}
       propertyPath: m_Name
       value: UC1

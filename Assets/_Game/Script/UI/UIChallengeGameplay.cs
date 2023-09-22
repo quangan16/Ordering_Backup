@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIChallengeGameplay : MonoBehaviour,IUIControl
 {
@@ -10,6 +11,7 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     [SerializeField] TextMeshProUGUI time;
     public TextMeshProUGUI tmp;
     public TextMeshProUGUI coin;
+    [SerializeField] private List<Button> buttonsList;
     private void Update()
     {   
         DisplayTime(GameManager.timer);
@@ -50,5 +52,21 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     //{
     //    timer = time;
     //}
+
+    public void DeactiveButtons()
+    {
+        foreach (var button in buttonsList)
+        {
+            button.interactable = false;
+        }
+    }
+
+    public void ActiveButtons()
+    {
+        foreach (var button in buttonsList)
+        {
+            button.interactable = true;
+        }
+    }
 
 }

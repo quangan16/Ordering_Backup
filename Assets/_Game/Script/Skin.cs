@@ -4,5 +4,33 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Skin", order = 1)]
 public class Skin : ScriptableObject
 {
-    public Sprite[] skins;
+    public SkinItem[] skins;
+    public SkinItem GetSkinItem(SkinType type)
+    {
+        foreach(var item in skins)
+        {
+            if(item.type == type)
+            { return item; }
+        }
+        return null;
+    }
+}
+[System.Serializable]
+public class SkinItem
+{
+    public Sprite spriteC;
+    public Sprite spriteL;
+    public int price;
+    public SkinType type;
+}
+public enum SkinType
+{
+    Default,
+    Star,
+    Strip,
+    Wavy,
+    LeoPattern,
+    Snow
+    
+
 }

@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953563569416356097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.10853223}
+  m_LocalPosition: {x: 0.47, y: 0, z: 0.10853223}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 4881331641901184447}
   m_Layer: 3
   m_Name: GU5 (2)
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,8 +260,7 @@ MonoBehaviour:
   triggered: []
   locked: []
   lastPosition: {x: 0, y: 0, z: 0}
-  skin: {fileID: 0}
-  currentSkin: {fileID: 0}
+  currentSkin: {fileID: 5982707607559290308}
   isTouch: 0
   isDead: 0
   isVertical: 0
@@ -587,13 +586,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5382918723536076786}
   - component: {fileID: 5982707607559290308}
+  - component: {fileID: 8732578887668780042}
   m_Layer: 3
   m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5382918723536076786
 Transform:
   m_ObjectHideFlags: 0
@@ -602,9 +602,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6828102545975029524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.47, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2924556144301508049}
   m_Father: {fileID: 5485769297070369445}
@@ -651,14 +651,25 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: a374b1cee96a5d7418e4e4907bf3fdca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b0f9b7888f3bee74ea7644db600e8bda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 10, y: 10}
+  m_DrawMode: 1
+  m_Size: {x: 7.8, y: 7.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!210 &8732578887668780042
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6828102545975029524}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4

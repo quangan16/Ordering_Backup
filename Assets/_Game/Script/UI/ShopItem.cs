@@ -1,8 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public enum ItemType
 {
@@ -10,48 +14,129 @@ public enum ItemType
     BACKGROUND
 }
 
-[Serializable]
-public class ShopItem : MonoBehaviour, IPointerClickHandler
+public class ShopItem : MonoBehaviour
 {
-    public bool hasBought;
-    [SerializeField] private SkinPage skinPage;
-    [SerializeField] private BackgroundPage backgroundPage;
-    public static event Action OnItemSelected;
 
-    [Serializable]
-    public struct ShopItemData
+
+
+    [SerializeField] GameObject borderSelect;
+    [SerializeField] Image backGround;
+    [SerializeField] Image skin;
+    [SerializeField] TextMeshProUGUI priceText;
+    [SerializeField] GameObject Locked;
+    [SerializeField] GameObject Unlocked;
+    [SerializeField] Button selectBtn;
+    [SerializeField] Button buyBtn;
+    ItemType type;
+    [SerializeField] int price;
+    int onSelect;
+    public ShopState state;
+
+
+
+
+    //----------------------new-----------------------
+    public void OnInit(SkinType type)
     {
-        public Sprite itemContent;
-        public ItemType itemType;
+        ShopState state = DataManager.Instance.GetRingSkinState(type);
+        this.state = state;
+        SkinItem skinItem = DataManager.Instance.GetSkin(type);
+        // change ring skin
+        price = skinItem.price;
+        SetState(state);
+        backGround.transform.parent.gameObject.SetActive(false);
+        skin.sprite = skinItem.spriteC;
+        onSelect = (int)type;
+        this.type = ItemType.SKIN;
+
     }
-   
-    
-  
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnInit(BackGroundType type)
     {
-        switch (ShopGUI.currentPage)
+        ShopState state = DataManager.Instance.GetBackGroundState(type);
+        BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(type);
+        this.state = state;
+        price = backGroundItem.price;
+        SetState(state);
+        // change sprite background
+        skin.transform.parent.gameObject.SetActive(false);
+
+        backGround.sprite = backGroundItem.sprite;
+
+        onSelect = (int)type;
+        this.type = ItemType.BACKGROUND;
+
+    }
+    public void SetState(ShopState state)
+    {
+        Locked.SetActive(false);
+        switch (state)
         {
-            case PageState.SKIN:
-                if (hasBought == true)
-                {
-                    skinPage.DeselectItem();
-                    skinPage.selectedObjectItem = gameObject;
-                    OnItemSelected?.Invoke();
+            case ShopState.Locked:
+                {                   
+                    break;
                 }
-                break;
-            case PageState.BACKGROUND:
-                if (hasBought == true)
+            case ShopState.UnBought:
                 {
-                    backgroundPage.DeselectItem();
-                    backgroundPage.selectedObjectItem = gameObject;
-                    OnItemSelected?.Invoke();
+                    Locked.SetActive(true);
+                    priceText.text = price.ToString();
+                    break;
+                }
+            case ShopState.Bought:
+                {
+                    break;
+                }
+            case ShopState.Equipped:
+                {
+                    borderSelect.SetActive(true);
+                    break;
                 }
 
-                break;
         }
-        
-        
-       
     }
-   
+    public void Buy()
+    {
+        if (DataManager.Instance.GetCoin() >= price)
+        {
+            DataManager.Instance.AddCoin(-price);
+            Equip();
+            UIManager.Instance.SetCoin();
+        }
+        else
+        {
+            UIManager.Instance.OpenNotEnough(NotEnoughType.Coin);
+        }
+    }
+    public void Equip()
+    {
+        if (type == ItemType.SKIN)
+        {
+            SkinType type = DataManager.Instance.GetLastRingSkin();
+            DataManager.Instance.SetRingSkinState(ShopState.Bought, type);
+            DataManager.Instance.SetRingSkinState(ShopState.Equipped, (SkinType)onSelect);
+            DataManager.Instance.SetLastRingSkin((SkinType)onSelect);
+        }
+        else
+        {
+            BackGroundType type = DataManager.Instance.GetLastBackground();
+            DataManager.Instance.SetBackGroundState(ShopState.Bought, type);
+            DataManager.Instance.SetBackGroundState(ShopState.Equipped, (BackGroundType)onSelect);
+            DataManager.Instance.SetLastBackground((BackGroundType)onSelect);
+
+        }
+        GetComponentInParent<ShopGUI>().ReLoad();
+    }
+    public void AddEvent(UnityAction listener)
+    {
+        selectBtn.onClick.AddListener(listener);
+
+        selectBtn.onClick.AddListener(() => borderSelect.SetActive(true));
+
+
+
+    }
+    public void OffSelect()
+    {
+        borderSelect.SetActive(false);
+
+    }
 }

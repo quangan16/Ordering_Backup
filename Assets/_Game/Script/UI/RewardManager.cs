@@ -22,6 +22,15 @@ public class RewardManager : MonoBehaviour
 
     private int rewardAmount;
 
+    [SerializeField] private AudioSource audioSrc;
+
+    [SerializeField] private AudioClip spawnCoinSfx;
+
+    [SerializeField] private AudioClip collectCoinSfx;
+    
+
+    private float volume = 1.0f;
+
     void Awake()
     {
         SetUpInitPos();
@@ -77,10 +86,12 @@ public class RewardManager : MonoBehaviour
         {
             coinPilePrefab.transform.GetChild(i).position = coinInitPos[i];
         }
-
+        
         float intervalDelay = 0.1f;
         coinPilePrefab.SetActive(true);
-
+        
+        audioSrc.PlayOneShot(spawnCoinSfx, volume);
+        
         for (int i = 0; i < coinPilePrefab.transform.childCount; i++)
         {
             Transform currentChild = coinPilePrefab.transform.GetChild(i);
@@ -94,8 +105,11 @@ public class RewardManager : MonoBehaviour
                 currentChild.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuart);
         }
 
+        
         yield return new WaitForSeconds(0.5f);
+        audioSrc.PlayOneShot(collectCoinSfx, volume);
         int targetCoinAmount = int.Parse(coinAmountTxt.text) + rewardAmount;
+       
         while (int.Parse(coinAmountTxt.text) < targetCoinAmount -1)
         {
             yield return new WaitForSeconds(0.05f);

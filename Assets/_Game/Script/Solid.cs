@@ -18,7 +18,6 @@ public class Solid : MonoBehaviour
     public Collider2D[] colliders => GetComponentsInChildren<Collider2D>();
     public SpriteRenderer[] spriteRenderers => GetComponentsInChildren<SpriteRenderer>();
     //public HashSet<Collider2D> triggered = new HashSet<Collider2D>();
-    public Skin skin;
     public SpriteRenderer currentSkin;
     public bool isTouch = false;
     public bool isDead = false;
@@ -46,9 +45,14 @@ public class Solid : MonoBehaviour
         spriteShadow.Add(shadow);
         lastPosition = transform.position;
     }
-    public void ChangeSkin(int i)
+    public void ChangeSkin(Sprite sprite)
     {
-      //  currentSkin.sprite = skin.skins[i];
+        currentSkin.sprite = sprite;
+        foreach(Clamp clamp in GetComponentsInChildren<Clamp>())
+        {
+            clamp.ChangeSkin(sprite);
+        }
+
     }
     public void SetLastPosition(Vector3 position)
     { lastPosition = position; }
@@ -61,8 +65,12 @@ public class Solid : MonoBehaviour
             if (level.isWin)
             {
                 canClick= false;
-                UIManager.Instance.OnWin();
-                
+                UIManager.Instance.DeactiveButtons();
+                DOVirtual.DelayedCall(1.0f, () =>
+                {
+                    UIManager.Instance.OnWin();
+                });
+
             }
         }
             
@@ -134,7 +142,8 @@ public class Solid : MonoBehaviour
         }
       
         transform.DOLocalRotate( Vector3.forward*random+transform.rotation.y*Vector3.up+transform.rotation.x*Vector3.right, 0.5f,RotateMode.LocalAxisAdd);
-        transform.DOScale(0.45f, 0.5f);     
+        float x = transform.localScale.x;
+        transform.DOScale(x*9/8f, 0.5f);     
         transform.DOJump(transform.position + pos, 1f, 1, 0.8f).OnComplete(() =>
         {
             OnDeath();

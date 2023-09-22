@@ -3,17 +3,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum PageState
-{
-    SKIN,
-    BACKGROUND
-}
+
 
 public class ShopGUI : MonoBehaviour, IUIControl
 {
-    public static ShopGUI Instance;
 
-    public static PageState currentPage;
 
 
     [SerializeField] private Image skinButtonImg;
@@ -32,39 +26,40 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] private TextMeshProUGUI skinTxt;
     [SerializeField] private TextMeshProUGUI backgroundTxt;
 
-    [SerializeField] private ShopItemSO shopItemData;
+
+    [SerializeField] private Image ringSkin;
     [SerializeField] private Image backgroundImg;
     [SerializeField] private Image LightSFX;
 
+    [SerializeField] ShopItem itemPref;
+    [SerializeField] Transform skinLayout;
+    [SerializeField] Transform backgroundLayout;
+
+    [SerializeField] private TextMeshProUGUI coinTxt;
+
     void OnEnable()
     {
-        backgroundImg.sprite = shopItemData.shopItems[DataManager.Instance.GetBackground()].itemContent;
+        //backgroundImg.sprite = shopItemData.shopItems[DataManager.Instance.GetBackground()].itemContent;
         LightEffect();
+        
     }
-
+    public void SetCoin(int coin)
+    {
+        coinTxt.text = coin.ToString();
+    }    
     void OnDisable()
     {
         DOTween.KillAll();
     }
 
 
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
+
 
     void Start()
     {
         skinPage.gameObject.SetActive(true);
         backgroundPage.gameObject.SetActive(false);
-        currentPage = PageState.SKIN;
+       // currentPage = PageState.SKIN;
     }
 
 
@@ -76,7 +71,6 @@ public class ShopGUI : MonoBehaviour, IUIControl
         backgroundPage.gameObject.SetActive(false);
         skinTxt.color = textActiveColor;
         backgroundTxt.color = textInactiveColor;
-        currentPage = PageState.SKIN;
     }
 
     public void OnBackgroundPageSelect()
@@ -87,7 +81,6 @@ public class ShopGUI : MonoBehaviour, IUIControl
         backgroundPage.gameObject.SetActive(true);
         skinTxt.color = textInactiveColor;
         backgroundTxt.color = textActiveColor;
-        currentPage = PageState.BACKGROUND;
     }
 
     public void ResetLightEffect()
@@ -106,6 +99,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
     public void Open()
     {
         gameObject.SetActive(true);
+        OnInit();
     }
 
     public void Close()
@@ -124,4 +118,70 @@ public class ShopGUI : MonoBehaviour, IUIControl
         }
        
     }
+    //--------------------new----------------------
+    public void OnInit()
+    {
+       
+        ReLoad();
+    }
+    public void ReLoad()
+    {
+        ringSkin.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).spriteC;
+        backgroundImg.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
+        Skin skins = DataManager.Instance.skins;
+        N_BackGround backGround = DataManager.Instance.backGround;
+        ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
+        foreach (ShopItem item in items)
+        {
+            Destroy(item.gameObject);
+            Destroy(item);
+        }
+
+        for (int i = 0; i < skins.skins.Length; i++)
+        {
+            int ii = i;
+            ShopItem shopItem = Instantiate(itemPref, skinLayout);
+            shopItem.OnInit((SkinType)(ii));
+            shopItem.AddEvent(() => SelectSkin((SkinType)(ii)));
+        }
+        for (int j = 0; j < backGround.BackGroundItems.Length; j++)
+        {
+            int jj = j;
+            ShopItem shopItem = Instantiate(itemPref, backgroundLayout);
+            shopItem.OnInit((BackGroundType)jj);
+            shopItem.AddEvent(() => SelectBackGround((BackGroundType)jj));
+        }
+    }
+    public void SelectSkin(SkinType skinType)
+    {
+        ShopItem[] items = GetComponentsInChildren<ShopItem>();
+        foreach (ShopItem item in items)
+        {
+            if(item.state != ShopState.Equipped)
+            item.OffSelect();
+        }
+        
+        ringSkin.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
+    }
+    public void SelectBackGround(BackGroundType backGroundType)
+    {
+        ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
+        foreach (ShopItem item in items)
+        {
+            if (item.state != ShopState.Equipped)
+                item.OffSelect();
+        }
+        backgroundImg.sprite = DataManager.Instance.GetBackGround(backGroundType).sprite;
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

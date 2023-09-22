@@ -3,27 +3,32 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class NotEnoughUI : MonoBehaviour
+public class NotEnoughUI : PopupManager
 {
     NotEnoughType type;
-    [SerializeField] TextMeshProUGUI title;
-    [SerializeField] TextMeshProUGUI content;
+    [SerializeField] private TextMeshProUGUI title;
     [SerializeField] GameObject addCoin;
     [SerializeField] GameObject addHeart;
+
+    public void OnEnable()
+    {
+
+    }
     public void Open(NotEnoughType type)
     {
+        OnOpen();
         this.type = type;
         if (type == NotEnoughType.Coin)
         {
             title.text = "NOT ENOUGH MONEY";
-            content.text = "Watch ADs to earn more coins";
+          
             addCoin.SetActive(true);
             addHeart.SetActive(false);
         }
         else
         {
             title.text = "NOT ENOUGH HEART";
-            content.text = "Watch ADs to earn 1 heart";
+           
             addCoin.SetActive(false);
             addHeart.SetActive(true);
         }
@@ -32,19 +37,42 @@ public class NotEnoughUI : MonoBehaviour
     }
     public void Close()
     {
-        gameObject.SetActive(false);
+        OnClose();
     }
     public void DenyBtn()
     {
         Close();
     }
-    public void Accept()
+
+    public void OnAccept()
+    {
+        WatchAds();
+    }
+
+
+    public void WatchAds()
+    {
+        AddResources();
+        // AdsAdapter.Instance.ShowRewardedVideo(() =>
+        //     {
+        //
+        //         AdsAdapter.LogAFAndFB($"get_coins", "0",
+        //             "0");
+        //         AddResources();
+        //     }, () =>
+        //     {
+        //         // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+        //         Debug.Log("Failed to load");
+        //         
+        //     }, 0,
+        //     AdsAdapter.where.get_coins);
+    }
+    public void AddResources()
     {
         
         if(type == NotEnoughType.Coin)
         {
-            UIManager.Instance.ShowAds();
-            DataManager.Instance.AddCoin(50);
+            DataManager.Instance.AddCoin(100);
             UIManager.Instance.SetCoin();
         }
         else
