@@ -18,12 +18,12 @@ public class Level : MonoBehaviour
     bool firstHint;
     private void Awake()
     {
-        
+        OnInit();
     }
     private void Start()
     {
         firstHint = DataManager.Instance.GetHint() == 0;
-        Invoke(nameof(OnInit), 1f);
+        
     }
     private void OnDestroy()
     {
@@ -100,6 +100,7 @@ public class Level : MonoBehaviour
     public void ChangeSkin()
     {
         SkinItem skinItem = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin());
+        
         Sprite spriteC = skinItem.spriteC;
         Sprite spriteL= skinItem.spriteL;
         foreach(var sol in solidList)
@@ -107,6 +108,7 @@ public class Level : MonoBehaviour
             if(sol is Circle)
             {
                 sol.ChangeSkin(spriteC);
+                
 
             }
             else
