@@ -12,23 +12,25 @@ public class TutoMove : MonoBehaviour
     {
         if(vertical)
         {
-            transform.DOLocalMoveY(transform.localPosition.y + 0.5f,1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            transform.DOLocalMoveY(transform.localPosition.y + 1f,1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         }
         else
         if(horizontal)
         {
-            transform.DOLocalMoveX(transform.localPosition.x + 0.5f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            transform.DOLocalMoveX(transform.localPosition.x + 1f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
 
         }
         else
         if (rotate)
         {
             Vector3[] path = new Vector3[] {transform.position+Vector3.right*2, transform.position + Vector3.up * 1.5f, transform.position + Vector3.right * 2 + Vector3.up * 1.5f };
-            transform.DOPath(path,1.5f,PathType.CubicBezier).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            transform.DORotate(Vector3.forward*-300,3f,RotateMode.FastBeyond360).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            GetComponentInChildren<Renderer>().transform.DOLocalRotate(Vector3.forward * 300, 3f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         }
         else
         {
             transform.DOMove(transform.position+Vector3.down*0.5f+Vector3.left*0.5f,1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+           
         }
     }
     private void Update()
@@ -37,10 +39,15 @@ public class TutoMove : MonoBehaviour
         {
             GameManager.Instance.StopAllCoroutines();
             GameManager.Instance.StartCountDown();
-            transform.DOKill();
-            Destroy(gameObject);
-            Destroy(this);
+            OnDeath();
         }
     }
+    public void OnDeath()
+    {
+       
+        transform.DOKill();
+        Destroy(gameObject);
+        Destroy(this);
+    }    
 
 }

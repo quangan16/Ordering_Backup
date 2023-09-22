@@ -130,9 +130,12 @@ public class UIManager : SingletonBehivour<UIManager>
     }
     public TextMeshProUGUI CoinText()
     {
-        return current.CoinText();
+        return current.GetCoinText();
     }
+    public void ShowClamp()
+    {
 
+    }    
 
     //public void SetTime(float time)
     //{

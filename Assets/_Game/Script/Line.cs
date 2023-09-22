@@ -53,10 +53,19 @@ public class Line : Solid
  
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (rb.bodyType == RigidbodyType2D.Dynamic)
-        {           
-             rb.velocity = -rb.velocity*0.5f;
-        }
+        if(!collision.otherCollider.GetComponent<Bomb>())
+        {
+            if (rb.bodyType == RigidbodyType2D.Dynamic)
+            {
+                rb.velocity = -rb.velocity * 0.5f;
+            }
+            if (GameManager.isVibrate)
+            {
+                Handheld.Vibrate();
+            }
+            SoundManager.Instance.Play();
+        }    
+
 
     }
     public override void Move(Vector3 vectorA, Vector3 vectorB)

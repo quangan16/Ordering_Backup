@@ -10,8 +10,8 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
 
     [SerializeField] TextMeshProUGUI time;
     public TextMeshProUGUI tmp;
-    public TextMeshProUGUI coin;
     [SerializeField] private List<Button> buttonsList;
+    [SerializeField] private TextMeshProUGUI coinTxt;
     private void Update()
     {   
         DisplayTime(GameManager.timer);
@@ -46,7 +46,7 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     }
     public void SetCoin(int coin)
     {
-        this.coin.text = coin.ToString();
+        this.coinTxt.text = coin.ToString();
     }
     //public void SetTime(float time)
     //{
@@ -67,6 +67,11 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
         {
             button.interactable = true;
         }
+    }
+
+    public TextMeshProUGUI GetCoinText()
+    {
+        return coinTxt;
     }
 
 }

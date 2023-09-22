@@ -70,7 +70,12 @@ public class GameManager : SingletonBehivour<GameManager>
     IEnumerator CountDown()
     {
         yield return new WaitForSeconds(10);
-         Instantiate(tutorial, tutoPos);
+        TutoMove tutoMove = FindObjectOfType<TutoMove>();
+        if (tutoMove != null)
+        {
+            tutoMove.OnDeath();
+        }    
+        Instantiate(tutorial, tutoPos);
 
     }
     public void StartCountDown()

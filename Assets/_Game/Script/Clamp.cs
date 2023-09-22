@@ -96,9 +96,10 @@ public class Clamp : MonoBehaviour
         target.CheckFree();
         target = null;
     }
-    public void ChangeGreen(bool isGreen)
+    public bool ChangeGreen(bool isGreen)
     {
         green.enabled = isGreen;
+        return isGreen;
     } 
     public void ChangeSkin(Sprite sprite)
     {
