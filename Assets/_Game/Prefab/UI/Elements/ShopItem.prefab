@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1975463695381310579
 RectTransform:
   m_ObjectHideFlags: 0
@@ -336,7 +336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   borderSelect: {fileID: 3020620164085699818}
-  backGround: {fileID: 8798783201477666742}
+  backGround: {fileID: 7050240384009829034}
+  skin: {fileID: 8798783201477666742}
   priceText: {fileID: 6630580004955328708}
   Locked: {fileID: 7619125893286329389}
   Unlocked: {fileID: 7619125892475918507}
@@ -885,8 +886,8 @@ RectTransform:
   m_GameObject: {fileID: 3256524250342398189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.51, y: 1.51, z: 1.51}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7003463704426136685}
   m_Father: {fileID: 7619125892789174154}
