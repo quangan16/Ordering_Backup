@@ -121,12 +121,13 @@ public class ShopGUI : MonoBehaviour, IUIControl
     //--------------------new----------------------
     public void OnInit()
     {
-        ringSkin.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).spriteC;
-        backgroundImg.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
+       
         ReLoad();
     }
     public void ReLoad()
     {
+        ringSkin.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).spriteC;
+        backgroundImg.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
         Skin skins = DataManager.Instance.skins;
         N_BackGround backGround = DataManager.Instance.backGround;
         ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
