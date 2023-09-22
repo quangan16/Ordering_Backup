@@ -33,7 +33,18 @@ public class Solid : MonoBehaviour
         GameManager.Instance.SubtractMove();
         GameManager.Instance.StopAllCoroutines();
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.otherCollider.GetComponent<Bomb>())
+        {
+            if (GameManager.isVibrate)
+            {
+                Handheld.Vibrate();
+            }
+            SoundManager.Instance.Play();
+        }    
+            
+    }
     public virtual void OnInit()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -110,6 +121,12 @@ public class Solid : MonoBehaviour
         }
    
     }
+    public List<Clamp> ListOfClamp()
+    {
+        return (List<Clamp>)triggered.Concat(locked);
+    }    
+
+
     public virtual void OffSelected()
     {
         if (this is Circle || this is Line)

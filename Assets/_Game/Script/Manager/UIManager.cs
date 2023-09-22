@@ -132,7 +132,10 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         return current.GetCoinText();
     }
+    public void ShowClamp()
+    {
 
+    }    
 
     //public void SetTime(float time)
     //{

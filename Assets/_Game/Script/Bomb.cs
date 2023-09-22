@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     [SerializeField] ParticleSystem ps;
-   [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioClip;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Block"))
@@ -22,7 +22,11 @@ public class Bomb : MonoBehaviour
     }
     void OnDespawn()
     {
-        //audioSource.Play();
+        if (GameManager.isVibrate)
+        {
+            Handheld.Vibrate();
+        }
+        SoundManager.Instance.PlaySound(audioClip);
         Instantiate(ps,transform.position,transform.rotation);
         gameObject.SetActive(false);
     }

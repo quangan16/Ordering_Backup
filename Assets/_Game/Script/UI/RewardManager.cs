@@ -109,7 +109,7 @@ public class RewardManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         audioSrc.PlayOneShot(collectCoinSfx, volume);
         int targetCoinAmount = int.Parse(coinAmountTxt.text) + rewardAmount;
-        coinAmountTxt.text = UIManager.Instance.CoinText().text;
+        coinAmountTxt = UIManager.Instance.CoinText();
         while (int.Parse(coinAmountTxt.text) < targetCoinAmount -1)
         {
             yield return new WaitForSeconds(0.05f);
