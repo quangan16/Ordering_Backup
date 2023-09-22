@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public interface IUIControl 
+public interface IUIControl
 {
     void Open()
     {
@@ -12,5 +13,14 @@ public interface IUIControl
     void SetText(string text) { } //Set levelText
     void SetCoin(int coin) { }
     //void SetTime(float time) { }
-     
+    void DeactiveButtons()
+    {
+        
+    }
+
+    void ActiveButtons()
+    {
+        
+    }
+         
 }

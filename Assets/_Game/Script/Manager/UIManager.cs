@@ -27,6 +27,17 @@ public class UIManager : SingletonBehivour<UIManager>
     {
        
     }
+
+    public void DeactiveButtons()
+    {
+        current.DeactiveButtons();
+    }
+
+    public void ActiveButtons()
+    {
+        current.ActiveButtons();
+    }
+    
     public void OnWin()
     {
         if(GameManager.Instance.isWin)
@@ -47,11 +58,11 @@ public class UIManager : SingletonBehivour<UIManager>
         {
             current.Close();           
         }
-
+        
         PreviousScene = current;
         current = control;
         current.Open();
-
+        
     }
     public void OpenChallenge()
     {
@@ -60,6 +71,7 @@ public class UIManager : SingletonBehivour<UIManager>
     public void OpenGameplay()
     {
         OpenUI(control);
+     
         GameManager.Instance.ResetCountDown();
 
     }
@@ -115,7 +127,7 @@ public class UIManager : SingletonBehivour<UIManager>
         notEnough.Open(type);
     }
 
-
+   
 
     //public void SetTime(float time)
     //{
