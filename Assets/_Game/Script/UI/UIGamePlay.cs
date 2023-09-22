@@ -106,6 +106,10 @@ public class UIGamePlay : MonoBehaviour,IUIControl
             button.interactable = true;
         }
     }
+    public TextMeshProUGUI CoinText()
+    {
+        return coin;
+    }
 
 
 

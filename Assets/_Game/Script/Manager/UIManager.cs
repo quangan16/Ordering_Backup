@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 
@@ -127,8 +128,11 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         notEnough.Open(type);
     }
+    public TextMeshProUGUI CoinText()
+    {
+        return current.CoinText();
+    }
 
-   
 
     //public void SetTime(float time)
     //{

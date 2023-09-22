@@ -45,7 +45,7 @@ public class ShopItem : MonoBehaviour
         price = skinItem.price;
         SetState(state);
         backGround.transform.parent.gameObject.SetActive(false);
-        skin.sprite = skinItem.spriteL;
+        skin.sprite = skinItem.spriteC;
         onSelect = (int)type;
         this.type = ItemType.SKIN;
 
