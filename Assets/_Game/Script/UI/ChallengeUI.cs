@@ -48,9 +48,9 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         float contentHeight = itemHeight * content.childCount;
         float yPosition = (itemIndex * itemHeight) / contentHeight;
 
-        return Mathf.Clamp01(1 - yPosition); 
+        return Mathf.Clamp01(1 - yPosition);
     }
-[Button]
+    [Button]
     private void Caculate()
     {
         // Calculate the normalized scroll position to reach the unlocked item.

@@ -133,6 +133,8 @@ public class AdsAdapterAdmob : MonoBehaviour
         inter_new_level,
         inter_offline_gift,
         inter_luckywheel
+        
+        
     }
 
     private float no_touch_duration;

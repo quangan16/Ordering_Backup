@@ -69,6 +69,17 @@ public class DataManager : SingletonBehivour<DataManager>
         PlayerPrefs.SetString(name, t);
     } //challlenge
 
+    public void SetMaxLevelUnlock(int level)
+    {
+        PlayerPrefs.SetInt("maxLevel", level);
+    }
+
+    public int GetMaxLevelUnlock()
+    {
+        return PlayerPrefs.GetInt("maxLevel");
+    }
+    
+
     public int GetNormalLevel()
     {
        return PlayerPrefs.GetInt("normal", 0);

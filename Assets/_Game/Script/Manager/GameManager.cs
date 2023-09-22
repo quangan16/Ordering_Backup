@@ -27,7 +27,7 @@ public class GameManager : SingletonBehivour<GameManager>
     private void Start()
     {
 
-        // AdsAdapter.Instance.ShowBanner();
+        // AdsAdapterAdmob.Instance.ShowBanner();
        // throw new NotImplementedException();
     }
 
@@ -105,6 +105,7 @@ public class GameManager : SingletonBehivour<GameManager>
                         if (challengeMode == Mode.Locked)
                         {
                             DataManager.Instance.SetLevel(levelChallenge, Mode.Unlocked, 0);
+                            DataManager.Instance.SetMaxLevelUnlock(levelChallenge);
                             UIManager.Instance.RecommendChallenge();
                         }
 
