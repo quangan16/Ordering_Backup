@@ -27,7 +27,7 @@ public class GameManager : SingletonBehivour<GameManager>
     private void Start()
     {
 
-        AdsAdapter.Instance.ShowBanner();
+        // AdsAdapter.Instance.ShowBanner();
        // throw new NotImplementedException();
     }
 

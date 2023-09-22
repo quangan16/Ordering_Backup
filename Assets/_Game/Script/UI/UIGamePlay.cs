@@ -46,11 +46,11 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public void NextLevel()
     {
         DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
-        if(DataManager.Instance.GetNormalLevel()>=5)
-        {
-            AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.next_level);
-
-        }
+        // if(DataManager.Instance.GetNormalLevel()>=5)
+        // {
+        //     AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.next_level);
+        //
+        // }
         GameManager.Instance.NextLevel();
     }
     
@@ -75,7 +75,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
     public void BackToMain()
     {
-        AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.back_to_main);
+        // AdsAdapter.Instance.ShowInterstitial(0, AdsAdapter.where.back_to_main);
         UIManager.Instance.OpenMain();
         
     }
@@ -86,6 +86,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     {
         background.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
     }
+    
 
 
 
