@@ -46,7 +46,9 @@ public class Level : MonoBehaviour
         
         if(!isWin)
         {
-            if(!firstHint)
+            int remove = UnityEngine.Random.Range(0, solidList.Count);
+
+            if (!firstHint)
             {
                 if (isHint)
                 {
@@ -55,7 +57,6 @@ public class Level : MonoBehaviour
                         DataManager.Instance.AddCoin(-50);
                         UIManager.Instance.SetCoin();
                         isHint = false;
-                        int remove = UnityEngine.Random.Range(0, solidList.Count);
                         solidList[remove].OnDespawn();
                     }    
                     else
@@ -67,13 +68,11 @@ public class Level : MonoBehaviour
                 else
                 {
                     //showads
-                    int remove = UnityEngine.Random.Range(0, solidList.Count);
                     solidList[remove].OnDespawn();
                 }
             }
             else
             {
-                int remove = UnityEngine.Random.Range(0, solidList.Count);
                 solidList[remove].OnDespawn();
                 DataManager.Instance.SetHint();
             }
@@ -82,7 +81,7 @@ public class Level : MonoBehaviour
             
             
         }
-    }
+    }  
     public void ChangeSkin()
     {
         SkinItem skinItem = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin());

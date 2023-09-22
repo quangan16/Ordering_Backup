@@ -55,9 +55,7 @@ public class ShopItem : MonoBehaviour
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(type);
         this.state = state;
         price = backGroundItem.price;
-
         SetState(state);
-
         // change sprite background
         backGround.sprite = backGroundItem.sprite;
 
