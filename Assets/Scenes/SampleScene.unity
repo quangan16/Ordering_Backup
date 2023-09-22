@@ -916,6 +916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 326209080}
+  - component: {fileID: 326209081}
   m_Layer: 0
   m_Name: Init
   m_TagString: Untagged
@@ -939,6 +940,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &326209081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326209079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb2a7163a095924f8d37d60afc92c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &336507036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1648,15 +1661,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 495762844133020188, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.0850993
       objectReference: {fileID: 0}
     - target: {fileID: 495762844133020188, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.0850993
       objectReference: {fileID: 0}
     - target: {fileID: 495762844133020188, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.0850993
       objectReference: {fileID: 0}
     - target: {fileID: 495762844281180840, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: onDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1763,16 +1776,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3208081630804350493, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
+      propertyPath: duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3208081630804350493, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3208081630804350493, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: isRelative
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3208081630804350493, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: endValueFloat
-      value: 2
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3208081630804350493, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
+      propertyPath: optionalBool0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3208081630804350493, guid: d5c56c2b0f2f96540bfbfa9c9ef73c8f, type: 3}
       propertyPath: isIndependentUpdate
