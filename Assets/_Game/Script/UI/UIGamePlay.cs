@@ -16,7 +16,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public TextMeshProUGUI coin;
     public static bool getHint = false;
     [SerializeField] private List<Button> buttonsList;
-
+    
     [SerializeField] private Image background;
 
     public void OnEnable()

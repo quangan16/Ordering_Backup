@@ -28,7 +28,7 @@ public class WinUI : MonoBehaviour
         ButtonClicked = false;
         adsButton.interactable = true;
         denyBtn.interactable = false;
-        CoinRewardDisplay.GetComponentInChildren<TextMeshProUGUI>().text = GameManager.Instance.current.rewards.ToString();
+        CoinRewardDisplay.GetComponentInChildren<TextMeshProUGUI>().text ="+" +GameManager.Instance.current.rewards.ToString();
         ShowDenyButton();
     }
     public void GetCoinDefault()
