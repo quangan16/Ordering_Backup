@@ -57,7 +57,7 @@ public class Level : MonoBehaviour
                         DataManager.Instance.AddCoin(-50);
                         UIManager.Instance.SetCoin();
                         isHint = false;
-                        //solidList[remove].OnDespawn();
+                        Discard();
                     }    
                     else
                     {
@@ -68,12 +68,12 @@ public class Level : MonoBehaviour
                 else
                 {
                     //showads
-                   // solidList[remove].OnDespawn();
+                    Discard();
                 }
             }
             else
             {
-               // solidList[remove].OnDespawn();
+                Discard();
                 DataManager.Instance.SetHint();
             }
            
@@ -84,13 +84,18 @@ public class Level : MonoBehaviour
     }  
     void Discard()
     {
-        int remove = UnityEngine.Random.Range(0, solidList.Count);
+        
         Solid sol = null;
         while(sol == null)
         {
-
+            int remove = UnityEngine.Random.Range(0, solidList.Count);
+            Solid temp = solidList[remove];
+            if(!(temp is Cage))
+            {
+                sol = temp;
+            }
         }    
-        solidList[remove].OnDespawn();
+        sol.OnDespawn();
     }    
     public void ChangeSkin()
     {
