@@ -13,9 +13,9 @@ public class ElementClampUI : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnInit()
     {
-        
+        clampImage.sprite = clamp.GetComponentInParent<SpriteRenderer>().sprite;
+        clampGreen.gameObject.SetActive(clamp.green.enabled);
     }
 }

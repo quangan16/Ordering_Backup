@@ -119,11 +119,20 @@ public class Solid : MonoBehaviour
         {
             sp.enabled = true;
         }
-   
+        OnClampChange();
+        UIManager.Instance.ShowClamp();
+
+
+
+    }
+    public void OnClampChange()
+    {
+        UIClamp.clamps = ListOfClamp();
+        UIManager.Instance.OnClampChange();
     }
     public List<Clamp> ListOfClamp()
     {
-        return (List<Clamp>)triggered.Concat(locked);
+        return triggered.Concat(locked).ToList() ;
     }    
 
 
@@ -137,7 +146,7 @@ public class Solid : MonoBehaviour
             }
   
         }
-        
+        UIManager.Instance.OffClamp();
         rb.bodyType = RigidbodyType2D.Static;
         isTouch = false;
     }
@@ -192,6 +201,7 @@ public class Solid : MonoBehaviour
     }
     public bool RemoveTrigger(Clamp clamp)
     {
+
        return triggered.Remove(clamp);
     }
     public void AddTrigger(Clamp clamp)
