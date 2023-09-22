@@ -9,6 +9,7 @@ public class NoInternetGUI : PopupManager
     new void  OnEnable()
     {
         GameManager.OnInternetError += Open;
+        GameManager.OnInternetSuccess += Close;
     }
 
     void Start()
@@ -25,6 +26,16 @@ public class NoInternetGUI : PopupManager
             IsOpening = true;
         }
        
+    }
+
+    public void Close()
+    {
+        if (IsOpening)
+        {
+            IsOpening = false;
+            gameObject.SetActive(false);
+            OnClose();
+        }
     }
 
     public void Retry()

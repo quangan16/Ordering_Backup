@@ -32,6 +32,7 @@ public class GameManager : SingletonBehivour<GameManager>
     }
 
     public static event Action OnInternetError;
+    public static event Action OnInternetSuccess;
 
     private void Update()
     {
@@ -255,12 +256,11 @@ public class GameManager : SingletonBehivour<GameManager>
             if (req.result == UnityWebRequest.Result.Success)
             {
                 HasInternet = true;
-               
+                OnInternetSuccess?.Invoke();
             }
             else
             {
                 HasInternet = false;
-              
                 OnInternetError?.Invoke();
             }
             
