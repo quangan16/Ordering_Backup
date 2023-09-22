@@ -208,4 +208,6 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         passedChallengeTxt.text = totalChallengePassed.ToString() + "/20";
     }
 
+   
+
 }

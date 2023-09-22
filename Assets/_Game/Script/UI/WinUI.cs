@@ -68,6 +68,7 @@ public class WinUI : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
+        UIManager.Instance.ActiveButtons();
         OnNext();
 
     }

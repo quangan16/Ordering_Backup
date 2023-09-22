@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class UIBossGameplay : MonoBehaviour,IUIControl
@@ -10,6 +11,9 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
     [SerializeField] TextMeshProUGUI move;
     public TextMeshProUGUI coin;
     public TextMeshProUGUI level;
+    [SerializeField] private List<Button> buttonsList;
+    
+    
 
 
     private void Update()
@@ -58,7 +62,21 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
         this.coin.text = coin.ToString();
     }
 
+    public void DeactiveButtons()
+    {
+        foreach (var button in buttonsList)
+        {
+            button.interactable = false;
+        }
+    }
 
+    public void ActiveButtons()
+    {
+        foreach (var button in buttonsList)
+        {
+            button.interactable = true;
+        }
+    }
 
 
 }

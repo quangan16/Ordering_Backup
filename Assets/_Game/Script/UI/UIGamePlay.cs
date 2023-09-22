@@ -14,6 +14,9 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     // Start is called before the first frame update
     public TextMeshProUGUI tmp;
     public TextMeshProUGUI coin;
+    public static bool getHint = false;
+    [SerializeField] private List<Button> buttonsList;
+    
     [SerializeField] private Image background;
 
     public void OnEnable()
@@ -25,11 +28,14 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     {
         gameObject.SetActive(true);
         GameManager.Instance.OpenGamePlay(GameMode.Normal, DataManager.Instance.GetNormalLevel());
+        ActiveButtons();
         ChangeBackground();
     }
     public virtual void Close()
     {
+      
         gameObject.SetActive(false);
+        
     }
     public void Replay()
     {
@@ -85,7 +91,21 @@ public class UIGamePlay : MonoBehaviour,IUIControl
         background.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
     }
     
+    public void DeactiveButtons()
+    {
+        foreach (var button in buttonsList)
+        {
+            button.interactable = false;
+        }
+    }
 
+    public void ActiveButtons()
+    {
+        foreach (var button in buttonsList)
+        {
+            button.interactable = true;
+        }
+    }
 
 
 
