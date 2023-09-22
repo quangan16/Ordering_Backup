@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ChangeAnim("Idle");
+        InCage();
     }
     void ChangeAnim(string anim)
     {
@@ -18,6 +18,15 @@ public class Character : MonoBehaviour
     public void OnFree()
     {
         ChangeAnim("Success");
+    }
+    public void Cry()
+    {
+        ChangeAnim("Failed");
+    }    
+    public void InCage()
+    {
+        ChangeAnim("Idle");
+
     }
 
 

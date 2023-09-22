@@ -82,6 +82,7 @@ public class UIManager : SingletonBehivour<UIManager>
     public void OpenLose(TypeOut type)
     {
         lose.Open(type);
+
     }
     public void RecommendChallenge()
     {

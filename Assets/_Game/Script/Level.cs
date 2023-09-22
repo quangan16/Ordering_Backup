@@ -73,7 +73,7 @@ public class Level : MonoBehaviour
             }
             else
             {
-                Discard();
+               Discard();
                 DataManager.Instance.SetHint();
             }
            
