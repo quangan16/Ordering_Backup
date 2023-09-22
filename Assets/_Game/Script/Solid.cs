@@ -142,7 +142,8 @@ public class Solid : MonoBehaviour
         }
       
         transform.DOLocalRotate( Vector3.forward*random+transform.rotation.y*Vector3.up+transform.rotation.x*Vector3.right, 0.5f,RotateMode.LocalAxisAdd);
-        transform.DOScale(0.45f, 0.5f);     
+        float x = transform.localScale.x;
+        transform.DOScale(x*9/8f, 0.5f);     
         transform.DOJump(transform.position + pos, 1f, 1, 0.8f).OnComplete(() =>
         {
             OnDeath();
