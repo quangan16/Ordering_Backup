@@ -21,6 +21,7 @@ public class ShopItem : MonoBehaviour
 
     [SerializeField] GameObject borderSelect;
     [SerializeField] Image backGround;
+    [SerializeField] Image skin;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] GameObject Locked;
     [SerializeField] GameObject Unlocked;
@@ -43,8 +44,8 @@ public class ShopItem : MonoBehaviour
         // change ring skin
         price = skinItem.price;
         SetState(state);
-
-        backGround.sprite = skinItem.spriteL;
+        backGround.transform.parent.gameObject.SetActive(false);
+        skin.sprite = skinItem.spriteL;
         onSelect = (int)type;
         this.type = ItemType.SKIN;
 
@@ -57,6 +58,8 @@ public class ShopItem : MonoBehaviour
         price = backGroundItem.price;
         SetState(state);
         // change sprite background
+        skin.transform.parent.gameObject.SetActive(false);
+
         backGround.sprite = backGroundItem.sprite;
 
         onSelect = (int)type;
