@@ -22,7 +22,7 @@ public class AMNativeAds : MonoBehaviour
 
     private IEnumerator Start()
     {
-        yield return new WaitUntil(() => AdsAdapter.Instance.AMInitialized);
+        yield return new WaitUntil(() => AdsAdapterAdmob.Instance.AMInitialized);
         RequestNativeAd();
     }
 
