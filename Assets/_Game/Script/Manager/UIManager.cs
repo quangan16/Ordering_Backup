@@ -26,11 +26,7 @@ public class UIManager : SingletonBehivour<UIManager>
     public void ShowAds()
     {
        
-    }
-    public void Deactive()
-    {
-        current.DeactiveButton();
-    }    
+    } 
     public void OnWin()
     {
         if(GameManager.Instance.isWin)
