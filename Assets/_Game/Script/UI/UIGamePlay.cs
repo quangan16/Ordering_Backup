@@ -14,8 +14,6 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     // Start is called before the first frame update
     public TextMeshProUGUI tmp;
     public TextMeshProUGUI coin;
-    public static bool getHint = false;
-
     [SerializeField] private Image background;
 
     public void OnEnable()

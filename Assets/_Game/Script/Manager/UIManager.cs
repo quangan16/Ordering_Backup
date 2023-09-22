@@ -27,6 +27,10 @@ public class UIManager : SingletonBehivour<UIManager>
     {
        
     }
+    public void Deactive()
+    {
+        current.DeactiveButton();
+    }    
     public void OnWin()
     {
         if(GameManager.Instance.isWin)

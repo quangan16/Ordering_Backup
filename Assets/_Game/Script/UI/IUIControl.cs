@@ -12,5 +12,9 @@ public interface IUIControl
     void SetText(string text) { } //Set levelText
     void SetCoin(int coin) { }
     //void SetTime(float time) { }
+    void DeactiveButton()
+    {
+
+    }
      
 }
