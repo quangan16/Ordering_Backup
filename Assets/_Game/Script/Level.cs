@@ -23,7 +23,7 @@ public class Level : MonoBehaviour
     private void Start()
     {
         firstHint = DataManager.Instance.GetHint() == 0;
-        print(firstHint);
+       
     }
     private void OnDestroy()
     {

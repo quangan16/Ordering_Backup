@@ -43,11 +43,11 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         }
 
       
-        float itemHeight = content.GetChild(unlockedItemIndex).rect().rect.height;
+        float itemHeight = content.GetChild(unlockedItemIndex).rect().rect.height + 60.0f;
         Debug.Log(itemHeight);
         float contentHeight = itemHeight * content.childCount;
-        float yPosition = (itemIndex * itemHeight) / contentHeight;
-
+        float yPosition = (GameManager.Instance.GetM itemHeight) / contentHeight;
+        
         return Mathf.Clamp01(1 - yPosition);
     }
     [Button]
@@ -55,7 +55,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     {
         // Calculate the normalized scroll position to reach the unlocked item.
         float normalizedYPosition = CalculateNormalizedYPosition(unlockedItemIndex);
-
+        
         // Set the scroll position.
         scrollRect.verticalNormalizedPosition = (normalizedYPosition);
     }

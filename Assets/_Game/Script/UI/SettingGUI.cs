@@ -19,9 +19,9 @@ public class SettingGUI : PopupManager
     [SerializeField] private GameObject VibOff;
     [SerializeField] private bool isVibOn;
 
-    private void OnEnable()
+    private new void OnEnable()
     {
-        base.OnEnable();
+        OnOpen();
         Init();
     }
 
@@ -92,7 +92,7 @@ public class SettingGUI : PopupManager
         if (isVibOn)
         {
             isVibOn = false;
-            VibOn.SetActive(!isVibOn);
+            VibOn.SetActive(isVibOn);
         }
         else
         {
