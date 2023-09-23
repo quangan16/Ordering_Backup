@@ -9,9 +9,9 @@ public class AdsAdapterAdmob : MonoBehaviour
 {
     public static AdsAdapterAdmob Instance;
     [HideInInspector] public bool AMInitialized;
-    private string banner_id = "ca-app-pub-2399819186335414/6993071800";
-    private string inter_id = "ca-app-pub-2399819186335414/6120378800";
-    private string rw_id = "ca-app-pub-2399819186335414/5244875863";
+    private string banner_id = "ca-app-pub-3940256099942544/6300978111";
+    private string inter_id = "ca-app-pub-3940256099942544/1033173712";
+    private string rw_id = "ca-app-pub-3940256099942544/5224354917";
     private bool banner_loaded;
 
     public int adscount
@@ -22,14 +22,8 @@ public class AdsAdapterAdmob : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(transform.parent.gameObject);
-            return;
-        }
-
+        Debug.Log("adsadapter: awake");
         Instance = this;
-        DontDestroyOnLoad(transform.parent.gameObject);
 #if !UNITY_EDITOR
         if (!Debug.isDebugBuild)
         {
@@ -40,12 +34,14 @@ public class AdsAdapterAdmob : MonoBehaviour
 
     public void Start()
     {
+        Debug.Log("adsadapter: start");
         // When true all events raised by GoogleMobileAds will be raised
         // on the Unity main thread. The default value is false.
         MobileAds.RaiseAdEventsOnUnityMainThread = true;
         // Initialize the Mobile Ads SDK.
         MobileAds.Initialize((initStatus) =>
         {
+            Debug.Log("adsadapter: initialize");
             Dictionary<string, AdapterStatus> map = initStatus.getAdapterStatusMap();
             foreach (KeyValuePair<string, AdapterStatus> keyValuePair in map)
             {
@@ -63,6 +59,7 @@ public class AdsAdapterAdmob : MonoBehaviour
                         break;
                 }
             }
+
             AMInitialized = true;
             // This callback is called once the MobileAds SDK is initialized.
             LoadBanner();
@@ -70,26 +67,14 @@ public class AdsAdapterAdmob : MonoBehaviour
             LoadRewardedAd();
         });
 
-        AppOpenAdManager.Instance.LoadAppOpenAd();
-        AppStateEventNotifier.AppStateChanged += OnAppStateChanged;
     }
-
-    private void OnAppStateChanged(GoogleMobileAds.Common.AppState state)
-    {
-        // Display the app open ad when the app is foregrounded.
-        UnityEngine.Debug.Log("App State is " + state);
-        if (state == GoogleMobileAds.Common.AppState.Foreground)
-        {
-            AppOpenAdManager.Instance.ShowAdIfAvailable();
-        }
-    }
-    private void OnApplicationPause(bool pauseStatus)
-    {
-        if (!pauseStatus)
-        {
-            AppOpenAdManager.Instance.ShowAdIfAvailable();
-        }
-    }
+    // private void OnApplicationPause(bool pauseStatus)
+    // {
+    //     if (!pauseStatus)
+    //     {
+    //         AppOpenAdManager.Instance.ShowAdIfAvailable();
+    //     }
+    // }
 
     public static void LogAFAndFB(string eventName, string key, string value)
     {
@@ -117,7 +102,6 @@ public class AdsAdapterAdmob : MonoBehaviour
         skip_level,
         get_coin,
         multiply_reward_coin,
-        
     }
 
     private float no_touch_duration;
@@ -243,7 +227,6 @@ public class AdsAdapterAdmob : MonoBehaviour
 
     public void HideBanner()
     {
-  
         if (banner_loaded)
         {
             _bannerView.Hide();

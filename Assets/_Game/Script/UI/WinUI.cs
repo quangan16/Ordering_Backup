@@ -88,6 +88,7 @@ public class WinUI : MonoBehaviour
     }
     public void Open()
     {
+     
         gameObject.SetActive(true);
 
         

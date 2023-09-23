@@ -58,10 +58,10 @@ public class NotificationAndroid : MonoBehaviour
 
     void SendMultipleNotis()
     {
-        string title = "Antistress Relaxation Toys";
+        string title = "Ring Rotation Circle";
         string content1 = "Don't miss today's relaxation games";
         string content2 = "It's time to relax, let's play now!";
-        string content3 = "Discover new exciting games and toys!";
+        string content3 = "Discover new exciting games!";
         string content4 = "Have a nice day!";
         //  string content5 = "Let unlock and try our funniest games";
         string content6 = "Try our latest relaxation toys";

@@ -96,8 +96,6 @@ public class UIGamePlay : MonoBehaviour,IUIControl
             AdsAdapterAdmob.LogAFAndFB($"back_to_main", "0",
                 "0");
             AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.back_to_main);
-
-           
         }
         UIManager.Instance.OpenMain();
         

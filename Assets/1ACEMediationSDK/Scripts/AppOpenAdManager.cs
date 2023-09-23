@@ -2,11 +2,11 @@ using System;
 using GoogleMobileAds.Api;
 using UnityEngine;
 
-public class AppOpenAdManager
+public class AppOpenAdManager : MonoBehaviour
 {
     // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
-    private string _adUnitId = "ca-app-pub-2399819186335414/4610451041";
+    private string _adUnitId = "ca-app-pub-3940256099942544/3419835294";
 #elif UNITY_IPHONE
   private string _adUnitId = "ca-app-pub-3940256099942544/5662855259";
 #else
@@ -25,21 +25,24 @@ public class AppOpenAdManager
     }
 
     private AppOpenAd appOpenAd;
-    private static AppOpenAdManager instance;
 
-    public static AppOpenAdManager Instance
+    private void Awake()
     {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new AppOpenAdManager();
-            }
-
-            return instance;
-        }
+        LoadAppOpenAd();
+        AppStateEventNotifier.AppStateChanged += OnAppStateChanged;
     }
 
+
+    private void OnAppStateChanged(GoogleMobileAds.Common.AppState state)
+    {
+        // Display the app open ad when the app is foregrounded.
+        UnityEngine.Debug.Log("App State is " + state);
+        if (state == GoogleMobileAds.Common.AppState.Foreground)
+        {
+            ShowAdIfAvailable();
+        }
+    }
+    
     /// <summary>
     /// Loads the app open ad.
     /// </summary>
