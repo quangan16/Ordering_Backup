@@ -9,10 +9,11 @@ public class AdsAdapterAdmob : MonoBehaviour
 {
     public static AdsAdapterAdmob Instance;
     [HideInInspector] public bool AMInitialized;
-    private string banner_id = "ca-app-pub-3940256099942544/6300978111";
-    private string inter_id = "ca-app-pub-3940256099942544/1033173712";
-    private string rw_id = "ca-app-pub-3940256099942544/5224354917";
+    private string banner_id = "ca-app-pub-2399819186335414/6993071800";
+    private string inter_id = "ca-app-pub-2399819186335414/6120378800";
+    private string rw_id = "ca-app-pub-2399819186335414/5244875863";
     private bool banner_loaded;
+    private bool isInterBackupForRw = true;
 
     public int adscount
     {
@@ -68,14 +69,6 @@ public class AdsAdapterAdmob : MonoBehaviour
         });
 
     }
-    // private void OnApplicationPause(bool pauseStatus)
-    // {
-    //     if (!pauseStatus)
-    //     {
-    //         AppOpenAdManager.Instance.ShowAdIfAvailable();
-    //     }
-    // }
-
     public static void LogAFAndFB(string eventName, string key, string value)
     {
 #if !UNITY_EDITOR
@@ -410,7 +403,15 @@ public class AdsAdapterAdmob : MonoBehaviour
         // Raised when an ad opened full screen content.
         ad.OnAdFullScreenContentOpened += () => { Debug.Log("Rewarded ad full screen content opened."); };
         // Raised when the ad closed full screen content.
-        ad.OnAdFullScreenContentClosed += () => { Debug.Log("Rewarded ad full screen content closed."); };
+        ad.OnAdFullScreenContentClosed += () => {
+            if (showInterBackupForRw)
+            {
+                showInterBackupForRw = false;
+                onCompleteInter?.Invoke();
+                onCompleteInter = null;
+            }
+
+            Debug.Log("Rewarded ad full screen content closed."); };
         // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
@@ -424,6 +425,12 @@ public class AdsAdapterAdmob : MonoBehaviour
         // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
+            if (showInterBackupForRw)
+            {
+                showInterBackupForRw = false;
+                onCompleteInter?.Invoke();
+                onCompleteInter = null;
+            }
             Debug.Log("Rewarded Ad full screen content closed.");
 
             // Reload the ad so that we can show another as soon as possible.
@@ -441,6 +448,9 @@ public class AdsAdapterAdmob : MonoBehaviour
     }
 
     #endregion
+
+    private bool showInterBackupForRw;
+    private Action onCompleteInter;
 
     public void ShowRewardedVideo(Action onComplete, Action onFail, int level, where where)
     {
@@ -463,6 +473,22 @@ public class AdsAdapterAdmob : MonoBehaviour
                 LogAFAndFB($"level {level} rw at {where}", level.ToString(), level.ToString());
                 LogAFAndFB($"ads_count {adscount} at {where}", level.ToString(), level.ToString());
             });
+        }
+        else if (isInterBackupForRw && interstitialAd != null && interstitialAd.CanShowAd())
+        {
+            showInterBackupForRw = true;
+            onCompleteInter = onComplete;
+
+            Debug.Log("Showing interstitial ad.");
+            interstitialAd.Show();
+            adscount++;
+            if (adscount == 1)
+            {
+                LogAFAndFB($"unique_user", level.ToString(), level.ToString());
+            }
+
+            LogAFAndFB($"level {level} int at {where}", level.ToString(), level.ToString());
+            LogAFAndFB($"ads_count {adscount} at {where}", level.ToString(), level.ToString());
         }
         else
         {

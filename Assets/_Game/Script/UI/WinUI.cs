@@ -95,8 +95,7 @@ public class WinUI : MonoBehaviour
     }
     public void OnNext()
     {
-       
-        
+        AdsAdapterAdmob.Instance.ShowBanner();
         switch (GameManager.Instance.gameMode)
         {
             case GameMode.Normal:
