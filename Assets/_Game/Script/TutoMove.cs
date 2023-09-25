@@ -29,7 +29,7 @@ public class TutoMove : MonoBehaviour
         }
         else
         {
-            transform.DOMove(transform.position+Vector3.down*0.5f+Vector3.left*0.5f,1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            //transform.DOMove(transform.position+Vector3.down*0.5f+Vector3.left*0.5f,1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
            
         }
     }
@@ -37,7 +37,6 @@ public class TutoMove : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            GameManager.Instance.StopAllCoroutines();
             GameManager.Instance.StartCountDown();
             OnDeath();
         }

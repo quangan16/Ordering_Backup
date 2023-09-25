@@ -14,6 +14,7 @@ public class PopupBoss : PopupManager
     {
 
         OnClose();
+        GameManager.Instance.StartCountDown();
     }
     public void PlayBtn()
     {

@@ -19,7 +19,6 @@ public class ColorC : Circle
         print(name);
         Keep();
     }
-
     public void OnCollisionEnter2D(Collision2D collision)
     {
         speed = 0.1f;
@@ -50,6 +49,9 @@ public class ColorC : Circle
     }
     public void Sync()
     {       
+        OnClampChange();
+        UIManager.Instance.ShowClamp();
+
         foreach (var c in colorCs)
         {
             //c.isTouch = true;

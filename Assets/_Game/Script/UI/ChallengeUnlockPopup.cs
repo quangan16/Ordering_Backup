@@ -27,6 +27,8 @@ public class ChallengeUnlockPopup : PopupManager
     public void Close()
     {
         OnClose();
+        GameManager.Instance.StartCountDown();
+
 
     }
     public void OpenChallenge()

@@ -75,7 +75,8 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             tutoMove.OnDeath();
         }    
-        Instantiate(tutorial, tutoPos);
+        //Instantiate(tutorial, tutoPos);
+
 
     }
     public void StartCountDown()
@@ -107,6 +108,7 @@ public class GameManager : SingletonBehivour<GameManager>
                             DataManager.Instance.SetLevel(levelChallenge, Mode.Unlocked, 0);
                             DataManager.Instance.SetMaxLevelUnlock(levelChallenge);
                             UIManager.Instance.RecommendChallenge();
+                            StopAllCoroutines();
                         }
 
                     }
@@ -143,6 +145,7 @@ public class GameManager : SingletonBehivour<GameManager>
         moves = current.moves;
         UIManager.Instance.SetCoin();
         UIManager.Instance.SetText("Level " + (currentLevel + 1));
+        UIManager.Instance.OffClamp();
         Camera.main.orthographicSize = current.cameraDist;
 
     }
@@ -151,7 +154,14 @@ public class GameManager : SingletonBehivour<GameManager>
         current.ChangeSkin();
     }
 
- 
+    public void CheckFree()
+    {
+        if (current == null)
+        {
+            return;
+        }    
+        current.CheckFree();
+    }    
     public void SubtractMove()
     {
         if (gameMode == GameMode.Boss)
@@ -197,7 +207,7 @@ public class GameManager : SingletonBehivour<GameManager>
         }
         if (normalLevel >= 8 && (normalLevel ) % 8 == 0 && (normalLevel ) / 8 <= boss.levels.Length - 1)
         {
-
+            StopAllCoroutines();
             UIManager.Instance.RecommendBoss();
             DataManager.Instance.SetBossLevel((normalLevel ) / 8-1);
         }
@@ -274,7 +284,6 @@ public class GameManager : SingletonBehivour<GameManager>
             
         }
     }
-
 
 
 }

@@ -67,6 +67,14 @@ public class Solid : MonoBehaviour
     }
     public void SetLastPosition(Vector3 position)
     { lastPosition = position; }
+    public void OnDespawnHint()
+    {
+        foreach (var sp in spriteShadow)
+        {
+            sp.enabled = true;
+        }
+        Invoke(nameof(OnDespawn), 0.5f);
+    }
     public virtual void OnDespawn()
     {
         if (level != null)
@@ -114,11 +122,6 @@ public class Solid : MonoBehaviour
     }
     public virtual void OnSelected()
     {
-        if(this is Circle || this is Line)
-        foreach(var sp in spriteShadow)
-        {
-            sp.enabled = true;
-        }
         OnClampChange();
         UIManager.Instance.ShowClamp();
 
@@ -129,6 +132,7 @@ public class Solid : MonoBehaviour
     {
         UIClamp.clamps = ListOfClamp();
         UIManager.Instance.OnClampChange();
+
     }
     public List<Clamp> ListOfClamp()
     {
@@ -168,8 +172,8 @@ public class Solid : MonoBehaviour
         }
       
         transform.DOLocalRotate( Vector3.forward*random+transform.rotation.y*Vector3.up+transform.rotation.x*Vector3.right, 0.5f,RotateMode.LocalAxisAdd);
-        float x = transform.localScale.x;
-        transform.DOScale(x*9/8f, 0.5f);     
+        Vector3 scale = transform.localScale;
+        transform.DOScale(scale*9/8f, 0.5f);     
         transform.DOJump(transform.position + pos, 1f, 1, 0.8f).OnComplete(() =>
         {
             OnDeath();

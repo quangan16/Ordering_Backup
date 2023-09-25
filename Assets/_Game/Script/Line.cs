@@ -74,8 +74,9 @@ public class Line : Solid
         Vector3 endPoint = Vector3.Project(vectorB - vectorA, direct);
         target = new Vector2(endPoint.x, endPoint.y);
       
-        rb.velocity = target/Time.deltaTime;
+        rb.velocity = (target/Time.deltaTime).normalized* Mathf.Clamp((target / Time.deltaTime).magnitude,-100,100);
         //rb.MovePosition(target + rb.position);
+        
 
     }
     public override void MoveDeath()
@@ -85,6 +86,14 @@ public class Line : Solid
 
         //transform.DOLocalMove((transform.localPosition*2 - startPosition), 1f);
         base.MoveDeath();
+    }
+    public override void OnSelected()
+    {
+        base.OnSelected();
+        foreach (var sp in spriteShadow)
+        {
+          //  sp.enabled = true;
+        }
     }
 
 

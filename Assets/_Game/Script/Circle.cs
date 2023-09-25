@@ -24,6 +24,13 @@ public class Circle : Solid
             Stretch(GameManager.Instance.sprite, MobileInput.anchor);
         }
     }
+    private void Update()
+    {
+        if (locked.Count==0)
+        {
+            z = transform.rotation;
+        }
+    }
     public override void SetUp()
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
@@ -37,7 +44,7 @@ public class Circle : Solid
             
             float angle = Vector3.SignedAngle(vectorA, vectorB, Vector3.forward);    
             //rb.MoveRotation(rb.rotation + angle);
-            rb.angularVelocity = angle/Time.deltaTime;
+            rb.angularVelocity = Mathf.Clamp(angle/Time.deltaTime,-1000,1000);
             GameManager.Instance.sprite.transform.position = transform.position;
             GameManager.Instance.sprite.gameObject.SetActive(true);
 
@@ -77,7 +84,7 @@ public class Circle : Solid
         }
         StopCollision();
         blinkVoice.PlayOneShot(stuckAu);
-            
+        GameManager.Instance.sprite.gameObject.SetActive(false);
         transform.DOLocalMoveX(x+0.015f, 0.15f).OnComplete(()=> transform.DOLocalMoveX(x - 0.03f, 0.15f).OnComplete(() => StartCollision()   ));
         
     }
@@ -115,6 +122,17 @@ public class Circle : Solid
         transform.rotation = z;
         canClick = true;
     }
+    public override void OnSelected()
+    {
+       foreach (var sp in spriteShadow)
+       {
+           //sp.enabled = true;
+       }
+        if (!(this is ColorC))
+        { OnClampChange(); }
+        UIManager.Instance.ShowClamp();
 
+
+    }
 
 }

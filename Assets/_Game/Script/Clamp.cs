@@ -62,7 +62,7 @@ public class Clamp : MonoBehaviour
         {
             ChangeGreen(true);
             time += Time.deltaTime;   
-            if(time > 0.4f)
+            //if(time > 0.4f)
             {
                 if (target != null)
                 {

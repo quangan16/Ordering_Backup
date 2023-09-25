@@ -41,6 +41,13 @@ public class Level : MonoBehaviour
         solidList = GetComponentsInChildren<Solid>().ToList();
 
     }
+    public void CheckFree()
+    {
+        foreach(Solid solid in GetComponentsInChildren<Solid>()) 
+        { 
+            solid.CheckFree();
+        }
+    }    
     public void DiscardRandom()
     {
         
@@ -101,12 +108,12 @@ public class Level : MonoBehaviour
         {
             int remove = UnityEngine.Random.Range(0, solidList.Count);
             Solid temp = solidList[remove];
-            if(!(temp is Cage))
+            if((temp is Line)||(temp is Circle))
             {
                 sol = temp;
             }
         }    
-        sol.OnDespawn();
+        sol.OnDespawnHint();
     }    
     public void ChangeSkin()
     {
@@ -120,14 +127,29 @@ public class Level : MonoBehaviour
                 sol.ChangeSkin(spriteC);
 
             }
-            else
+            else if(sol is Line || !(sol.CompareTag("Lock")))
             {
                 sol.ChangeSkin(spriteL);
 
             }
         }
     }
-
+    public void CharacterFail()
+    {
+        Character[] characters = GetComponentsInChildren<Character>();
+        foreach(Character character in characters)
+        {
+            character.Cry();
+        }
+    }    
+    public void CharacterIdle()
+    {
+        Character[] characters = GetComponentsInChildren<Character>();
+        foreach (Character character in characters)
+        {
+            character.InCage();
+        }
+    }
 
 
 }

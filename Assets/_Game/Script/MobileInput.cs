@@ -46,15 +46,11 @@ public class MobileInput : MonoBehaviour
                 target.CheckFree();
             }
             target = null;
+            //GameManager.Instance.CheckFree();
             GameManager.Instance.sprite.gameObject.SetActive(false);
         }
     }
-    void FixedUpdate()
-    {
 
-
-
-    }
     public void GetOnClick()
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
