@@ -14,15 +14,18 @@ public class ChallegeItemAnimation : MonoBehaviour
     public Button playButton;
     public Level dataLevel;
     public int level;
+
+    private Tween itemTweener;
     // Start is called before the first frame update
     void OnEnable()
     {
         transform.localScale = Vector3.zero;
         EmergeEaseOutBack();
     }
-
+    
     private void OnDisable()
     {
+        Hide();
         transform.DOKill();
     }
 
@@ -33,7 +36,12 @@ public class ChallegeItemAnimation : MonoBehaviour
 
     void EmergeEaseOutBack()
     {
-        transform.DOScale(Vector3.one, scaleDuration).SetEase(Ease.OutBack);
+        itemTweener = transform.DOScale(Vector3.one, scaleDuration).SetEase(Ease.OutBack);
+    }
+
+    void Hide()
+    {
+        itemTweener.Rewind();
     }
     public virtual void SetData(int data)
     {

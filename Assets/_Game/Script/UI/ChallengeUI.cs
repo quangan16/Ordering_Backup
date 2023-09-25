@@ -47,11 +47,11 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         }
 
       
-        float itemHeight = content.GetChild(unlockedItemIndex).rect().rect.height + 60;
+        float itemHeight = content.GetChild(0).rect().rect.height + 60;
         Debug.Log(itemHeight);
         float contentHeight = LayoutUtility.GetPreferredHeight(content);
         Debug.Log(contentHeight);
-        float yPosition = ((unlockedItemIndex/3) * itemHeight) /(contentHeight - 3 * itemHeight);
+        float yPosition = ((challengeLevel /3) * itemHeight) /(contentHeight - 3 * itemHeight);
         Debug.Log(yPosition);
         return Mathf.Clamp01(1 - yPosition);
     }

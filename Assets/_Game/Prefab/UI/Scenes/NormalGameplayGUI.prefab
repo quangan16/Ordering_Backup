@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 1308590344024199078}
   - component: {fileID: 6554448974045340048}
   m_Layer: 0
-  m_Name: Image
+  m_Name: AdsIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -936,7 +936,7 @@ GameObject:
   - component: {fileID: 8057162630247503032}
   - component: {fileID: 1922025697341398360}
   m_Layer: 0
-  m_Name: PriceTxt
+  m_Name: HintPriceTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -960,7 +960,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.54, y: 81.3}
+  m_AnchoredPosition: {x: 1.54, y: 81.56}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2817684669171808758
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1729,6 +1729,7 @@ MonoBehaviour:
   - {fileID: 2360941671978678106}
   background: {fileID: 8060445996433758502}
   coinTxt: {fileID: 8060445995887700257}
+  hintBtn: {fileID: 4908591920240467571}
   hintPriceTxt: {fileID: 706817775101615448}
   hintAdsIcon: {fileID: 6554448974045340048}
 --- !u!1 &8060445995891318317
@@ -2059,7 +2060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2082,6 +2083,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8060445994922606441}
     m_Modifications:
+    - target: {fileID: 1181587828897321066, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.8
@@ -2112,11 +2117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 177
+      value: 200.6
       objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 67
+      value: 81.6
       objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2170,6 +2175,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoinBanner
       objectReference: {fileID: 0}
+    - target: {fileID: 1181587829562916907, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_text
+      value: 999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1181587829562916907, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1181587829562916908, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1181587829562916908, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -81.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
 --- !u!224 &8060445994414209377 stripped
@@ -2182,9 +2203,28 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1181587829562916907, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
   m_PrefabInstance: {fileID: 9203566756036012298}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8060445995887700263}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8060445995887700263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1181587829562916909, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+  m_PrefabInstance: {fileID: 9203566756036012298}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1992730324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060445995887700263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0

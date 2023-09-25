@@ -185,4 +185,13 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         control.HideHintAdIcon();
     }
+
+    public void StopHintAnim()
+    {
+        control.StopHintAnim();
+    }
+    public void PlayHintAnim()
+    {
+        control.PlayHintAnim();
+    }
 }

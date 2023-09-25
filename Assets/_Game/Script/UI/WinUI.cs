@@ -54,8 +54,6 @@ public class WinUI : MonoBehaviour
 
             }, 0,
             AdsAdapterAdmob.where.multiply_reward_coin);
-     
-        DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
     }
 
     public void ShowDenyButton()
