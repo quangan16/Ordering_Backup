@@ -43,10 +43,11 @@ public class MobileInput : MonoBehaviour
             if (target != null)
             {
                 target.OffSelected();
-                target.CheckFree();
+                GameManager.Instance.CheckFree();
+
+               // target.CheckFree();
             }
             target = null;
-            //GameManager.Instance.CheckFree();
             GameManager.Instance.sprite.gameObject.SetActive(false);
         }
     }

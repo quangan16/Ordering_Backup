@@ -24,7 +24,7 @@ public class Level : MonoBehaviour
     {
         firstHint = DataManager.Instance.GetHint() == 0;
        
-        if (firstHint == false && isHint )
+        if (!firstHint  && isHint )
         {
             UIManager.Instance.ShowHintCoinIcon();
             UIManager.Instance.HideHintAdIcon();

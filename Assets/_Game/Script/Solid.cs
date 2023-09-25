@@ -35,14 +35,14 @@ public class Solid : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.otherCollider.GetComponent<Bomb>())
+        if (!collision.otherCollider.GetComponent<Bomb>()&& !collision.collider.GetComponent<Bomb>())
         {
             if (GameManager.isVibrate)
             {
                 Handheld.Vibrate();
             }
             SoundManager.Instance.Play();
-        }    
+        }
             
     }
     public virtual void OnInit()
@@ -124,8 +124,6 @@ public class Solid : MonoBehaviour
     {
         OnClampChange();
         UIManager.Instance.ShowClamp();
-
-
 
     }
     public void OnClampChange()

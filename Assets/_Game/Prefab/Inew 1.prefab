@@ -235,9 +235,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8451600124638081448}
+  - component: {fileID: 8451600124638081449}
   - component: {fileID: 8451600124638081431}
   - component: {fileID: 8451600124638081451}
-  - component: {fileID: 8451600124638081449}
   - component: {fileID: 8451600124638081453}
   - component: {fileID: 266598711333971727}
   m_Layer: 3
@@ -264,51 +264,6 @@ Transform:
   m_Father: {fileID: 7903186051133521435}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8451600124638081431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8451600124638081454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0785f4f5422bef54990ed79d3f383295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  ps: {fileID: 7487279630823553328, guid: 8f36647b8ca7f06459e426e390592e2c, type: 3}
-  shadow: {fileID: 1240964151960906647}
-  spriteShadow:
-  - {fileID: 0}
-  triggered: []
-  locked: []
-  lastPosition: {x: 0, y: 0, z: 0}
-  currentSkin: {fileID: 7385450338629221297}
-  isTouch: 0
-  isDead: 0
-  isVertical: 1
---- !u!50 &8451600124638081451
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8451600124638081454}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!212 &8451600124638081449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -361,6 +316,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8451600124638081431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451600124638081454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0785f4f5422bef54990ed79d3f383295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  ps: {fileID: 7487279630823553328, guid: 8f36647b8ca7f06459e426e390592e2c, type: 3}
+  shadow: {fileID: 1240964151960906647}
+  spriteShadow:
+  - {fileID: 0}
+  triggered: []
+  locked: []
+  lastPosition: {x: 0, y: 0, z: 0}
+  currentSkin: {fileID: 7385450338629221297}
+  isTouch: 0
+  isDead: 0
+  isVertical: 1
+--- !u!50 &8451600124638081451
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451600124638081454}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!60 &8451600124638081453
 PolygonCollider2D:
   m_ObjectHideFlags: 0

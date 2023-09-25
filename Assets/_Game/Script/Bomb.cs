@@ -8,7 +8,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] AudioClip audioClip;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Block"))
+        if(collision.gameObject.CompareTag("Block")|| collision.gameObject.CompareTag("Lock"))
         {
             Solid solid = Cache.GetSolid(collision.collider);
             if (solid != GetComponentInParent<Solid>())

@@ -37,7 +37,6 @@ public class TutoMove : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Debug.Log("lol");
             GameManager.Instance.StartCountDown();
             OnDeath();
         }

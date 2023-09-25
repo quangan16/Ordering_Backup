@@ -57,6 +57,8 @@ MonoBehaviour:
   time: 15
   price: 50
   rewards: 100
+  isHint: 0
+  firstHint: 0
 --- !u!1001 &3921449063687435432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64,6 +66,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 709968053431906141}
     m_Modifications:
+    - target: {fileID: 7668715626736078346, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 615a97d410ca54447977c0d9787b5bbc, type: 3}
     - target: {fileID: 7668715626736078349, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
       propertyPath: m_Name
       value: Clamp
@@ -189,6 +195,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4589617769614113688, guid: 6b501e4eb15e3344086fc648746be5d3, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.78
+      objectReference: {fileID: 0}
     - target: {fileID: 4589617769614113690, guid: 6b501e4eb15e3344086fc648746be5d3, type: 3}
       propertyPath: locked.Array.size
       value: 1
@@ -197,6 +207,10 @@ PrefabInstance:
       propertyPath: locked.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4589617769614113691, guid: 6b501e4eb15e3344086fc648746be5d3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1cf1b1cd4532fb64db4250c010d6f04e, type: 3}
     - target: {fileID: 4589617769614113695, guid: 6b501e4eb15e3344086fc648746be5d3, type: 3}
       propertyPath: m_Name
       value: C4
