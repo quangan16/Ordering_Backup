@@ -102,7 +102,7 @@ public class RewardManager : MonoBehaviour
                 currentChild.DOScale(Vector3.one, 0.2f);
                 yield return new WaitForSeconds(intervalDelay);
                 currentChild.DOMove(coinDestPos.position, 1.2f).SetEase(Ease.InQuart);
-                currentChild.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuart);
+                // currentChild.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuart);
         }
 
         
@@ -120,7 +120,6 @@ public class RewardManager : MonoBehaviour
         UIManager.Instance.SetCoin();
 
         yield return new WaitForSeconds(0.5f);
-        //
        
         winUI.Close();
         //loading.Open();

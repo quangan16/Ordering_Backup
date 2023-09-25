@@ -78,6 +78,12 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         OpenUI(challenge);
     }
+
+    public void OpenChallengeAndScroll()
+    {
+        OpenUI(challenge);
+        challenge.ScrollToNewestLevel();
+    }
     public void OpenGameplay()
     {
         OpenUI(control);
@@ -160,6 +166,23 @@ public class UIManager : SingletonBehivour<UIManager>
     //    current.SetTime(time);  
     //}
 
+    public void ShowHintCoinIcon()
+    {
+        control.ShowHintCoinIcon();
+    }
 
+    public void HideHintCoinIcon()
+    {
+        control.HideHintCoinIcon();
+    }
 
+    public void ShowHintAdIcon()
+    {
+        control.ShowHintAdIcon();
+    }
+
+    public void HideHintAdIcon()
+    {
+        control.HideHintAdIcon();
+    }
 }

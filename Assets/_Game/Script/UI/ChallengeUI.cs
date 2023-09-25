@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,15 +29,18 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public RectTransform content;
     public int unlockedItemIndex; // Index of the unlocked item you want to scroll to.
 
-    private void Start()
+    private void OnEnable()
     {
-        
+        UpdateChallengeBar();
+        Invoke(nameof(ScrollToNewestLevel), 0.5f);
     }
 
-    // Calculate the normalized Y position to scroll to a specific item index.
-    private float CalculateNormalizedYPosition(int itemIndex = 2)
+    
+    private float CalculateNormalizedYPosition()
     {
-        if (itemIndex < 0 || itemIndex >= content.childCount)
+        Canvas.ForceUpdateCanvases();
+        int challengeLevel = DataManager.Instance.GetMaxLevelUnlock();
+        if (challengeLevel < 0 || challengeLevel >= content.childCount)
         {
             Debug.LogWarning("Invalid item index.");
             return 0f;
@@ -45,27 +49,20 @@ public class ChallengeUI : MonoBehaviour, IUIControl
       
         float itemHeight = content.GetChild(unlockedItemIndex).rect().rect.height + 60;
         Debug.Log(itemHeight);
-        float contentHeight = itemHeight * (content.childCount/3+1)-60;
+        float contentHeight = LayoutUtility.GetPreferredHeight(content);
         Debug.Log(contentHeight);
-        float yPosition = ((DataManager.Instance.GetMaxLevelUnlock()/3)* itemHeight)/contentHeight ;
+        float yPosition = ((unlockedItemIndex/3) * itemHeight) /(contentHeight - 3 * itemHeight);
         Debug.Log(yPosition);
         return Mathf.Clamp01(1 - yPosition);
     }
     [Button]
-    private void Caculate()
+    public void ScrollToNewestLevel()
     {
-        // Calculate the normalized scroll position to reach the unlocked item.
-        float normalizedYPosition = CalculateNormalizedYPosition(unlockedItemIndex);
-        
-        // Set the scroll position.
-        scrollRect.verticalNormalizedPosition = (normalizedYPosition);
+        float targetPos = CalculateNormalizedYPosition();
+        scrollRect.DOVerticalNormalizedPos(targetPos, 0.7f).SetEase(Ease.InOutSine);
     }
     
-    private void OnEnable()
-    {
-        UpdateChallengeBar();
-       
-    }
+   
     private void FixedUpdate()
     {
         CheckHeart();
@@ -256,6 +253,8 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         passedChallengeTxt.text = totalChallengePassed.ToString() + "/20";
     }
 
-   
+
+ 
+
 
 }

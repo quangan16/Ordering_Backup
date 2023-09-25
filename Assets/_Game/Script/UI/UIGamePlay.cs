@@ -18,6 +18,8 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     
     [SerializeField] private Image background;
     [SerializeField] private TextMeshProUGUI coinTxt;
+    [SerializeField] private TextMeshProUGUI hintPriceTxt;
+    [SerializeField] private Image hintAdsIcon;
     
     public void OnEnable()
     {
@@ -58,7 +60,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
                     AdsAdapterAdmob.LogAFAndFB($"skip_level", "0",
                         "0");
-                    GameManager.Instance.NextLevel();
+                    
                 }, () =>
                 {
                     // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
@@ -67,7 +69,8 @@ public class UIGamePlay : MonoBehaviour,IUIControl
                 }, 0,
                 AdsAdapterAdmob.where.skip_level);
         }
-       
+
+        GameManager.Instance.NextLevel();
     }
     
     public virtual void CallHint()
@@ -127,8 +130,26 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     {
         return coinTxt;
     }
-    
 
+    public void ShowHintCoinIcon()
+    {
+        hintPriceTxt.gameObject.SetActive(true);
+    }
+
+    public void HideHintCoinIcon()
+    {
+        hintPriceTxt.gameObject.SetActive(false);
+    }
+
+    public void HideHintAdIcon()
+    {
+        hintAdsIcon.gameObject.SetActive(false);
+    }
+
+    public void ShowHintAdIcon()
+    {
+        hintAdsIcon.gameObject.SetActive(true);
+    }
 
 
 }

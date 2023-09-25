@@ -14,8 +14,8 @@ public class Level : MonoBehaviour
     public float time;
     public int price;
     public int rewards;
-    bool isHint ;
-    bool firstHint;
+    public bool isHint ;
+    public bool firstHint;
     private void Awake()
     {
         OnInit();
@@ -24,6 +24,16 @@ public class Level : MonoBehaviour
     {
         firstHint = DataManager.Instance.GetHint() == 0;
        
+        if (firstHint == false && isHint )
+        {
+            UIManager.Instance.ShowHintCoinIcon();
+            UIManager.Instance.HideHintAdIcon();
+        }
+
+        else
+        {
+            UIManager.Instance.HideHintCoinIcon();
+        }
     }
     private void OnDestroy()
     {
@@ -36,8 +46,6 @@ public class Level : MonoBehaviour
     public void OnInit()
     {
         isHint = true;
-        
-        
         solidList = GetComponentsInChildren<Solid>().ToList();
 
     }
@@ -64,6 +72,8 @@ public class Level : MonoBehaviour
                         DataManager.Instance.AddCoin(-50);
                         UIManager.Instance.SetCoin();
                         isHint = false;
+                        UIManager.Instance.HideHintCoinIcon();
+                        UIManager.Instance.ShowHintAdIcon();
                         Discard();
                     }    
                     else
