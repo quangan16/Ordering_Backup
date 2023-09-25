@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class LoseUI : MonoBehaviour
 {
-    [SerializeField] Image OutOfTime;
-    [SerializeField] Image OutOfMove;
+    [SerializeField] Sprite OutOfTime;
+    [SerializeField] Sprite OutOfMove;
+    [SerializeField] private Image lossPanel;
     [SerializeField] TextMeshProUGUI AddWhat;
-    [SerializeField] private RectTransform clock;
+   [SerializeField] private RectTransform FailIcon;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip overTimeSfx;
     [SerializeField] private AudioClip outOfMoveSfx;
@@ -29,7 +31,7 @@ public class LoseUI : MonoBehaviour
     public void OnDisable()
     {
         transform.DOKill();
-        clock.DOKill();
+        FailIcon.DOKill();
     }
 
     public void AddMoves()
@@ -71,18 +73,18 @@ public class LoseUI : MonoBehaviour
         OnOpen();
         if(type == TypeOut.TimeOut)
         {
-            OutOfTime.gameObject.SetActive(true);
-            OutOfTime.transform.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack);
-            OutOfMove.gameObject.SetActive(false);
-            
+            lossPanel.sprite = OutOfTime;
+            lossPanel.gameObject.SetActive(true);
+            lossPanel.transform.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack);
+            VibrateClock(); 
             AddWhat.text = "+15 SECS";
             
         }
         else
         {
-            OutOfTime.gameObject.SetActive(false);
-            OutOfMove.gameObject.SetActive(true);
-            VibrateClock();
+            lossPanel.sprite = OutOfMove;
+            lossPanel.gameObject.SetActive(true);
+            lossPanel.transform.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack);
             AddWhat.text = "+5 MOVES";
 
         }
@@ -93,18 +95,18 @@ public class LoseUI : MonoBehaviour
 
     public void VibrateClock()
     {
-        clock.DOShakeAnchorPos(effectDuration, new Vector3(10.0f, 10.0f, 0), 100, 1);
+        FailIcon.DOShakeAnchorPos(effectDuration, new Vector3(10.0f, 10.0f, 0), 100, 1);
        
-        clock.transform.DORotate(new Vector3(0, 0, 10.0f), 0.01f, RotateMode.Fast).SetEase(Ease.Linear).SetLoops(300, LoopType.Yoyo).OnComplete(()=>
+        FailIcon.transform.DORotate(new Vector3(0, 0, 10.0f), 0.01f, RotateMode.Fast).SetEase(Ease.Linear).SetLoops(300, LoopType.Yoyo).OnComplete(()=>
         {
-            clock.transform.localEulerAngles = Vector3.zero;
+            FailIcon.transform.localEulerAngles = Vector3.zero;
         });
     }
 
     public void OnOpen()
     {
         //Reset();
-        clock.localEulerAngles = new Vector3(0, 0, -10.0f);
+        FailIcon.localEulerAngles = new Vector3(0, 0, -10.0f);
 
         gameObject.SetActive(true);
        // mainPanel.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack);
@@ -118,7 +120,7 @@ public class LoseUI : MonoBehaviour
 
     void Reset()
     {
-        clock.localEulerAngles = new Vector3(0, 0, -10.0f);
+        FailIcon.localEulerAngles = new Vector3(0, 0, -10.0f);
        // mainPanel.transform.localScale = Vector3.zero;
     }
 }
