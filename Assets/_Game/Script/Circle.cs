@@ -11,6 +11,7 @@ public class Circle : Solid
     [SerializeField] AudioClip stuckAu;
     float x;
     Quaternion z;
+   
     private void Start()
     {
         OnInit();
@@ -37,7 +38,7 @@ public class Circle : Solid
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
 
     }
-    public override void Move(Vector3 vectorA, Vector3 vectorB)
+    public override void Move(Vector3 vectorA , Vector3 vectorB )
     {
         if (locked.Count == 0)
         {

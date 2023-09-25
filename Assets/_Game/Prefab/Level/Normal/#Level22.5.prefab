@@ -55,6 +55,8 @@ MonoBehaviour:
   time: 0
   price: 0
   rewards: 16
+  isHint: 0
+  firstHint: 0
 --- !u!1001 &1483096806283463967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80,11 +82,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.31
+      value: -5.38
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.06
+      value: 6.12
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalPosition.z
@@ -92,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.94770086
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalRotation.x
@@ -104,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0.31915995
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -116,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 37.224
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937741, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_Name
@@ -131,6 +133,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1483096807014206672}
     m_Modifications:
+    - target: {fileID: 8746948501064051877, guid: b85c5af5783f95745ba0759c9b7f7134, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9ddd3c78d8354744380009c81922c365, type: 3}
     - target: {fileID: 8746948501064051878, guid: b85c5af5783f95745ba0759c9b7f7134, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -281,11 +287,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.25
+      value: -6.28
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.119775
+      value: -5.15
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalPosition.z
@@ -293,7 +299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.42955756
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalRotation.x
@@ -305,7 +311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0.9030395
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -317,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937740, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 129.121
       objectReference: {fileID: 0}
     - target: {fileID: 5890996659062937741, guid: c5e0c427139d2674b9db48e74623f705, type: 3}
       propertyPath: m_Name
@@ -332,6 +338,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7923630414852981518}
     m_Modifications:
+    - target: {fileID: 7668715626736078346, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8323531a4e43f034ba2a0c98cc6769ca, type: 3}
     - target: {fileID: 7668715626736078349, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
       propertyPath: m_Name
       value: Clamp
@@ -441,6 +451,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4589617769614113688, guid: 6b501e4eb15e3344086fc648746be5d3, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589617769614113691, guid: 6b501e4eb15e3344086fc648746be5d3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dab59304e63ab074c854dc88515a59af, type: 3}
     - target: {fileID: 4589617769614113695, guid: 6b501e4eb15e3344086fc648746be5d3, type: 3}
       propertyPath: m_Name
       value: C4
@@ -521,6 +539,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7562224590512019585}
     m_Modifications:
+    - target: {fileID: 7668715626736078346, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 615a97d410ca54447977c0d9787b5bbc, type: 3}
     - target: {fileID: 7668715626736078349, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
       propertyPath: m_Name
       value: Clamp
