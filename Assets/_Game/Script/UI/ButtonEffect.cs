@@ -43,7 +43,7 @@ public class ButtonEffect : MonoBehaviour
         // tweenSequence.Append(transform.DOScale(1.1f, 1.5f).SetEase(Ease.OutElastic)).Join(transform.).Append(
         //     transform.DOScale(1.0f, 0.2f)).SetDelay(1.0f).SetLoops(-1).OnComplete(() => { tweenSequence.Kill(); });
 
-        tweenSequence.SetDelay(2.0f).SetLoops(-1, LoopType.Restart);
+        tweenSequence.SetDelay(1.0f).SetLoops(-1, LoopType.Restart);
         tweenSequence.Play();
         yield return null;
     }

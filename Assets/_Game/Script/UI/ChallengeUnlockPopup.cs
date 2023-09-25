@@ -32,7 +32,7 @@ public class ChallengeUnlockPopup : PopupManager
     public void OpenChallenge()
     {
         OnClose();
-        UIManager.Instance.OpenChallenge();
+        UIManager.Instance.OpenChallengeAndScroll();
      
     }
 
