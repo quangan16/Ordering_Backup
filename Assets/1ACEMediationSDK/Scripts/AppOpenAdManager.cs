@@ -1,45 +1,83 @@
 using System;
 using GoogleMobileAds.Api;
+using GoogleMobileAds.Common;
 using UnityEngine;
 
-public class AppOpenAdManager
+public class AppOpenAdManager : MonoBehaviour
 {
     // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
     private string _adUnitId = "ca-app-pub-2399819186335414/4610451041";
 #elif UNITY_IPHONE
-  private string _adUnitId = "ca-app-pub-3940256099942544/5662855259";
+    string _adUnitId = "ca-app-pub-3940256099942544/5662855259";
 #else
-  private string _adUnitId = "unused";
+    private string _adUnitId = "unused";
 #endif
-    private DateTime expireTime;
+    private AppOpenAd appOpenAd;
+    private DateTime _expireTime;
+    private float timShowAtStart = 5;
 
     public bool IsAdAvailable
     {
         get
         {
             return appOpenAd != null
-                   && appOpenAd.CanShowAd()
-                   && DateTime.Now < expireTime;
+                   && DateTime.Now < _expireTime;
         }
     }
 
-    private AppOpenAd appOpenAd;
-    private static AppOpenAdManager instance;
-
-    public static AppOpenAdManager Instance
+    private void Awake()
     {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new AppOpenAdManager();
-            }
+    }
 
-            return instance;
+    private void OnDestroy()
+    {
+        // Always unlisten to events when complete.
+        AppStateEventNotifier.AppStateChanged -= OnAppStateChanged;
+    }
+
+    private bool showdOnStart;
+    public void Start()
+    {
+        // Initialize the Google Mobile Ads SDK.
+        MobileAds.Initialize((InitializationStatus initStatus) =>
+        {
+            LoadAppOpenAd();
+            // Use the AppStateEventNotifier to listen to application open/close events.
+            // This is used to launch the loaded ad when we open the app.
+            AppStateEventNotifier.AppStateChanged += OnAppStateChanged;
+            // This callback is called once the MobileAds SDK is initialized.
+        });
+    }
+
+    private void OnAppStateChanged(AppState state)
+    {
+    //     Debug.Log("App State changed to : " + state);
+    //
+    //     // if the app is Foregrounded and the ad is available, show it.
+    //     if (state == AppState.Foreground)
+    //     {
+    //         if (IsAdAvailable)
+    //         {
+    //             ShowAppOpenAd();
+    //         }
+    //     }
+    }
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (!pauseStatus)
+        {
+            if (IsAdAvailable)
+            {
+                if (Time.time > timShowAtStart)
+                {
+                    ShowAppOpenAd();
+                }
+            }
         }
     }
 
+    
     /// <summary>
     /// Loads the app open ad.
     /// </summary>
@@ -55,10 +93,10 @@ public class AppOpenAdManager
         Debug.Log("Loading the app open ad.");
 
         // Create our request used to load the ad.
-        var adRequest = new AdRequest.Builder().Build();
+        var adRequest = new AdRequest();
 
         // send the request to load the ad.
-        AppOpenAd.Load(_adUnitId, ScreenOrientation.AutoRotation, adRequest,
+        AppOpenAd.Load(_adUnitId, adRequest,
             (AppOpenAd ad, LoadAdError error) =>
             {
                 // if error is not null, the load request failed.
@@ -73,10 +111,29 @@ public class AppOpenAdManager
                           + ad.GetResponseInfo());
 
                 appOpenAd = ad;
-                expireTime = DateTime.Now + TimeSpan.FromHours(4);
+                _expireTime = DateTime.Now + TimeSpan.FromHours(4);
+                if (!showdOnStart && Time.time <= timShowAtStart)
+                {
+                    showdOnStart = true;
+                    ShowAppOpenAd();
+                }
                 RegisterEventHandlers(ad);
-                RegisterReloadHandler(ad);
             });
+    }
+    /// <summary>
+    /// Shows the app open ad.
+    /// </summary>
+    public void ShowAppOpenAd()
+    {
+        if (appOpenAd != null && appOpenAd.CanShowAd())
+        {
+            Debug.Log("Showing app open ad.");
+            appOpenAd.Show();
+        }
+        else
+        {
+            Debug.LogError("App open ad is not ready yet.");
+        }
     }
 
     private void RegisterEventHandlers(AppOpenAd ad)
@@ -95,27 +152,8 @@ public class AppOpenAdManager
         // Raised when an ad opened full screen content.
         ad.OnAdFullScreenContentOpened += () => { Debug.Log("App open ad full screen content opened."); };
         // Raised when the ad closed full screen content.
-        ad.OnAdFullScreenContentClosed += () =>
-        {
-            LoadAppOpenAd();
+        ad.OnAdFullScreenContentClosed += () => { 
             Debug.Log("App open ad full screen content closed.");
-        };
-        // Raised when the ad failed to open full screen content.
-        ad.OnAdFullScreenContentFailed += (AdError error) =>
-        {
-            LoadAppOpenAd();
-            Debug.LogError("App open ad failed to open full screen content " +
-                           "with error : " + error);
-        };
-    }
-
-    private void RegisterReloadHandler(AppOpenAd ad)
-    {
-        // Raised when the ad closed full screen content.
-        ad.OnAdFullScreenContentClosed += () =>
-        {
-            Debug.Log("App open ad full screen content closed.");
-
             // Reload the ad so that we can show another as soon as possible.
             LoadAppOpenAd();
         };
@@ -124,20 +162,8 @@ public class AppOpenAdManager
         {
             Debug.LogError("App open ad failed to open full screen content " +
                            "with error : " + error);
-
             // Reload the ad so that we can show another as soon as possible.
             LoadAppOpenAd();
         };
-    }
-
-    public void ShowAdIfAvailable()
-    {
-        if (!IsAdAvailable)
-        {
-            LoadAppOpenAd();
-            //return;
-        }
-
-        appOpenAd.Show();
     }
 }

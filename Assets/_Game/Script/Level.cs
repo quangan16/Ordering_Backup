@@ -67,8 +67,19 @@ public class Level : MonoBehaviour
                 }
                 else
                 {
-                    //showads
-                    Discard();
+                    AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                        {
+
+                            AdsAdapterAdmob.LogAFAndFB($"get_hint", "0",
+                                "0");
+                            Discard();
+                        }, () =>
+                        {
+                            // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                            Debug.Log("Failed to load");
+
+                        }, 0,
+                        AdsAdapterAdmob.where.get_hint);
                 }
             }
             else

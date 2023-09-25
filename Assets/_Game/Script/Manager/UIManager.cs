@@ -19,7 +19,7 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] UIClamp uIClamp;
     //[SerializeField] shop 
     public IUIControl PreviousScene { get; private set; }
-    IUIControl current;
+    public IUIControl current;
     private void Start()
     {
        OpenMain();
@@ -44,6 +44,14 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         if(GameManager.Instance.isWin)
         {
+            int normalLevel = DataManager.Instance.GetNormalLevel();
+            if (normalLevel >= 5 && normalLevel % 3 == 0)
+            {
+                AdsAdapterAdmob.LogAFAndFB($"next_level", "0",
+                    "0");
+                AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.next_level);
+            }
+
             win.Open();
             PlayEffect();
             GameManager.Instance.OnWin();

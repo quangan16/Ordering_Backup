@@ -13,6 +13,7 @@ public class AdsAdapterAdmob : MonoBehaviour
     private string inter_id = "ca-app-pub-2399819186335414/6120378800";
     private string rw_id = "ca-app-pub-2399819186335414/5244875863";
     private bool banner_loaded;
+    private bool isInterBackupForRw = true;
 
     public int adscount
     {
@@ -22,14 +23,8 @@ public class AdsAdapterAdmob : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(transform.parent.gameObject);
-            return;
-        }
-
+        Debug.Log("adsadapter: awake");
         Instance = this;
-        DontDestroyOnLoad(transform.parent.gameObject);
 #if !UNITY_EDITOR
         if (!Debug.isDebugBuild)
         {
@@ -40,12 +35,14 @@ public class AdsAdapterAdmob : MonoBehaviour
 
     public void Start()
     {
+        Debug.Log("adsadapter: start");
         // When true all events raised by GoogleMobileAds will be raised
         // on the Unity main thread. The default value is false.
         MobileAds.RaiseAdEventsOnUnityMainThread = true;
         // Initialize the Mobile Ads SDK.
         MobileAds.Initialize((initStatus) =>
         {
+            Debug.Log("adsadapter: initialize");
             Dictionary<string, AdapterStatus> map = initStatus.getAdapterStatusMap();
             foreach (KeyValuePair<string, AdapterStatus> keyValuePair in map)
             {
@@ -63,6 +60,7 @@ public class AdsAdapterAdmob : MonoBehaviour
                         break;
                 }
             }
+
             AMInitialized = true;
             // This callback is called once the MobileAds SDK is initialized.
             LoadBanner();
@@ -70,27 +68,7 @@ public class AdsAdapterAdmob : MonoBehaviour
             LoadRewardedAd();
         });
 
-        AppOpenAdManager.Instance.LoadAppOpenAd();
-        AppStateEventNotifier.AppStateChanged += OnAppStateChanged;
     }
-
-    private void OnAppStateChanged(GoogleMobileAds.Common.AppState state)
-    {
-        // Display the app open ad when the app is foregrounded.
-        UnityEngine.Debug.Log("App State is " + state);
-        if (state == GoogleMobileAds.Common.AppState.Foreground)
-        {
-            AppOpenAdManager.Instance.ShowAdIfAvailable();
-        }
-    }
-    private void OnApplicationPause(bool pauseStatus)
-    {
-        if (!pauseStatus)
-        {
-            AppOpenAdManager.Instance.ShowAdIfAvailable();
-        }
-    }
-
     public static void LogAFAndFB(string eventName, string key, string value)
     {
 #if !UNITY_EDITOR
@@ -110,31 +88,13 @@ public class AdsAdapterAdmob : MonoBehaviour
 
     public enum where
     {
-        rw_add_coin_in_home,
-        rw_x2_daily_reward,
-        rw_claim_gift_popup,
-        rw_buy_animal,
-        rw_buy_human,
-        rw_get_coin_new_ally_popup,
-        rw_x2_coin_win,
-        inter_next_level,
-        btn_get_more_key,
-        btn_spin_by_video,
-        btn_claim_daily_next_day,
-        no_touch,
-        btn_one1time,
-        offline_earning,
-        rw_go_bonus_level,
-        inter_bonus,
-        inter_delete,
-        inter_setting,
-        inter_dictionary,
-        inter_summon,
-        inter_new_level,
-        inter_offline_gift,
-        inter_luckywheel
-        
-        
+        next_level,
+        back_to_main,
+        get_hint,
+        get_live,
+        skip_level,
+        get_coin,
+        multiply_reward_coin,
     }
 
     private float no_touch_duration;
@@ -260,7 +220,6 @@ public class AdsAdapterAdmob : MonoBehaviour
 
     public void HideBanner()
     {
-  
         if (banner_loaded)
         {
             _bannerView.Hide();
@@ -444,7 +403,15 @@ public class AdsAdapterAdmob : MonoBehaviour
         // Raised when an ad opened full screen content.
         ad.OnAdFullScreenContentOpened += () => { Debug.Log("Rewarded ad full screen content opened."); };
         // Raised when the ad closed full screen content.
-        ad.OnAdFullScreenContentClosed += () => { Debug.Log("Rewarded ad full screen content closed."); };
+        ad.OnAdFullScreenContentClosed += () => {
+            if (showInterBackupForRw)
+            {
+                showInterBackupForRw = false;
+                onCompleteInter?.Invoke();
+                onCompleteInter = null;
+            }
+
+            Debug.Log("Rewarded ad full screen content closed."); };
         // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
@@ -458,6 +425,12 @@ public class AdsAdapterAdmob : MonoBehaviour
         // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
+            if (showInterBackupForRw)
+            {
+                showInterBackupForRw = false;
+                onCompleteInter?.Invoke();
+                onCompleteInter = null;
+            }
             Debug.Log("Rewarded Ad full screen content closed.");
 
             // Reload the ad so that we can show another as soon as possible.
@@ -475,6 +448,9 @@ public class AdsAdapterAdmob : MonoBehaviour
     }
 
     #endregion
+
+    private bool showInterBackupForRw;
+    private Action onCompleteInter;
 
     public void ShowRewardedVideo(Action onComplete, Action onFail, int level, where where)
     {
@@ -497,6 +473,22 @@ public class AdsAdapterAdmob : MonoBehaviour
                 LogAFAndFB($"level {level} rw at {where}", level.ToString(), level.ToString());
                 LogAFAndFB($"ads_count {adscount} at {where}", level.ToString(), level.ToString());
             });
+        }
+        else if (isInterBackupForRw && interstitialAd != null && interstitialAd.CanShowAd())
+        {
+            showInterBackupForRw = true;
+            onCompleteInter = onComplete;
+
+            Debug.Log("Showing interstitial ad.");
+            interstitialAd.Show();
+            adscount++;
+            if (adscount == 1)
+            {
+                LogAFAndFB($"unique_user", level.ToString(), level.ToString());
+            }
+
+            LogAFAndFB($"level {level} int at {where}", level.ToString(), level.ToString());
+            LogAFAndFB($"ads_count {adscount} at {where}", level.ToString(), level.ToString());
         }
         else
         {
