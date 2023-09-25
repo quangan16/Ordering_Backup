@@ -55,6 +55,8 @@ MonoBehaviour:
   time: 0
   price: 0
   rewards: 17
+  isHint: 0
+  firstHint: 0
 --- !u!1001 &9196101196420461406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4454383114171316315}
     m_Modifications:
+    - target: {fileID: 7668715626736078346, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8323531a4e43f034ba2a0c98cc6769ca, type: 3}
     - target: {fileID: 7668715626736078349, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
       propertyPath: m_Name
       value: Clamp (1)
@@ -193,6 +199,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4454383114171316315}
     m_Modifications:
+    - target: {fileID: 7668715626736078346, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8323531a4e43f034ba2a0c98cc6769ca, type: 3}
     - target: {fileID: 7668715626736078349, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
       propertyPath: m_Name
       value: Clamp
@@ -382,6 +392,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4454383114171316315}
     m_Modifications:
+    - target: {fileID: 7668715626736078346, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8323531a4e43f034ba2a0c98cc6769ca, type: 3}
     - target: {fileID: 7668715626736078349, guid: bbfe999b1876d074484a4087f7fe4cf1, type: 3}
       propertyPath: m_Name
       value: Clamp (2)
