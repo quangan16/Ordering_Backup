@@ -20,14 +20,14 @@ public class NotEnoughUI : PopupManager
         this.type = type;
         if (type == NotEnoughType.Coin)
         {
-            title.text = "NOT ENOUGH MONEY";
+            title.text = "Not enough money";
           
             addCoin.SetActive(true);
             addHeart.SetActive(false);
         }
         else
         {
-            title.text = "NOT ENOUGH HEART";
+            title.text = "Not enough heart";
            
             addCoin.SetActive(false);
             addHeart.SetActive(true);
@@ -46,40 +46,46 @@ public class NotEnoughUI : PopupManager
 
     public void OnAccept()
     {
-        WatchAds();
-    }
-
-
-    public void WatchAds()
-    {
-      
-        
-        AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
-            {
-
-                AdsAdapterAdmob.LogAFAndFB($"get_coin", "0",
-                    "0");
-                AddResources();
-            }, () =>
-            {
-                // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
-                Debug.Log("Failed to load");
-                
-            }, 0,
-            AdsAdapterAdmob.where.get_coin);
-        
+        AddResources();
     }
     public void AddResources()
     {
         
         if(type == NotEnoughType.Coin)
         {
-            DataManager.Instance.AddCoin(100);
-            UIManager.Instance.SetCoin();
+            AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                {
+
+                    AdsAdapterAdmob.LogAFAndFB($"get_coin", "0",
+                        "0");
+                    DataManager.Instance.AddCoin(100);
+                    UIManager.Instance.SetCoin();
+                }, () =>
+                {
+                    // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                    Debug.Log("Failed to load");
+
+                }, 0,
+                AdsAdapterAdmob.where.get_coin);
+            
+           
         }
         else
         {
-            UIManager.Instance.challenge.AddHeart();
+            AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                {
+
+                    AdsAdapterAdmob.LogAFAndFB($"get_live", "0",
+                        "0");
+                    UIManager.Instance.challenge.AddHeart();
+                }, () =>
+                {
+                    // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                    Debug.Log("Failed to load");
+
+                }, 0,
+                AdsAdapterAdmob.where.get_live);
+          
         }
         Close();
     }
