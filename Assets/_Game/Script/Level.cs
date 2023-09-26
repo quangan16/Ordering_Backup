@@ -161,20 +161,10 @@ public class Level : MonoBehaviour
     public void ChangeSkin()
     {
         SkinItem skinItem = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin());
-        Sprite spriteC = skinItem.spriteC;
-        Sprite spriteL= skinItem.spriteL;
+
         foreach(var sol in solidList)
         {
-            if(sol is Circle)
-            {
-                sol.ChangeSkin(spriteC);
-
-            }
-            else if(sol is Line || !(sol.CompareTag("Lock")))
-            {
-                sol.ChangeSkin(spriteL);
-
-            }
+            sol.ChangeSkin(skinItem);
         }
     }
     public void CharacterFail()

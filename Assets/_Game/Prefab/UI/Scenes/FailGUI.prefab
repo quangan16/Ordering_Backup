@@ -555,7 +555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4434628479032900411
 RectTransform:
   m_ObjectHideFlags: 0
@@ -628,14 +628,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0718bd003ffe1f4fba2b6fd2455710e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OutOfTime: {fileID: 4434628479649439745}
-  OutOfMove: {fileID: 4434628479649439745}
+  OutOfTime: {fileID: 21300000, guid: e04c95a0c282cd942aecfceabfc1dcaf, type: 3}
+  OutOfMove: {fileID: 21300000, guid: bf03fd9b22531e64a9f7098eab31e741, type: 3}
+  lossPanel: {fileID: 4434628479649439745}
   AddWhat: {fileID: 4434628480222388197}
-  clock: {fileID: 4434628479092348960}
+  FailIcon: {fileID: 0}
   audioSource: {fileID: 3952895299621104540}
   overTimeSfx: {fileID: 8300000, guid: 92a1d1d8a5430904ca8729f1d753d86d, type: 3}
   outOfMoveSfx: {fileID: 8300000, guid: 4848bdb81ed9d314288645122f93bebb, type: 3}
   mainPanel: {fileID: 4434628479649439744}
+  failIcon: {fileID: 4434628479092348961}
+  clock: {fileID: 21300000, guid: 80d02c156a6e9384b948c9a8f9684157, type: 3}
+  console: {fileID: 21300000, guid: 55e1973aadfa887439a78e4b96f98b78, type: 3}
 --- !u!82 &3952895299621104540
 AudioSource:
   m_ObjectHideFlags: 0
@@ -744,7 +748,7 @@ GameObject:
   - component: {fileID: 4434628479092348966}
   - component: {fileID: 4434628479092348961}
   m_Layer: 0
-  m_Name: ClockIcon
+  m_Name: FailIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

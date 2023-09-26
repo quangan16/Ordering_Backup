@@ -23,12 +23,18 @@ public class GameManager : SingletonBehivour<GameManager>
     public bool HasInternet { get; private set; }
     private float timeInterval = 5.0f;
     private float timeSinceLastCheck = 5.0f;
+
     public float timeLeftToShowAds = 60.0f;
     public int levelLeftToShowAds = 2;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     private void Start()
     {
-
+        
         AdsAdapterAdmob.Instance.ShowBanner();
        // throw new NotImplementedException();
     }
@@ -87,7 +93,7 @@ public class GameManager : SingletonBehivour<GameManager>
             tutoMove.OnDeath();
         }    
 
-        Instantiate(tutorial, tutoPos);
+        //Instantiate(tutorial, tutoPos);
     }
     
     
