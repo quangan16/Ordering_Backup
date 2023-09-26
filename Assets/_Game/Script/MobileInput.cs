@@ -11,8 +11,10 @@ public class MobileInput : MonoBehaviour
     public static Solid target;
     public static Vector3 anchor;
     public static bool isStopped;
+    Vector3 cameraPos;
     private void Start()
     {
+        cameraPos = Camera.main.transform.position;
         Application.targetFrameRate = 60;
     }
     void Update()
@@ -20,6 +22,7 @@ public class MobileInput : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            
             GetOnClick();
         }
         if (target)
@@ -42,6 +45,7 @@ public class MobileInput : MonoBehaviour
         {
             if (target != null)
             {
+                Camera.main.transform.position = cameraPos;
                 target.OffSelected();
                 GameManager.Instance.CheckFree();
 
