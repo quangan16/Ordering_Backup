@@ -98,8 +98,6 @@ public class GameManager : SingletonBehivour<GameManager>
                     {
                         level = 0;
                     }
-
-
                     //Open challenge each 4 levels 2,6,10,...
 
                     if (level>=5 &&(level - 1) % 4 == 0 && (level - 1) / 4 <= challenge.levels.Length - 1)
@@ -219,6 +217,7 @@ public class GameManager : SingletonBehivour<GameManager>
     }
     void OnNextLevel()
     {
+        
         OpenGamePlay(GameMode.Normal, currentLevel);
     }
 
@@ -226,7 +225,6 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         Solid.canClick = true;
         isTouch = false;
-        UIManager.Instance.ShowAds();
         CloseGamePlay();
         Invoke(nameof(ReStart), 0.1f);
     }

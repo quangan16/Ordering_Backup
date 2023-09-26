@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NotEnoughUI : PopupManager
 {
     NotEnoughType type;
-    [SerializeField] private TextMeshProUGUI title;
-    [SerializeField] GameObject addCoin;
-    [SerializeField] GameObject addHeart;
+    [SerializeField] private RectTransform coinPanel;
+    [SerializeField] private RectTransform livePanel;
 
     public void OnEnable()
     {
@@ -16,24 +16,21 @@ public class NotEnoughUI : PopupManager
     }
     public void Open(NotEnoughType type)
     {
-        OnOpen();
+        
         this.type = type;
         if (type == NotEnoughType.Coin)
         {
-            title.text = "Not enough money";
-          
-            addCoin.SetActive(true);
-            addHeart.SetActive(false);
+            mainPanel = coinPanel;
         }
         else
         {
-            title.text = "Not enough heart";
+            mainPanel = livePanel;
            
-            addCoin.SetActive(false);
-            addHeart.SetActive(true);
         }
+        mainPanel.gameObject.SetActive(true);
         gameObject.SetActive(true);
-
+        OnOpen();
+       
     }
     public void Close()
     {

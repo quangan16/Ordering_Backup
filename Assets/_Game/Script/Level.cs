@@ -24,16 +24,20 @@ public class Level : MonoBehaviour
     {
         firstHint = DataManager.Instance.GetHint() == 0;
         isHint = true;
-        if (!firstHint  && isHint )
+        // Debug.Log("firstHint" + firstHint);
+        // Debug.Log("isHint" + isHint);
+        if(firstHint)
+        {
+            UIManager.Instance.HideHintCoinIcon();
+            UIManager.Instance.HideHintAdIcon();
+        }
+
+        else if (!firstHint && isHint)
         {
             UIManager.Instance.ShowHintCoinIcon();
             UIManager.Instance.HideHintAdIcon();
         }
-
-        else
-        {
-            UIManager.Instance.HideHintCoinIcon();
-        }
+        
     }
     private void OnDestroy()
     {
@@ -47,6 +51,9 @@ public class Level : MonoBehaviour
     {
         isHint = true;
         solidList = GetComponentsInChildren<Solid>().ToList();
+        AdsAdapterAdmob.LogAFAndFB($"start_level_" + GameManager.Instance.currentLevel, "0",
+            "0");
+        Debug.Log("start_level_");
 
     }
     public void CheckFree()
@@ -58,17 +65,20 @@ public class Level : MonoBehaviour
     }    
     public void DiscardRandom()
     {
-        
+       
         if(!isWin)
         {
-            
-
+            AdsAdapterAdmob.LogAFAndFB($"normal_button_hint_level_" + GameManager.Instance.currentLevel , "0",
+                "0");
+            Debug.Log("normal_button_hint_level_");
             if (!firstHint)
             {
+               
                 if (isHint)
                 {
                     if(DataManager.Instance.GetCoin()>=50)
                     {
+                        
                         DataManager.Instance.AddCoin(-50);
                         UIManager.Instance.SetCoin();
                         isHint = false;
@@ -82,8 +92,10 @@ public class Level : MonoBehaviour
                     }    
                    
                 }
+                
                 else
                 {
+                  
                     AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                         {
 
@@ -101,6 +113,7 @@ public class Level : MonoBehaviour
             }
             else
             {
+                UIManager.Instance.ShowHintCoinIcon();
                Discard();
                 DataManager.Instance.SetHint();
             }

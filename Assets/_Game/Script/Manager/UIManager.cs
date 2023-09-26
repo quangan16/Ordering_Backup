@@ -42,14 +42,32 @@ public class UIManager : SingletonBehivour<UIManager>
     
     public void OnWin()
     {
-        if(GameManager.Instance.isWin)
+        if(GameManager.Instance.isWin )
         {
-            int normalLevel = DataManager.Instance.GetNormalLevel();
-            if (normalLevel >= 5 && normalLevel % 3 == 0)
+            if (GameManager.Instance.gameMode == GameMode.Normal)
             {
-                AdsAdapterAdmob.LogAFAndFB($"next_level", "0",
+                AdsAdapterAdmob.LogAFAndFB($"normal_end_level_" + GameManager.Instance.currentLevel, "0",
                     "0");
-                AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.next_level);
+                int normalLevel = DataManager.Instance.GetNormalLevel();
+                if (normalLevel >= 5 && normalLevel % 3 == 0)
+                {
+                    AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.normal_end_level_);
+                }
+            }
+            else if (GameManager.Instance.gameMode == GameMode.Challenge)
+            {
+                AdsAdapterAdmob.LogAFAndFB($"challenge_end_level_" + GameManager.Instance.currentLevel, "0",
+                    "0");
+                
+                    AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.challenge_end_level_);
+                    Debug.Log("challenge_end_level_");
+            }
+            else if (GameManager.Instance.gameMode == GameMode.Boss)
+            {
+                AdsAdapterAdmob.LogAFAndFB($"boss_end_level_" + GameManager.Instance.currentLevel, "0",
+                    "0");
+                    AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.boss_end_level_);
+                    Debug.Log("boss_end_level_");
             }
 
             win.Open();
