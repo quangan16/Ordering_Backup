@@ -2,7 +2,6 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Line : Solid
 {
@@ -12,6 +11,8 @@ public class Line : Solid
     Vector2 target;
     private void Start()
     {
+        mainCamera = Camera.main;
+
         OnInit();
         startPosition = transform.localPosition;
     }
@@ -22,11 +23,11 @@ public class Line : Solid
     }
     public override void SetUp()
     {
-        if(isVertical)
+        if (isVertical)
         {
             direct = transform.up;
         }
-        else 
+        else
         {
             direct = transform.right;
         }
@@ -34,7 +35,7 @@ public class Line : Solid
     }
     private void Update()
     {
-        if(!isDead)
+        if (!isDead)
         {
             if (isVertical)
             {
@@ -46,14 +47,12 @@ public class Line : Solid
             }
 
         }
-       
-       
-    }
 
- 
+
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(!collision.otherCollider.GetComponent<Bomb>())
+        if (!collision.otherCollider.GetComponent<Bomb>() && !collision.collider.GetComponent<Bomb>())
         {
             if (rb.bodyType == RigidbodyType2D.Dynamic)
             {
@@ -64,7 +63,7 @@ public class Line : Solid
                 Handheld.Vibrate();
             }
             SoundManager.Instance.Play();
-        }    
+        }
 
 
     }
@@ -73,10 +72,10 @@ public class Line : Solid
         rb.bodyType = RigidbodyType2D.Dynamic;
         Vector3 endPoint = Vector3.Project(vectorB - vectorA, direct);
         target = new Vector2(endPoint.x, endPoint.y);
-      
-        rb.velocity = (target/Time.deltaTime).normalized* Mathf.Clamp((target / Time.deltaTime).magnitude,-100,100);
+
+        rb.velocity = (target / Time.deltaTime).normalized * Mathf.Clamp((target / Time.deltaTime).magnitude, -100, 100);
         //rb.MovePosition(target + rb.position);
-        
+
 
     }
     public override void MoveDeath()
@@ -92,9 +91,42 @@ public class Line : Solid
         base.OnSelected();
         foreach (var sp in spriteShadow)
         {
-          //  sp.enabled = true;
+            //  sp.enabled = true;
         }
     }
+    //-----------------------------------------
+    private Vector3 offset;
+    private Camera mainCamera;
+    private float dragThreshold = 10f;
+    void OnMouseDown()
+    {
+        offset = transform.position - mainCamera.ScreenToWorldPoint(Input.mousePosition);
+    }
+    void OnMouseDrag()
+    {
+        Vector3 cursorPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition) ;
+        CheckCameraMovement(cursorPosition);
+    }
+    void CheckCameraMovement(Vector3 objectPosition)
+    {
+        Vector3 viewportPoint = mainCamera.WorldToViewportPoint(objectPosition);
+        float eps = 0.1f;
+        if (viewportPoint.x < eps || viewportPoint.x > 1 - eps || viewportPoint.y < eps || viewportPoint.y > 1 - eps)
+        {
+            Vector3 cameraTargetPosition = new Vector3(
+                Mathf.Clamp(objectPosition.x, mainCamera.transform.position.x - dragThreshold, mainCamera.transform.position.x + dragThreshold),
+                Mathf.Clamp(objectPosition.y, mainCamera.transform.position.y - dragThreshold, mainCamera.transform.position.y + dragThreshold),
+                mainCamera.transform.position.z
+            );
+
+            Vector3 lastPosition = Vector3.Project(cameraTargetPosition, direct);
+            lastPosition.z = mainCamera.transform.position.z;
+
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, lastPosition, Time.deltaTime * 1f);
+        }
+    }
+
+
 
 
 
