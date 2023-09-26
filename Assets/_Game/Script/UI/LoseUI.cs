@@ -18,6 +18,9 @@ public class LoseUI : MonoBehaviour
     [SerializeField] private AudioClip overTimeSfx;
     [SerializeField] private AudioClip outOfMoveSfx;
     [SerializeField] private RectTransform mainPanel;
+    [SerializeField] Image failIcon;
+    [SerializeField] Sprite clock;
+    [SerializeField] Sprite console;
     private float scaleDuration = 0.5f;
     private float effectDuration = 4.0f;
     TypeOut type;
@@ -76,6 +79,7 @@ public class LoseUI : MonoBehaviour
             lossPanel.sprite = OutOfTime;
             lossPanel.gameObject.SetActive(true);
             lossPanel.transform.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack);
+            failIcon.sprite = clock;
             VibrateClock(); 
             AddWhat.text = "+15 SECS";
             
@@ -86,6 +90,7 @@ public class LoseUI : MonoBehaviour
             lossPanel.gameObject.SetActive(true);
             lossPanel.transform.DOScale(1.0f, scaleDuration).SetEase(Ease.OutBack);
             AddWhat.text = "+5 MOVES";
+            failIcon.sprite = console;
 
         }
         //audioSource.PlayOneShot(outOfMoveSfx);

@@ -78,7 +78,7 @@ public class GameManager : SingletonBehivour<GameManager>
             tutoMove.OnDeath();
         }    
 
-        Instantiate(tutorial, tutoPos);
+        //Instantiate(tutorial, tutoPos);
     }
     
     

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Windows;
 using static UnityEngine.GraphicsBuffer;
 
 public class Solid : MonoBehaviour
@@ -25,7 +26,7 @@ public class Solid : MonoBehaviour
     Level level => GetComponentInParent<Level>();
     private void Awake()
     {
-       OnInit();
+        OnInit();
     }
     private void OnMouseUp()
     {
@@ -35,7 +36,7 @@ public class Solid : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.otherCollider.GetComponent<Bomb>()&& !collision.collider.GetComponent<Bomb>())
+        if (!collision.otherCollider.GetComponent<Bomb>() && !collision.collider.GetComponent<Bomb>())
         {
             if (GameManager.isVibrate)
             {
@@ -43,7 +44,7 @@ public class Solid : MonoBehaviour
             }
             SoundManager.Instance.Play();
         }
-            
+
     }
     public virtual void OnInit()
     {
@@ -56,14 +57,159 @@ public class Solid : MonoBehaviour
         spriteShadow.Add(shadow);
         lastPosition = transform.position;
     }
-    public void ChangeSkin(Sprite sprite)
+    public void ChangeSkin(SkinItem skinItem)
     {
-        currentSkin.sprite = sprite;
-        foreach(Clamp clamp in GetComponentsInChildren<Clamp>())
+        if(this is Circle)
         {
-            clamp.ChangeSkin(sprite);
+            currentSkin.sprite = skinItem.spriteC;
+
+        }
+        else if(this is Line || !CompareTag("Lock"))
+        {
+            currentSkin.sprite = skinItem.spriteL;
+        }    
+        currentSkin.color = ChangeColorbyID(skinItem.type);
+        foreach (Clamp clamp in GetComponentsInChildren<Clamp>())
+        {
+            clamp.ChangeSkin(skinItem.spriteL);
+            clamp.currentSkin.color = currentSkin.color;
         }
 
+    }
+    Color ChangeColorbyID(SkinType type)
+    {
+        Color color = Color.white;
+
+        string s = GetComponent<SpriteRenderer>().sprite.name;
+        string numberString = new string(s.Where(char.IsDigit).ToArray());
+        int i;
+        if (!string.IsNullOrEmpty(numberString))
+        {
+            if (int.TryParse(numberString, out i) && i >= 1 && i <= 10)
+            {
+                if (type == SkinType.LeoPattern || type == SkinType.Strip)
+                {
+                    switch (i)
+                    {
+                        case 1:
+                            {
+                                color = new Color32(95, 27, 18,255);
+                                break;
+                            }
+                        case 2:
+                            {
+                                color = new Color32(121, 27, 20,255);
+                                break;
+                            }
+
+                        case 3:
+                            {
+                                color = new Color32(117, 15, 15,255);
+                                break;
+                            }
+                        case 4:
+                            {
+                                color = new Color32(87, 29, 116,255);
+                                break;
+                            }
+                        case 5:
+                            {
+                                color = new Color32(90, 116, 44,255);
+                                break;
+                            }
+                        case 6:
+                            {
+                                color = new Color32(113, 0, 0,255);
+                                break;
+                            }
+                        case 7:
+                            {
+                                color = new Color32(130, 43, 43,255);
+                                break;
+                            }
+                        case 8:
+                            {
+                                color = new Color32(140, 53, 68,255);
+                                break;
+                            }
+                        case 9:
+                            {
+                                color = new Color32(57, 125, 35,255);
+                                break;
+                            }
+                        case 10:
+                            {
+                                color = new Color32(99, 27, 71,255);
+                                break;
+                            }
+
+                    }
+                }
+                else if (type == SkinType.Star || type == SkinType.Snow || type == SkinType.Wavy)
+                {
+                    switch (i)
+                    {
+                        case 1:
+                            {
+                                color = new Color32(69, 219, 233,255);
+                                break;
+                            }
+                        case 2:
+                            {
+                                color = new Color32(227, 117, 0,255);
+                                break;
+                            }
+
+                        case 3:
+                            {
+                                color = new Color32(249, 200, 222,255);
+                                break;
+                            }
+                        case 4:
+                            {
+                                color = new Color32(254, 229, 255,255);
+                                break;
+                            }
+                        case 5:
+                            {
+                                color = new Color32(192, 241, 197,255);
+                                break;
+                            }
+                        case 6:
+                            {
+                                color = new Color32(246, 216, 139,255);
+                                break;
+                            }
+                        case 7:
+                            {
+                                color = new Color32(252, 196, 246,255);
+                                break;
+                            }
+                        case 8:
+                            {
+                                color = new Color32(196, 252, 247,255);
+                                break;
+                            }
+                        case 9:
+                            {
+                                color = new Color32(252, 247, 196,255);
+                                break;
+                            }
+                        case 10:
+                            {
+                                color = new Color32(252, 196, 246,255);
+                                break;
+                            }
+                    }
+                }
+            }
+                
+
+        }
+        else
+        {
+        }
+        return color;
     }
     public void SetLastPosition(Vector3 position)
     { lastPosition = position; }
@@ -79,11 +225,11 @@ public class Solid : MonoBehaviour
     {
         if (level != null)
         {
-            
+
             level.solidList.Remove(this);
             if (level.isWin)
             {
-                canClick= false;
+                canClick = false;
                 UIManager.Instance.DeactiveButtons();
                 DOVirtual.DelayedCall(1.0f, () =>
                 {
@@ -92,11 +238,11 @@ public class Solid : MonoBehaviour
 
             }
         }
-            
+
         if (!isDead)
         {
-            Clamp[] clamps= GetComponentsInChildren<Clamp>();
-            for (int i = 0;i<clamps.Length;i++)
+            Clamp[] clamps = GetComponentsInChildren<Clamp>();
+            for (int i = 0; i < clamps.Length; i++)
             {
                 clamps[i].isDead = true;
                 clamps[i].ChangeGreen(false);
@@ -134,8 +280,8 @@ public class Solid : MonoBehaviour
     }
     public List<Clamp> ListOfClamp()
     {
-        return triggered.Concat(locked).ToList() ;
-    }    
+        return triggered.Concat(locked).ToList();
+    }
 
 
     public virtual void OffSelected()
@@ -146,7 +292,7 @@ public class Solid : MonoBehaviour
             {
                 sp.enabled = false;
             }
-  
+
         }
         UIManager.Instance.OffClamp();
         rb.bodyType = RigidbodyType2D.Static;
@@ -160,18 +306,18 @@ public class Solid : MonoBehaviour
         //    transform.DORotate(Vector3.forward * 720, 1f, RotateMode.FastBeyond360);
         //    transform.DOScale(0.2f, 1f);
         //}
-        float random = Random.Range(-60,60);
-        Vector3 pos = new Vector3( Mathf.Sin(random), Mathf.Cos(random),0);
+        float random = Random.Range(-60, 60);
+        Vector3 pos = new Vector3(Mathf.Sin(random), Mathf.Cos(random), 0);
         rb.gravityScale = 1f;
         for (int i = 0; i < spriteRenderers.Length; i++)
         {
             SpriteRenderer sprite = spriteRenderers[i];
             sprite.DOFade(0.2f, 1.3f);
         }
-      
-        transform.DOLocalRotate( Vector3.forward*random+transform.rotation.y*Vector3.up+transform.rotation.x*Vector3.right, 0.5f,RotateMode.LocalAxisAdd);
+
+        transform.DOLocalRotate(Vector3.forward * random + transform.rotation.y * Vector3.up + transform.rotation.x * Vector3.right, 0.5f, RotateMode.LocalAxisAdd);
         Vector3 scale = transform.localScale;
-        transform.DOScale(scale*9/8f, 0.5f);     
+        transform.DOScale(scale * 9 / 8f, 0.5f);
         transform.DOJump(transform.position + pos, 1f, 1, 0.8f).OnComplete(() =>
         {
             OnDeath();
@@ -195,16 +341,16 @@ public class Solid : MonoBehaviour
     }
     public void OnDeath()
     {
-        
+
         Destroy(this);
         gameObject.SetActive(false);
-        
-        
+
+
     }
     public bool RemoveTrigger(Clamp clamp)
     {
 
-       return triggered.Remove(clamp);
+        return triggered.Remove(clamp);
     }
     public void AddTrigger(Clamp clamp)
     {
@@ -224,7 +370,7 @@ public class Solid : MonoBehaviour
     { return locked.Remove(clamp); }
     public virtual void CheckFree()
     {
-        if (triggered.Count == 0 && ! isTouch )
+        if (triggered.Count == 0 && !isTouch)
         {
             CheckLocked();
         }
@@ -245,13 +391,13 @@ public class Solid : MonoBehaviour
                 }
             }
         }
-        
+
     }
     public virtual void SetUp()
     {
     }
-    public virtual void Move(Vector3 vectorA, Vector3 vectorB )
+    public virtual void Move(Vector3 vectorA, Vector3 vectorB)
     {
-       
+
     }
 }

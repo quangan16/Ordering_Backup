@@ -26,7 +26,7 @@ public class MainGUI : MonoBehaviour, IUIControl
 
     public void Open()
     {
-        this.GameObject().SetActive(true);
+        gameObject.SetActive(true);
         OnOpen();
     }
 
@@ -41,6 +41,8 @@ public class MainGUI : MonoBehaviour, IUIControl
         {
             button.interactable = false;
         }
+        gameObject.SetActive(false);
+
     }
 
     public void OnOpen()
