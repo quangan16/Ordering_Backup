@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5234108753819516539}
   - component: {fileID: 5487541698105250882}
   m_Layer: 0
-  m_Name: Level
+  m_Name: RescueLv 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,9 @@ MonoBehaviour:
   moves: 0
   time: 0
   price: 0
-  rewards: 12
+  rewards: 25
+  isHint: 0
+  firstHint: 0
 --- !u!1001 &2567498354962878824
 PrefabInstance:
   m_ObjectHideFlags: 0
