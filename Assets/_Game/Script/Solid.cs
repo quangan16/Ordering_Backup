@@ -62,6 +62,12 @@ public class Solid : MonoBehaviour
         if(this is Circle)
         {
             currentSkin.sprite = skinItem.spriteC;
+            foreach (Clamp clamp in GetComponentsInChildren<Clamp>())
+            {
+                clamp.ChangeSkin(skinItem.spriteL);
+                clamp.currentSkin.color = currentSkin.color;
+                print("change");
+            }
 
         }
         else if(this is Line || !CompareTag("Lock"))
@@ -69,17 +75,13 @@ public class Solid : MonoBehaviour
             currentSkin.sprite = skinItem.spriteL;
         }    
         currentSkin.color = ChangeColorbyID(skinItem.type);
-        foreach (Clamp clamp in GetComponentsInChildren<Clamp>())
-        {
-            clamp.ChangeSkin(skinItem.spriteL);
-            clamp.currentSkin.color = currentSkin.color;
-        }
+        
 
     }
     Color ChangeColorbyID(SkinType type)
     {
         Color color = Color.white;
-
+        byte alpha = 80;
         string s = GetComponent<SpriteRenderer>().sprite.name;
         string numberString = new string(s.Where(char.IsDigit).ToArray());
         int i;
@@ -93,53 +95,53 @@ public class Solid : MonoBehaviour
                     {
                         case 1:
                             {
-                                color = new Color32(95, 27, 18,255);
+                                color = new Color32(95, 27, 18,alpha);
                                 break;
                             }
                         case 2:
                             {
-                                color = new Color32(121, 27, 20,255);
+                                color = new Color32(121, 27, 20,alpha);
                                 break;
                             }
 
                         case 3:
                             {
-                                color = new Color32(117, 15, 15,255);
+                                color = new Color32(117, 15, 15,alpha);
                                 break;
                             }
                         case 4:
                             {
-                                color = new Color32(87, 29, 116,255);
+                                color = new Color32(87, 29, 116,alpha);
                                 break;
                             }
                         case 5:
                             {
-                                color = new Color32(90, 116, 44,255);
+                                color = new Color32(90, 116, 44,alpha);
                                 break;
                             }
                         case 6:
                             {
-                                color = new Color32(113, 0, 0,255);
+                                color = new Color32(113, 0, 0,alpha);
                                 break;
                             }
                         case 7:
                             {
-                                color = new Color32(130, 43, 43,255);
+                                color = new Color32(130, 43, 43,alpha);
                                 break;
                             }
                         case 8:
                             {
-                                color = new Color32(140, 53, 68,255);
+                                color = new Color32(140, 53, 68,alpha);
                                 break;
                             }
                         case 9:
                             {
-                                color = new Color32(57, 125, 35,255);
+                                color = new Color32(57, 125, 35,alpha);
                                 break;
                             }
                         case 10:
                             {
-                                color = new Color32(99, 27, 71,255);
+                                color = new Color32(99, 27, 71,alpha);
                                 break;
                             }
 
@@ -147,57 +149,58 @@ public class Solid : MonoBehaviour
                 }
                 else if (type == SkinType.Star || type == SkinType.Snow || type == SkinType.Wavy)
                 {
+                    alpha = 200;
                     switch (i)
                     {
                         case 1:
                             {
-                                color = new Color32(69, 219, 233,255);
+                                color = new Color32(69, 219, 233,alpha);
                                 break;
                             }
                         case 2:
                             {
-                                color = new Color32(227, 117, 0,255);
+                                color = new Color32(227, 117, 0,alpha);
                                 break;
                             }
 
                         case 3:
                             {
-                                color = new Color32(249, 200, 222,255);
+                                color = new Color32(249, 200, 222,alpha);
                                 break;
                             }
                         case 4:
                             {
-                                color = new Color32(254, 229, 255,255);
+                                color = new Color32(254, 229, 255,alpha);
                                 break;
                             }
                         case 5:
                             {
-                                color = new Color32(192, 241, 197,255);
+                                color = new Color32(192, 241, 197,alpha);
                                 break;
                             }
                         case 6:
                             {
-                                color = new Color32(246, 216, 139,255);
+                                color = new Color32(246, 216, 139,alpha);
                                 break;
                             }
                         case 7:
                             {
-                                color = new Color32(252, 196, 246,255);
+                                color = new Color32(252, 196, 246,alpha);
                                 break;
                             }
                         case 8:
                             {
-                                color = new Color32(196, 252, 247,255);
+                                color = new Color32(196, 252, 247,alpha);
                                 break;
                             }
                         case 9:
                             {
-                                color = new Color32(252, 247, 196,255);
+                                color = new Color32(252, 247, 196,alpha);
                                 break;
                             }
                         case 10:
                             {
-                                color = new Color32(252, 196, 246,255);
+                                color = new Color32(252, 196, 246,alpha);
                                 break;
                             }
                     }

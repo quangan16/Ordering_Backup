@@ -27,7 +27,8 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] private TextMeshProUGUI backgroundTxt;
 
 
-    [SerializeField] private Image ringSkin;
+    [SerializeField] private Image ringSkinLeft;
+    [SerializeField] private Image ringSkinRight;
     [SerializeField] private Image backgroundImg;
     [SerializeField] private Image LightSFX;
 
@@ -126,7 +127,9 @@ public class ShopGUI : MonoBehaviour, IUIControl
     }
     public void ReLoad()
     {
-        ringSkin.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).spriteC;
+        ringSkinLeft.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).spriteC;
+        ringSkinRight.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).spriteC;
+
         backgroundImg.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
         Skin skins = DataManager.Instance.skins;
         N_BackGround backGround = DataManager.Instance.backGround;
@@ -160,8 +163,8 @@ public class ShopGUI : MonoBehaviour, IUIControl
             if(item.state != ShopState.Equipped)
             item.OffSelect();
         }
-        
-        ringSkin.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
+        ringSkinLeft.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
+        ringSkinRight.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
     }
     public void SelectBackGround(BackGroundType backGroundType)
     {
