@@ -112,7 +112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -67.97485, y: -92}
+  m_AnchoredPosition: {x: -67.97485, y: -82.400024}
   m_SizeDelta: {x: 247.5, y: 79}
   m_Pivot: {x: 0.81, y: 0.5}
 --- !u!222 &495762843794364096
@@ -258,7 +258,7 @@ RectTransform:
   m_GameObject: {fileID: 495762844133020189}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0850993, y: 1.0850993, z: 1.0850993}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 495762844151449680}
@@ -267,8 +267,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -370.2}
-  m_SizeDelta: {x: 344.9, y: 181.6}
+  m_AnchoredPosition: {x: 0, y: -325.2}
+  m_SizeDelta: {x: 344.9, y: 181.59998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &495762844133020185
 MonoBehaviour:
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -423,7 +423,7 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 0.6
+  duration: 0.5
   easeType: 1
   easeCurve:
     serializedVersion: 2
@@ -452,7 +452,7 @@ MonoBehaviour:
   loopType: 1
   loops: -1
   id: 
-  isRelative: 0
+  isRelative: 1
   isFrom: 0
   isIndependentUpdate: 0
   autoKill: 1
@@ -465,7 +465,7 @@ MonoBehaviour:
   forcedTargetType: 0
   autoPlay: 1
   useTargetAsV3: 0
-  endValueFloat: 1.05
+  endValueFloat: 0.1
   endValueV3: {x: 0, y: 0, z: 0}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
@@ -518,10 +518,10 @@ RectTransform:
   m_Father: {fileID: 495762844730646006}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 308}
-  m_SizeDelta: {x: 676, y: 157}
+  m_SizeDelta: {x: -44, y: 157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &495762844140907503
 CanvasRenderer:
@@ -596,7 +596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 12}
   m_SizeDelta: {x: 282, y: 133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &495762844151449682
@@ -648,6 +648,7 @@ GameObject:
   - component: {fileID: 495762844152036276}
   - component: {fileID: 495762844152036278}
   - component: {fileID: 495762844152036279}
+  - component: {fileID: 7428843771382188768}
   m_Layer: 0
   m_Name: CoinTxt
   m_TagString: Untagged
@@ -673,7 +674,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -24.800049, y: 0}
-  m_SizeDelta: {x: 117.39, y: 40.4}
+  m_SizeDelta: {x: 0, y: 40.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &495762844152036278
 CanvasRenderer:
@@ -703,7 +704,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9999
+  m_text: 999999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e656ddd43ae416b47923e040f9702348, type: 2}
   m_sharedMaterial: {fileID: -8555923106714208208, guid: e656ddd43ae416b47923e040f9702348, type: 2}
@@ -730,10 +731,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.35
-  m_fontSizeBase: 36
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -772,6 +773,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7428843771382188768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495762844152036277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!1 &495762844281180844
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,13 +870,6 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
-  hasEffect: 1
-  onEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onDown:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RemoveAdsGUI, Assembly-CSharp
@@ -875,6 +883,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hasEffect: 1
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onDown:
+    m_PersistentCalls:
+      m_Calls: []
   onExit:
     m_PersistentCalls:
       m_Calls: []
@@ -1106,10 +1121,10 @@ RectTransform:
   m_Father: {fileID: 495762845397581639}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 64.4}
-  m_SizeDelta: {x: 0, y: 832.72}
+  m_SizeDelta: {x: 720, y: 832.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &495762844730646000
 CanvasRenderer:
@@ -1326,13 +1341,6 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
-  hasEffect: 1
-  onEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onDown:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4922885479348714154}
         m_TargetAssemblyTypeName: MainGUI, Assembly-CSharp
@@ -1346,6 +1354,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hasEffect: 1
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onDown:
+    m_PersistentCalls:
+      m_Calls: []
   onExit:
     m_PersistentCalls:
       m_Calls: []
@@ -1574,7 +1589,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -79.619995}
+  m_AnchoredPosition: {x: 0, y: -79.62012}
   m_SizeDelta: {x: 720, y: 159.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &495762845248237874
@@ -1595,6 +1610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 495762845397581639}
   - component: {fileID: 4922885479348714154}
+  - component: {fileID: 2015526552}
   m_Layer: 0
   m_Name: MainGUI
   m_TagString: Untagged
@@ -1640,6 +1656,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinTxt: {fileID: 495762844152036279}
+  canvasAlpha: {fileID: 2015526552}
+  buttons:
+  - {fileID: 495762845114336343}
+  - {fileID: 495762844281180840}
+  - {fileID: 495762844133020185}
+  - {fileID: 495762845607434025}
+  - {fileID: 495762844925723441}
+--- !u!225 &2015526552
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495762845397581636}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &495762845607434029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,13 +1758,6 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
-  hasEffect: 1
-  onEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onDown:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4922885479348714154}
         m_TargetAssemblyTypeName: MainGUI, Assembly-CSharp
@@ -1743,6 +1771,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hasEffect: 1
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onDown:
+    m_PersistentCalls:
+      m_Calls: []
   onExit:
     m_PersistentCalls:
       m_Calls: []

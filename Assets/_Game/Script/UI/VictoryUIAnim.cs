@@ -36,6 +36,7 @@ public class VictoryUIAnim : MonoBehaviour
         victoryCanvas.alpha = 0;
         victoryCanvas.transform.localPosition = new Vector3(0, -30.0f);
         titleAlpha.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);
+        adsButton.transform.localScale = Vector3.one;
 
     }
 

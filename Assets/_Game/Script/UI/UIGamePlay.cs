@@ -18,13 +18,30 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     
     [SerializeField] private Image background;
     [SerializeField] private TextMeshProUGUI coinTxt;
+    [SerializeField] private Button hintBtn;
     [SerializeField] private TextMeshProUGUI hintPriceTxt;
     [SerializeField] private Image hintAdsIcon;
-    
+
+    private Tween buttonTween;
     public void OnEnable()
     {
         
     }
+
+    public void OnDisable()
+    {
+        buttonTween.Kill();
+    }
+
+    public void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            StopHintAnim();
+            GameManager.Instance.StartCountDown();
+        }
+    }
+    
 
     public virtual void Open()
     {
@@ -151,5 +168,19 @@ public class UIGamePlay : MonoBehaviour,IUIControl
         hintAdsIcon.gameObject.SetActive(true);
     }
 
+    public void PlayHintAnim()
+    {
+       buttonTween = hintBtn.transform.DOScale(1.2f, 0.6f).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    public void StopHintAnim()
+    {
+        if (buttonTween != null && buttonTween.IsPlaying())
+        {
+            buttonTween.Pause();
+            hintBtn.transform.localScale = Vector3.one;
+        }
+       
+    }
 
 }

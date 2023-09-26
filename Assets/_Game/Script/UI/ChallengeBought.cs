@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +14,11 @@ public class ChallengeBought :  ChallegeItemAnimation
     {
 
     }
+
+    public void OnDisable()
+    {
+        transform.DOKill();
+    }
     
     public void BuyLevel()
     {
@@ -22,9 +28,16 @@ public class ChallengeBought :  ChallegeItemAnimation
             DataManager.Instance.AddCoin(-dataLevel.price);
             DataManager.Instance.SetLevel(level, Mode.Bought, 0);
             UIManager.Instance.SetCoin();
-            bought.gameObject.SetActive(true);
+            gameObject.transform.DOScale(0.0f, 0.3f).SetEase(Ease.InBack).OnComplete(() =>
+            {
+                holder.SetActive(false);
+                gameObject.SetActive(false);
+                bought.gameObject.SetActive(true);
+                gameObject.SetActive(true);
+            });
+           
             bought.SetData(dataLevel.rewards);
-            holder.SetActive(false);
+          
         }
         else
         {

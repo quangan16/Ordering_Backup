@@ -69,16 +69,19 @@ public class GameManager : SingletonBehivour<GameManager>
     }
     IEnumerator CountDown()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
+        UIManager.Instance.PlayHintAnim();
+        yield return new WaitForSeconds(5);
         TutoMove tutoMove = FindObjectOfType<TutoMove>();
         if (tutoMove != null)
         {
             tutoMove.OnDeath();
         }    
+
         Instantiate(tutorial, tutoPos);
-
-
     }
+    
+    
     public void StartCountDown()
     {
         StopAllCoroutines();

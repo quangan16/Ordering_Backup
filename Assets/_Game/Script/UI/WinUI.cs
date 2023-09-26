@@ -54,8 +54,6 @@ public class WinUI : MonoBehaviour
 
             }, 0,
             AdsAdapterAdmob.where.multiply_reward_coin);
-     
-        DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
     }
 
     public void ShowDenyButton()
@@ -123,16 +121,17 @@ public class WinUI : MonoBehaviour
 
     public IEnumerator FadeIn()
     {
-        float duration = 1f; 
+        float duration = 0.7f; 
         float currentTime = 0f;
         var textColor = denyBtn.GetComponent<TextMeshProUGUI>();
         textColor.color = new Color(textColor.color.r, textColor.color.g, textColor.color.b, 0.0f);
-        yield return new WaitForSeconds(2.0f);
-            while (currentTime < duration)
+        yield return new WaitForSeconds(1.5f);
+            while (currentTime <= duration)
             {
-                currentTime += Time.deltaTime;
-                float alpha = Mathf.Lerp(0.0f,  1.0f, currentTime / duration);
+              
+                float alpha = Mathf.Lerp(0.0f,  1f, currentTime / duration);
                 textColor.color = new Color(textColor.color.r, textColor.color.g, textColor.color.b, alpha);
+                currentTime += Time.deltaTime;
                 yield return null;
             }
 
