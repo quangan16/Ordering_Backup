@@ -40,20 +40,59 @@ public class WinUI : MonoBehaviour
     public void GetCoinAds()
     {
         OnContinue();
-        AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
-            {
+        if (GameManager.Instance.gameMode == GameMode.Normal)
+        {
+            AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                {
 
-                AdsAdapterAdmob.LogAFAndFB($"multiply_reward_coin", "0",
-                    "0");
-                DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
-                
-            }, () =>
-            {
-                // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
-                Debug.Log("Failed to load");
+                    AdsAdapterAdmob.LogAFAndFB($"normal_get_reward_ad_level_", "0",
+                        "0");
+                    DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
+                    Debug.Log("normal_get_reward_ad_level_");
+                }, () =>
+                {
+                    // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                    Debug.Log("Failed to load");
 
-            }, 0,
-            AdsAdapterAdmob.where.multiply_reward_coin);
+                }, 0,
+                AdsAdapterAdmob.where.normal_get_reward_ad_level_);
+        }
+
+        else if (GameManager.Instance.gameMode == GameMode.Challenge)
+        {
+            AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                {
+
+                    AdsAdapterAdmob.LogAFAndFB($"challenge_get_reward_ad_level_", "0",
+                        "0");
+                    DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
+                    Debug.Log("challenge_get_reward_ad_level_");
+                }, () =>
+                {
+                    // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                    Debug.Log("Failed to load");
+
+                }, 0,
+                AdsAdapterAdmob.where.challenge_get_reward_ad_level_);
+        }
+
+        else if (GameManager.Instance.gameMode == GameMode.Boss)
+        {
+            AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                {
+
+                    AdsAdapterAdmob.LogAFAndFB($"boss_get_reward_ad_level_", "0",
+                        "0");
+                    DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
+                    Debug.Log("boss_get_reward_ad_level_");
+                }, () =>
+                {
+                    // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                    Debug.Log("Failed to load");
+
+                }, 0,
+                AdsAdapterAdmob.where.boss_get_reward_ad_level_);
+        }
     }
 
     public void ShowDenyButton()

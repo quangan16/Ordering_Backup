@@ -51,6 +51,20 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
     }
     public void Replay()
     {
+        AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+            {
+
+                AdsAdapterAdmob.LogAFAndFB($"boss_replay_ads_level_", "0",
+                    "0");
+                DataManager.Instance.AddCoin(100);
+                UIManager.Instance.SetCoin();
+            }, () =>
+            {
+                // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                Debug.Log("Failed to load");
+
+            }, 0,
+            AdsAdapterAdmob.where.boss_replay_ads_level_);
         GameManager.Instance.Replay();
     }
     public void SetText(string text)

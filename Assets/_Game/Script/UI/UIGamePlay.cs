@@ -58,6 +58,9 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     }
     public void Replay()
     {
+        AdsAdapterAdmob.LogAFAndFB($"normal_replay_level_" + GameManager.Instance.currentLevel, "0",
+            "0");
+        Debug.Log("normal_replay_level_");
         GameManager.Instance.Replay();
         
     }
@@ -71,11 +74,10 @@ public class UIGamePlay : MonoBehaviour,IUIControl
         DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
         if(DataManager.Instance.GetNormalLevel()>=5)
         {
-            Debug.Log("lol");
             AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                 {
 
-                    AdsAdapterAdmob.LogAFAndFB($"skip_level", "0",
+                    AdsAdapterAdmob.LogAFAndFB($"normal_skip_level_", "0",
                         "0");
                     
                 }, () =>
@@ -84,7 +86,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
                     Debug.Log("Failed to load");
 
                 }, 0,
-                AdsAdapterAdmob.where.skip_level);
+                AdsAdapterAdmob.where.normal_skip_level_);
         }
 
         GameManager.Instance.NextLevel();
@@ -111,11 +113,11 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
     public void BackToMain()
     {
+        AdsAdapterAdmob.LogAFAndFB($"back_to_main_level_" + GameManager.Instance.currentLevel, "0",
+            "0");
         if (DataManager.Instance.GetNormalLevel() >= 6)
         {
-            AdsAdapterAdmob.LogAFAndFB($"back_to_main", "0",
-                "0");
-            AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.back_to_main);
+            AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.normal_back_to_main_level_);
         }
         UIManager.Instance.OpenMain();
         

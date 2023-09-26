@@ -97,9 +97,25 @@ public class ShopItem : MonoBehaviour
     {
         if (DataManager.Instance.GetCoin() >= price)
         {
+            
             DataManager.Instance.AddCoin(-price);
             Equip();
             UIManager.Instance.SetCoin();
+
+            if (type == ItemType.SKIN)
+            {
+                AdsAdapterAdmob.LogAFAndFB($"ring_skin_bought_id_" + ((SkinType)onSelect), "0",
+                    "0");
+                Debug.Log((SkinType)onSelect);
+            }
+            else if (type == ItemType.BACKGROUND)
+            {
+                AdsAdapterAdmob.LogAFAndFB($"background_bought_id_" + ((BackGroundType)onSelect), "0",
+                    "0");
+                Debug.Log((BackGroundType)onSelect);
+            }
+            
+            
         }
         else
         {
