@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 
@@ -127,9 +128,20 @@ public class ShopGUI : MonoBehaviour, IUIControl
     }
     public void ReLoad()
     {
-        ringSkinLeft.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).spriteC;
-        ringSkinRight.sprite = DataManager.Instance.GetSkin(DataManager.Instance.GetLastRingSkin()).spriteC;
+        SkinType skinType = DataManager.Instance.GetLastRingSkin();
+        ringSkinLeft.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
+        ringSkinRight.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
+        if (skinType == SkinType.Strip || skinType == SkinType.LeoPattern)
+        {
+            ringSkinRight.color = new Color32(117, 15, 15, 80);
+            ringSkinLeft.color = new Color32(121, 27, 20, 80);
+        }
+        else
+        {
+            ringSkinRight.color = new Color32(249, 200, 222, 200);
+            ringSkinLeft.color = new Color32(227, 117, 0, 200);
 
+        }
         backgroundImg.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
         Skin skins = DataManager.Instance.skins;
         N_BackGround backGround = DataManager.Instance.backGround;
@@ -165,6 +177,17 @@ public class ShopGUI : MonoBehaviour, IUIControl
         }
         ringSkinLeft.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
         ringSkinRight.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
+        if (skinType == SkinType.Strip || skinType == SkinType.LeoPattern)
+        {
+            ringSkinRight.color = new Color32(117, 15, 15, 80);
+            ringSkinLeft.color = new Color32(121, 27, 20, 80);
+        }
+        else
+        {
+            ringSkinRight.color = new Color32(249, 200, 222, 200);
+            ringSkinLeft.color = new Color32(227, 117, 0, 200);
+
+        }
     }
     public void SelectBackGround(BackGroundType backGroundType)
     {

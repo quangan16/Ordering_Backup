@@ -23,10 +23,13 @@ public class GameManager : SingletonBehivour<GameManager>
     public bool HasInternet { get; private set; }
     private float timeInterval = 5.0f;
     private float timeSinceLastCheck = 5.0f;
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     private void Start()
     {
-
+        
         AdsAdapterAdmob.Instance.ShowBanner();
        // throw new NotImplementedException();
     }
