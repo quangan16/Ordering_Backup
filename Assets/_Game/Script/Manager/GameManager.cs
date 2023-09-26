@@ -23,6 +23,8 @@ public class GameManager : SingletonBehivour<GameManager>
     public bool HasInternet { get; private set; }
     private float timeInterval = 5.0f;
     private float timeSinceLastCheck = 5.0f;
+    public float timeLeftToShowAds = 60.0f;
+    public int levelLeftToShowAds = 2;
 
     private void Start()
     {
@@ -31,11 +33,18 @@ public class GameManager : SingletonBehivour<GameManager>
        // throw new NotImplementedException();
     }
 
+    public void AdsCountDown()
+    {
+        timeLeftToShowAds -= Time.deltaTime;
+        
+    }
+
     public static event Action OnInternetError;
     public static event Action OnInternetSuccess;
 
     private void Update()
     {
+        
         if (isTouch && (gameMode == GameMode.Challenge || gameMode == GameMode.Boss))
         {
             if (timer > 0)

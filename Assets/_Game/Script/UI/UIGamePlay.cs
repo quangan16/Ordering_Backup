@@ -21,6 +21,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     [SerializeField] private Button hintBtn;
     [SerializeField] private TextMeshProUGUI hintPriceTxt;
     [SerializeField] private Image hintAdsIcon;
+   
 
     private Tween buttonTween;
     public void OnEnable()
@@ -82,7 +83,15 @@ public class UIGamePlay : MonoBehaviour,IUIControl
                     
                 }, () =>
                 {
-                    // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                    StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                    if (GameManager.Instance.HasInternet == false)
+                    {
+                        UIManager.Instance.ShowInternetPopUp();
+                    }
+                    else
+                    {
+                        UIManager.Instance.ShowAdsNotification();
+                    }
                     Debug.Log("Failed to load");
 
                 }, 0,

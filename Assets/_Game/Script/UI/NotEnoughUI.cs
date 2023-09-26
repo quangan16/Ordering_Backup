@@ -50,17 +50,27 @@ public class NotEnoughUI : PopupManager
         
         if(type == NotEnoughType.Coin)
         {
+           
             AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                 {
-
+                    
                     AdsAdapterAdmob.LogAFAndFB($"get_coin", "0",
                         "0");
                     DataManager.Instance.AddCoin(100);
                     UIManager.Instance.SetCoin();
                 }, () =>
                 {
+                    StartCoroutine(GameManager.Instance.CheckInternetConnection()) ;
+                    if (GameManager.Instance.HasInternet == false)
+                    {
+                        UIManager.Instance.ShowInternetPopUp();
+                    }
+                    else
+                    {
+                        UIManager.Instance.ShowAdsNotification();
+                    }
                     // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
-                    Debug.Log("Failed to load");
+                    // Debug.Log("Failed to load");
 
                 }, 0,
                 AdsAdapterAdmob.where.get_coin);

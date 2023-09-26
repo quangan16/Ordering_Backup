@@ -17,6 +17,10 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] MainGUI mainMenu;
     [SerializeField] NotEnoughUI notEnough;
     [SerializeField] UIClamp uIClamp;
+
+    [SerializeField] private NoInternetGUI noInternetGUI;
+    [SerializeField] private RemoveAdsGUI removeAdsGUI;
+    [SerializeField] private NoAdsGUI noAdsGUI;
     //[SerializeField] shop 
     public IUIControl PreviousScene { get; private set; }
     public IUIControl current;
@@ -46,28 +50,41 @@ public class UIManager : SingletonBehivour<UIManager>
         {
             if (GameManager.Instance.gameMode == GameMode.Normal)
             {
-                AdsAdapterAdmob.LogAFAndFB($"normal_end_level_" + GameManager.Instance.currentLevel, "0",
+                AdsAdapterAdmob.LogAFAndFB($"normal_end_level_" + GameManager.Instance.currentLevel + 1, "0",
                     "0");
-                int normalLevel = DataManager.Instance.GetNormalLevel();
-                if (normalLevel >= 5 && normalLevel % 3 == 0)
+                int normalLevel = DataManager.Instance.GetNormalLevel() + 1;
+                if (normalLevel == 5)
                 {
-                    AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.normal_end_level_);
+                    removeAdsGUI.Open();
+                }
+                if (normalLevel >= 5 && GameManager.Instance.levelLeftToShowAds<=0 ||
+                    GameManager.Instance.timeLeftToShowAds <= 0.0f)
+                {
+                    AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.show_inter_end_level);
+                    GameManager.Instance.levelLeftToShowAds = 2;
                 }
             }
             else if (GameManager.Instance.gameMode == GameMode.Challenge)
             {
-                AdsAdapterAdmob.LogAFAndFB($"challenge_end_level_" + GameManager.Instance.currentLevel, "0",
+                AdsAdapterAdmob.LogAFAndFB($"challenge_end_level_" + GameManager.Instance.currentLevel + 1, "0",
                     "0");
-                
-                    AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.challenge_end_level_);
+                if (GameManager.Instance.levelLeftToShowAds <= 0 || GameManager.Instance.timeLeftToShowAds <= 0.0f)
+                {
+                    AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.show_inter_end_level);
+                    GameManager.Instance.levelLeftToShowAds = 2;
+                }
+                   
                     Debug.Log("challenge_end_level_");
             }
-            else if (GameManager.Instance.gameMode == GameMode.Boss)
+            else if (GameManager.Instance.gameMode == GameMode.Boss || GameManager.Instance.timeLeftToShowAds <= 0.0f)
             {
-                AdsAdapterAdmob.LogAFAndFB($"boss_end_level_" + GameManager.Instance.currentLevel, "0",
+                AdsAdapterAdmob.LogAFAndFB($"boss_end_level_" + (GameManager.Instance.currentLevel + 1), "0",
                     "0");
-                    AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.boss_end_level_);
-                    Debug.Log("boss_end_level_");
+                    if (GameManager.Instance.levelLeftToShowAds <= 0 || GameManager.Instance.timeLeftToShowAds <= 0.0f)
+                    {
+                        AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.show_inter_end_level);
+                        GameManager.Instance.levelLeftToShowAds = 2;
+                    }
             }
 
             win.Open();
@@ -211,5 +228,15 @@ public class UIManager : SingletonBehivour<UIManager>
     public void PlayHintAnim()
     {
         control.PlayHintAnim();
+    }
+
+    public void ShowInternetPopUp()
+    {
+        noInternetGUI.Open();
+    }
+
+    public void ShowAdsNotification()
+    {
+        noAdsGUI.Open();
     }
 }
