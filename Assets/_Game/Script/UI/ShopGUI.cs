@@ -64,6 +64,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
 
     void Start()
     {
+        type = ItemType.SKIN;
         skinPage.gameObject.SetActive(true);
         backgroundPage.gameObject.SetActive(false);
     }
@@ -149,7 +150,16 @@ public class ShopGUI : MonoBehaviour, IUIControl
         BackGroundType bgType = DataManager.Instance.GetLastBackground();
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(bgType);
         backgroundImg.sprite =backGroundItem.sprite;
-        ChangeButtonState(DataManager.Instance.GetRingSkinState(skinType));
+        if(type == ItemType.SKIN)
+        {
+            ChangeButtonState(DataManager.Instance.GetRingSkinState(skinType));
+
+        }
+        else
+        {
+            ChangeButtonState(DataManager.Instance.GetBackGroundState(bgType));
+
+        }
         Skin skins = DataManager.Instance.skins;
         N_BackGround backGround = DataManager.Instance.backGround;
         ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
@@ -165,6 +175,10 @@ public class ShopGUI : MonoBehaviour, IUIControl
             ShopItem shopItem = Instantiate(itemPref, skinLayout);
             shopItem.OnInit((SkinType)(ii));
             shopItem.AddEvent(() => SelectSkin((SkinType)(ii)));
+            if(shopItem.state == ShopState.Equipped)
+            {
+                shopItem.OnSelect();
+            }    
         }
         for (int j = 0; j < backGround.BackGroundItems.Length; j++)
         {
@@ -172,6 +186,10 @@ public class ShopGUI : MonoBehaviour, IUIControl
             ShopItem shopItem = Instantiate(itemPref, backgroundLayout);
             shopItem.OnInit((BackGroundType)jj);
             shopItem.AddEvent(() => SelectBackGround((BackGroundType)jj));
+            if (shopItem.state == ShopState.Equipped)
+            {
+                shopItem.OnSelect();
+            }
         }
     }
     public void SelectSkin(SkinType skinType)
@@ -179,7 +197,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
         ShopItem[] items = GetComponentsInChildren<ShopItem>();
         foreach (ShopItem item in items)
         {
-            //if(item.state != ShopState.Equipped)
+           // if(item.state != ShopState.Equipped)
             item.OffSelect();
         }
         SkinItem itemSkin = DataManager.Instance.GetSkin(skinType);
@@ -290,15 +308,5 @@ public class ShopGUI : MonoBehaviour, IUIControl
 
 
     }
-
-
-
-
-
-
-
-
-
-
 
 }

@@ -156,7 +156,7 @@ public class ShopItem : MonoBehaviour
     {
         selectBtn.onClick.AddListener(listener);
 
-        selectBtn.onClick.AddListener(() => borderSelect.SetActive(true));
+        selectBtn.onClick.AddListener(() =>OnSelect());
 
 
 
@@ -166,4 +166,8 @@ public class ShopItem : MonoBehaviour
         borderSelect.SetActive(false);
 
     }
+    public void OnSelect()
+    {
+        borderSelect.SetActive(true);
+    }    
 }
