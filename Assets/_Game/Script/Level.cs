@@ -56,7 +56,6 @@ public class Level : MonoBehaviour
         solidList = GetComponentsInChildren<Solid>().ToList();
         AdsAdapterAdmob.LogAFAndFB($"start_level_" + (GameManager.Instance.currentLevel + 1), "0",
             "0");
-        Debug.Log("start_level_");
         GameManager.Instance.timeLeftToShowAds = 60.0f;
         GameManager.Instance.levelLeftToShowAds--;
 

@@ -41,6 +41,7 @@ public class ChallengeBought :  ChallegeItemAnimation
         }
         else
         {
+            
             UIManager.Instance.OpenNotEnough(NotEnoughType.Coin);
         }
         

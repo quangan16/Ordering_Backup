@@ -48,7 +48,7 @@ public class WinUI : MonoBehaviour
                     AdsAdapterAdmob.LogAFAndFB($"normal_get_reward_ad_level_" + GameManager.Instance.currentLevel + 1, "0",
                         "0");
                     DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
-                    Debug.Log("normal_get_reward_ad_level_");
+                    // Debug.Log("normal_get_reward_ad_level_");
                 }, () =>
                 {
                     StartCoroutine(GameManager.Instance.CheckInternetConnection());
