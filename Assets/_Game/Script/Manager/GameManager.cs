@@ -160,7 +160,7 @@ public class GameManager : SingletonBehivour<GameManager>
         timer = (current.time);
         moves = current.moves;
         UIManager.Instance.SetCoin();
-        UIManager.Instance.SetText("Level " + (currentLevel + 1));
+        UIManager.Instance.SetText(current.nameLevel+" " + (currentLevel + 1));
         UIManager.Instance.OffClamp();
         Camera.main.orthographicSize = current.cameraDist;
 
@@ -261,6 +261,7 @@ public class GameManager : SingletonBehivour<GameManager>
                 i++;
                 DataManager.Instance.SetTotalChallenge(i);
             }
+            
             DataManager.Instance.SetLevel(currentLevel, Mode.Pass, Mathf.RoundToInt(timer) < time ? time : Mathf.RoundToInt(timer));
         }
 

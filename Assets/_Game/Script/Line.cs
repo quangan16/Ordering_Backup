@@ -109,7 +109,7 @@ public class Line : Solid
     void OnMouseDrag()
     {
         Vector3 cursorPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition) + offset;
-        CheckCameraMovement(cursorPosition);
+       // CheckCameraMovement(cursorPosition);
 
     }
     private void OnMouseUp()

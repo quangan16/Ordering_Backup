@@ -11,8 +11,10 @@ public class MobileInput : MonoBehaviour
     public static Solid target;
     public static Vector3 anchor;
     public static bool isStopped;
+   
     private void Start()
     {
+        
         Application.targetFrameRate = 60;
     }
     void Update()
@@ -20,7 +22,6 @@ public class MobileInput : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            
             GetOnClick();
         }
         if (target)
@@ -38,7 +39,7 @@ public class MobileInput : MonoBehaviour
             }
 
             anchor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
+        }        
         if (Input.GetMouseButtonUp(0))
         {
             if (target != null)
@@ -72,10 +73,11 @@ public class MobileInput : MonoBehaviour
                 anchor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
-
             }
         }
+
     }
+
 
 
 }

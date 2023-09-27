@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,12 @@ public class Bomb : MonoBehaviour
 {
     [SerializeField] ParticleSystem ps;
     [SerializeField] AudioClip audioClip;
+    [SerializeField] GameObject sprite;
+    private void Start()
+    {
+        Vector3 scale = sprite.transform.localScale;
+        sprite.transform.DOScale(new Vector3(scale.x * 1.05f, scale.y * 0.95f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Block")|| collision.gameObject.CompareTag("Lock"))

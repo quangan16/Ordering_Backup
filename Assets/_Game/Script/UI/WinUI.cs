@@ -175,6 +175,7 @@ public class WinUI : MonoBehaviour
                 }
             case GameMode.Challenge:
                 {
+
                     UIManager.Instance.OpenChallenge();
                     break;
                 }

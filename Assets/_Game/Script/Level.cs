@@ -16,6 +16,7 @@ public class Level : MonoBehaviour
     public int rewards;
     public bool isHint ;
     public bool firstHint;
+    public string nameLevel = "Level";
     private void Awake()
     {
         OnInit();
@@ -66,7 +67,6 @@ public class Level : MonoBehaviour
             GameManager.Instance.timeLeftToShowAds -= Time.deltaTime;
         }
        
-        Debug.Log(GameManager.Instance.timeLeftToShowAds);
     }
     public void CheckFree()
     {
