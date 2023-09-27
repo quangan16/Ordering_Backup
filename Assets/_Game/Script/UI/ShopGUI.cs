@@ -8,9 +8,6 @@ using UnityEngine.UI;
 
 public class ShopGUI : MonoBehaviour, IUIControl
 {
-
-
-
     [SerializeField] private Image skinButtonImg;
 
     [SerializeField] private Image backgroundButtonImg;

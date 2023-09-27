@@ -54,10 +54,10 @@ public class NotEnoughUI : PopupManager
             AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                 {
                     
-                    AdsAdapterAdmob.LogAFAndFB($"get_coin", "0",
+                    AdsAdapterAdmob.LogAFAndFB($"unlock_challenge_by_ads", "0",
                         "0");
-                    DataManager.Instance.AddCoin(100);
-                    UIManager.Instance.SetCoin();
+                   
+                    
                 }, () =>
                 {
                     StartCoroutine(GameManager.Instance.CheckInternetConnection()) ;
