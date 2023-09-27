@@ -32,7 +32,7 @@ public class MainGUI : MonoBehaviour, IUIControl
 
     public void Close()
     {
-        gameObject.SetActive(false);
+       
         OnClose();
     }
 
@@ -56,7 +56,7 @@ public class MainGUI : MonoBehaviour, IUIControl
     public void OpenGamePlay()
     {
         canvasAlpha.DOFade(0.0f, 0.6f).OnComplete(() => { gameObject.SetActive(false); });
-      UIManager.Instance.OpenGameplay();
+        UIManager.Instance.OpenGameplay();
         
     }    
     public void OpenShop()

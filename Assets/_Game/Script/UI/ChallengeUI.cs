@@ -28,7 +28,6 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public ScrollRect scrollRect;
     public RectTransform content;
     public int unlockedItemIndex; // Index of the unlocked item you want to scroll to.
-
     private void OnEnable()
     {
         UpdateChallengeBar();
@@ -48,11 +47,8 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
       
         float itemHeight = content.GetChild(0).rect().rect.height + 60;
-        Debug.Log(itemHeight);
         float contentHeight = LayoutUtility.GetPreferredHeight(content);
-        Debug.Log(contentHeight);
         float yPosition = ((challengeLevel /3) * itemHeight) /(contentHeight - 3 * itemHeight);
-        Debug.Log(yPosition);
         return Mathf.Clamp01(1 - yPosition);
     }
     [Button]

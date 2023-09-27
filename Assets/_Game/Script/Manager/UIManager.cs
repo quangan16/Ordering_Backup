@@ -27,7 +27,6 @@ public class UIManager : SingletonBehivour<UIManager>
     private void Start()
     {
        OpenMain();
-        
     }
     public void ShowAds()
     {
