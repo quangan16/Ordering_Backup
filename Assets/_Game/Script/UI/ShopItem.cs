@@ -75,6 +75,7 @@ public class ShopItem : MonoBehaviour
         this.type = ItemType.BACKGROUND;
 
     }
+    //----------------x
     public void SetState(ShopState state)
     {
        // Locked.SetActive(false);
@@ -150,6 +151,7 @@ public class ShopItem : MonoBehaviour
         }
         GetComponentInParent<ShopGUI>().ReLoad();
     }
+    //------------------x
     public void AddEvent(UnityAction listener)
     {
         selectBtn.onClick.AddListener(listener);

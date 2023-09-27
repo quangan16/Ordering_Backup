@@ -12,12 +12,13 @@ public class Clamp : MonoBehaviour
     public SpriteRenderer currentSkin;
 
     public Solid target;
-    Solid parent => GetComponentInParent<Solid>();
+    Solid parent;
     public float time;
     public bool isDead;
     private void Start()
     {      
         isDead = false;
+        parent = GetComponentInParent<Solid>();
     }
     void Update()
     {

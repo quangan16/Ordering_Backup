@@ -59,7 +59,9 @@ public class Solid : MonoBehaviour
     }
     public void ChangeSkin(SkinItem skinItem)
     {
-        if(this is Circle)
+        currentSkin.color = ChangeColorbyID(skinItem.type);
+
+        if (this is Circle)
         {
             currentSkin.sprite = skinItem.spriteC;
             foreach (Clamp clamp in GetComponentsInChildren<Clamp>())
@@ -69,11 +71,15 @@ public class Solid : MonoBehaviour
             }
 
         }
-        else if(this is Line || !CompareTag("Lock"))
+        else if(this is Line || CompareTag("Block"))
         {
             currentSkin.sprite = skinItem.spriteL;
+            foreach (Clamp clamp in GetComponentsInChildren<Clamp>())
+            {
+                clamp.ChangeSkin(skinItem.spriteL);
+                clamp.currentSkin.color = currentSkin.color;
+            }
         }    
-        currentSkin.color = ChangeColorbyID(skinItem.type);
         
 
     }
