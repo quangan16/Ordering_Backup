@@ -90,9 +90,9 @@ public class AdsAdapterAdmob : MonoBehaviour
     {
         normal_end_level_,
         normal_back_to_main_level_,
-        get_hint,
+        get_hint_ads,
         get_live,
-        normal_skip_level_,
+        normal_skip_level,
         get_coin,
         normal_get_reward_ad_level_,
         challenge_get_reward_ad_level_,

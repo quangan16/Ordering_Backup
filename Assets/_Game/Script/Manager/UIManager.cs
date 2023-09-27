@@ -241,4 +241,9 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         noAdsGUI.Open();
     }
+
+    public void ShowSkipAdsIcon()
+    {
+        control.ShowSkipAdsIcon();
+    }
 }
