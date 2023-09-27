@@ -44,9 +44,9 @@ public class ShopGUI : MonoBehaviour, IUIControl
 
 
 
-    int idSelect;
+    static int idSelect;
     int price;
-    ItemType type;
+    static ItemType type;
     void OnEnable()
     {
         //backgroundImg.sprite = shopItemData.shopItems[DataManager.Instance.GetBackground()].itemContent;
@@ -69,7 +69,6 @@ public class ShopGUI : MonoBehaviour, IUIControl
     {
         skinPage.gameObject.SetActive(true);
         backgroundPage.gameObject.SetActive(false);
-       // currentPage = PageState.SKIN;
     }
 
 
@@ -231,6 +230,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
             DataManager.Instance.AddCoin(-price);
             UIManager.Instance.SetCoin();
             Equip();
+            ChangeButtonState(ShopState.Equipped);
         }
         else
         {
@@ -238,7 +238,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
         }
 
     }    
-    public void Equip()
+    public static void Equip()
     {
         if (type == ItemType.SKIN)
         {
@@ -255,7 +255,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
             DataManager.Instance.SetLastBackground((BackGroundType)idSelect);
 
         }
-        ChangeButtonState(ShopState.Equipped);
+        //ChangeButtonState(ShopState.Equipped);
 
     }
     void ChangeButtonState(ShopState state)
@@ -267,6 +267,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
             case ShopState.Bought:
                 {
                     Equip();
+                    ChangeButtonState(ShopState.Equipped);
                     break;
                 }
             case ShopState.Equipped:
