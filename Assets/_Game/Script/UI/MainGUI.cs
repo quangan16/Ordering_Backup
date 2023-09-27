@@ -60,12 +60,14 @@ public class MainGUI : MonoBehaviour, IUIControl
     }    
     public void OpenShop()
     {
+        gameObject.SetActive(false);
         UIManager.Instance.OpenShop();  
 
     }
 
     public void OpenChallenge()
     {
+        gameObject.SetActive(false);
         UIManager.Instance.OpenChallenge();
     }
 
