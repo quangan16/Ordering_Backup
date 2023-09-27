@@ -16,6 +16,7 @@ public class Level : MonoBehaviour
     public int rewards;
     public bool isHint ;
     public bool firstHint;
+    public string nameLevel = "Level";
     private void Awake()
     {
         OnInit();
@@ -24,8 +25,6 @@ public class Level : MonoBehaviour
     {
         firstHint = DataManager.Instance.GetHint() == 0;
         isHint = true;
-        Debug.Log(DataManager.Instance.GetCoin());
-        // Debug.Log("isHint" + isHint);
         if(firstHint)
         {
             UIManager.Instance.HideHintCoinIcon();
