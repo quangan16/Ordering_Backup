@@ -64,7 +64,7 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
                 Debug.Log("Failed to load");
 
             }, 0,
-            AdsAdapterAdmob.where.boss_replay_ads_level_);
+            AdsAdapterAdmob.where.boss_replay_ads_level);
         GameManager.Instance.Replay();
     }
     public void SetText(string text)

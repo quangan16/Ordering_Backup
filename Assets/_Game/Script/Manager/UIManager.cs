@@ -27,8 +27,19 @@ public class UIManager : SingletonBehivour<UIManager>
     private void Start()
     {
        OpenMain();
-        
+       
     }
+
+    public void ReloadShop()
+    {
+        (current as ShopGUI).ReLoad();
+    }
+
+    public void ReloadChallenge()
+    {
+        (current as ChallengeUI).OnInit();
+    }
+    
     public void ShowAds()
     {
        

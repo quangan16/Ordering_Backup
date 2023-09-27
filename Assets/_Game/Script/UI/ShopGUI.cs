@@ -255,6 +255,13 @@ public class ShopGUI : MonoBehaviour, IUIControl
         //ChangeButtonState(ShopState.Equipped);
 
     }
+
+    public static void UnlockItemWithAds()
+    {
+        Equip();
+        UIManager.Instance.ReloadShop();
+    }
+        
     void ChangeButtonState(ShopState state)
     {
         buttonBuy.SetActive(false);

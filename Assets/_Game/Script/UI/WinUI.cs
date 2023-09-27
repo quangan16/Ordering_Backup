@@ -89,7 +89,7 @@ public class WinUI : MonoBehaviour
                     Debug.Log("Failed to load");
 
                 }, 0,
-                AdsAdapterAdmob.where.challenge_get_reward_ad_level_);
+                AdsAdapterAdmob.where.challenge_get_reward_ad_level);
         }
 
         else if (GameManager.Instance.gameMode == GameMode.Boss)
@@ -115,7 +115,7 @@ public class WinUI : MonoBehaviour
                     Debug.Log("Failed to load");
 
                 }, 0,
-                AdsAdapterAdmob.where.boss_get_reward_ad_level_);
+                AdsAdapterAdmob.where.boss_get_reward_ad_level);
         }
     }
 
