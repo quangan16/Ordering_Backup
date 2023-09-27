@@ -16,14 +16,10 @@ public class LoseUI : PopupManager
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip overTimeSfx;
     [SerializeField] private AudioClip outOfMoveSfx;
-    private float scaleDuration = 0.5f;
     private float effectDuration = 4.0f;
     TypeOut type;
 
-    public void OnEnable()
-    {
-      
-    }
+
 
     public void OnDisable()
     {

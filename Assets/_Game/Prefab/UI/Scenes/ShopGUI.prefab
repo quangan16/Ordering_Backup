@@ -654,7 +654,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9034245015041790844}
+        m_TargetAssemblyTypeName: ShopGUI, Assembly-CSharp
+        m_MethodName: Buy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   hasEffect: 1
   onEnter:
     m_PersistentCalls:
@@ -3356,6 +3368,7 @@ MonoBehaviour:
   textInactiveColor: {r: 0.2901961, g: 0.2901961, b: 0.2901961, a: 1}
   skinTxt: {fileID: 9034245014341398537}
   backgroundTxt: {fileID: 9034245014704433029}
+  priceTxt: {fileID: 7910146560754026897}
   ringSkinLeft: {fileID: 2195534338976261184}
   ringSkinRight: {fileID: 3619850449838139991}
   backgroundImg: {fileID: 9034245013900941991}
@@ -3364,6 +3377,8 @@ MonoBehaviour:
   skinLayout: {fileID: 9034245014553874078}
   backgroundLayout: {fileID: 9034245014531966294}
   coinTxt: {fileID: 6128360752051735763}
+  buttonBuy: {fileID: 4251224793215780637}
+  buttonAd: {fileID: 589699237710419289}
 --- !u!1 &9034245015267790724
 GameObject:
   m_ObjectHideFlags: 0

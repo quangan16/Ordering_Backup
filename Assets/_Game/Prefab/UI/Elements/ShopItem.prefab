@@ -339,7 +339,6 @@ MonoBehaviour:
   backGround: {fileID: 7050240384009829034}
   skin: {fileID: 8798783201477666742}
   priceText: {fileID: 6630580004955328708}
-  Locked: {fileID: 7619125893286329389}
   Unlocked: {fileID: 7619125892475918507}
   selectBtn: {fileID: 8250583047676084891}
   buyBtn: {fileID: 4208265562048315741}
@@ -1395,19 +1394,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7619125893829146959}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4823151627495479441}
-        m_TargetAssemblyTypeName: ShopItem, Assembly-CSharp
-        m_MethodName: Equip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7789948755145287433
 GameObject:
   m_ObjectHideFlags: 0

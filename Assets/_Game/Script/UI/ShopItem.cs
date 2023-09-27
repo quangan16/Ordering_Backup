@@ -23,7 +23,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] Image backGround;
     [SerializeField] Image skin;
     [SerializeField] TextMeshProUGUI priceText;
-    [SerializeField] GameObject Locked;
+    //[SerializeField] GameObject Locked;
     [SerializeField] GameObject Unlocked;
     [SerializeField] Button selectBtn;
     [SerializeField] Button buyBtn;
@@ -43,7 +43,7 @@ public class ShopItem : MonoBehaviour
         SkinItem skinItem = DataManager.Instance.GetSkin(type);
         // change ring skin
         price = skinItem.price;
-        SetState(state);
+        //SetState(state);
         backGround.transform.parent.gameObject.SetActive(false);
         skin.sprite = skinItem.spriteC;
         if(type == SkinType.Strip || type == SkinType.LeoPattern)
@@ -65,7 +65,7 @@ public class ShopItem : MonoBehaviour
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(type);
         this.state = state;
         price = backGroundItem.price;
-        SetState(state);
+        //SetState(state);
         // change sprite background
         skin.transform.parent.gameObject.SetActive(false);
 
@@ -77,7 +77,7 @@ public class ShopItem : MonoBehaviour
     }
     public void SetState(ShopState state)
     {
-        Locked.SetActive(false);
+       // Locked.SetActive(false);
         switch (state)
         {
             case ShopState.Locked:

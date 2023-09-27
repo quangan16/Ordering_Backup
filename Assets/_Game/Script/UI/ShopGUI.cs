@@ -1,5 +1,6 @@
 using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -23,7 +24,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
 
     [SerializeField] private TextMeshProUGUI skinTxt;
     [SerializeField] private TextMeshProUGUI backgroundTxt;
-
+    [SerializeField] TextMeshProUGUI priceTxt;
 
     [SerializeField] private Image ringSkinLeft;
     [SerializeField] private Image ringSkinRight;
@@ -35,7 +36,14 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] Transform backgroundLayout;
 
     [SerializeField] private TextMeshProUGUI coinTxt;
+    [SerializeField] GameObject buttonBuy;
+    [SerializeField] GameObject buttonAd;
 
+
+
+    int idSelect;
+    int price;
+    ItemType type;
     void OnEnable()
     {
         //backgroundImg.sprite = shopItemData.shopItems[DataManager.Instance.GetBackground()].itemContent;
@@ -139,7 +147,10 @@ public class ShopGUI : MonoBehaviour, IUIControl
             ringSkinLeft.color = new Color32(227, 117, 0, 200);
 
         }
-        backgroundImg.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
+        BackGroundType bgType = DataManager.Instance.GetLastBackground();
+        BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(bgType);
+        backgroundImg.sprite =backGroundItem.sprite;
+        ChangeButtonState(DataManager.Instance.GetRingSkinState(skinType));
         Skin skins = DataManager.Instance.skins;
         N_BackGround backGround = DataManager.Instance.backGround;
         ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
@@ -169,11 +180,12 @@ public class ShopGUI : MonoBehaviour, IUIControl
         ShopItem[] items = GetComponentsInChildren<ShopItem>();
         foreach (ShopItem item in items)
         {
-            if(item.state != ShopState.Equipped)
+            //if(item.state != ShopState.Equipped)
             item.OffSelect();
         }
-        ringSkinLeft.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
-        ringSkinRight.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
+        SkinItem itemSkin = DataManager.Instance.GetSkin(skinType);
+        ringSkinLeft.sprite = itemSkin.spriteC;
+        ringSkinRight.sprite = itemSkin.spriteC;
         if (skinType == SkinType.Strip || skinType == SkinType.LeoPattern)
         {
             ringSkinRight.color = new Color32(117, 15, 15, 80);
@@ -185,16 +197,90 @@ public class ShopGUI : MonoBehaviour, IUIControl
             ringSkinLeft.color = new Color32(227, 117, 0, 200);
 
         }
+
+        priceTxt.text = itemSkin.price.ToString();
+        price = itemSkin.price;
+        type = ItemType.SKIN;
+        idSelect = (int)skinType;
+        ChangeButtonState(DataManager.Instance.GetRingSkinState(skinType));
     }
     public void SelectBackGround(BackGroundType backGroundType)
     {
         ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
         foreach (ShopItem item in items)
         {
-            if (item.state != ShopState.Equipped)
+           // if (item.state != ShopState.Equipped)
                 item.OffSelect();
         }
-        backgroundImg.sprite = DataManager.Instance.GetBackGround(backGroundType).sprite;
+        BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(backGroundType);
+        backgroundImg.sprite = backGroundItem.sprite;
+        priceTxt.text = backGroundItem.price.ToString();
+        price = backGroundItem.price;
+        type = ItemType.BACKGROUND;
+        idSelect = (int)backGroundType;
+        ChangeButtonState(DataManager.Instance.GetBackGroundState(backGroundType));
+
+    }
+    public void Buy()
+    {
+        if(DataManager.Instance.GetCoin()>=price)
+        {
+            DataManager.Instance.AddCoin(-price);
+            UIManager.Instance.SetCoin();
+            Equip();
+        }
+        else
+        {
+            UIManager.Instance.OpenNotEnough(NotEnoughType.Coin);
+        }
+
+    }    
+    public void Equip()
+    {
+        if (type == ItemType.SKIN)
+        {
+            SkinType type = DataManager.Instance.GetLastRingSkin();
+            DataManager.Instance.SetRingSkinState(ShopState.Bought, type);
+            DataManager.Instance.SetRingSkinState(ShopState.Equipped, (SkinType)idSelect);
+            DataManager.Instance.SetLastRingSkin((SkinType)idSelect);
+        }
+        else
+        {
+            BackGroundType type = DataManager.Instance.GetLastBackground();
+            DataManager.Instance.SetBackGroundState(ShopState.Bought, type);
+            DataManager.Instance.SetBackGroundState(ShopState.Equipped, (BackGroundType)idSelect);
+            DataManager.Instance.SetLastBackground((BackGroundType)idSelect);
+
+        }
+        ChangeButtonState(ShopState.Equipped);
+
+    }
+    void ChangeButtonState(ShopState state)
+    {
+        buttonBuy.SetActive(false);
+        buttonAd.SetActive(false);
+        switch (state)
+        {
+            case ShopState.Bought:
+                {
+                    Equip();
+                    break;
+                }
+            case ShopState.Equipped:
+                {
+                   
+                    break;
+                }
+            case ShopState.UnBought:
+                {
+                    buttonBuy.SetActive(true);
+                    buttonAd.SetActive(true);
+                    break;
+                }
+
+        }
+
+
     }
 
 
