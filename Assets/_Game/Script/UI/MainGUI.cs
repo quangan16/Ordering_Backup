@@ -41,7 +41,7 @@ public class MainGUI : MonoBehaviour, IUIControl
         {
             button.interactable = false;
         }
-        gameObject.SetActive(false);
+       
 
     }
 

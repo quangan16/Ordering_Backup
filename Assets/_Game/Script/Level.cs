@@ -51,10 +51,22 @@ public class Level : MonoBehaviour
     {
         isHint = true;
         solidList = GetComponentsInChildren<Solid>().ToList();
-        AdsAdapterAdmob.LogAFAndFB($"start_level_" + GameManager.Instance.currentLevel, "0",
+        AdsAdapterAdmob.LogAFAndFB($"start_level_" + (GameManager.Instance.currentLevel + 1), "0",
             "0");
         Debug.Log("start_level_");
+        GameManager.Instance.timeLeftToShowAds = 60.0f;
+        GameManager.Instance.levelLeftToShowAds--;
 
+    }
+
+    public void Update()
+    {
+        if (!isWin)
+        {
+            GameManager.Instance.timeLeftToShowAds -= Time.deltaTime;
+        }
+       
+        Debug.Log(GameManager.Instance.timeLeftToShowAds);
     }
     public void CheckFree()
     {
@@ -104,7 +116,15 @@ public class Level : MonoBehaviour
                             Discard();
                         }, () =>
                         {
-                            // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                            StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                            if (GameManager.Instance.HasInternet == false)
+                            {
+                                UIManager.Instance.ShowInternetPopUp();
+                            }
+                            else
+                            {
+                                UIManager.Instance.ShowAdsNotification();
+                            }
                             Debug.Log("Failed to load");
 
                         }, 0,

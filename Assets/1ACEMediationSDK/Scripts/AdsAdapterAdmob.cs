@@ -98,6 +98,7 @@ public class AdsAdapterAdmob : MonoBehaviour
         challenge_get_reward_ad_level_,
         challenge_end_level_,
         boss_end_level_,
+        show_inter_end_level,
         boss_replay_ads_level_,
         boss_get_reward_ad_level_
     }
