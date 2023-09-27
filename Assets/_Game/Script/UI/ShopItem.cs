@@ -86,7 +86,7 @@ public class ShopItem : MonoBehaviour
                 }
             case ShopState.UnBought:
                 {
-                    Locked.SetActive(true);
+                    // Locked.SetActive(true);
                     priceText.text = price.ToString();
                     break;
                 }

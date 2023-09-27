@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ public class TutoMove : MonoBehaviour
     public bool vertical;
     public bool horizontal;
     public bool rotate;
+
     void Start()
     {
         if(vertical)

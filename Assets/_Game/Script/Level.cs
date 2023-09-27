@@ -16,6 +16,7 @@ public class Level : MonoBehaviour
     public int rewards;
     public bool isHint ;
     public bool firstHint;
+    public string nameLevel = "Level" ;
     private void Awake()
     {
         OnInit();
