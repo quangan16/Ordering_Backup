@@ -226,7 +226,19 @@ public class ChallengeUI : MonoBehaviour, IUIControl
 
     public void OnHeartBtnClick(int addAmount)
     {
-        
+        AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+            {
+
+                AdsAdapterAdmob.LogAFAndFB($"get_live", "0",
+                    "0");
+               AddHeart(3);
+            }, () =>
+            {
+                
+                Debug.Log("Failed to load");
+                
+            }, 0,
+            AdsAdapterAdmob.where.get_live);
     }
     private void OnApplicationQuit()
     {
