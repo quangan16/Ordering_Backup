@@ -22,7 +22,6 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     [SerializeField] private Image hintPriceHolder;
     [SerializeField] private Image hintAdsIcon;
     [SerializeField] private Image skipAdsIcon;
-   
 
     private Tween buttonTween;
     public void OnEnable()

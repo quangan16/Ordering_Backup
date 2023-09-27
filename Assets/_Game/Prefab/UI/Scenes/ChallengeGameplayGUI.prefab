@@ -918,7 +918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3995116429470732661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1203,6 +1203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoinBanner
       objectReference: {fileID: 0}
+    - target: {fileID: 1181587829562916908, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -64.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
 --- !u!224 &1181587828496006788 stripped
@@ -1319,6 +1323,14 @@ PrefabInstance:
     - target: {fileID: 2061297847985483259, guid: 59ddc175e392e6344992e75c421889eb, type: 3}
       propertyPath: m_SizeDelta.y
       value: 56.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061297847985483259, guid: 59ddc175e392e6344992e75c421889eb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061297847985483259, guid: 59ddc175e392e6344992e75c421889eb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0000014454
       objectReference: {fileID: 0}
     - target: {fileID: 4563547263904485970, guid: 59ddc175e392e6344992e75c421889eb, type: 3}
       propertyPath: m_Name

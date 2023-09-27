@@ -42,7 +42,6 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         int challengeLevel = DataManager.Instance.GetMaxLevelUnlock();
         if (challengeLevel < 0 || challengeLevel >= content.childCount)
         {
-            Debug.LogWarning("Invalid item index.");
             return 0f;
         }
 
@@ -220,9 +219,14 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         }
 
     }
-    public void AddHeart()
+    public void AddHeart(int addAmount)
     {
-        heart++;
+        heart += addAmount;
+    }
+
+    public void OnHeartBtnClick(int addAmount)
+    {
+        
     }
     private void OnApplicationQuit()
     {

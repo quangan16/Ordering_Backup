@@ -35,7 +35,6 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     {
         AdsAdapterAdmob.LogAFAndFB($"challenge_replay_level_" + GameManager.Instance.currentLevel, "0",
             "0");
-        Debug.Log("challenge_replay_level_");
         GameManager.Instance.Replay();
     }
     public void OpenChallenge()

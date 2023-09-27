@@ -9,15 +9,18 @@ public class VictoryUIAnim : MonoBehaviour
 {
     [SerializeField] Image titleAlpha;
     [SerializeField] private GameObject adsButton;
-    [SerializeField] private CanvasGroup victoryCanvas;
-    [SerializeField] private Image CoinBanner;
+    [SerializeField] private CanvasGroup headerCanvas;
+    [SerializeField] private Image coinBanner;
+
+    [SerializeField]private RectTransform ingameHeaderCanvas;
     
     private float fadeInDuration = 0.5f;
 
 
     void OnEnable()
     {
-        // CoinBanner.transform.SetParent(victoryCanvas.transform.GetChild(1));
+        
+        coinBanner.transform.SetParent(headerCanvas.transform);
         InitSetup();
         Show();
 
@@ -26,15 +29,13 @@ public class VictoryUIAnim : MonoBehaviour
 
     private void OnDisable()
     {
+        coinBanner.transform.SetParent(ingameHeaderCanvas);
         DOTween.Clear();
     }
 
     void InitSetup()
     {
-        // Vector3 initCoinPos = new Vector3(-212.7f, -75.0f, 0.0f);
-        // CoinBanner.transform.localPosition = initCoinPos;
-        victoryCanvas.alpha = 0;
-        victoryCanvas.transform.localPosition = new Vector3(0, -30.0f);
+        headerCanvas.alpha = 0;
         titleAlpha.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);
         adsButton.transform.localScale = Vector3.one;
 
@@ -43,10 +44,10 @@ public class VictoryUIAnim : MonoBehaviour
     void Show()
     {
 
-        victoryCanvas.transform.DOLocalMove(new Vector3(0, 0, 0), 0.7f);
-        victoryCanvas.DOFade(1f, fadeInDuration);
-        CoinBanner.DOFade(1, 0.5f).SetDelay(0.5f);
-        CoinBanner.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(1, 0.5f).SetDelay(0.5f);
+        // headerCanvas.transform.DOLocalMove(new Vector3(0, 0, 0), 0.7f);
+        headerCanvas.DOFade(1f, fadeInDuration);
+        coinBanner.DOFade(1, 0.5f).SetDelay(0.5f);
+        coinBanner.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(1, 0.5f).SetDelay(0.5f);
         titleAlpha.DOFade(1, 0.7f);
         titleAlpha.transform.DOScale(1, 1.0f).SetEase(Ease.OutBounce).SetDelay(0.5f);
     }

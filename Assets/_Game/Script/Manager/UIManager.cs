@@ -75,8 +75,7 @@ public class UIManager : SingletonBehivour<UIManager>
                     AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.show_inter_end_level);
                     GameManager.Instance.levelLeftToShowAds = 2;
                 }
-                   
-                    Debug.Log("challenge_end_level_");
+                
             }
             else if (GameManager.Instance.gameMode == GameMode.Boss || GameManager.Instance.timeLeftToShowAds <= 0.0f)
             {

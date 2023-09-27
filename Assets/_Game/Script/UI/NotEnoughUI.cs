@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class NotEnoughUI : PopupManager
 {
     NotEnoughType type;
+    private int itemID;
     [SerializeField] private RectTransform coinPanel;
     [SerializeField] private RectTransform livePanel;
 
@@ -43,7 +44,8 @@ public class NotEnoughUI : PopupManager
 
     public void OnAccept()
     {
-        AddResources();
+        // AddResources();
+        
     }
     public void AddResources()
     {
@@ -84,7 +86,7 @@ public class NotEnoughUI : PopupManager
 
                     AdsAdapterAdmob.LogAFAndFB($"get_live", "0",
                         "0");
-                    UIManager.Instance.challenge.AddHeart();
+                    UIManager.Instance.challenge.AddHeart(3);
                 }, () =>
                 {
                     // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
