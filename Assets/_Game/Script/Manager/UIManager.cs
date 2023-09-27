@@ -46,6 +46,8 @@ public class UIManager : SingletonBehivour<UIManager>
     
     public void OnWin()
     {
+        
+        
         if(GameManager.Instance.isWin )
         {
             if (GameManager.Instance.gameMode == GameMode.Normal)
@@ -86,10 +88,10 @@ public class UIManager : SingletonBehivour<UIManager>
                         GameManager.Instance.levelLeftToShowAds = 2;
                     }
             }
-
-            win.Open();
             PlayEffect();
             GameManager.Instance.OnWin();
+            win.Open();
+
         }
 
        

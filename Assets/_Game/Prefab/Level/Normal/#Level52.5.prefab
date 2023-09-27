@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2910949079525685114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8003608, y: -0.16, z: -0.038495693}
+  m_LocalPosition: {x: -1.8003608, y: -1.13, z: -0.038495693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,13 +50,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solidList: []
-  cameraDist: 7
+  cameraDist: 8
   moves: 0
   time: 0
   price: 0
   rewards: 17
   isHint: 0
   firstHint: 0
+  nameLevel: Level
 --- !u!1001 &2500239274208298926
 PrefabInstance:
   m_ObjectHideFlags: 0

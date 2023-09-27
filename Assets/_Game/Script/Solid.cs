@@ -66,7 +66,6 @@ public class Solid : MonoBehaviour
             {
                 clamp.ChangeSkin(skinItem.spriteL);
                 clamp.currentSkin.color = currentSkin.color;
-                print("change");
             }
 
         }

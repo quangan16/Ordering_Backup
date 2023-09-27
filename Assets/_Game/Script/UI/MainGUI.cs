@@ -32,6 +32,7 @@ public class MainGUI : MonoBehaviour, IUIControl
 
     public void Close()
     {
+        gameObject.SetActive(false);
         OnClose();
     }
 
