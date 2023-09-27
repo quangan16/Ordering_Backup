@@ -19,8 +19,9 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     [SerializeField] private Image background;
     [SerializeField] private TextMeshProUGUI coinTxt;
     [SerializeField] private Button hintBtn;
-    [SerializeField] private TextMeshProUGUI hintPriceTxt;
+    [SerializeField] private Image hintPriceHolder;
     [SerializeField] private Image hintAdsIcon;
+    [SerializeField] private Image skipAdsIcon;
    
 
     private Tween buttonTween;
@@ -95,7 +96,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
                     Debug.Log("Failed to load");
 
                 }, 0,
-                AdsAdapterAdmob.where.normal_skip_level_);
+                AdsAdapterAdmob.where.normal_skip_level);
         }
 
         GameManager.Instance.NextLevel();
@@ -161,12 +162,12 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
     public void ShowHintCoinIcon()
     {
-        hintPriceTxt.gameObject.SetActive(true);
+        hintPriceHolder.gameObject.SetActive(true);
     }
 
     public void HideHintCoinIcon()
     {
-        hintPriceTxt.gameObject.SetActive(false);
+        hintPriceHolder.gameObject.SetActive(false);
     }
 
     public void HideHintAdIcon()
@@ -192,6 +193,11 @@ public class UIGamePlay : MonoBehaviour,IUIControl
             hintBtn.transform.localScale = Vector3.one;
         }
        
+    }
+
+    public void ShowSkipAdsIcon()
+    {
+        skipAdsIcon.gameObject.SetActive(true);
     }
 
 }

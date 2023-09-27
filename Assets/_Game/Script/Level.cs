@@ -24,7 +24,7 @@ public class Level : MonoBehaviour
     {
         firstHint = DataManager.Instance.GetHint() == 0;
         isHint = true;
-        // Debug.Log("firstHint" + firstHint);
+        Debug.Log(DataManager.Instance.GetCoin());
         // Debug.Log("isHint" + isHint);
         if(firstHint)
         {
@@ -37,7 +37,11 @@ public class Level : MonoBehaviour
             UIManager.Instance.ShowHintCoinIcon();
             UIManager.Instance.HideHintAdIcon();
         }
-        
+
+        if (GameManager.Instance.currentLevel >= 4)
+        {
+            UIManager.Instance.ShowSkipAdsIcon();
+        }
     }
     private void OnDestroy()
     {
@@ -66,7 +70,7 @@ public class Level : MonoBehaviour
             GameManager.Instance.timeLeftToShowAds -= Time.deltaTime;
         }
        
-        Debug.Log(GameManager.Instance.timeLeftToShowAds);
+        // Debug.Log(GameManager.Instance.timeLeftToShowAds);
     }
     public void CheckFree()
     {
@@ -80,6 +84,7 @@ public class Level : MonoBehaviour
        
         if(!isWin)
         {
+            firstHint = DataManager.Instance.GetHint() == 0;
             AdsAdapterAdmob.LogAFAndFB($"normal_button_hint_level_" + GameManager.Instance.currentLevel , "0",
                 "0");
             Debug.Log("normal_button_hint_level_");
@@ -111,7 +116,7 @@ public class Level : MonoBehaviour
                     AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                         {
 
-                            AdsAdapterAdmob.LogAFAndFB($"get_hint", "0",
+                            AdsAdapterAdmob.LogAFAndFB($"get_hint_ads", "0",
                                 "0");
                             Discard();
                         }, () =>
@@ -128,7 +133,7 @@ public class Level : MonoBehaviour
                             Debug.Log("Failed to load");
 
                         }, 0,
-                        AdsAdapterAdmob.where.get_hint);
+                        AdsAdapterAdmob.where.get_hint_ads);
                 }
             }
             else
