@@ -127,7 +127,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
             "0");
         if (DataManager.Instance.GetNormalLevel() >= 6)
         {
-            AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.normal_back_to_main_level_);
+            AdsAdapterAdmob.Instance.ShowInterstitial(0, AdsAdapterAdmob.where.normal_back_to_main_level);
         }
         UIManager.Instance.OpenMain();
         

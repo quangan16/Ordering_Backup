@@ -26,8 +26,9 @@ public class ChallengeBought :  ChallegeItemAnimation
         if (DataManager.Instance.GetCoin() >= dataLevel.price)
         {
             DataManager.Instance.AddCoin(-dataLevel.price);
-            DataManager.Instance.SetLevel(level, Mode.Bought, 0);
             UIManager.Instance.SetCoin();
+            DataManager.Instance.SetLevel(level, Mode.Bought, 0);
+            
             gameObject.transform.DOScale(0.0f, 0.3f).SetEase(Ease.InBack).OnComplete(() =>
             {
                 holder.SetActive(false);
@@ -41,7 +42,7 @@ public class ChallengeBought :  ChallegeItemAnimation
         }
         else
         {
-            
+            ChallengeUI.levelID = level;
             UIManager.Instance.OpenNotEnough(NotEnoughType.Coin);
         }
         
@@ -56,6 +57,8 @@ public class ChallengeBought :  ChallegeItemAnimation
         bought.SetData(dataLevel.rewards);
         holder.SetActive(false);
     }
+    
+    
     public void SetChildren(UnityAction listener)
     {
         bought.playButton.onClick.AddListener(listener);

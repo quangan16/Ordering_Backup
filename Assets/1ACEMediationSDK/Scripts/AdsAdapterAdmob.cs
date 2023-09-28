@@ -88,19 +88,20 @@ public class AdsAdapterAdmob : MonoBehaviour
 
     public enum where
     {
-        normal_end_level_,
-        normal_back_to_main_level_,
+        normal_end_level,
+        normal_back_to_main_level,
         get_hint_ads,
         get_live,
         normal_skip_level,
         get_coin,
         normal_get_reward_ad_level_,
-        challenge_get_reward_ad_level_,
-        challenge_end_level_,
+        challenge_get_reward_ad_level,
+        challenge_end_level,
         boss_end_level_,
         show_inter_end_level,
-        boss_replay_ads_level_,
-        boss_get_reward_ad_level_
+        boss_replay_ads_level,
+        boss_get_reward_ad_level,
+        unlock_challenge_by_ads
     }
 
     private float no_touch_duration;

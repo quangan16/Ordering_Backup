@@ -15,7 +15,7 @@ public class ButtonEffect : MonoBehaviour
     {
         tweenSequence = DOTween.Sequence();
       
-        initialScale = transform.localScale;
+        initialScale = Vector3.one;
         StartCoroutine(PlayEffect());
     }
 

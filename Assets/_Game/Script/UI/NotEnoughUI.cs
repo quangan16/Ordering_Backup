@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,7 @@ public class NotEnoughUI : PopupManager
     private int itemID;
     [SerializeField] private RectTransform coinPanel;
     [SerializeField] private RectTransform livePanel;
+    [SerializeField] private ChallengeBought _challengeBought;
 
     public void OnEnable()
     {
@@ -44,38 +46,68 @@ public class NotEnoughUI : PopupManager
 
     public void OnAccept()
     {
-        // AddResources();
+        UnlockItem();
         
     }
-    public void AddResources()
+    public void UnlockItem()
     {
         
         if(type == NotEnoughType.Coin)
         {
-           
-            AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
-                {
-                    
-                    AdsAdapterAdmob.LogAFAndFB($"unlock_challenge_by_ads", "0",
-                        "0");
-                   
-                    
-                }, () =>
-                {
-                    StartCoroutine(GameManager.Instance.CheckInternetConnection()) ;
-                    if (GameManager.Instance.HasInternet == false)
+            if (UIManager.Instance.current is ShopGUI)
+            {
+                AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                     {
-                        UIManager.Instance.ShowInternetPopUp();
-                    }
-                    else
-                    {
-                        UIManager.Instance.ShowAdsNotification();
-                    }
-                    // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
-                    // Debug.Log("Failed to load");
 
-                }, 0,
-                AdsAdapterAdmob.where.get_coin);
+                        AdsAdapterAdmob.LogAFAndFB($"unlock_challenge_by_ads", "0",
+                            "0");
+                        ShopGUI.UnlockItemWithAds();
+
+                    }, () =>
+                    {
+                        StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                        if (GameManager.Instance.HasInternet == false)
+                        {
+                            UIManager.Instance.ShowInternetPopUp();
+                        }
+                        else
+                        {
+                            UIManager.Instance.ShowAdsNotification();
+                        }
+                        // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                        // Debug.Log("Failed to load");
+
+                    }, 0,
+                    AdsAdapterAdmob.where.unlock_challenge_by_ads);
+            }
+            
+            else if (UIManager.Instance.current is ChallengeUI)
+            {
+                AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                    {
+
+                        AdsAdapterAdmob.LogAFAndFB($"unlock_challenge_by_ads", "0",
+                            "0");
+                       _challengeBought.UnlockByAds();
+                       UIManager.Instance.ReloadChallenge();
+                    }, () =>
+                    {
+                        StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                        if (GameManager.Instance.HasInternet == false)
+                        {
+                            UIManager.Instance.ShowInternetPopUp();
+                        }
+                        else
+                        {
+                            UIManager.Instance.ShowAdsNotification();
+                        }
+                        // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                        // Debug.Log("Failed to load");
+
+                    }, 0,
+                    AdsAdapterAdmob.where.unlock_challenge_by_ads);
+            }
+          
             
            
         }
