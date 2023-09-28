@@ -13,7 +13,7 @@ public class InitScene : MonoBehaviour
 
     private IEnumerator Start()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(1);
     }
 }
