@@ -31,7 +31,6 @@ public class ChallengeBought :  ChallegeItemAnimation
             gameObject.transform.DOScale(0.0f, 0.3f).SetEase(Ease.InBack).OnComplete(() =>
             {
                 holder.SetActive(false);
-                gameObject.SetActive(false);
                 bought.gameObject.SetActive(true);
                 gameObject.SetActive(true);
             });
@@ -48,14 +47,7 @@ public class ChallengeBought :  ChallegeItemAnimation
         
     }
 
-    public void UnlockByAds()
-    {
-        DataManager.Instance.SetLevel(level, Mode.Bought, 0);
-        UIManager.Instance.SetCoin();
-        // bought.gameObject.SetActive(true);
-        bought.SetData(dataLevel.rewards);
-        holder.SetActive(false);
-    }
+    
     
     
     public void SetChildren(UnityAction listener)

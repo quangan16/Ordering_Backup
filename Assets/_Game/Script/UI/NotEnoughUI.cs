@@ -11,7 +11,6 @@ public class NotEnoughUI : PopupManager
     private int itemID;
     [SerializeField] private RectTransform coinPanel;
     [SerializeField] private RectTransform livePanel;
-    [SerializeField] private ChallengeBought _challengeBought;
 
     public void OnEnable()
     {
@@ -85,10 +84,9 @@ public class NotEnoughUI : PopupManager
             {
                 AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                     {
-
+                        DataManager.Instance.SetLevel(ChallengeUI.levelID, Mode.Bought, 0);
                         AdsAdapterAdmob.LogAFAndFB($"unlock_challenge_by_ads", "0",
                             "0");
-                       _challengeBought.UnlockByAds();
                        UIManager.Instance.ReloadChallenge();
                     }, () =>
                     {
