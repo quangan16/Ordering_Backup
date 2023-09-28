@@ -80,6 +80,7 @@ public class GameManager : SingletonBehivour<GameManager>
             StartCoroutine(CheckInternetConnection());
             
         }
+        
 
     }
     IEnumerator CountDown()
@@ -182,7 +183,6 @@ public class GameManager : SingletonBehivour<GameManager>
     {
         if (gameMode == GameMode.Boss)
         {
-            print("here");
             moves--;
 
             if (moves <= 0)
