@@ -71,7 +71,7 @@ public class Solid : MonoBehaviour
             }
 
         }
-        else if(this is Line || CompareTag("Block"))
+        else if(this is Line || CompareTag(Constant.TAG_BLOCK))
         {
             currentSkin.sprite = skinItem.spriteL;
             foreach (Clamp clamp in GetComponentsInChildren<Clamp>())

@@ -16,11 +16,11 @@ public class DataManager : SingletonBehivour<DataManager>
     }
     public void SetCoin(int coin)
     {
-        PlayerPrefs.SetInt("coin", coin);
+        PlayerPrefs.SetInt(Constant.DATA_COIN, coin);
     }
     public int GetCoin()
     {
-        return PlayerPrefs.GetInt("coin", 0);
+        return PlayerPrefs.GetInt(Constant.DATA_COIN, 0);
     }
     public void AddCoin(int coin)
     {
@@ -29,20 +29,20 @@ public class DataManager : SingletonBehivour<DataManager>
 
     public void SetTime(string time)
     {
-        PlayerPrefs.SetString("time", time);
+        PlayerPrefs.SetString(Constant.DATA_TIME, time);
     }
     public string GetTime()
     {
-        return PlayerPrefs.GetString("time",DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"));
+        return PlayerPrefs.GetString(Constant.DATA_TIME,DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"));
     }
 
     public void SetHeart(int heart)
     {
-        PlayerPrefs.SetInt("heart", heart);
+        PlayerPrefs.SetInt(Constant.DATA_HEART, heart);
     }
     public int GetHeart()
     {
-        return PlayerPrefs.GetInt("heart", 3);
+        return PlayerPrefs.GetInt(Constant.DATA_HEART, 3);
     }
 
     public void SetTotalChallenge(int totalChallenge)
@@ -56,7 +56,7 @@ public class DataManager : SingletonBehivour<DataManager>
 
     public (Mode,int) GetLevelMode(int level)
     {
-        string name = "level" + level;
+        string name = Constant.LEVEL + level;
         string[] t = PlayerPrefs.GetString(name, "0 0").Split(" ");
 
 
@@ -64,7 +64,7 @@ public class DataManager : SingletonBehivour<DataManager>
     }
     public void SetLevel(int level,Mode mode, int time)
     {
-        string name = "level" + level;
+        string name = Constant.LEVEL + level;
         string t = (int)mode + " " + time;
         PlayerPrefs.SetString(name, t);
     } //challlenge

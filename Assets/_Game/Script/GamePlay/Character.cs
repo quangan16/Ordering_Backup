@@ -17,15 +17,15 @@ public class Character : MonoBehaviour
     }
     public void OnFree()
     {
-        ChangeAnim("Success");
+        ChangeAnim(Constant.ANIM_SUCCESS);
     }
     public void Cry()
     {
-        ChangeAnim("Failed");
+        ChangeAnim(Constant.ANIM_FAILED);
     }    
     public void InCage()
     {
-        ChangeAnim("Idle");
+        ChangeAnim(Constant.ANIM_IDLE);
 
     }
 

@@ -160,7 +160,7 @@ public class GameManager : SingletonBehivour<GameManager>
         timer = (current.time);
         moves = current.moves;
         UIManager.Instance.SetCoin();
-        UIManager.Instance.SetText(current.nameLevel+" " + (currentLevel + 1));
+        UIManager.Instance.SetText(current.nameLevel + (currentLevel + 1));
         UIManager.Instance.OffClamp();
         Camera.main.orthographicSize = current.cameraDist;
 

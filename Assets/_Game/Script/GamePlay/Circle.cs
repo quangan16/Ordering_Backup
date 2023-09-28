@@ -113,7 +113,7 @@ public class Circle : Solid
 
         foreach (var col in collider)
         {
-            if(col.gameObject.CompareTag("Block"))
+            if(col.gameObject.CompareTag(Constant.TAG_BLOCK))
             {
                 col.isTrigger = false;
 

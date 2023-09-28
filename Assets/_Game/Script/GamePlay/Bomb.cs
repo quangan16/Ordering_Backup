@@ -15,7 +15,7 @@ public class Bomb : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Block")|| collision.gameObject.CompareTag("Lock"))
+        if(collision.gameObject.CompareTag(Constant.TAG_BLOCK)|| collision.gameObject.CompareTag(Constant.TAG_LOCK))
         {
             Solid solid = Cache.GetSolid(collision.collider);
             if (solid != GetComponentInParent<Solid>())
