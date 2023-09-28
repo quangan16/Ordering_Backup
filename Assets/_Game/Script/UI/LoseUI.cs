@@ -20,7 +20,10 @@ public class LoseUI : PopupManager
     TypeOut type;
 
 
-
+    void OnEnable()
+    {
+        OnOpen();
+    }
     public void OnDisable()
     {
         overTimePanel.gameObject.SetActive(false);

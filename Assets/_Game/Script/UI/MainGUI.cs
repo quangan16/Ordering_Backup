@@ -13,9 +13,16 @@ public class MainGUI : MonoBehaviour, IUIControl
     [SerializeField] private TextMeshProUGUI coinTxt;
     [SerializeField] private CanvasGroup canvasAlpha;
     [SerializeField] private List<Button> buttons;
+    [SerializeField] private Button playBtn;
     void OnEnable()
     {
         OnInit();
+        // PlayButtonAnim();
+    }
+
+    private void OnDisable()
+    {
+        playBtn.transform.DOKill();
     }
 
     void OnInit()
@@ -72,6 +79,19 @@ public class MainGUI : MonoBehaviour, IUIControl
         UIManager.Instance.OpenChallenge();
     }
 
-
+    // public void PlayButtonReset()
+    // {
+    //     playBtn.transform.localEulerAngles = Vector3.zero;
+    // }
+    //
+    // public void PlayButtonAnim()
+    // {
+    //     PlayButtonReset();
+    //     playBtn.transform.
+    //     playBtn.transform.DORotate(new Vector3(0, 0, 10.0f), 0.2f, RotateMode.Fast).SetEase(Ease.Linear)
+    //         .SetLoops(20, LoopType.Yoyo).OnComplete(() => { playBtn.transform.localEulerAngles = Vector3.zero;
+    //             PlayButtonAnim();
+    //         });
+    // }
     
 }
