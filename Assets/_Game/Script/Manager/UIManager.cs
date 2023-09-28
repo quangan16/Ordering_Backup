@@ -33,6 +33,16 @@ public class UIManager : SingletonBehivour<UIManager>
        
     }
 
+    public void ReloadShop()
+    {
+        (current as ShopGUI).ReLoad();
+    }
+
+    public void ReloadChallenge()
+    {
+        (current as ChallengeUI).OnInit();
+    }
+
     public void DeactiveButtons()
     {
         current.DeactiveButtons();

@@ -22,12 +22,14 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public int heart;
     DateTime dateTime;
     string format = "dd-MM-yyyy HH:mm:ss";
+    public static int levelID;
 
     [SerializeField] private Slider challengeBar;
     [SerializeField] private TextMeshProUGUI passedChallengeTxt;
     public ScrollRect scrollRect;
     public RectTransform content;
     public int unlockedItemIndex; // Index of the unlocked item you want to scroll to.
+    
     private void OnEnable()
     {
         UpdateChallengeBar();
@@ -62,7 +64,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     {
         CheckHeart();
     }
-    void OnInit()
+    public void OnInit()
     {
         totalChallengePassed = DataManager.Instance.GetTotalChallenge();
         coin.text = DataManager.Instance.GetCoin().ToString();

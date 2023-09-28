@@ -8,7 +8,6 @@ using UnityEngine.Events;
 public class ChallengeBought :  ChallegeItemAnimation
 {
     public ChallegeItemAnimation bought;
-    public bool adWatched = false;
     [SerializeField] GameObject holder;
     private void Start()
     {
@@ -53,7 +52,7 @@ public class ChallengeBought :  ChallegeItemAnimation
     {
         DataManager.Instance.SetLevel(level, Mode.Bought, 0);
         UIManager.Instance.SetCoin();
-        bought.gameObject.SetActive(true);
+        // bought.gameObject.SetActive(true);
         bought.SetData(dataLevel.rewards);
         holder.SetActive(false);
     }
