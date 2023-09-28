@@ -9,9 +9,7 @@ using UnityEngine.UI;
 
 public class ShopGUI : MonoBehaviour, IUIControl
 {
-    [SerializeField] private Image skinButtonImg;
-
-    [SerializeField] private Image backgroundButtonImg;
+    [SerializeField] private Image backgroundSelected;
 
     // Start is called before the first frame update
     [SerializeField] private GameObject skinPage;
@@ -72,8 +70,8 @@ public class ShopGUI : MonoBehaviour, IUIControl
 
     public void OnSkinPageSelect()
     {
-        skinButtonImg.color = buttonActiveColor;
-        backgroundButtonImg.gameObject.GetComponentInChildren<Image>().color = buttonInactiveColor;
+        backgroundSelected.transform.localScale = Vector3.one;
+      
         skinPage.gameObject.SetActive(true);
         backgroundPage.gameObject.SetActive(false);
         skinTxt.color = textActiveColor;
@@ -82,8 +80,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
 
     public void OnBackgroundPageSelect()
     {
-        skinButtonImg.gameObject.GetComponentInChildren<Image>().color = buttonInactiveColor;
-        backgroundButtonImg.gameObject.GetComponentInChildren<Image>().color = buttonActiveColor;
+        backgroundSelected.transform.localScale = new Vector3(-1, 1, 1);
         skinPage.gameObject.SetActive(false);
         backgroundPage.gameObject.SetActive(true);
         skinTxt.color = textInactiveColor;

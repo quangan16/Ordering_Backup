@@ -11,17 +11,14 @@ public class VictoryUIAnim : MonoBehaviour
     [SerializeField] private GameObject adsButton;
     [SerializeField] private CanvasGroup headerCanvas;
     [SerializeField] private Image coinBanner;
-
-    [SerializeField]private RectTransform ingameHeaderCanvas;
     
     private float fadeInDuration = 0.5f;
 
 
     void OnEnable()
     {
-        
-        coinBanner.transform.SetParent(headerCanvas.transform);
-        InitSetup();
+
+    InitSetup();
         Show();
 
         BoucingButton();
@@ -29,7 +26,6 @@ public class VictoryUIAnim : MonoBehaviour
 
     private void OnDisable()
     {
-        coinBanner.transform.SetParent(ingameHeaderCanvas);
         DOTween.Clear();
     }
 
