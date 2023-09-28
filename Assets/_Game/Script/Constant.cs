@@ -14,7 +14,7 @@ public class Constant
     public const string ANIM_SUCCESS = "Success";
     public const string ANIM_FAILED = "Failed";
     public const string ANIM_IDLE = "Idle";
-
+    public const string TIME_FORMAT = "{0:00}:{1:00}";
 
 
 }

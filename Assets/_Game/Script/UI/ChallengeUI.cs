@@ -22,7 +22,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public int heart;
     DateTime dateTime;
     string format = "dd-MM-yyyy HH:mm:ss";
-    string timeFormat = "{0:00}:{1:00}";
+    
     public static int levelID;
 
     [SerializeField] private Slider challengeBar;
@@ -147,7 +147,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         float timeToDisplay = (float)(timeSpan.TotalSeconds);
         int minutes = Mathf.FloorToInt(timeToDisplay / 60);
         int seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timeTxt.text = string.Format(timeFormat, minutes, seconds);
+        timeTxt.text = string.Format(Constant.TIME_FORMAT, minutes, seconds);
 
 
     }
