@@ -109,6 +109,7 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         GameManager.Instance.CloseGamePlay();
         GameManager.Instance.StopAllCoroutines();
+        OffClamp();
         if(current!= null)
         {
             current.Close();           
