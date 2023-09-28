@@ -330,4 +330,28 @@ public class ShopGUI : MonoBehaviour, IUIControl
 
     }
 
+    public void UnlockItemByAds()
+    {
+        AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+            {
+
+                AdsAdapterAdmob.LogAFAndFB($"unlock_shop_item_by_ads", "0",
+                    "0");
+                Equip();
+                ChangeButtonState(ShopState.Equipped);
+            }, () =>
+            {
+                StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                if (GameManager.Instance.HasInternet == false)
+                {
+                    UIManager.Instance.ShowInternetPopUp();
+                }
+                else
+                {
+                    UIManager.Instance.ShowAdsNotification();
+                }
+            }, 0,
+            AdsAdapterAdmob.where.unlock_shop_item_by_ads);
+    }
+
 }

@@ -105,6 +105,7 @@ public class AdsAdapterAdmob : MonoBehaviour
         challenge_get_more_time_level,
         boss_get_more_time_level,
         boss_get_more_moves_level,
+        unlock_shop_item_by_ads,
        
     }
 
