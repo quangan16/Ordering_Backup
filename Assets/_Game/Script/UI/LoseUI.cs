@@ -19,8 +19,20 @@ public class LoseUI : PopupManager
     private float effectDuration = 4.0f;
     TypeOut type;
 
-
-
+    new void OnClose()
+    {
+        Deny();
+       
+    }
+    
+    new void OnEnable()
+    {
+        backGround.onClick.RemoveAllListeners();
+        backGround.onClick.AddListener(OnClose);
+        OnOpen();
+    }
+    
+    
     public void OnDisable()
     {
         overTimePanel.gameObject.SetActive(false);
@@ -122,12 +134,14 @@ public class LoseUI : PopupManager
         {
             UIManager.Instance.OpenGameplay();
         }
-        Close();
+        // Close();
+        mainPanel.DOScale(0.0f, scaleDuration).SetEase(Ease.InBack)
+            .OnComplete(() => gameObject.SetActive(false));
     }
     public void Close()
     {
         OnClose();
-
+        
 
     }
     public void Open(TypeOut type)
@@ -169,6 +183,8 @@ public class LoseUI : PopupManager
     {
        
     }
+
+   
 }
 public enum TypeOut
 {

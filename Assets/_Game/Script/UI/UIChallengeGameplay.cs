@@ -48,7 +48,7 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
 
             }, 0,
             AdsAdapterAdmob.where.get_coin);
-        GameManager.Instance.Replay();
+       
     }
     public void OpenChallenge()
     {
