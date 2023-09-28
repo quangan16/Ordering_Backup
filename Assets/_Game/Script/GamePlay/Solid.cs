@@ -23,7 +23,8 @@ public class Solid : MonoBehaviour
     public bool isTouch = false;
     public bool isDead = false;
     public static bool canClick = true;
-    Level level => GetComponentInParent<Level>();
+    Clamp[] clamps;
+    Level level;
     private void Awake()
     {
         OnInit();
@@ -32,6 +33,7 @@ public class Solid : MonoBehaviour
     {
         canClick = true;
         GameManager.Instance.SubtractMove();
+        level.CheckFree();
         GameManager.Instance.StopAllCoroutines();
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -48,12 +50,14 @@ public class Solid : MonoBehaviour
     }
     public virtual void OnInit()
     {
+        clamps = GetComponentsInChildren<Clamp>();
+        level = GetComponentInParent<Level>();
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0.0f;
         rb.centerOfMass = Vector2.zero;
         isTouch = false;
         canClick = true;
-        spriteShadow = GetComponentsInChildren<Clamp>().ToList().Select(x => x.shadow).ToList();
+        spriteShadow = clamps.ToList().Select(x => x.shadow).ToList();
         spriteShadow.Add(shadow);
         lastPosition = transform.position;
     }
@@ -64,7 +68,7 @@ public class Solid : MonoBehaviour
         if (this is Circle)
         {
             currentSkin.sprite = skinItem.spriteC;
-            foreach (Clamp clamp in GetComponentsInChildren<Clamp>())
+            foreach (Clamp clamp in clamps)
             {
                 clamp.ChangeSkin(skinItem.spriteL);
                 clamp.currentSkin.color = currentSkin.color;
@@ -74,7 +78,7 @@ public class Solid : MonoBehaviour
         else if(this is Line || CompareTag(Constant.TAG_BLOCK))
         {
             currentSkin.sprite = skinItem.spriteL;
-            foreach (Clamp clamp in GetComponentsInChildren<Clamp>())
+            foreach (Clamp clamp in clamps)
             {
                 clamp.ChangeSkin(skinItem.spriteL);
                 clamp.currentSkin.color = currentSkin.color;
@@ -249,7 +253,7 @@ public class Solid : MonoBehaviour
 
         if (!isDead)
         {
-            Clamp[] clamps = GetComponentsInChildren<Clamp>();
+            
             for (int i = 0; i < clamps.Length; i++)
             {
                 clamps[i].isDead = true;

@@ -112,10 +112,10 @@ public class Line : Solid
        // CheckCameraMovement(cursorPosition);
 
     }
-    private void OnMouseUp()
-    {
-        mainCamera.transform.position = initCameraPos;
-    }
+    //private void OnMouseUp()
+    //{
+    //    mainCamera.transform.position = initCameraPos;
+    //}
     void CheckCameraMovement(Vector3 objectPosition)
     {
         Vector3 viewportPoint = mainCamera.WorldToViewportPoint(objectPosition);
