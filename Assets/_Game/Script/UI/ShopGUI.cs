@@ -242,6 +242,18 @@ public class ShopGUI : MonoBehaviour, IUIControl
             DataManager.Instance.AddCoin(-price);
             UIManager.Instance.SetCoin();
             Equip();
+            if (type == ItemType.SKIN)
+            {
+                AdsAdapterAdmob.LogAFAndFB($"ring_skin_bought_id_" + ((SkinType)idSelect), "0",
+                    "0");
+                Debug.Log((SkinType)idSelect);
+            }
+            else if (type == ItemType.BACKGROUND)
+            {
+                AdsAdapterAdmob.LogAFAndFB($"background_bought_id_" + ((BackGroundType)idSelect), "0",
+                    "0");
+                Debug.Log((BackGroundType)idSelect);
+            }
             ChangeButtonState(ShopState.Equipped);
         }
         else
@@ -274,6 +286,18 @@ public class ShopGUI : MonoBehaviour, IUIControl
     public static void UnlockItemWithAds()
     {
         Equip();
+        if (type == ItemType.SKIN)
+        {
+            AdsAdapterAdmob.LogAFAndFB($"ring_skin_unlock_by_ads_id_" + ((SkinType)idSelect), "0",
+                "0");
+            Debug.Log((SkinType)idSelect);
+        }
+        else if (type == ItemType.BACKGROUND)
+        {
+            AdsAdapterAdmob.LogAFAndFB($"background_ring_skin_unlock_by_ads_id_" + ((BackGroundType)idSelect), "0",
+                "0");
+            Debug.Log((BackGroundType)idSelect);
+        }
         UIManager.Instance.ReloadShop();
     }
         

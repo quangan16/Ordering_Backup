@@ -185,10 +185,10 @@ RectTransform:
   m_Father: {fileID: 3635253007793603945}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 63.120003, y: -11.755}
-  m_SizeDelta: {x: 62, y: 23.51}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &5111855184319891483
 CanvasRenderer:
@@ -763,7 +763,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -65.7}
-  m_SizeDelta: {x: 94, y: 35}
+  m_SizeDelta: {x: 86.87, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1634549722117263089
 CanvasRenderer:
@@ -1115,7 +1115,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 11.9, y: 1.5}
-  m_SizeDelta: {x: 89.12, y: 20.51}
+  m_SizeDelta: {x: 0, y: 20.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2817684669171808758
 CanvasRenderer:
@@ -1825,7 +1825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8060445995705529815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1989,7 +1989,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2240,7 +2240,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.8
+      value: 0.83
       objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_Pivot.y
@@ -2304,11 +2304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -35.39978
+      value: -29.381012
       objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.00030517578
       objectReference: {fileID: 0}
     - target: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2326,9 +2326,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoinBanner
       objectReference: {fileID: 0}
+    - target: {fileID: 1181587829562916907, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_text
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 1181587829562916908, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1181587829562916908, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1181587829562916908, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1181587829562916908, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 103.5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1181587829562916908, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -29.400002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
