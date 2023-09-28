@@ -33,8 +33,21 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     }
     public void Replay()
     {
-        AdsAdapterAdmob.LogAFAndFB($"challenge_replay_level_" + GameManager.Instance.currentLevel, "0",
-            "0");
+       
+        AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+            {
+
+                AdsAdapterAdmob.LogAFAndFB($"challenge_replay_level_" + GameManager.Instance.currentLevel, "0",
+                    "0");
+                GameManager.Instance.Replay();
+                UIManager.Instance.SetCoin();
+            }, () =>
+            {
+                // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
+                Debug.Log("Failed to load");
+
+            }, 0,
+            AdsAdapterAdmob.where.get_coin);
         GameManager.Instance.Replay();
     }
     public void OpenChallenge()

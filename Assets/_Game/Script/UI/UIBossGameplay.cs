@@ -54,18 +54,24 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
         AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
             {
 
-                AdsAdapterAdmob.LogAFAndFB($"boss_replay_ads_level_", "0",
+                AdsAdapterAdmob.LogAFAndFB($"boss_replay_ads_level_" + GameManager.Instance.currentLevel +1, "0",
                     "0");
-                DataManager.Instance.AddCoin(100);
-                UIManager.Instance.SetCoin();
+                GameManager.Instance.Replay();
             }, () =>
             {
-                // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
-                Debug.Log("Failed to load");
+                StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                if (GameManager.Instance.HasInternet == false)
+                {
+                    UIManager.Instance.ShowInternetPopUp();
+                }
+                else
+                {
+                    UIManager.Instance.ShowAdsNotification();
+                }
 
             }, 0,
             AdsAdapterAdmob.where.boss_replay_ads_level);
-        GameManager.Instance.Replay();
+       
     }
     public void SetText(string text)
     {

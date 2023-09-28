@@ -12,10 +12,7 @@ public class NotEnoughUI : PopupManager
     [SerializeField] private RectTransform coinPanel;
     [SerializeField] private RectTransform livePanel;
 
-    public void OnEnable()
-    {
-
-    }
+    
     public void Open(NotEnoughType type)
     {
         
@@ -73,8 +70,7 @@ public class NotEnoughUI : PopupManager
                         {
                             UIManager.Instance.ShowAdsNotification();
                         }
-                        // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
-                        // Debug.Log("Failed to load");
+                       
 
                     }, 0,
                     AdsAdapterAdmob.where.unlock_challenge_by_ads);
@@ -101,7 +97,6 @@ public class NotEnoughUI : PopupManager
                             UIManager.Instance.ShowAdsNotification();
                         }
                         // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
-                        // Debug.Log("Failed to load");
 
                     }, 0,
                     AdsAdapterAdmob.where.unlock_challenge_by_ads);
@@ -120,8 +115,15 @@ public class NotEnoughUI : PopupManager
                     UIManager.Instance.challenge.AddHeart(3);
                 }, () =>
                 {
-                    // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
-                    Debug.Log("Failed to load");
+                    StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                    if (GameManager.Instance.HasInternet == false)
+                    {
+                        UIManager.Instance.ShowInternetPopUp();
+                    }
+                    else
+                    {
+                        UIManager.Instance.ShowAdsNotification();
+                    }
 
                 }, 0,
                 AdsAdapterAdmob.where.get_live);

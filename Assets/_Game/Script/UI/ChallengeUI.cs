@@ -224,7 +224,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
         heart += addAmount;
     }
 
-    public void OnHeartBtnClick(int addAmount)
+    public void OnHeartBtnClick()
     {
         AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
             {

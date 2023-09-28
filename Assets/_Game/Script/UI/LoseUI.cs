@@ -34,12 +34,80 @@ public class LoseUI : PopupManager
         UIManager.Instance.ShowAds();
         if(type == TypeOut.TimeOut)
         {
-            GameManager.timer = 15;
+            if(UIManager.Instance.current is UIBossGameplay )
+            AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                {
 
+                    AdsAdapterAdmob.LogAFAndFB($"boss_get_more_time_level_" + GameManager.Instance.currentLevel + 1, "0",
+                        "0");
+                    GameManager.timer = 15;
+                    UIManager.Instance.SetCoin();
+                }, () =>
+                {
+                    StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                    if (GameManager.Instance.HasInternet == false)
+                    {
+                        UIManager.Instance.ShowInternetPopUp();
+                    }
+                    else
+                    {
+                        UIManager.Instance.ShowAdsNotification();
+                    }
+                   
+
+                }, 0,
+                AdsAdapterAdmob.where.boss_get_more_time_level);
+
+            else if (UIManager.Instance.current is UIChallengeGameplay)
+                AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                    {
+
+                        AdsAdapterAdmob.LogAFAndFB($"challenge_get_more_time_level_" + GameManager.Instance.currentLevel + 1,
+                            "0",
+                            "0");
+                        GameManager.timer = 15;
+                        UIManager.Instance.SetCoin();
+                    }, () =>
+                    {
+                        StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                        if (GameManager.Instance.HasInternet == false)
+                        {
+                            UIManager.Instance.ShowInternetPopUp();
+                        }
+                        else
+                        {
+                            UIManager.Instance.ShowAdsNotification();
+                        }
+
+
+                    }, 0,
+                    AdsAdapterAdmob.where.challenge_get_more_time_level);
         }
         else
         {
-            GameManager.moves = 5;
+            AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                {
+
+                    AdsAdapterAdmob.LogAFAndFB($"boss_get_more_moves_level_" + GameManager.Instance.currentLevel + 1, "0",
+                        "0");
+                    GameManager.moves = 5;
+                    UIManager.Instance.SetCoin();
+                }, () =>
+                {
+                    StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                    if (GameManager.Instance.HasInternet == false)
+                    {
+                        UIManager.Instance.ShowInternetPopUp();
+                    }
+                    else
+                    {
+                        UIManager.Instance.ShowAdsNotification();
+                    }
+
+
+                }, 0,
+                AdsAdapterAdmob.where.boss_get_more_moves_level);
+           
         }
         Close();
     }
