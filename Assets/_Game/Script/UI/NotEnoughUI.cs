@@ -87,7 +87,8 @@ public class NotEnoughUI : PopupManager
                         DataManager.Instance.SetLevel(ChallengeUI.levelID, Mode.Bought, 0);
                         AdsAdapterAdmob.LogAFAndFB($"unlock_challenge_by_ads", "0",
                             "0");
-                       UIManager.Instance.ReloadChallenge();
+                        //UIManager.Instance.ReloadChallenge();
+                        ChallengeUI.challengeBought.ChangeMode();
                     }, () =>
                     {
                         StartCoroutine(GameManager.Instance.CheckInternetConnection());

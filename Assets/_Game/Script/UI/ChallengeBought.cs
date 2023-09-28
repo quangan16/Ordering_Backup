@@ -30,22 +30,28 @@ public class ChallengeBought :  ChallegeItemAnimation
             
             gameObject.transform.DOScale(0.0f, 0.3f).SetEase(Ease.InBack).OnComplete(() =>
             {
-                holder.SetActive(false);
-                bought.gameObject.SetActive(true);
-                gameObject.SetActive(true);
+               ChangeMode();
             });
            
-            bought.SetData(dataLevel.rewards);
+            
           
         }
         else
         {
-            ChallengeUI.levelID = level;
+            //ChallengeUI.levelID = level;
+            ChallengeUI.challengeBought = this;
             UIManager.Instance.OpenNotEnough(NotEnoughType.Coin);
         }
         
         
     }
+    public void ChangeMode()
+    {
+        gameObject.transform.DOScale(1f, 0.3f).SetEase(Ease.InBack);
+        holder.SetActive(false);
+        bought.gameObject.SetActive(true);
+        bought.SetData(dataLevel.rewards);
+    }    
 
     
     
