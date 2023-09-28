@@ -28,7 +28,7 @@ public class ChallengeBought :  ChallegeItemAnimation
             UIManager.Instance.SetCoin();
             DataManager.Instance.SetLevel(level, Mode.Bought, 0);
             
-            gameObject.transform.DOScale(0.0f, 0.3f).SetEase(Ease.InBack).OnComplete(() =>
+            gameObject.transform.DOScale(0.0f, 0.15f).SetEase(Ease.InBack).OnComplete(() =>
             {
                ChangeMode();
             });
@@ -47,7 +47,7 @@ public class ChallengeBought :  ChallegeItemAnimation
     }
     public void ChangeMode()
     {
-        gameObject.transform.DOScale(1f, 0.3f).SetEase(Ease.InBack);
+        gameObject.transform.DOScale(1f, 0.15f).SetEase(Ease.InBack);
         holder.SetActive(false);
         bought.gameObject.SetActive(true);
         bought.SetData(dataLevel.rewards);
