@@ -101,7 +101,11 @@ public class AdsAdapterAdmob : MonoBehaviour
         show_inter_end_level,
         boss_replay_ads_level,
         boss_get_reward_ad_level,
-        unlock_challenge_by_ads
+        unlock_challenge_by_ads,
+        challenge_get_more_time_level,
+        boss_get_more_time_level,
+        boss_get_more_moves_level,
+       
     }
 
     private float no_touch_duration;
