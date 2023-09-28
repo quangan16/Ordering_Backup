@@ -28,6 +28,7 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public ScrollRect scrollRect;
     public RectTransform content;
     public int unlockedItemIndex; // Index of the unlocked item you want to scroll to.
+    public static int levelID;
     private void OnEnable()
     {
         UpdateChallengeBar();
