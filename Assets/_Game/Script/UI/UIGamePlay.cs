@@ -105,7 +105,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     {
         //getHint = true;
         GameManager.Instance.DiscardRandom();
-        GameManager.Instance.CheckFree();
+        //GameManager.Instance.CheckFree();
            
     }
     public void SetText(string text)

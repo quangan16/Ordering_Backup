@@ -63,7 +63,7 @@ public class Clamp : MonoBehaviour
         {
             ChangeGreen(true);
             time += Time.deltaTime;   
-            //if(time > 0.4f)
+            if(time > 0.4f)
             {
                 if (target != null)
                 {
@@ -87,7 +87,7 @@ public class Clamp : MonoBehaviour
             {
                 parent.SetLastPosition(transform.position);
             }
-            //parent.CheckFree();
+            parent.CheckFree();
         }
        
     }
@@ -96,7 +96,7 @@ public class Clamp : MonoBehaviour
         target.SetLastPosition(transform.position);
         target.RemoveTrigger(this);
         target.OnClampChange();
-        //target.CheckFree();
+        target.CheckFree();
         target = null;
     }
     public void ChangeGreen(bool isGreen)

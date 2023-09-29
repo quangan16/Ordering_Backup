@@ -33,7 +33,7 @@ public class Solid : MonoBehaviour
     {
         canClick = true;
         GameManager.Instance.SubtractMove();
-        level.CheckFree();
+        //level.CheckFree();
         GameManager.Instance.StopAllCoroutines();
     }
     private void OnCollisionEnter2D(Collision2D collision)

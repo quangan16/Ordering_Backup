@@ -41,6 +41,26 @@ public class Level : MonoBehaviour
         {
             UIManager.Instance.ShowSkipAdsIcon();
         }
+
+        if (UIManager.Instance.current is UIGamePlay)
+        {
+            AdsAdapterAdmob.LogAFAndFB($"normal_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
+                "0");
+            Debug.Log("normal_start_level_" + (GameManager.Instance.currentLevel + 1));
+        }
+        else if (UIManager.Instance.current is UIChallengeGameplay)
+        {
+            AdsAdapterAdmob.LogAFAndFB($"challenge_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
+                "0");
+            Debug.Log("challenge_start_level_" + (GameManager.Instance.currentLevel + 1));
+        }
+
+        else if (UIManager.Instance.current is UIBossGameplay)
+        {
+            AdsAdapterAdmob.LogAFAndFB($"boss_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
+                "0");
+            Debug.Log("boss_start_level_" + (GameManager.Instance.currentLevel + 1));
+        }
     }
     private void OnDestroy()
     {
@@ -54,8 +74,26 @@ public class Level : MonoBehaviour
     {
         isHint = true;
         solidList = GetComponentsInChildren<Solid>().ToList();
-        AdsAdapterAdmob.LogAFAndFB($"start_level_" + (GameManager.Instance.currentLevel + 1), "0",
-            "0");
+        // if (UIManager.Instance.current is UIGamePlay)
+        // {
+        //     AdsAdapterAdmob.LogAFAndFB($"normal_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
+        //         "0");
+        //     Debug.Log("normal_start_level_" + (GameManager.Instance.currentLevel + 1));
+        // }
+        // else if (UIManager.Instance.current is UIChallengeGameplay)
+        // {
+        //     AdsAdapterAdmob.LogAFAndFB($"challenge_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
+        //         "0");
+        //     Debug.Log("challenge_start_level_" + (GameManager.Instance.currentLevel + 1));
+        // }
+        //
+        // else if (UIManager.Instance.current is UIBossGameplay)
+        // {
+        //     AdsAdapterAdmob.LogAFAndFB($"boss_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
+        //         "0");
+        //     Debug.Log("boss_start_level_" + (GameManager.Instance.currentLevel + 1));
+        // }
+       
         GameManager.Instance.timeLeftToShowAds = 60.0f;
         GameManager.Instance.levelLeftToShowAds--;
 
@@ -85,7 +123,6 @@ public class Level : MonoBehaviour
             firstHint = DataManager.Instance.GetHint() == 0;
             AdsAdapterAdmob.LogAFAndFB($"normal_button_hint_level_" + GameManager.Instance.currentLevel , "0",
                 "0");
-            Debug.Log("normal_button_hint_level_");
             if (!firstHint)
             {
                
