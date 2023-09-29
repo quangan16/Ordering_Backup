@@ -135,21 +135,33 @@ public class ShopGUI : MonoBehaviour, IUIControl
         SkinType skinType = DataManager.Instance.GetLastRingSkin();
         ringSkinLeft.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
         ringSkinRight.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
+        Color col = Color.white;
         if (skinType == SkinType.LeoPattern)
         {
             ringSkinRight.color = new Color32(117, 15, 15, 80);
             ringSkinLeft.color = new Color32(121, 27, 20, 80);
         }
-        else if (skinType == SkinType.Star || skinType == SkinType.Snow || skinType == SkinType.Wavy)
+        else if (skinType == SkinType.Star  || skinType == SkinType.Wavy)
         {
-            ringSkinRight.color = new Color32(249, 200, 222, 200);
-            ringSkinLeft.color = new Color32(227, 117, 0, 200);
+            byte alpha = 200;
+            if (skinType == SkinType.Wavy)
+            {
+                alpha = 78;
+            }
+            ringSkinRight.color = new Color32(249, 200, 222, alpha);
+            ringSkinLeft.color = new Color32(227, 117, 0, alpha);
 
         }
         else if(skinType == SkinType.Cloud)
         {
-            Color col = Color.white;
+            
             col.a = 0.8f;
+            ringSkinRight.color = col;
+            ringSkinLeft.color = col;
+        }
+        else if (skinType == SkinType.Chessboard)
+        {
+            col.a = 0.3f;
             ringSkinRight.color = col;
             ringSkinLeft.color = col;
         }
@@ -209,21 +221,33 @@ public class ShopGUI : MonoBehaviour, IUIControl
         SkinItem itemSkin = DataManager.Instance.GetSkin(skinType);
         ringSkinLeft.sprite = itemSkin.spriteC;
         ringSkinRight.sprite = itemSkin.spriteC;
+        Color col = Color.white;
         if ( skinType == SkinType.LeoPattern)
         {
             ringSkinRight.color = new Color32(117, 15, 15, 80);
             ringSkinLeft.color = new Color32(121, 27, 20, 80);
         }
-        else if (skinType == SkinType.Star || skinType == SkinType.Snow || skinType == SkinType.Wavy)
+        else if (skinType == SkinType.Star  || skinType == SkinType.Wavy)
         {
-            ringSkinRight.color = new Color32(249, 200, 222, 200);
-            ringSkinLeft.color = new Color32(227, 117, 0, 200);
+            byte alpha = 200;
+            if (skinType == SkinType.Wavy)
+            {
+                alpha = 78;
+            }
+            ringSkinRight.color = new Color32(249, 200, 222, alpha);
+            ringSkinLeft.color = new Color32(227, 117, 0, alpha);
 
         }
         else if (skinType == SkinType.Cloud)
         {
-            Color col = Color.white;
+            
             col.a = 0.8f;
+            ringSkinRight.color = col;
+            ringSkinLeft.color = col;
+        }
+        else if (skinType == SkinType.Chessboard)
+        {
+            col.a = 0.3f;
             ringSkinRight.color = col;
             ringSkinLeft.color = col;
         }
@@ -262,13 +286,15 @@ public class ShopGUI : MonoBehaviour, IUIControl
             {
                 AdsAdapterAdmob.LogAFAndFB($"ring_skin_bought_id_" + ((SkinType)idSelect), "0",
                     "0");
-                Debug.Log((SkinType)idSelect);
+                Debug.Log("ring_skin_bought_id_" + ((SkinType)idSelect));
+               
             }
             else if (type == ItemType.BACKGROUND)
             {
                 AdsAdapterAdmob.LogAFAndFB($"background_bought_id_" + ((BackGroundType)idSelect), "0",
                     "0");
-                Debug.Log((BackGroundType)idSelect);
+                Debug.Log("background_bought_id_" + ((BackGroundType)idSelect));
+               
             }
             ChangeButtonState(ShopState.Equipped);
         }
@@ -306,13 +332,11 @@ public class ShopGUI : MonoBehaviour, IUIControl
         {
             AdsAdapterAdmob.LogAFAndFB($"ring_skin_unlock_by_ads_id_" + ((SkinType)idSelect), "0",
                 "0");
-            Debug.Log((SkinType)idSelect);
         }
         else if (type == ItemType.BACKGROUND)
         {
             AdsAdapterAdmob.LogAFAndFB($"background_ring_skin_unlock_by_ads_id_" + ((BackGroundType)idSelect), "0",
                 "0");
-            Debug.Log((BackGroundType)idSelect);
         }
         UIManager.Instance.ReloadShop();
     }

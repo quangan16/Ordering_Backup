@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Game.Script.Manager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,15 +10,15 @@ public class SettingGUI : PopupManager
 
     [SerializeField] private GameObject SoundOn;
     [SerializeField] private GameObject SoundOff;
-    [SerializeField] private bool isSoundOn;
+   
 
     [SerializeField] private GameObject MusicOn;
     [SerializeField] private GameObject MusicOff;
-    [SerializeField] private bool isMusicOn;
+  
 
     [SerializeField] private GameObject VibOn;
     [SerializeField] private GameObject VibOff;
-    [SerializeField] private bool isVibOn;
+  
 
     private new void OnEnable()
     {
@@ -27,16 +28,14 @@ public class SettingGUI : PopupManager
 
     void Init()
     {
-        isSoundOn = DataManager.Instance.GetSoundState() == 1;
-        isMusicOn = DataManager.Instance.GetMusicState() == 1;
-        isVibOn = DataManager.Instance.GetVibState() == 1;
-        SoundOn.SetActive(isSoundOn);
-        SoundOff.SetActive(!isSoundOn);
+       
+        SoundOn.SetActive(SettingManager.Instance.IsSfxOn);
+        SoundOff.SetActive(!SettingManager.Instance.IsSfxOn);
         
-        MusicOn.SetActive(isMusicOn);
-        MusicOff.SetActive(!isMusicOn);
-        VibOn.SetActive(isVibOn);
-        VibOff.SetActive(!isVibOn);
+        MusicOn.SetActive(SettingManager.Instance.IsMusicOn);
+        MusicOff.SetActive(!SettingManager.Instance.IsMusicOn);
+        VibOn.SetActive(SettingManager.Instance.IsVibrationOn);
+        VibOff.SetActive(!SettingManager.Instance.IsVibrationOn);
         
     }
     public void OpenSettings()
@@ -46,25 +45,27 @@ public class SettingGUI : PopupManager
 
     public void ConfirmSettings()
     {
-        DataManager.Instance.SetSoundState(Convert.ToInt16(isSoundOn));
-        DataManager.Instance.SetMusicState(Convert.ToInt16(isMusicOn));
-        DataManager.Instance.SetVibState(Convert.ToInt16(isVibOn));
+        DataManager.Instance.SetSoundState(Convert.ToInt16(SettingManager.Instance.IsSfxOn));
+        DataManager.Instance.SetMusicState(Convert.ToInt16(SettingManager.Instance.IsMusicOn));
+        DataManager.Instance.SetVibState(Convert.ToInt16(SettingManager.Instance.IsVibrationOn));
         OnClose();
     }
     
     public void ToggleSound()
     {
-        if (isSoundOn)
+        if (SettingManager.Instance.IsSfxOn)
         {
-            isSoundOn = false;
-            SoundOn.SetActive(isSoundOn);
+            SettingManager.Instance.IsSfxOn = false;
+            SoundOn.SetActive(SettingManager.Instance.IsSfxOn);
+            SettingManager.Instance.SfxOff();
         }
         else
         {
-            isSoundOn = true;
-            SoundOn.SetActive(isSoundOn);
+            SettingManager.Instance.IsSfxOn = true;
+            SoundOn.SetActive(SettingManager.Instance.IsSfxOn);
+            SettingManager.Instance.SfxOn();
         }
-        SoundOff.SetActive(!isSoundOn);
+        SoundOff.SetActive(!SettingManager.Instance.IsSfxOn);
     }
 
    
@@ -72,35 +73,39 @@ public class SettingGUI : PopupManager
    
     public void ToggleMusic()
     {
-        if (isMusicOn)
+        if (SettingManager.Instance.IsMusicOn)
         {
-            isMusicOn = false;
-            MusicOn.SetActive(isMusicOn);
+            SettingManager.Instance.IsMusicOn = false;
+            MusicOn.SetActive(SettingManager.Instance.IsMusicOn);
+            SettingManager.Instance.MusicOff();
         }
         else
         {
-            isMusicOn = true;
-            MusicOn.SetActive(isMusicOn);
+            SettingManager.Instance.IsMusicOn = true;
+            MusicOn.SetActive(SettingManager.Instance.IsMusicOn);
+            SettingManager.Instance.MusicOn();
         }
 
-        MusicOff.SetActive(!isMusicOn);
+        MusicOff.SetActive(!SettingManager.Instance.IsMusicOn);
     }
 
   
     public void ToggleVib()
     {
-        if (isVibOn)
+        if (SettingManager.Instance.IsVibrationOn)
         {
-            isVibOn = false;
-            VibOn.SetActive(isVibOn);
+            SettingManager.Instance.IsVibrationOn = false;
+            VibOn.SetActive(SettingManager.Instance.IsVibrationOn);
+            SettingManager.Instance.VibrationOff();
         }
         else
         {
-            isVibOn = true;
-            VibOn.SetActive(isVibOn);
+            SettingManager.Instance.IsVibrationOn = true;
+            VibOn.SetActive(SettingManager.Instance.IsVibrationOn);
+            SettingManager.Instance.VibrationOn();
         }
 
-        VibOff.SetActive(!isVibOn);
+        VibOff.SetActive(!SettingManager.Instance.IsVibrationOn);
     }
     
     

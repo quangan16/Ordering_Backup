@@ -61,13 +61,13 @@ public class UIManager : SingletonBehivour<UIManager>
         {
             if (GameManager.Instance.gameMode == GameMode.Normal)
             {
-                AdsAdapterAdmob.LogAFAndFB($"normal_end_level_" + GameManager.Instance.currentLevel + 1, "0",
+                AdsAdapterAdmob.LogAFAndFB($"normal_end_level_" + (GameManager.Instance.currentLevel + 1), "0",
                     "0");
                 int normalLevel = DataManager.Instance.GetNormalLevel() + 1;
                 if (normalLevel == 5)
                 {
-                    removeAdsGUI.Open();
-                }
+                    // removeAdsGUI.Open();
+                 }
                 if (normalLevel >= 5 && GameManager.Instance.levelLeftToShowAds<=0 ||
                     GameManager.Instance.timeLeftToShowAds <= 0.0f)
                 {
@@ -77,7 +77,7 @@ public class UIManager : SingletonBehivour<UIManager>
             }
             else if (GameManager.Instance.gameMode == GameMode.Challenge)
             {
-                AdsAdapterAdmob.LogAFAndFB($"challenge_end_level_" + GameManager.Instance.currentLevel + 1, "0",
+                AdsAdapterAdmob.LogAFAndFB($"challenge_end_level_" + (GameManager.Instance.currentLevel + 1), "0",
                     "0");
                 if (GameManager.Instance.levelLeftToShowAds <= 0 || GameManager.Instance.timeLeftToShowAds <= 0.0f)
                 {

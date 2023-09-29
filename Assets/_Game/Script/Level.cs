@@ -46,20 +46,17 @@ public class Level : MonoBehaviour
         {
             AdsAdapterAdmob.LogAFAndFB($"normal_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
                 "0");
-            Debug.Log("normal_start_level_" + (GameManager.Instance.currentLevel + 1));
         }
         else if (UIManager.Instance.current is UIChallengeGameplay)
         {
             AdsAdapterAdmob.LogAFAndFB($"challenge_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
                 "0");
-            Debug.Log("challenge_start_level_" + (GameManager.Instance.currentLevel + 1));
         }
 
         else if (UIManager.Instance.current is UIBossGameplay)
         {
             AdsAdapterAdmob.LogAFAndFB($"boss_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
                 "0");
-            Debug.Log("boss_start_level_" + (GameManager.Instance.currentLevel + 1));
         }
     }
     private void OnDestroy()
@@ -74,30 +71,12 @@ public class Level : MonoBehaviour
     {
         isHint = true;
         solidList = GetComponentsInChildren<Solid>().ToList();
-        // if (UIManager.Instance.current is UIGamePlay)
-        // {
-        //     AdsAdapterAdmob.LogAFAndFB($"normal_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
-        //         "0");
-        //     Debug.Log("normal_start_level_" + (GameManager.Instance.currentLevel + 1));
-        // }
-        // else if (UIManager.Instance.current is UIChallengeGameplay)
-        // {
-        //     AdsAdapterAdmob.LogAFAndFB($"challenge_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
-        //         "0");
-        //     Debug.Log("challenge_start_level_" + (GameManager.Instance.currentLevel + 1));
-        // }
-        //
-        // else if (UIManager.Instance.current is UIBossGameplay)
-        // {
-        //     AdsAdapterAdmob.LogAFAndFB($"boss_start_level_" + (GameManager.Instance.currentLevel + 1), "0",
-        //         "0");
-        //     Debug.Log("boss_start_level_" + (GameManager.Instance.currentLevel + 1));
-        // }
-       
         GameManager.Instance.timeLeftToShowAds = 60.0f;
         GameManager.Instance.levelLeftToShowAds--;
 
     }
+    
+    
 
     public void Update()
     {

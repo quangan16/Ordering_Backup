@@ -45,10 +45,9 @@ public class WinUI : MonoBehaviour
             AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                 {
 
-                    AdsAdapterAdmob.LogAFAndFB($"normal_get_reward_ad_level_" + GameManager.Instance.currentLevel + 1, "0",
+                    AdsAdapterAdmob.LogAFAndFB($"normal_get_reward_ad_level_" + (GameManager.Instance.currentLevel + 1), "0",
                         "0");
                     DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
-                    // Debug.Log("normal_get_reward_ad_level_");
                 }, () =>
                 {
                     StartCoroutine(GameManager.Instance.CheckInternetConnection());
@@ -63,7 +62,7 @@ public class WinUI : MonoBehaviour
                     // Debug.Log("Failed to load");
 
                 }, 0,
-                AdsAdapterAdmob.where.normal_get_reward_ad_level_);
+                AdsAdapterAdmob.where.normal_get_reward_ad);
         }
 
         else if (GameManager.Instance.gameMode == GameMode.Challenge)
@@ -71,10 +70,9 @@ public class WinUI : MonoBehaviour
             AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                 {
 
-                    AdsAdapterAdmob.LogAFAndFB($"challenge_get_reward_ad_level_" + GameManager.Instance.currentLevel + 1, "0",
+                    AdsAdapterAdmob.LogAFAndFB($"challenge_get_reward_ad_level_" + (GameManager.Instance.currentLevel + 1), "0",
                         "0");
                     DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
-                    Debug.Log("challenge_get_reward_ad_level_");
                 }, () =>
                 {
                     StartCoroutine(GameManager.Instance.CheckInternetConnection());
@@ -89,7 +87,7 @@ public class WinUI : MonoBehaviour
                     Debug.Log("Failed to load");
 
                 }, 0,
-                AdsAdapterAdmob.where.challenge_get_reward_ad_level);
+                AdsAdapterAdmob.where.challenge_get_reward_ad);
         }
 
         else if (GameManager.Instance.gameMode == GameMode.Boss)
@@ -97,10 +95,9 @@ public class WinUI : MonoBehaviour
             AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                 {
 
-                    AdsAdapterAdmob.LogAFAndFB($"boss_get_reward_ad_level_" + GameManager.Instance.currentLevel + 1, "0",
+                    AdsAdapterAdmob.LogAFAndFB($"boss_get_reward_ad_level_" + (GameManager.Instance.currentLevel + 1), "0",
                         "0");
                     DataManager.Instance.AddCoin(int.Parse(indi.adsCoinTxt.text));
-                    Debug.Log("boss_get_reward_ad_level_");
                 }, () =>
                 {
                     StartCoroutine(GameManager.Instance.CheckInternetConnection());
@@ -115,7 +112,7 @@ public class WinUI : MonoBehaviour
                     Debug.Log("Failed to load");
 
                 }, 0,
-                AdsAdapterAdmob.where.boss_get_reward_ad_level);
+                AdsAdapterAdmob.where.boss_get_reward_ad);
         }
     }
 
