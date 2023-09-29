@@ -101,7 +101,7 @@ public class RewardManager : MonoBehaviour
                 // currentChild.DOScale(Vector3.one, 0.2f)).AppendInterval(0.5f).Append(currentChild.DOMove(coinDestPos.position, 1.2f).SetEase(Ease.InQuart)).Join(currentChild.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuart))
                 currentChild.DOScale(Vector3.one, 0.2f);
                 yield return new WaitForSeconds(intervalDelay);
-                currentChild.DOMove(coinDestPos.position, 1.2f).SetEase(Ease.InQuart);
+                currentChild.DOMove(coinDestPos.position, 1.2f).SetEase(Ease.InQuart).OnComplete(() => currentChild.DOScale(Vector3.zero, 0.5f));
                 // currentChild.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuart);
         }
 
