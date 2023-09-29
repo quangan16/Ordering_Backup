@@ -154,7 +154,7 @@ public class SkinItem
                 }
                 else if(type == SkinType.Cloud)
                 {
-                    color.a = 0.9f;
+                    color.a = 0.8f;
                 }    
             }
 
@@ -165,7 +165,7 @@ public class SkinItem
             color.a = 0.5f;
             if (type == SkinType.Cloud)
             {
-                color.a = 0.9f;
+                color.a = 0.8f;
             }
         }
         return color;

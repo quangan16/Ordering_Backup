@@ -149,7 +149,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
         else if(skinType == SkinType.Cloud)
         {
             Color col = Color.white;
-            col.a = 0.9f;
+            col.a = 0.8f;
             ringSkinRight.color = col;
             ringSkinLeft.color = col;
         }
@@ -223,7 +223,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
         else if (skinType == SkinType.Cloud)
         {
             Color col = Color.white;
-            col.a = 0.9f;
+            col.a = 0.8f;
             ringSkinRight.color = col;
             ringSkinLeft.color = col;
         }
