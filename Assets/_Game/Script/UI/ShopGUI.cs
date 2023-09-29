@@ -37,8 +37,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] GameObject buttonBuy;
     [SerializeField] GameObject buttonAd;
 
-    [SerializeField] private Sprite[] skinItems;
-    [SerializeField] private Sprite[] backgroundItems;
+    
 
 
 
@@ -136,16 +135,35 @@ public class ShopGUI : MonoBehaviour, IUIControl
         SkinType skinType = DataManager.Instance.GetLastRingSkin();
         ringSkinLeft.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
         ringSkinRight.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
-        if (skinType == SkinType.Strip || skinType == SkinType.LeoPattern)
+        Color col = Color.white;
+        if (skinType == SkinType.LeoPattern)
         {
             ringSkinRight.color = new Color32(117, 15, 15, 80);
             ringSkinLeft.color = new Color32(121, 27, 20, 80);
         }
-        else
+        else if (skinType == SkinType.Star  || skinType == SkinType.Wavy)
         {
-            ringSkinRight.color = new Color32(249, 200, 222, 200);
-            ringSkinLeft.color = new Color32(227, 117, 0, 200);
+            byte alpha = 200;
+            if (skinType == SkinType.Wavy)
+            {
+                alpha = 78;
+            }
+            ringSkinRight.color = new Color32(249, 200, 222, alpha);
+            ringSkinLeft.color = new Color32(227, 117, 0, alpha);
 
+        }
+        else if(skinType == SkinType.Cloud)
+        {
+            
+            col.a = 0.8f;
+            ringSkinRight.color = col;
+            ringSkinLeft.color = col;
+        }
+        else if (skinType == SkinType.Chessboard)
+        {
+            col.a = 0.3f;
+            ringSkinRight.color = col;
+            ringSkinLeft.color = col;
         }
         BackGroundType bgType = DataManager.Instance.GetLastBackground();
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(bgType);
@@ -172,10 +190,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
         for (int i = 0; i < skins.skins.Length; i++)
         {
             int ii = i;
-            itemPref.GetComponent<Image>().sprite = skinItems[i];
             ShopItem shopItem = Instantiate(itemPref, skinLayout);
-            shopItem.gameObject.transform.Find("DefaultShopItem/GameObject/RingItem").GetComponent<Image>().sprite =
-                skinItems[i];
             shopItem.OnInit((SkinType)(ii));
             shopItem.AddEvent(() => SelectSkin((SkinType)(ii)));
             if(shopItem.state == ShopState.Equipped)
@@ -187,8 +202,6 @@ public class ShopGUI : MonoBehaviour, IUIControl
         {
             int jj = j;
             ShopItem shopItem = Instantiate(itemPref, backgroundLayout);
-            shopItem.gameObject.transform.Find("DefaultShopItem/GameObject/Background").GetComponent<Image>().sprite =
-                backgroundItems[j];
             shopItem.OnInit((BackGroundType)jj);
             shopItem.AddEvent(() => SelectBackGround((BackGroundType)jj));
             if (shopItem.state == ShopState.Equipped)
@@ -208,16 +221,35 @@ public class ShopGUI : MonoBehaviour, IUIControl
         SkinItem itemSkin = DataManager.Instance.GetSkin(skinType);
         ringSkinLeft.sprite = itemSkin.spriteC;
         ringSkinRight.sprite = itemSkin.spriteC;
-        if (skinType == SkinType.Strip || skinType == SkinType.LeoPattern)
+        Color col = Color.white;
+        if ( skinType == SkinType.LeoPattern)
         {
             ringSkinRight.color = new Color32(117, 15, 15, 80);
             ringSkinLeft.color = new Color32(121, 27, 20, 80);
         }
-        else
+        else if (skinType == SkinType.Star  || skinType == SkinType.Wavy)
         {
-            ringSkinRight.color = new Color32(249, 200, 222, 200);
-            ringSkinLeft.color = new Color32(227, 117, 0, 200);
+            byte alpha = 200;
+            if (skinType == SkinType.Wavy)
+            {
+                alpha = 78;
+            }
+            ringSkinRight.color = new Color32(249, 200, 222, alpha);
+            ringSkinLeft.color = new Color32(227, 117, 0, alpha);
 
+        }
+        else if (skinType == SkinType.Cloud)
+        {
+            
+            col.a = 0.8f;
+            ringSkinRight.color = col;
+            ringSkinLeft.color = col;
+        }
+        else if (skinType == SkinType.Chessboard)
+        {
+            col.a = 0.3f;
+            ringSkinRight.color = col;
+            ringSkinLeft.color = col;
         }
 
         priceTxt.text = itemSkin.price.ToString();

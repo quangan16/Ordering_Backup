@@ -63,7 +63,7 @@ public class Solid : MonoBehaviour
     }
     public void ChangeSkin(SkinItem skinItem)
     {
-        currentSkin.color = ChangeColorbyID(skinItem.type);
+        currentSkin.color = skinItem.ChangeColorbyID(GetComponent<SpriteRenderer>().sprite.name);
 
         if (this is Circle)
         {
@@ -98,7 +98,7 @@ public class Solid : MonoBehaviour
         {
             if (int.TryParse(numberString, out i) && i >= 1 && i <= 10)
             {
-                if (type == SkinType.LeoPattern || type == SkinType.Strip)
+                if (type == SkinType.LeoPattern )
                 {
                     switch (i)
                     {
@@ -156,7 +156,7 @@ public class Solid : MonoBehaviour
 
                     }
                 }
-                else if (type == SkinType.Star || type == SkinType.Snow || type == SkinType.Wavy)
+                else if (type == SkinType.Star  || type == SkinType.Wavy)
                 {
                     alpha = 200;
                     switch (i)

@@ -22,6 +22,7 @@ public class BackGroundItem
     public BackGroundType type;
     public int price;
     public Sprite sprite;
+    public Sprite buttonSprite;
 }
 public enum BackGroundType
 {

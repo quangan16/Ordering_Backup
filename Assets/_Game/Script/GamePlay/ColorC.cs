@@ -79,7 +79,7 @@ public class ColorC : Circle
     {
         foreach (var c in colorCs)
         {
-           //if(!c.isTouch)
+           if(!c.isTouch)
             {
                 c.OffSelected();
 
