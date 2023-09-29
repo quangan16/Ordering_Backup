@@ -22,6 +22,43 @@ namespace _Game.Script.Manager
             DontDestroyOnLoad(this);
         }
 
+        public void Start()
+        {
+           OnInit();
+        }
+
+        public void OnInit()
+        {
+            if (IsMusicOn)
+            {
+                MusicController.audioMixer.SetFloat("MusicVolume", 0.0f);
+            }
+            else
+            {
+                MusicController.audioMixer.SetFloat("MusicVolume", -80.0f);
+
+            }
+
+            if (IsSfxOn)
+            {
+                SFXController.audioMixer.SetFloat("SfxVolume", 0.0f);
+            }
+            else
+            {
+                SFXController.audioMixer.SetFloat("SfxVolume", -80.0f);
+            }
+
+            if (IsVibrationOn)
+            {
+                GameManager.isVibrate = true;
+            }
+            else
+            {
+                GameManager.isVibrate = false;
+            }
+
+        }
+
         public void MusicOn()
         {
             if (IsMusicOn)

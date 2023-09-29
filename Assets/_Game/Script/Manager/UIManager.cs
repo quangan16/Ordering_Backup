@@ -66,8 +66,8 @@ public class UIManager : SingletonBehivour<UIManager>
                 int normalLevel = DataManager.Instance.GetNormalLevel() + 1;
                 if (normalLevel == 5)
                 {
-                    removeAdsGUI.Open();
-                }
+                    // removeAdsGUI.Open();
+                 }
                 if (normalLevel >= 5 && GameManager.Instance.levelLeftToShowAds<=0 ||
                     GameManager.Instance.timeLeftToShowAds <= 0.0f)
                 {
