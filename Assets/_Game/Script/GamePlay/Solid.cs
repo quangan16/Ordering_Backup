@@ -63,7 +63,7 @@ public class Solid : MonoBehaviour
     }
     public void ChangeSkin(SkinItem skinItem)
     {
-        currentSkin.color = ChangeColorbyID(skinItem.type);
+        currentSkin.color = skinItem.ChangeColorbyID(GetComponent<SpriteRenderer>().sprite.name);
 
         if (this is Circle)
         {

@@ -22,6 +22,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] GameObject borderSelect;
     [SerializeField] Image backGround;
     [SerializeField] Image skin;
+    [SerializeField] Image ring;
     [SerializeField] TextMeshProUGUI priceText;
     //[SerializeField] GameObject Locked;
     [SerializeField] GameObject Unlocked;
@@ -46,15 +47,9 @@ public class ShopItem : MonoBehaviour
         //SetState(state);
         backGround.gameObject.SetActive(false);
         skin.sprite = skinItem.spriteC;
-        if(type == SkinType.Strip || type == SkinType.LeoPattern)
-        {
-            skin.color = new Color32(140, 53, 68, 80);
-        }
-        else
-        {
-            skin.color = new Color32(196, 252, 247, 200) ;
-
-        }
+        skin.color = skinItem.ChangeColorbyID(skinItem.spriteRing.name);
+        ring.sprite = skinItem.spriteRing;
+       
         onSelect = (int)type;
         this.type = ItemType.SKIN;
 
@@ -67,7 +62,8 @@ public class ShopItem : MonoBehaviour
         price = backGroundItem.price;
         //SetState(state);
         // change sprite background
-        skin.transform.parent.gameObject.SetActive(false);
+        backGround.sprite = backGroundItem.buttonSprite;
+        ring.gameObject.SetActive(false);
         
 
         onSelect = (int)type;
