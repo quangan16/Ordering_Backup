@@ -94,9 +94,13 @@ public class SkinItem
 
                     }
                 }
-                else if (type == SkinType.Star || type == SkinType.Snow || type == SkinType.Wavy)
+                else if (type == SkinType.Star  || type == SkinType.Wavy)
                 {
                     alpha = 200;
+                    if (type == SkinType.Wavy)
+                    {
+                        alpha = 78;
+                    }    
                     switch (i)
                     {
                         case 1:
@@ -155,6 +159,10 @@ public class SkinItem
                 else if(type == SkinType.Cloud)
                 {
                     color.a = 0.8f;
+                }  
+                else if(type == SkinType.Chessboard)
+                {
+                    color.a = 0.3f;
                 }    
             }
 
@@ -167,6 +175,10 @@ public class SkinItem
             {
                 color.a = 0.8f;
             }
+            else if (type == SkinType.Chessboard)
+            {
+                color.a = 0.3f;
+            }
         }
         return color;
     }
@@ -178,7 +190,8 @@ public enum SkinType
     Cloud,
     Wavy,
     LeoPattern,
-    Snow
+    Chessboard,
+    Candy
     
 
 }

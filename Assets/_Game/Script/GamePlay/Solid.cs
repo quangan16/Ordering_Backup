@@ -156,7 +156,7 @@ public class Solid : MonoBehaviour
 
                     }
                 }
-                else if (type == SkinType.Star || type == SkinType.Snow || type == SkinType.Wavy)
+                else if (type == SkinType.Star  || type == SkinType.Wavy)
                 {
                     alpha = 200;
                     switch (i)
