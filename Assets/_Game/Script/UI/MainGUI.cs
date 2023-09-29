@@ -14,10 +14,13 @@ public class MainGUI : MonoBehaviour, IUIControl
     [SerializeField] private CanvasGroup canvasAlpha;
     [SerializeField] private List<Button> buttons;
     [SerializeField] private Button playBtn;
+    [SerializeField] private Transform logo;
     void OnEnable()
     {
         OnInit();
+        logo.gameObject.SetActive(true);
         // PlayButtonAnim();
+        
     }
 
     private void OnDisable()
@@ -63,18 +66,21 @@ public class MainGUI : MonoBehaviour, IUIControl
     public void OpenGamePlay()
     {
         canvasAlpha.DOFade(0.0f, 0.6f).OnComplete(() => { gameObject.SetActive(false); });
+        logo.gameObject.SetActive(false);
         UIManager.Instance.OpenGameplay();
         
     }    
     public void OpenShop()
     {
         gameObject.SetActive(false);
+        logo.gameObject.SetActive(false);
         UIManager.Instance.OpenShop();  
 
     }
 
     public void OpenChallenge()
     {
+        logo.gameObject.SetActive(false);
         gameObject.SetActive(false);
         UIManager.Instance.OpenChallenge();
     }

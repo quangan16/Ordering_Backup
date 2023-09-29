@@ -44,7 +44,7 @@ public class ShopItem : MonoBehaviour
         // change ring skin
         price = skinItem.price;
         //SetState(state);
-        backGround.transform.parent.gameObject.SetActive(false);
+        backGround.gameObject.SetActive(false);
         skin.sprite = skinItem.spriteC;
         if(type == SkinType.Strip || type == SkinType.LeoPattern)
         {
@@ -68,8 +68,7 @@ public class ShopItem : MonoBehaviour
         //SetState(state);
         // change sprite background
         skin.transform.parent.gameObject.SetActive(false);
-
-        backGround.sprite = backGroundItem.sprite;
+        
 
         onSelect = (int)type;
         this.type = ItemType.BACKGROUND;

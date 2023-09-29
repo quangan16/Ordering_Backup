@@ -123,7 +123,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
     public void BackToMain()
     {
-        AdsAdapterAdmob.LogAFAndFB($"back_to_main_level_" + GameManager.Instance.currentLevel, "0",
+        AdsAdapterAdmob.LogAFAndFB($"normal_back_to_main_level_" + GameManager.Instance.currentLevel + 1, "0",
             "0");
         if (DataManager.Instance.GetNormalLevel() >= 6)
         {

@@ -37,6 +37,9 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] GameObject buttonBuy;
     [SerializeField] GameObject buttonAd;
 
+    [SerializeField] private Sprite[] skinItems;
+    [SerializeField] private Sprite[] backgroundItems;
+
 
 
     static int idSelect;
@@ -169,7 +172,10 @@ public class ShopGUI : MonoBehaviour, IUIControl
         for (int i = 0; i < skins.skins.Length; i++)
         {
             int ii = i;
+            itemPref.GetComponent<Image>().sprite = skinItems[i];
             ShopItem shopItem = Instantiate(itemPref, skinLayout);
+            shopItem.gameObject.transform.Find("DefaultShopItem/GameObject/RingItem").GetComponent<Image>().sprite =
+                skinItems[i];
             shopItem.OnInit((SkinType)(ii));
             shopItem.AddEvent(() => SelectSkin((SkinType)(ii)));
             if(shopItem.state == ShopState.Equipped)
@@ -181,6 +187,8 @@ public class ShopGUI : MonoBehaviour, IUIControl
         {
             int jj = j;
             ShopItem shopItem = Instantiate(itemPref, backgroundLayout);
+            shopItem.gameObject.transform.Find("DefaultShopItem/GameObject/Background").GetComponent<Image>().sprite =
+                backgroundItems[j];
             shopItem.OnInit((BackGroundType)jj);
             shopItem.AddEvent(() => SelectBackGround((BackGroundType)jj));
             if (shopItem.state == ShopState.Equipped)
