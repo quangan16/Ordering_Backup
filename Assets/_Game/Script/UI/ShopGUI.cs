@@ -135,16 +135,23 @@ public class ShopGUI : MonoBehaviour, IUIControl
         SkinType skinType = DataManager.Instance.GetLastRingSkin();
         ringSkinLeft.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
         ringSkinRight.sprite = DataManager.Instance.GetSkin(skinType).spriteC;
-        if (skinType == SkinType.Strip || skinType == SkinType.LeoPattern)
+        if (skinType == SkinType.LeoPattern)
         {
             ringSkinRight.color = new Color32(117, 15, 15, 80);
             ringSkinLeft.color = new Color32(121, 27, 20, 80);
         }
-        else
+        else if (skinType == SkinType.Star || skinType == SkinType.Snow || skinType == SkinType.Wavy)
         {
             ringSkinRight.color = new Color32(249, 200, 222, 200);
             ringSkinLeft.color = new Color32(227, 117, 0, 200);
 
+        }
+        else if(skinType == SkinType.Cloud)
+        {
+            Color col = Color.white;
+            col.a = 0.9f;
+            ringSkinRight.color = col;
+            ringSkinLeft.color = col;
         }
         BackGroundType bgType = DataManager.Instance.GetLastBackground();
         BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(bgType);
@@ -202,16 +209,23 @@ public class ShopGUI : MonoBehaviour, IUIControl
         SkinItem itemSkin = DataManager.Instance.GetSkin(skinType);
         ringSkinLeft.sprite = itemSkin.spriteC;
         ringSkinRight.sprite = itemSkin.spriteC;
-        if (skinType == SkinType.Strip || skinType == SkinType.LeoPattern)
+        if ( skinType == SkinType.LeoPattern)
         {
             ringSkinRight.color = new Color32(117, 15, 15, 80);
             ringSkinLeft.color = new Color32(121, 27, 20, 80);
         }
-        else
+        else if (skinType == SkinType.Star || skinType == SkinType.Snow || skinType == SkinType.Wavy)
         {
             ringSkinRight.color = new Color32(249, 200, 222, 200);
             ringSkinLeft.color = new Color32(227, 117, 0, 200);
 
+        }
+        else if (skinType == SkinType.Cloud)
+        {
+            Color col = Color.white;
+            col.a = 0.9f;
+            ringSkinRight.color = col;
+            ringSkinLeft.color = col;
         }
 
         priceTxt.text = itemSkin.price.ToString();

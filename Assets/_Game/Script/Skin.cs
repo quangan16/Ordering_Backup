@@ -36,7 +36,7 @@ public class SkinItem
         {
             if (int.TryParse(numberString, out i) && i >= 1 && i <= 10)
             {
-                if (type == SkinType.LeoPattern || type == SkinType.Strip)
+                if (type == SkinType.LeoPattern )
                 {
                     switch (i)
                     {
@@ -152,12 +152,21 @@ public class SkinItem
                             }
                     }
                 }
+                else if(type == SkinType.Cloud)
+                {
+                    color.a = 0.9f;
+                }    
             }
 
 
         }
         else
         {
+            color.a = 0.5f;
+            if (type == SkinType.Cloud)
+            {
+                color.a = 0.9f;
+            }
         }
         return color;
     }
@@ -166,7 +175,7 @@ public enum SkinType
 {
     Default,
     Star,
-    Strip,
+    Cloud,
     Wavy,
     LeoPattern,
     Snow

@@ -98,7 +98,7 @@ public class Solid : MonoBehaviour
         {
             if (int.TryParse(numberString, out i) && i >= 1 && i <= 10)
             {
-                if (type == SkinType.LeoPattern || type == SkinType.Strip)
+                if (type == SkinType.LeoPattern )
                 {
                     switch (i)
                     {
