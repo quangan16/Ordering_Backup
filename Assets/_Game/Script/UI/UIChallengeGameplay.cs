@@ -37,17 +37,24 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
         AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
             {
 
-                AdsAdapterAdmob.LogAFAndFB($"challenge_replay_level_" + GameManager.Instance.currentLevel, "0",
+                AdsAdapterAdmob.LogAFAndFB($"challenge_replay_ads_level_" + (GameManager.Instance.currentLevel + 1), "0",
                     "0");
                 GameManager.Instance.Replay();
-                UIManager.Instance.SetCoin();
+               
             }, () =>
             {
-                // PanelLoading.Instance.Notify("Watch Failed, Try Again!");
-                Debug.Log("Failed to load");
+                StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                if (GameManager.Instance.HasInternet == false)
+                {
+                    UIManager.Instance.ShowInternetPopUp();
+                }
+                else
+                {
+                    UIManager.Instance.ShowAdsNotification();
+                }
 
             }, 0,
-            AdsAdapterAdmob.where.get_coin);
+            AdsAdapterAdmob.where.challenge_replay_ads_level);
        
     }
     public void OpenChallenge()

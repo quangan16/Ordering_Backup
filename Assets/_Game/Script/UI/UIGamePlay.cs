@@ -59,9 +59,9 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     }
     public void Replay()
     {
-        AdsAdapterAdmob.LogAFAndFB($"normal_replay_level_" + GameManager.Instance.currentLevel, "0",
+        AdsAdapterAdmob.LogAFAndFB($"normal_replay_level_" + (GameManager.Instance.currentLevel + 1), "0",
             "0");
-        Debug.Log("normal_replay_level_");
+        Debug.Log("normal_replay_level_" + (GameManager.Instance.currentLevel + 1) );
         GameManager.Instance.Replay();
         
     }
@@ -73,14 +73,13 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public void NextLevel()
     {
         DataManager.Instance.SetNormalLevel(GameManager.Instance.currentLevel + 1);
+        AdsAdapterAdmob.LogAFAndFB($"normal_skip_level_" + (GameManager.Instance.currentLevel + 1), "0",
+            "0");
         if(DataManager.Instance.GetNormalLevel()>=5)
         {
             AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                 {
-
-                    AdsAdapterAdmob.LogAFAndFB($"normal_skip_level_", "0",
-                        "0");
-                    
+                    GameManager.Instance.NextLevel();
                 }, () =>
                 {
                     StartCoroutine(GameManager.Instance.CheckInternetConnection());
@@ -92,13 +91,16 @@ public class UIGamePlay : MonoBehaviour,IUIControl
                     {
                         UIManager.Instance.ShowAdsNotification();
                     }
-                    Debug.Log("Failed to load");
 
                 }, 0,
                 AdsAdapterAdmob.where.normal_skip_level);
         }
-
-        GameManager.Instance.NextLevel();
+        else
+        {
+            GameManager.Instance.NextLevel();
+        }
+       
+       
     }
     
     public virtual void CallHint()
@@ -123,7 +125,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
 
     public void BackToMain()
     {
-        AdsAdapterAdmob.LogAFAndFB($"normal_back_to_main_level_" + GameManager.Instance.currentLevel + 1, "0",
+        AdsAdapterAdmob.LogAFAndFB($"normal_back_to_main_level_{GameManager.Instance.currentLevel + 1}" , "0",
             "0");
         if (DataManager.Instance.GetNormalLevel() >= 6)
         {
