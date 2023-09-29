@@ -99,7 +99,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
     public void LightEffect()
     {
         ResetLightEffect();
-        LightSFX.transform.DOScale(Vector3.one * 0.5f, 0.8f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        LightSFX.transform.DOScale(Vector3.one * 0.7f, 0.8f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         LightSFX.transform.DORotate(Vector3.forward * 360.0f, 4.0f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1);
     }
 

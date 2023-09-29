@@ -6,6 +6,11 @@ using UnityEngine;
 public class NoInternetGUI : PopupManager
 {
     public bool IsOpening = false;
+
+    void Awake()
+    {
+        
+    }
     new void  OnEnable()
     {
         GameManager.OnInternetError += Open;
