@@ -13,11 +13,14 @@ public class LanguagePanel : MonoBehaviour
     public void Start()
     {
         languagesDropDown.onValueChanged.AddListener(OnDropdownValueChanged);
+        language_select = Application.systemLanguage.ToString();
+        ChangeLanguage();
     }
     private void OnDropdownValueChanged(int index)
     {
         languages = new List<string>() { "Vietnamese", "English", "German", "French", "Japanese", "Korean", "Russian", "Chinese", "Portuguese", "Indonesian", "Spanish", "Thai", "Malay" };
         language_select= languages[index];
+
         ChangeLanguage();
     }
 
