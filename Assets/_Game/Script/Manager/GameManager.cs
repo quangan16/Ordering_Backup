@@ -34,15 +34,15 @@ public class GameManager : SingletonBehivour<GameManager>
 
     private void Start()
     {
-        
+
         AdsAdapterAdmob.Instance.ShowBanner();
-       // throw new NotImplementedException();
+        // throw new NotImplementedException();
     }
 
     public void AdsCountDown()
     {
         timeLeftToShowAds -= Time.deltaTime;
-        
+
     }
 
     public static event Action OnInternetError;
@@ -50,7 +50,7 @@ public class GameManager : SingletonBehivour<GameManager>
 
     private void Update()
     {
-        
+
         if (isTouch && (gameMode == GameMode.Challenge || gameMode == GameMode.Boss))
         {
             if (timer > 0)
@@ -78,9 +78,9 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             timeSinceLastCheck = 0;
             StartCoroutine(CheckInternetConnection());
-            
+
         }
-        
+
 
     }
     IEnumerator CountDown()
@@ -92,12 +92,12 @@ public class GameManager : SingletonBehivour<GameManager>
         if (tutoMove != null)
         {
             tutoMove.OnDeath();
-        }    
+        }
 
         //Instantiate(tutorial, tutoPos);
     }
-    
-    
+
+
     public void StartCountDown()
     {
         StopAllCoroutines();
@@ -116,9 +116,9 @@ public class GameManager : SingletonBehivour<GameManager>
                     }
                     //Open challenge each 4 levels 2,6,10,...
 
-                    if (level>=5 &&(level - 1) % 4 == 0 && (level - 1) / 4 <= challenge.levels.Length - 1)
+                    if (level >= 5 && (level - 1) % 4 == 0 && (level - 1) / 4 <= challenge.levels.Length - 1)
                     {
-                        int levelChallenge = (level - 1) / 4-1;
+                        int levelChallenge = (level - 1) / 4 - 1;
                         (Mode challengeMode, int time) = DataManager.Instance.GetLevelMode(levelChallenge);
                         if (challengeMode == Mode.Locked)
                         {
@@ -157,11 +157,15 @@ public class GameManager : SingletonBehivour<GameManager>
         gameMode = mode;
         currentLevel = level;
         ChangeSkin();
-        
+
         timer = (current.time);
         moves = current.moves;
         UIManager.Instance.SetCoin();
-        UIManager.Instance.SetText(current.nameLevel+" " + (currentLevel + 1));
+
+        string transLevel = I2.Loc.LocalizationManager.GetTranslation("LEVEL");
+        transLevel = transLevel.Replace("{0}", (currentLevel + 1).ToString());
+        UIManager.Instance.SetText(transLevel);
+        //   UIManager.Instance.SetText(current.nameLevel+" " + (currentLevel + 1));
         UIManager.Instance.OffClamp();
         Camera.main.orthographicSize = current.cameraDist;
 
@@ -176,9 +180,9 @@ public class GameManager : SingletonBehivour<GameManager>
         if (current == null)
         {
             return;
-        }    
+        }
         current.CheckFree();
-    }    
+    }
     public void SubtractMove()
     {
         if (gameMode == GameMode.Boss)
@@ -222,18 +226,18 @@ public class GameManager : SingletonBehivour<GameManager>
         {
             normalLevel = 0;
         }
-        if (normalLevel >= 8 && (normalLevel ) % 8 == 0 && (normalLevel ) / 8 <= boss.levels.Length - 1)
+        if (normalLevel >= 8 && (normalLevel) % 8 == 0 && (normalLevel) / 8 <= boss.levels.Length - 1)
         {
             StopAllCoroutines();
             UIManager.Instance.RecommendBoss();
-            DataManager.Instance.SetBossLevel((normalLevel ) / 8-1);
+            DataManager.Instance.SetBossLevel((normalLevel) / 8 - 1);
         }
         currentLevel = normalLevel;
         Invoke(nameof(OnNextLevel), 0.1f);
     }
     void OnNextLevel()
     {
-        
+
         OpenGamePlay(GameMode.Normal, currentLevel);
     }
 
@@ -262,7 +266,7 @@ public class GameManager : SingletonBehivour<GameManager>
                 i++;
                 DataManager.Instance.SetTotalChallenge(i);
             }
-            
+
             DataManager.Instance.SetLevel(currentLevel, Mode.Pass, Mathf.RoundToInt(timer) < time ? time : Mathf.RoundToInt(timer));
         }
 
@@ -299,7 +303,7 @@ public class GameManager : SingletonBehivour<GameManager>
                 HasInternet = false;
                 OnInternetError?.Invoke();
             }
-            
+
         }
     }
 

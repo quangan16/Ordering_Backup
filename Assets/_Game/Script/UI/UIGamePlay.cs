@@ -24,10 +24,6 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     [SerializeField] private Image skipAdsIcon;
 
     private Tween buttonTween;
-    public void OnEnable()
-    {
-        
-    }
 
     public void OnDisable()
     {
@@ -135,8 +131,6 @@ public class UIGamePlay : MonoBehaviour,IUIControl
         
     }
     
-   
-
     public void ChangeBackground()
     {
         background.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
