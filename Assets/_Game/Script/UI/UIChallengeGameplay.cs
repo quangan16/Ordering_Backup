@@ -12,6 +12,8 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     public TextMeshProUGUI tmp;
     [SerializeField] private List<Button> buttonsList;
     [SerializeField] private TextMeshProUGUI coinTxt;
+    [SerializeField] AudioSource audioSource;
+    int seconds;
     private void Update()
     {   
         DisplayTime(GameManager.timer);
@@ -19,8 +21,13 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     }
     void DisplayTime(float timeToDisplay)
     {
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        int minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        int seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        if (seconds != this.seconds)
+        {
+            this.seconds = seconds;
+            audioSource.Play();
+        }
         time.text = string.Format(Constant.TIME_FORMAT, minutes, seconds);
     }
     public void Open()
