@@ -253,7 +253,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 56c59f4ecd2348d41abca4cc46a07e11, type: 3}
-    m_FontSize: 19
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -264,7 +264,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u65E5\u672C\u8A9E"
+  m_Text: "Ti\u1EBFng Vi\u1EC7t"
 --- !u!1 &302323542942700571
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,6 +801,8 @@ GameObject:
   - component: {fileID: 302323543693828091}
   - component: {fileID: 302323543693828090}
   - component: {fileID: 302323543693828093}
+  - component: {fileID: 6350451596784362607}
+  - component: {fileID: 4516213505757102000}
   m_Layer: 5
   m_Name: DropDownLanguage
   m_TagString: Untagged
@@ -918,28 +920,60 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: "\u65E5\u672C\u8A9E"
-      m_Image: {fileID: 0}
-    - m_Text: "\uD55C\uAD6D\uC5B4"
-      m_Image: {fileID: 0}
-    - m_Text: Portugal
-      m_Image: {fileID: 0}
-    - m_Text: "Espa\xF1ol"
-      m_Image: {fileID: 0}
-    - m_Text: Bahasa Indonesia
-      m_Image: {fileID: 0}
     - m_Text: "Ti\u1EBFng Vi\u1EC7t"
-      m_Image: {fileID: 0}
-    - m_Text: "Fran\xE7ais"
       m_Image: {fileID: 0}
     - m_Text: English
       m_Image: {fileID: 0}
-    - m_Text: "\u0939\u093F\u0928\u094D\u0926\u0940"
+    - m_Text: Deutsch
+      m_Image: {fileID: 0}
+    - m_Text: "Fran\xE7ais"
+      m_Image: {fileID: 0}
+    - m_Text: "\u65E5\u672C\u8BED"
+      m_Image: {fileID: 0}
+    - m_Text: "\uD55C\uAD6D\uC5B4"
+      m_Image: {fileID: 0}
+    - m_Text: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439"
+      m_Image: {fileID: 0}
+    - m_Text: "\u4E2D\u6587"
+      m_Image: {fileID: 0}
+    - m_Text: "Portugu\xEAs"
+      m_Image: {fileID: 0}
+    - m_Text: Indonesia
+      m_Image: {fileID: 0}
+    - m_Text: "\u0E44\u0E17\u0E22"
+      m_Image: {fileID: 0}
+    - m_Text: Melayu
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &6350451596784362607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302323543693828095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f034ed55978b846a1349c1243597e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  languagesDropDown: {fileID: 302323543693828093}
+--- !u!114 &4516213505757102000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302323543693828095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c34f4a6079c104eb45cec31a6f62f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  languageSource: {fileID: 11400000, guid: 5f8ba3469954e4e448cab5cec96dbd24, type: 2}
 --- !u!1 &302323544347136976
 GameObject:
   m_ObjectHideFlags: 0
