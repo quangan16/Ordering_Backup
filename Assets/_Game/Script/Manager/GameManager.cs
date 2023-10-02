@@ -162,7 +162,7 @@ public class GameManager : SingletonBehivour<GameManager>
         moves = current.moves;
         UIManager.Instance.SetCoin();
 
-        string transLevel = I2.Loc.LocalizationManager.GetTranslation("LEVEL");
+        string transLevel = I2.Loc.LocalizationManager.GetTranslation("+{0} MOVES");
         transLevel = transLevel.Replace("{0}", (currentLevel + 1).ToString());
         UIManager.Instance.SetText(transLevel);
         //   UIManager.Instance.SetText(current.nameLevel+" " + (currentLevel + 1));
