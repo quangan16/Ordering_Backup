@@ -18,7 +18,7 @@ public class I2Ctl : MonoBehaviour
 
         string[] paths = new[]
         {
-            @"C:\Ordering",
+            @"D:\Data\Ordering",
 
         };
 
