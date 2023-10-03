@@ -127,7 +127,7 @@ public class Circle : Solid
     {
        foreach (var sp in spriteShadow)
        {
-           //sp.enabled = true;
+           sp.enabled = true;
        }
         if (!(this is ColorC))
         { OnClampChange(); }

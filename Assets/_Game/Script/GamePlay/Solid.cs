@@ -40,10 +40,7 @@ public class Solid : MonoBehaviour
     {
         if (!collision.otherCollider.GetComponent<Bomb>() && !collision.collider.GetComponent<Bomb>())
         {
-            if (GameManager.isVibrate)
-            {
-                Handheld.Vibrate();
-            }
+           
             SoundManager.Instance.Play();
         }
 

@@ -61,11 +61,7 @@ public class Line : Solid
             if (rb.bodyType == RigidbodyType2D.Dynamic)
             {
                 rb.velocity = -rb.velocity * 0.5f;
-            }
-            if (GameManager.isVibrate)
-            {
-                Handheld.Vibrate();
-            }
+            }          
             SoundManager.Instance.Play();
         }
 
@@ -95,7 +91,7 @@ public class Line : Solid
         base.OnSelected();
         foreach (var sp in spriteShadow)
         {
-            //  sp.enabled = true;
+              sp.enabled = true;
         }
     }
     //-----------------------------------------
