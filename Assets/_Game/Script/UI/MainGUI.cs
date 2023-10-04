@@ -44,7 +44,7 @@ public class MainGUI : MonoBehaviour, IUIControl
     public void Close()
     {
        
-        OnClose();
+       Invoke(nameof(OnClose), 0.1f); 
     }
 
     public void OnClose()
