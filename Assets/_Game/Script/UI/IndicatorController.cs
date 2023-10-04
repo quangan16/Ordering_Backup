@@ -15,8 +15,8 @@ public class IndicatorController : MonoBehaviour
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
     [SerializeField] private float slideDuration;
-    [SerializeField] public TextMeshProUGUI adsCoinTxt;
-    [SerializeField] public TextMeshProUGUI defaultCoinTxt;
+    [SerializeField] public Text adsCoinTxt;
+    [SerializeField] public Text defaultCoinTxt;
     [SerializeField] private WinUI winUI;
     private float multiplierBarLength;
 

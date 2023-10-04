@@ -186,7 +186,17 @@ public class DataManager : SingletonBehivour<DataManager>
     public void SetHint()
     {
         PlayerPrefs.SetInt("hint", 1);
-    }    
+    }
+
+    public void SetLanguage(string currentLanguage)
+    {
+        PlayerPrefs.SetString("Language", currentLanguage);
+    }
+
+    public string GetLanguage()
+    {
+        return PlayerPrefs.GetString("Language", Application.systemLanguage.ToString());
+    }
 
 }
 public enum ShopState

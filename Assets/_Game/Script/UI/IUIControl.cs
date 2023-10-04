@@ -23,7 +23,7 @@ public interface IUIControl
     {
         
     }
-    TextMeshProUGUI GetCoinText()
+    Text GetCoinText()
     {
         return null;
     }

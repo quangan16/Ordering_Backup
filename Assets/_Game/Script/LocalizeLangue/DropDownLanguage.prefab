@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 302323542878024679}
   - component: {fileID: 302323542878024677}
   - component: {fileID: 302323542878024676}
+  - component: {fileID: 695994280}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -265,6 +266,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Ti\u1EBFng Vi\u1EC7t"
+--- !u!114 &695994280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302323542878024678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &302323542942700571
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +444,7 @@ GameObject:
   - component: {fileID: 302323543161872333}
   - component: {fileID: 302323543161872331}
   - component: {fileID: 302323543161872330}
+  - component: {fileID: 646104397}
   m_Layer: 5
   m_Name: Item Label
   m_TagString: Untagged
@@ -497,6 +514,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Option A
+--- !u!114 &646104397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302323543161872332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &302323543323183668
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,7 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6392157, g: 0.98039216, b: 0.47843137, a: 1}
+  m_Color: {r: 0.9803922, g: 0.8352942, b: 0.07450981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class UIManager : SingletonBehivour<UIManager>
@@ -189,7 +190,7 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         notEnough.Open(type);
     }
-    public TextMeshProUGUI CoinText()
+    public Text CoinText()
     {
         return current.GetCoinText();
     }

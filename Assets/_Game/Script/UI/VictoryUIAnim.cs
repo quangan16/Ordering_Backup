@@ -9,7 +9,6 @@ public class VictoryUIAnim : MonoBehaviour
 {
     [SerializeField] Image titleAlpha;
     [SerializeField] private GameObject adsButton;
-    [SerializeField] private CanvasGroup headerCanvas;
     [SerializeField] private Image coinBanner;
     
     private float fadeInDuration = 0.5f;
@@ -31,7 +30,6 @@ public class VictoryUIAnim : MonoBehaviour
 
     void InitSetup()
     {
-        headerCanvas.alpha = 0;
         titleAlpha.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);
         adsButton.transform.localScale = Vector3.one;
 
@@ -40,8 +38,7 @@ public class VictoryUIAnim : MonoBehaviour
     void Show()
     {
 
-        // headerCanvas.transform.DOLocalMove(new Vector3(0, 0, 0), 0.7f);
-        headerCanvas.DOFade(1f, fadeInDuration);
+      
         coinBanner.DOFade(1, 0.5f).SetDelay(0.5f);
         coinBanner.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(1, 0.5f).SetDelay(0.5f);
         titleAlpha.DOFade(1, 0.7f);

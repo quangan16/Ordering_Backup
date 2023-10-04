@@ -16,6 +16,7 @@ public class Solid : MonoBehaviour
     public List<Clamp> locked;
     public Vector3 lastPosition;
     public AudioSource blinkVoice => GetComponent<AudioSource>();
+    [SerializeField] private AudioSource hintVoice;
     public Collider2D[] colliders => GetComponentsInChildren<Collider2D>();
     public SpriteRenderer[] spriteRenderers => GetComponentsInChildren<SpriteRenderer>();
     //public HashSet<Collider2D> triggered = new HashSet<Collider2D>();

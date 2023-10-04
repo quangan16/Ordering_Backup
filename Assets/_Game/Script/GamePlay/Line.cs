@@ -54,23 +54,23 @@ public class Line : Solid
 
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!collision.otherCollider.GetComponent<Bomb>() && !collision.collider.GetComponent<Bomb>())
-        {
-            if (rb.bodyType == RigidbodyType2D.Dynamic)
-            {
-                rb.velocity = -rb.velocity * 0.5f;
-            }
-            if (GameManager.isVibrate)
-            {
-                Handheld.Vibrate();
-            }
-            SoundManager.Instance.Play();
-        }
-
-
-    }
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (!collision.otherCollider.GetComponent<Bomb>() && !collision.collider.GetComponent<Bomb>())
+    //     {
+    //         if (rb.bodyType == RigidbodyType2D.Dynamic)
+    //         {
+    //             rb.velocity = -rb.velocity * 0.5f;
+    //         }
+    //         if (GameManager.isVibrate)
+    //         {
+    //             Handheld.Vibrate();
+    //         }
+    //         SoundManager.Instance.Play();
+    //     }
+    //
+    //
+    // }
     public override void Move(Vector3 vectorA, Vector3 vectorB)
     {
         rb.bodyType = RigidbodyType2D.Dynamic;

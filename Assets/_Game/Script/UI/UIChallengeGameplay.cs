@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class UIChallengeGameplay : MonoBehaviour,IUIControl
 {
 
-    [SerializeField] TextMeshProUGUI time;
-    public TextMeshProUGUI tmp;
+    [SerializeField] Text time;
+    public Text tmp;
     [SerializeField] private List<Button> buttonsList;
-    [SerializeField] private TextMeshProUGUI coinTxt;
+    [SerializeField] private Text coinTxt;
     private void Update()
     {   
         DisplayTime(GameManager.timer);
@@ -64,11 +64,11 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     }
     public void SetText(string text)
     {
-        string transLevel = I2.Loc.LocalizationManager.GetTranslation("LEVEL");
-        transLevel = transLevel.Replace("{0}", text);
-
-        tmp.text = transLevel;
-      //  tmp.text = "Challenge "+ text;
+        // string transLevel = I2.Loc.LocalizationManager.GetTranslation("LEVEL {0}");
+        // transLevel = transLevel.Replace("{0}", text);
+        //
+        tmp.text = text;
+      // tmp.text = "Challenge "+ text;
     }
     public void SetCoin(int coin)
     {
@@ -95,7 +95,7 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
         }
     }
 
-    public TextMeshProUGUI GetCoinText()
+    public Text GetCoinText()
     {
         return coinTxt;
     }

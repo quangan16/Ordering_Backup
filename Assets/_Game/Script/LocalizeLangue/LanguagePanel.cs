@@ -7,20 +7,33 @@ using UnityEngine.UI;
 
 public class LanguagePanel : MonoBehaviour
 {
-    List<string> languages;
+    List<string> languages ;
     string language_select;
     public Dropdown languagesDropDown;
-    public void Start()
+    public void Awake()
     {
+        languages = new List<string>()
+        {
+            "Vietnamese", "English", "German", "French", "Japanese", "Korean", "Russian", "Chinese", "Portuguese",
+            "Indonesian", "Spanish", "Thai", "Malay"
+        };
+        language_select = DataManager.Instance.GetLanguage();
+        for (int i = 0; i < languages.Count; i++)
+        {
+            if (language_select == languages[i])
+            {
+                languagesDropDown.value = i;
+                break;
+            }
+        } 
         languagesDropDown.onValueChanged.AddListener(OnDropdownValueChanged);
-        language_select = Application.systemLanguage.ToString();
+        
         ChangeLanguage();
     }
     private void OnDropdownValueChanged(int index)
     {
-        languages = new List<string>() { "Vietnamese", "English", "German", "French", "Japanese", "Korean", "Russian", "Chinese", "Portuguese", "Indonesian", "Spanish", "Thai", "Malay" };
         language_select= languages[index];
-
+        DataManager.Instance.SetLanguage(language_select);
         ChangeLanguage();
     }
 
