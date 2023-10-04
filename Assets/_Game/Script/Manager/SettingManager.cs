@@ -5,12 +5,12 @@ namespace _Game.Script.Manager
 {
     public class SettingManager : SingletonBehivour<SettingManager>
     {
-        
+
         [SerializeField] private AudioMixerGroup MusicController;
         [SerializeField] private AudioMixerGroup SFXController;
-        
-        
-        public bool IsMusicOn { get; set;}
+
+
+        public bool IsMusicOn { get; set; }
         public bool IsSfxOn { get; set; }
         public bool IsVibrationOn { get; set; }
 
@@ -24,39 +24,14 @@ namespace _Game.Script.Manager
 
         public void Start()
         {
-           OnInit();
+            OnInit();
         }
 
         public void OnInit()
         {
-            if (IsMusicOn)
-            {
-                MusicController.audioMixer.SetFloat("MusicVolume", 0.0f);
-            }
-            else
-            {
-                MusicController.audioMixer.SetFloat("MusicVolume", -80.0f);
-
-            }
-
-            if (IsSfxOn)
-            {
-                SFXController.audioMixer.SetFloat("SfxVolume", 0.0f);
-            }
-            else
-            {
-                SFXController.audioMixer.SetFloat("SfxVolume", -80.0f);
-            }
-
-            if (IsVibrationOn)
-            {
-                GameManager.isVibrate = true;
-            }
-            else
-            {
-                GameManager.isVibrate = false;
-            }
-
+            MusicController.audioMixer.SetFloat("MusicVolume", IsMusicOn ? 0.0f : -80f);
+            SFXController.audioMixer.SetFloat("SfxVolume", IsSfxOn ? 0.0f : -80f);
+            GameManager.isVibrate = IsVibrationOn;
         }
 
         public void MusicOn()
@@ -65,7 +40,7 @@ namespace _Game.Script.Manager
             {
                 MusicController.audioMixer.SetFloat("MusicVolume", 0.0f);
             }
-           
+
         }
 
         public void MusicOff()
@@ -74,7 +49,7 @@ namespace _Game.Script.Manager
             {
                 MusicController.audioMixer.SetFloat("MusicVolume", -80.0f);
             }
-           
+
         }
 
         public void SfxOn()
@@ -92,27 +67,18 @@ namespace _Game.Script.Manager
             {
                 SFXController.audioMixer.SetFloat("SfxVolume", -80.0f);
             }
-           
+
         }
 
 
 
-        public void VibrationOn()
+        public void Vibration()
         {
-            if (IsVibrationOn)
-            {
-                GameManager.isVibrate = true;
-            }
+            GameManager.isVibrate = IsVibrationOn;
         }
 
-        public void VibrationOff()
-        {
-            if (!IsVibrationOn)
-            {
-                GameManager.isVibrate = false;
-            }
-        }
-        
-        
+
+
+
     }
 }

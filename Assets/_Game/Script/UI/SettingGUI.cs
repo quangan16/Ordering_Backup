@@ -96,15 +96,15 @@ public class SettingGUI : PopupManager
         {
             SettingManager.Instance.IsVibrationOn = false;
             VibOn.SetActive(SettingManager.Instance.IsVibrationOn);
-            SettingManager.Instance.VibrationOff();
+           
         }
         else
         {
             SettingManager.Instance.IsVibrationOn = true;
             VibOn.SetActive(SettingManager.Instance.IsVibrationOn);
-            SettingManager.Instance.VibrationOn();
+            
         }
-
+        SettingManager.Instance.Vibration();
         VibOff.SetActive(!SettingManager.Instance.IsVibrationOn);
     }
     
