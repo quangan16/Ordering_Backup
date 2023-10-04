@@ -159,6 +159,7 @@ public class NotEnoughUI : PopupManager
     }
    public void AddListener(UnityAction listener)
     {
+        unlockAds.onClick.RemoveAllListeners();
         unlockAds.onClick.AddListener(listener);
     }
 
