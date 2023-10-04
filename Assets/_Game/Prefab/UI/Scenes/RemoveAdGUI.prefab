@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &885366766558754249
 RectTransform:
   m_ObjectHideFlags: 0
@@ -65,8 +65,9 @@ GameObject:
   - component: {fileID: 885366766567407617}
   - component: {fileID: 885366766567407616}
   - component: {fileID: 3585854284510087638}
+  - component: {fileID: 519180539}
   m_Layer: 0
-  m_Name: AdsForCoinsBtn
+  m_Name: PayBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +92,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0.000030517578, y: 115.79999}
-  m_SizeDelta: {x: 282.6, y: 154.2}
+  m_SizeDelta: {x: 300.3, y: 105.41}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &885366766567407617
 CanvasRenderer:
@@ -121,9 +122,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0c4a7a1aab9b42343b66e4c353073cdc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff6069826d5049b4998cbe7cf1400cb1, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -187,6 +188,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &519180539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885366766567407678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &885366766616499921
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,8 +393,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000047684, y: -14.450001}
-  m_SizeDelta: {x: 138, y: 102}
+  m_AnchoredPosition: {x: 0.00000047684, y: 6.200001}
+  m_SizeDelta: {x: 0, y: 102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &885366767776551192
 CanvasRenderer:
@@ -428,7 +441,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8fd3be059e4c16346be19d2d9b2cb308, type: 3}
     m_FontSize: 52
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 52
@@ -451,6 +464,7 @@ GameObject:
   - component: {fileID: 3761741519366989993}
   - component: {fileID: 3761741519366989974}
   - component: {fileID: 3584147544385606047}
+  - component: {fileID: 1977794036}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -560,6 +574,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1977794036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761741519366989972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3761741519541877991
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +599,7 @@ GameObject:
   - component: {fileID: 1296744509477979579}
   - component: {fileID: 6669607210118293127}
   - component: {fileID: 6669607210118293132}
+  - component: {fileID: 6669607210118293138}
   m_Layer: 0
   m_Name: DenyTxt
   m_TagString: Untagged
@@ -648,7 +675,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 6669607210118293132}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -736,7 +763,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "KH\xD4NG, C\u1EA2M \u01A0N!"
+  m_Text: NEIN, DANKE!
+--- !u!114 &6669607210118293138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761741519541877991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5541586761369891736
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +813,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -82.2}
-  m_SizeDelta: {x: 592, y: 50}
+  m_SizeDelta: {x: 520.43, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2262852400561133460
 CanvasRenderer:
@@ -856,8 +895,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "B\u1EA1n mu\u1ED1n lo\u1EA1i b\u1ECF t\u1EA5t c\u1EA3 qu\u1EA3ng c\xE1o
-    pop-up? (Gi\u1EEF qu\u1EA3ng c\xE1o t\xF9y ch\u1ECDn \u0111\u1EC3 nh\u1EADn th\u01B0\u1EDFng)"
+  m_Text: "M\xF6chten Sie alle Popup-Anzeigen entfernen? (Optionale Anzeigen f\xFCr
+    Belohnungen beibehalten)"
 --- !u!1 &8155365825028154828
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,4 +1016,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "LO\u1EA0I B\u1ECE QU\u1EA2NG C\xC1O"
+  m_Text: WERBUNG ENTFERNEN

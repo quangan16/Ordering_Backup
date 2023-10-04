@@ -8,6 +8,7 @@ public class SoundManager : SingletonBehivour<SoundManager>
     [SerializeField] AudioClip audioClip;
     public void PlaySound(AudioClip audioClip)
     {
+        audioSource.Stop();
         audioSource.PlayOneShot(audioClip);
     }
     public void ChangeVolume(float volume)
@@ -15,6 +16,7 @@ public class SoundManager : SingletonBehivour<SoundManager>
         volume = Mathf.Clamp01(volume);
         audioSource.volume = volume;
     }
+    
     public void Play()
     {
         audioSource.Play();

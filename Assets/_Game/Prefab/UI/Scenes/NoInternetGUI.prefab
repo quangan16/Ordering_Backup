@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 6000947946656457510}
   - component: {fileID: 6000947946656457497}
   - component: {fileID: 9119705381075250886}
+  - component: {fileID: 569572200}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -309,6 +310,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &569572200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000947946656457499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7726683572686038398
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +522,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "TH\u1EEC L\u1EA0I"
+  m_Text: WIEDERHOLEN
 --- !u!114 &1295140990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,6 +659,7 @@ GameObject:
   - component: {fileID: 7726683574191754126}
   - component: {fileID: 7726683574191754127}
   - component: {fileID: 2884103745240538953}
+  - component: {fileID: 696776363}
   m_Layer: 0
   m_Name: RetryBtn
   m_TagString: Untagged
@@ -769,6 +783,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &696776363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726683574191754161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7726683574245039454
 GameObject:
   m_ObjectHideFlags: 0

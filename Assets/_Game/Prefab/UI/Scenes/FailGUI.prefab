@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 430059139285689947}
   - component: {fileID: 430059139285689956}
   - component: {fileID: 1877996641}
+  - component: {fileID: 2039108595}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -361,6 +362,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2039108595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430059139285689958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &430059139496686101
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +387,7 @@ GameObject:
   - component: {fileID: 430059139496686091}
   - component: {fileID: 7138770959921204288}
   - component: {fileID: 533756215}
+  - component: {fileID: 1046938595}
   m_Layer: 0
   m_Name: DenyTxt
   m_TagString: Untagged
@@ -429,7 +443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "KH\xD4NG, C\u1EA2M \u01A0N!"
+  m_text: NEIN, DANKE!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e656ddd43ae416b47923e040f9702348, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 5253edb94af8dc8409e9689a20016b9a, type: 2}
@@ -593,6 +607,18 @@ MonoBehaviour:
   mGUI_ShowCallback: 0
   mLocalizeTarget: {fileID: 0}
   mLocalizeTargetName: I2.Loc.LocalizeTarget_TextMeshPro_UGUI
+--- !u!114 &1046938595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430059139496686101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444099319400935480
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +708,7 @@ GameObject:
   - component: {fileID: 6051424309781726930}
   - component: {fileID: 5879773877684653968}
   - component: {fileID: 1061132610030593191}
+  - component: {fileID: 1934711330}
   m_Layer: 0
   m_Name: DenyTxt
   m_TagString: Untagged
@@ -737,7 +764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "KH\xD4NG, C\u1EA2M \u01A0N!"
+  m_text: NEIN, DANKE!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e656ddd43ae416b47923e040f9702348, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 5253edb94af8dc8409e9689a20016b9a, type: 2}
@@ -901,6 +928,18 @@ MonoBehaviour:
   mGUI_ShowCallback: 0
   mLocalizeTarget: {fileID: 0}
   mLocalizeTargetName: I2.Loc.LocalizeTarget_TextMeshPro_UGUI
+--- !u!114 &1934711330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807895772261781238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4075967730915321233
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +952,7 @@ GameObject:
   - component: {fileID: 1537797007577608237}
   - component: {fileID: 4514279699238591486}
   - component: {fileID: 3384067525622055319}
+  - component: {fileID: 1094425759}
   m_Layer: 0
   m_Name: AdsForTimeIcon
   m_TagString: Untagged
@@ -1036,6 +1076,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1094425759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4075967730915321233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4115265083806918524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1126,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -8.5, y: 5.4000015}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 66.72, y: 58.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4031500255926542170
 CanvasRenderer:
@@ -1199,6 +1251,7 @@ GameObject:
   - component: {fileID: 4434628479007477491}
   - component: {fileID: 4434628479007477490}
   - component: {fileID: 9130524660599249460}
+  - component: {fileID: 1750272891}
   m_Layer: 0
   m_Name: AdsForMovesBtn
   m_TagString: Untagged
@@ -1322,6 +1375,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1750272891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434628479007477452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4434628479032900410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,7 +1910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3069749600086057565
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1990,7 +2055,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "H\u1EBET TH\u1EDCI GIAN"
+  m_Text: KEINE ZEIT MEHR
 --- !u!114 &4555293947224929591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2141,7 +2206,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "H\u1EBET N\u01AF\u1EDAC \u0110I"
+  m_Text: "KEINE Z\xDCGE MEHR"
 --- !u!114 &8013111574137959278
 MonoBehaviour:
   m_ObjectHideFlags: 0

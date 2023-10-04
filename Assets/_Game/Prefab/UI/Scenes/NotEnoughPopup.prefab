@@ -196,7 +196,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "M\u1EDF kh\xF3a b\u1EB1ng c\xE1ch xem qu\u1EA3ng c\xE1o"
+  m_Text: Gegenstand durch Anzeigen freischalten
 --- !u!114 &2653236468641835765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1172839237257566248
 RectTransform:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "M\u1EDE KH\xD3A"
+  m_Text: ENTSPERREN
 --- !u!114 &8690848194849817985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 1172839238965081818}
   - component: {fileID: 3300069843780353804}
   - component: {fileID: 6816834266779415331}
+  - component: {fileID: 422768523}
   m_Layer: 0
   m_Name: AdsForCoinsBtn
   m_TagString: Untagged
@@ -664,6 +665,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleFactor: 1.1
+--- !u!114 &422768523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172839238965081828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1990037716893766001
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +689,7 @@ GameObject:
   - component: {fileID: 3895295732449398781}
   - component: {fileID: 6818256845438359134}
   - component: {fileID: 3135083148475755817}
+  - component: {fileID: 2086112704}
   m_Layer: 0
   m_Name: AdsForCoinsBtn
   m_TagString: Untagged
@@ -799,6 +813,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2086112704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990037716893766001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2132634820959465198
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,7 +1025,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "M\u1EDF kh\xF3a b\u1EB1ng c\xE1ch xem qu\u1EA3ng c\xE1o"
+  m_Text: Gegenstand durch Anzeigen freischalten
 --- !u!114 &6779920778866069533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,6 +1131,7 @@ GameObject:
   - component: {fileID: 82428326}
   - component: {fileID: 7573573025323818412}
   - component: {fileID: 2963324588157256165}
+  - component: {fileID: 2110212792}
   m_Layer: 0
   m_Name: DenyTxt
   m_TagString: Untagged
@@ -1268,7 +1295,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "KH\xD4NG, C\u1EA2M \u01A0N!"
+  m_Text: NEIN, DANKE!
 --- !u!114 &2963324588157256165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,6 +1311,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &2110212792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2899144480909773373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2899144482882444878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1335,7 @@ GameObject:
   - component: {fileID: 2899144482882444915}
   - component: {fileID: 2899144482882444876}
   - component: {fileID: 4560304349258546994}
+  - component: {fileID: 1749339356}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -1405,6 +1445,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1749339356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2899144482882444878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3668096966331558012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,6 +1472,7 @@ GameObject:
   - component: {fileID: 141623722637025001}
   - component: {fileID: 3609117458019354119}
   - component: {fileID: 1838740159}
+  - component: {fileID: 1838740165}
   m_Layer: 0
   m_Name: DenyTxt
   m_TagString: Untagged
@@ -1583,7 +1636,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "KH\xD4NG, C\u1EA2M \u01A0N!"
+  m_Text: NEIN, DANKE!
 --- !u!114 &3609117458019354119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1614,6 +1667,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &1838740165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668096966331558012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4668bb7c41a041a36271bb023591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3864071080740077098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,7 +1799,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Kh\xF4ng \u0111\u1EE7 m\u1EA1ng"
+  m_Text: Nicht genug Leben
 --- !u!114 &519400510332091009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1870,7 +1935,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Kh\xF4ng \u0111\u1EE7 ti\u1EC1n!"
+  m_Text: Nicht genug Geld!
 --- !u!114 &2211919397897348750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,7 +1989,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 3.5, y: 7.5200005}
-  m_SizeDelta: {x: 78.64, y: 48.2}
+  m_SizeDelta: {x: 0, y: 48.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2219879769413681526
 CanvasRenderer:
