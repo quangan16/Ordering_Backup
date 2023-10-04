@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : SingletonBehivour<SoundManager>
 {
     [SerializeField] AudioSource audioSource;
-    [SerializeField] private AudioSource buttonAudio;
+    [SerializeField] AudioClip audioClip;
     public void PlaySound(AudioClip audioClip)
     {
         audioSource.PlayOneShot(audioClip);
@@ -22,6 +22,6 @@ public class SoundManager : SingletonBehivour<SoundManager>
 
     public void PlayButtonSound()
     {
-        buttonAudio.Play();
+        PlaySound(audioClip);
     }
 }
