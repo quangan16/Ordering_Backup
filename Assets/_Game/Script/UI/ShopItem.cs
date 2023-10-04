@@ -94,6 +94,8 @@ public class ShopItem : MonoBehaviour
             case ShopState.Equipped:
                 {
                     buyBtn.gameObject.SetActive(false);
+                    selectBtn.onClick.RemoveAllListeners();
+                    selectBtn.onClick.AddListener(() => Equip());
 
                     borderSelect.SetActive(true);
                     break;
