@@ -8,10 +8,12 @@ using UnityEngine.UI;
 public class UIChallengeGameplay : MonoBehaviour,IUIControl
 {
 
-    [SerializeField] Text time;
-    public Text tmp;
+    [SerializeField] TextMeshProUGUI time;
+    public TextMeshProUGUI tmp;
     [SerializeField] private List<Button> buttonsList;
-    [SerializeField] private Text coinTxt;
+    [SerializeField] private TextMeshProUGUI coinTxt;
+    [SerializeField] AudioSource audioSource;
+    int seconds;
     private void Update()
     {   
         DisplayTime(GameManager.timer);
@@ -19,8 +21,13 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     }
     void DisplayTime(float timeToDisplay)
     {
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        int minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        int seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        if (seconds != this.seconds)
+        {
+            this.seconds = seconds;
+            audioSource.Play();
+        }
         time.text = string.Format(Constant.TIME_FORMAT, minutes, seconds);
     }
     public void Open()
@@ -64,11 +71,11 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     }
     public void SetText(string text)
     {
-        // string transLevel = I2.Loc.LocalizationManager.GetTranslation("LEVEL {0}");
-        // transLevel = transLevel.Replace("{0}", text);
-        //
-        tmp.text = text;
-      // tmp.text = "Challenge "+ text;
+        string transLevel = I2.Loc.LocalizationManager.GetTranslation("LEVEL");
+        transLevel = transLevel.Replace("{0}", text);
+
+        tmp.text = transLevel;
+      //  tmp.text = "Challenge "+ text;
     }
     public void SetCoin(int coin)
     {
@@ -95,7 +102,7 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
         }
     }
 
-    public Text GetCoinText()
+    public TextMeshProUGUI GetCoinText()
     {
         return coinTxt;
     }
