@@ -102,7 +102,8 @@ public class NotEnoughUI : PopupManager
                     }, 0,
                     AdsAdapterAdmob.where.unlock_challenge_by_ads);
             }
-            else if (UIManager.Instance.current is UIGamePlay)
+            else if (UIManager.Instance.current is UIGamePlay || UIManager.Instance.current is UIChallengeGameplay||
+                     UIManager.Instance.current is UIBossGameplay)
             {
                 AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                     {
