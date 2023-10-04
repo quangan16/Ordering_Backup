@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class WinUI : MonoBehaviour
@@ -16,9 +17,33 @@ public class WinUI : MonoBehaviour
 
     [SerializeField] private Button denyBtn;
 
+    [SerializeField] private Text coinTxt;
+
+    [SerializeField] ShopItem itemPref;
+    
+    [FormerlySerializedAs("skinLayout")] [SerializeField] Transform scrollLayout;
+
+    int idSelect;
+    int price;
+    ItemType type;
     public void Start()
     {
         
+    }
+
+    public void SetCoinAfterBuy()
+    {
+        int targetCoin = DataManager.Instance.GetCoin();
+        StartCoroutine(MinusCoinAnim(targetCoin));
+    }
+
+    private IEnumerator MinusCoinAnim(int coin)
+    {
+        while (coin < int.Parse(coinTxt.text))
+        {
+            coinTxt.text = (int.Parse(coinTxt.text) - 50).ToString();
+            yield return null;
+        }
     }
    
     // Start is called before the first frame update
@@ -30,6 +55,11 @@ public class WinUI : MonoBehaviour
         denyBtn.interactable = false;
         CoinRewardDisplay.GetComponentInChildren<Text>().text ="+" +GameManager.Instance.current.rewards.ToString();
         ShowDenyButton();
+    }
+
+    public void OnInit()
+    {
+        ReLoad();
     }
     public void GetCoinDefault()
     {
@@ -146,10 +176,10 @@ public class WinUI : MonoBehaviour
     }
     public void Open()
     {
-     
-        gameObject.SetActive(true);
-
         
+        gameObject.SetActive(true);
+        OnInit();
+
     }
     public void OnNext()
     {
@@ -199,6 +229,180 @@ public class WinUI : MonoBehaviour
             denyBtn.interactable = true;
 
 
+
+    }
+    
+    public void ReLoad()
+    {
+        // SkinType skinType;
+        // BackGroundType bgType;
+        // BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(bgType);
+        // backgroundImg.sprite =backGroundItem.sprite;
+        // if(type == ItemType.SKIN)
+        // {
+        //     ChangeButtonState(DataManager.Instance.GetRingSkinState(skinType));
+        //
+        // }
+        // else
+        // {
+        //     ChangeButtonState(DataManager.Instance.GetBackGroundState(bgType));
+        //
+        // }
+        Skin skins = DataManager.Instance.skins;
+        N_BackGround backGround = DataManager.Instance.backGround;
+        ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
+        foreach (ShopItem item in items)
+        {
+            Destroy(item.gameObject);
+            Destroy(item);
+        }
+
+        for (int i = 0; i < skins.skins.Length; i++)
+        {
+            if (DataManager.Instance.GetRingSkinState((SkinType)i) == ShopState.UnBought)
+            {
+                int ii = i;
+                Debug.Log(ii);
+                ShopItem shopItem = Instantiate(itemPref, scrollLayout);
+                shopItem.transform.Find("DefaultShopItem/PriceBtn").gameObject.SetActive(true);
+                shopItem.OnInit((SkinType)(ii));
+                shopItem.AddEvent(() => SelectSkin((SkinType)(ii)));
+                if (shopItem.state == ShopState.Equipped)
+                {
+                    shopItem.OnSelect();
+                }    
+            }
+        
+        }
+        for (int j = 0; j < backGround.BackGroundItems.Length; j++)
+        {
+            if (DataManager.Instance.GetRingSkinState((SkinType)j) == ShopState.UnBought)
+            {
+                int jj = j;
+                ShopItem shopItem = Instantiate(itemPref, scrollLayout);
+                shopItem.transform.Find("DefaultShopItem/PriceBtn").gameObject.SetActive(true);
+                shopItem.OnInit((BackGroundType)jj);
+                shopItem.AddEvent(() => SelectBackGround((BackGroundType)jj));
+                if (shopItem.state == ShopState.Equipped)
+                {
+                    shopItem.OnSelect();
+                }
+            }
+            
+            
+          
+        }
+    }
+    
+     public void SelectSkin(SkinType skinType)
+    {
+        ShopItem[] items = GetComponentsInChildren<ShopItem>();
+        foreach (ShopItem item in items)
+        {
+           // if(item.state != ShopState.Equipped)
+            item.OffSelect();
+        }
+        
+       
+       
+       
+
+        // priceTxt.text = itemSkin.price.ToString();
+        // price = itemSkin.price;
+        // type = ItemType.SKIN;
+        // idSelect = (int)skinType;
+        ChangeButtonState(DataManager.Instance.GetRingSkinState(skinType));
+    }
+    public void SelectBackGround(BackGroundType backGroundType)
+    {
+        ShopItem[] items = GetComponentsInChildren<ShopItem>(true);
+        foreach (ShopItem item in items)
+        {
+           // if (item.state != ShopState.Equipped)
+                item.OffSelect();
+        }
+        BackGroundItem backGroundItem = DataManager.Instance.GetBackGround(backGroundType);
+        // backgroundImg.sprite = backGroundItem.sprite;
+        // priceTxt.text = backGroundItem.price.ToString();
+        price = backGroundItem.price;
+        type = ItemType.BACKGROUND;
+        idSelect = (int)backGroundType;
+        ChangeButtonState(DataManager.Instance.GetBackGroundState(backGroundType));
+
+    }
+    public void Buy()
+    {
+        if(DataManager.Instance.GetCoin()>=price)
+        {
+            DataManager.Instance.AddCoin(-price);
+            SetCoinAfterBuy();
+            // buyAudio.Play();
+            Equip();
+            if (type == ItemType.SKIN)
+            {
+                AdsAdapterAdmob.LogAFAndFB($"ring_skin_bought_id_" + ((SkinType)idSelect), "0",
+                    "0");
+                Debug.Log("ring_skin_bought_id_" + ((SkinType)idSelect));
+               
+            }
+            else if (type == ItemType.BACKGROUND)
+            {
+                AdsAdapterAdmob.LogAFAndFB($"background_bought_id_" + ((BackGroundType)idSelect), "0",
+                    "0");
+                Debug.Log("background_bought_id_" + ((BackGroundType)idSelect));
+               
+            }
+            ChangeButtonState(ShopState.Equipped);
+        }
+        else
+        {
+            UIManager.Instance.OpenNotEnough(NotEnoughType.Coin);
+        }
+
+    }
+
+    void ChangeButtonState(ShopState state)
+    {
+       
+        switch (state)
+        {
+            case ShopState.Bought:
+            {
+                Equip();
+                ChangeButtonState(ShopState.Equipped);
+                break;
+            }
+            case ShopState.Equipped:
+            {
+                break;
+            }
+            case ShopState.UnBought:
+            {
+                break;
+            }
+
+        }
+
+
+    }
+    public  void Equip()
+    {
+        if (type == ItemType.SKIN)
+        {
+            SkinType type = DataManager.Instance.GetLastRingSkin();
+            DataManager.Instance.SetRingSkinState(ShopState.Bought, type);
+            DataManager.Instance.SetRingSkinState(ShopState.Equipped, (SkinType)idSelect);
+            DataManager.Instance.SetLastRingSkin((SkinType)idSelect);
+        }
+        else
+        {
+            BackGroundType type = DataManager.Instance.GetLastBackground();
+            DataManager.Instance.SetBackGroundState(ShopState.Bought, type);
+            DataManager.Instance.SetBackGroundState(ShopState.Equipped, (BackGroundType)idSelect);
+            DataManager.Instance.SetLastBackground((BackGroundType)idSelect);
+
+        }
+        //ChangeButtonState(ShopState.Equipped);
 
     }
 

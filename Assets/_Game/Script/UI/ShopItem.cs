@@ -129,6 +129,8 @@ public class ShopItem : MonoBehaviour
     }
     public void Equip()
     {
+        Debug.Log("ok bitch");
+        transform.transform.Find("DefaultShopItem/PriceBtn").gameObject.SetActive(false);
         if (type == ItemType.SKIN)
         {
             SkinType type = DataManager.Instance.GetLastRingSkin();

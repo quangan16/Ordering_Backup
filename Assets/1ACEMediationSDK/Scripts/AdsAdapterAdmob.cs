@@ -102,6 +102,7 @@ public class AdsAdapterAdmob : MonoBehaviour
         boss_replay_ads_level,
         boss_get_reward_ad,
         unlock_challenge_by_ads,
+        unlock_item_by_ads,
         challenge_get_more_time_level,
         boss_get_more_time_level,
         boss_get_more_moves_level,

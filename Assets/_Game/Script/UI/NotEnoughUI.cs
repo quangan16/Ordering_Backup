@@ -55,7 +55,7 @@ public class NotEnoughUI : PopupManager
                 AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
                     {
 
-                        AdsAdapterAdmob.LogAFAndFB($"unlock_challenge_by_ads", "0",
+                        AdsAdapterAdmob.LogAFAndFB($"unlock_item_by_ads", "0",
                             "0");
                         ShopGUI.UnlockItemWithAds();
 
@@ -73,7 +73,7 @@ public class NotEnoughUI : PopupManager
                        
 
                     }, 0,
-                    AdsAdapterAdmob.where.unlock_challenge_by_ads);
+                    AdsAdapterAdmob.where.unlock_item_by_ads);
             }
             
             else if (UIManager.Instance.current is ChallengeUI)
@@ -101,7 +101,31 @@ public class NotEnoughUI : PopupManager
                     }, 0,
                     AdsAdapterAdmob.where.unlock_challenge_by_ads);
             }
-          
+            else if (UIManager.Instance.current is UIGamePlay)
+            {
+                AdsAdapterAdmob.Instance.ShowRewardedVideo(() =>
+                    {
+
+                        AdsAdapterAdmob.LogAFAndFB($"unlock_item_by_ads", "0",
+                            "0");
+                        ShopGUI.UnlockItemWithAds();
+
+                    }, () =>
+                    {
+                        StartCoroutine(GameManager.Instance.CheckInternetConnection());
+                        if (GameManager.Instance.HasInternet == false)
+                        {
+                            UIManager.Instance.ShowInternetPopUp();
+                        }
+                        else
+                        {
+                            UIManager.Instance.ShowAdsNotification();
+                        }
+
+
+                    }, 0,
+                    AdsAdapterAdmob.where.unlock_item_by_ads);
+            }
             
            
         }

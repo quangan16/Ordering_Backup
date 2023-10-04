@@ -7,11 +7,11 @@ using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class UIBossGameplay : MonoBehaviour,IUIControl
 {
-    [SerializeField] TextMeshProUGUI time;
-    [SerializeField] TextMeshProUGUI move;
-    [SerializeField] TextMeshProUGUI coinTxt;
+    [SerializeField] Text time;
+    [SerializeField] Text move;
+    [SerializeField] Text coinTxt;
     [SerializeField] AudioSource audioSource;
-    public TextMeshProUGUI level;
+    public Text level;
     [SerializeField] private List<Button> buttonsList;
     int seconds;
     
@@ -104,7 +104,7 @@ public class UIBossGameplay : MonoBehaviour,IUIControl
         }
     }
 
-    public TextMeshProUGUI GetCoinText()
+    public Text GetCoinText()
     {
         return coinTxt;
     }

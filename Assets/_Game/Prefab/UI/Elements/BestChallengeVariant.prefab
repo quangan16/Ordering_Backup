@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTerm: 
+  mTerm: Secs
   mTermSecondary: 
   PrimaryTermModifier: 0
   SecondaryTermModifier: 0
@@ -780,3 +780,23 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2979504050930351364, guid: 2f9b27da6bffbf245bbef40403f159cb, type: 3}
   m_PrefabInstance: {fileID: 1665825062318101541}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4487661334333256805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2979504049014546496, guid: 2f9b27da6bffbf245bbef40403f159cb, type: 3}
+  m_PrefabInstance: {fileID: 1665825062318101541}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6120516036310609073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487661334333256805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1

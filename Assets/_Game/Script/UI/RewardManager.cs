@@ -28,7 +28,7 @@ public class RewardManager : MonoBehaviour
     [SerializeField] private AudioClip spawnCoinSfx;
 
     [SerializeField] private AudioClip collectCoinSfx;
-    
+    [SerializeField] private Text[] CoinTxts;
 
     private float volume = 1.0f;
 
@@ -39,14 +39,34 @@ public class RewardManager : MonoBehaviour
     
     private void OnEnable()
     {
-        Reset();
-        coinAmountTxt.text = DataManager.Instance.GetCoin().ToString();
-
+        OnInit();
+        // coinAmountTxt.text = DataManager.Instance.GetCoin().ToString();
+        
 
     }
     private void OnDisable()
     {
         
+    }
+
+    public void OnInit()
+    {
+        Reset();
+        if (UIManager.Instance.current is UIGamePlay)
+        {
+            coinAmountTxt = CoinTxts[0];
+        }
+
+        if (UIManager.Instance.current is UIChallengeGameplay)
+        {
+            coinAmountTxt = CoinTxts[1];
+        }
+
+        if (UIManager.Instance.current is UIBossGameplay)
+        {
+            coinAmountTxt = CoinTxts[2];
+        }
+        coinAmountTxt.text = DataManager.Instance.GetCoin().ToString();
     }
 
     public void GetAdsCoin()
