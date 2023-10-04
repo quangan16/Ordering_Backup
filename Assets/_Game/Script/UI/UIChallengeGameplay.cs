@@ -64,11 +64,8 @@ public class UIChallengeGameplay : MonoBehaviour,IUIControl
     }
     public void SetText(string text)
     {
-        // string transLevel = I2.Loc.LocalizationManager.GetTranslation("LEVEL {0}");
-        // transLevel = transLevel.Replace("{0}", text);
-        //
-        // tmp.text = transLevel;
-      // tmp.text = "Challenge "+ text;
+        tmp.text = text;
+    
     }
     public void SetCoin(int coin)
     {
