@@ -88,10 +88,13 @@ public class ShopItem : MonoBehaviour
                 }
             case ShopState.Bought:
                 {
+                    buyBtn.gameObject.SetActive(false);
                     break;
                 }
             case ShopState.Equipped:
                 {
+                    buyBtn.gameObject.SetActive(false);
+
                     borderSelect.SetActive(true);
                     break;
                 }
@@ -118,19 +121,19 @@ public class ShopItem : MonoBehaviour
                 AdsAdapterAdmob.LogAFAndFB($"background_bought_id_" + ((BackGroundType)onSelect), "0",
                     "0");
                 Debug.Log((BackGroundType)onSelect);
-            }
-            
-            
+            }                       
         }
         else
         {
             UIManager.Instance.OpenNotEnough(NotEnoughType.Coin);
+            UIManager.Instance.notEnough.AddListener(()=>Equip());
+
         }
     }
     public void Equip()
     {
         Debug.Log("ok bitch");
-        transform.transform.Find("DefaultShopItem/PriceBtn").gameObject.SetActive(false);
+        
         if (type == ItemType.SKIN)
         {
             SkinType type = DataManager.Instance.GetLastRingSkin();
@@ -146,11 +149,12 @@ public class ShopItem : MonoBehaviour
             DataManager.Instance.SetLastBackground((BackGroundType)onSelect);
 
         }
-        GetComponentInParent<ShopGUI>().ReLoad();
+        SetState(ShopState.Equipped);
     }
     //------------------x
     public void AddEvent(UnityAction listener)
     {
+        selectBtn.onClick.RemoveAllListeners();
         selectBtn.onClick.AddListener(listener);
 
         selectBtn.onClick.AddListener(() =>OnSelect());
@@ -167,4 +171,5 @@ public class ShopItem : MonoBehaviour
     {
         borderSelect.SetActive(true);
     }    
+
 }

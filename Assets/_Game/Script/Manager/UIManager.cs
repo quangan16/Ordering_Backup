@@ -16,7 +16,7 @@ public class UIManager : SingletonBehivour<UIManager>
     [SerializeField] ChallengeUnlockPopup popupChallenge;
     [SerializeField] ShopGUI shop;
     [SerializeField] MainGUI mainMenu;
-    [SerializeField] NotEnoughUI notEnough;
+    [SerializeField]public NotEnoughUI notEnough;
     [SerializeField] UIClamp uIClamp;
 
     [SerializeField] private NoInternetGUI noInternetGUI;
@@ -36,7 +36,7 @@ public class UIManager : SingletonBehivour<UIManager>
 
     public void ReloadShop()
     {
-        (current as ShopGUI).ReLoad();
+        (current as ShopGUI)?.ReLoad();
     }
 
     public void ReloadChallenge()
