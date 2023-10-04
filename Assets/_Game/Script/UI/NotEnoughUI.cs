@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class NotEnoughUI : PopupManager
@@ -11,7 +12,7 @@ public class NotEnoughUI : PopupManager
     private int itemID;
     [SerializeField] private RectTransform coinPanel;
     [SerializeField] private RectTransform livePanel;
-
+    [SerializeField] Button unlockAds;
     
     public void Open(NotEnoughType type)
     {
@@ -108,7 +109,7 @@ public class NotEnoughUI : PopupManager
 
                         AdsAdapterAdmob.LogAFAndFB($"unlock_item_by_ads", "0",
                             "0");
-                        ShopGUI.UnlockItemWithAds();
+                        
 
                     }, () =>
                     {
@@ -155,7 +156,11 @@ public class NotEnoughUI : PopupManager
         }
         Close();
     }
-   
+   public void AddListener(UnityAction listener)
+    {
+        unlockAds.onClick.AddListener(listener);
+    }
+
 }
 public enum NotEnoughType
 {
