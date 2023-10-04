@@ -6,6 +6,7 @@ public class SoundManager : SingletonBehivour<SoundManager>
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip audioClip;
+    [SerializeField] private AudioClip newChallengeSound;
     public void PlaySound(AudioClip audioClip)
     {
         audioSource.Stop();
@@ -25,5 +26,10 @@ public class SoundManager : SingletonBehivour<SoundManager>
     public void PlayButtonSound()
     {
         PlaySound(audioClip);
+    }
+
+    public void PlayNewChallengeSound()
+    {
+        PlaySound(newChallengeSound);
     }
 }

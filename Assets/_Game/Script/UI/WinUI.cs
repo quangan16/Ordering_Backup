@@ -276,7 +276,7 @@ public class WinUI : MonoBehaviour
         }
         for (int j = 0; j < backGround.BackGroundItems.Length; j++)
         {
-            if (DataManager.Instance.GetRingSkinState((SkinType)j) == ShopState.UnBought)
+            if (DataManager.Instance.GetBackGroundState((BackGroundType)j) == ShopState.UnBought)
             {
                 int jj = j;
                 ShopItem shopItem = Instantiate(itemPref, scrollLayout);

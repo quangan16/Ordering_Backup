@@ -27,6 +27,8 @@ public class GameManager : SingletonBehivour<GameManager>
     public float timeLeftToShowAds = 60.0f;
     public int levelLeftToShowAds = 2;
 
+    public UIGamePlay uiGamePlay;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -125,6 +127,7 @@ public class GameManager : SingletonBehivour<GameManager>
                             DataManager.Instance.SetLevel(levelChallenge, Mode.Unlocked, 0);
                             DataManager.Instance.SetMaxLevelUnlock(levelChallenge);
                             UIManager.Instance.RecommendChallenge();
+                            SoundManager.Instance.PlayNewChallengeSound();
                             StopAllCoroutines();
                         }
 
@@ -157,6 +160,7 @@ public class GameManager : SingletonBehivour<GameManager>
         gameMode = mode;
         currentLevel = level;
         ChangeSkin();
+        ChangeBackground();
 
         timer = (current.time);
         moves = current.moves;
@@ -173,6 +177,11 @@ public class GameManager : SingletonBehivour<GameManager>
     public void ChangeSkin()
     {
         current.ChangeSkin();
+    }
+
+    public void ChangeBackground()
+    {
+        uiGamePlay.ChangeBackground();
     }
 
     public void CheckFree()

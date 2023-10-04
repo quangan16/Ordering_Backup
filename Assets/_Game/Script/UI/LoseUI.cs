@@ -153,15 +153,18 @@ public class LoseUI : PopupManager
             mainPanel = overTimePanel;
             mainPanel.gameObject.SetActive(true);
             VibrateClock();
+            Debug.Log("hoo");
+            audioSource.PlayOneShot(overTimeSfx);
         }
         else
         {
             mainPanel = outOfMovePanel;
             mainPanel.gameObject.SetActive(true);
+            audioSource.PlayOneShot(outOfMoveSfx);
         }
 
         OnOpen();
-        //audioSource.PlayOneShot(outOfMoveSfx);
+      
         gameObject.SetActive(true);
     }
 

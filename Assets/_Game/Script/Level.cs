@@ -186,6 +186,7 @@ public class Level : MonoBehaviour
             sol.ChangeSkin(skinItem);
         }
     }
+    
     public void CharacterFail()
     {
         Character[] characters = GetComponentsInChildren<Character>();

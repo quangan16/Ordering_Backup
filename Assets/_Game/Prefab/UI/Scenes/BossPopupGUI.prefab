@@ -313,7 +313,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NEIN, DANKE!
+  m_Text: NO, THANKS!
 --- !u!114 &405749041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,7 +1113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Testen Sie jetzt Ihren Verstand!
+  m_Text: Test your wits now!
 --- !u!114 &405749043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,7 +1142,6 @@ GameObject:
   - component: {fileID: 5505653323585565980}
   - component: {fileID: 4890168485955322585}
   - component: {fileID: 169782487758265531}
-  - component: {fileID: 1426522642}
   m_Layer: 0
   m_Name: MainTitle
   m_TagString: Untagged
@@ -1170,7 +1169,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000030653817, y: 328.2}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 470.93, y: 184.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6814433814336065144
 CanvasRenderer:
@@ -1204,7 +1203,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 8fd3be059e4c16346be19d2d9b2cb308, type: 3}
     m_FontSize: 80
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 100
     m_Alignment: 4
@@ -1213,7 +1212,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: ENDGEGNER STUFE
+  m_Text: 'BOSS
+
+    LEVEL'
 --- !u!114 &4890168485955322585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1268,20 +1269,6 @@ MonoBehaviour:
   mGUI_ShowCallback: 0
   mLocalizeTarget: {fileID: 0}
   mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
---- !u!114 &1426522642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6514752727892091057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
 --- !u!1 &7054552089410137111
 GameObject:
   m_ObjectHideFlags: 0
