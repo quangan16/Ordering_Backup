@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class MainGUI : MonoBehaviour, IUIControl
 {
 
-    [SerializeField] private TextMeshProUGUI coinTxt;
+    [SerializeField] private Text coinTxt;
     [SerializeField] private CanvasGroup canvasAlpha;
     [SerializeField] private List<Button> buttons;
     [SerializeField] private Button playBtn;
@@ -20,12 +20,13 @@ public class MainGUI : MonoBehaviour, IUIControl
         OnInit();
         logo.gameObject.SetActive(true);
         // PlayButtonAnim();
-        
+       
     }
 
     private void OnDisable()
     {
         playBtn.transform.DOKill();
+       
     }
 
     void OnInit()
@@ -43,7 +44,7 @@ public class MainGUI : MonoBehaviour, IUIControl
     public void Close()
     {
        
-        OnClose();
+       Invoke(nameof(OnClose), 0.1f); 
     }
 
     public void OnClose()

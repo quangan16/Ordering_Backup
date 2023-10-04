@@ -14,11 +14,11 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     [SerializeField] List<Level> levels;
     [SerializeField] ItemScript challengeItem;
     [SerializeField] GameObject layout;
-    [SerializeField] TextMeshProUGUI heartText;
-    [SerializeField] TextMeshProUGUI timeTxt;
+    [SerializeField] Text heartText;
+    [SerializeField] Text timeTxt;
     [SerializeField] Button add;
     public int totalChallengePassed;
-    public TextMeshProUGUI coin;
+    public Text coin;
     public int heart;
     DateTime dateTime;
     string format = "dd-MM-yyyy HH:mm:ss";
@@ -26,11 +26,12 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     public static int levelID;
 
     [SerializeField] private Slider challengeBar;
-    [SerializeField] private TextMeshProUGUI passedChallengeTxt;
+    [SerializeField] private Text passedChallengeTxt;
     public ScrollRect scrollRect;
     public RectTransform content;
     public int unlockedItemIndex; // Index of the unlocked item you want to scroll to.
     public static ChallengeBought challengeBought;
+    private bool updateGUI = false;
     private void OnEnable()
     {
         UpdateChallengeBar();
@@ -153,16 +154,24 @@ public class ChallengeUI : MonoBehaviour, IUIControl
     }
     void CheckHeart()
     {
-        if(heart >= 3)
+        if(heart >= 3 )
         {
             heart = 3;
-            timeTxt.text = Constant.MAX;
+            if (updateGUI == false)
+            {
+                timeTxt.text = Constant.MAX;
+                updateGUI = true;
+            }
+          
             dateTime = DateTime.Now;
             add.gameObject.SetActive(false);
         }
         else
         {
-
+            if (updateGUI)
+            {
+                updateGUI = false;
+            }
             SetTime(DateTime.Now - dateTime);
             add.gameObject.SetActive(true);
         }

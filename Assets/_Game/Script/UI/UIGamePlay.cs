@@ -12,16 +12,17 @@ using UnityEngine.UI;
 public class UIGamePlay : MonoBehaviour,IUIControl
 {
     // Start is called before the first frame update
-    public TextMeshProUGUI tmp;
+    public Text tmp;
     public static bool getHint = false;
     [SerializeField] private List<Button> buttonsList;
     
     [SerializeField] private Image background;
-    [SerializeField] private TextMeshProUGUI coinTxt;
+    [SerializeField] private Text coinTxt;
     [SerializeField] private Button hintBtn;
     [SerializeField] private Image hintPriceHolder;
     [SerializeField] private Image hintAdsIcon;
     [SerializeField] private Image skipAdsIcon;
+    [SerializeField] private AudioSource hintAudio;
 
     private Tween buttonTween;
 
@@ -102,6 +103,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public virtual void CallHint()
     {
         //getHint = true;
+        hintAudio.Play();
         GameManager.Instance.DiscardRandom();
         //GameManager.Instance.CheckFree();
            
@@ -151,7 +153,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
             button.interactable = true;
         }
     }
-    public TextMeshProUGUI GetCoinText()
+    public Text GetCoinText()
     {
         return coinTxt;
     }

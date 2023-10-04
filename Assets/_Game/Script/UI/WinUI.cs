@@ -28,7 +28,7 @@ public class WinUI : MonoBehaviour
         ButtonClicked = false;
         adsButton.interactable = true;
         denyBtn.interactable = false;
-        CoinRewardDisplay.GetComponentInChildren<TextMeshProUGUI>().text ="+" +GameManager.Instance.current.rewards.ToString();
+        CoinRewardDisplay.GetComponentInChildren<Text>().text ="+" +GameManager.Instance.current.rewards.ToString();
         ShowDenyButton();
     }
     public void GetCoinDefault()
@@ -184,7 +184,7 @@ public class WinUI : MonoBehaviour
     {
         float duration = 0.7f; 
         float currentTime = 0f;
-        var textColor = denyBtn.GetComponent<TextMeshProUGUI>();
+        var textColor = denyBtn.GetComponent<Text>();
         textColor.color = new Color(textColor.color.r, textColor.color.g, textColor.color.b, 0.0f);
         yield return new WaitForSeconds(1.5f);
             while (currentTime <= duration)

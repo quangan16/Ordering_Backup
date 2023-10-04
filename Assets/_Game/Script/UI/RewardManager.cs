@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RewardManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class RewardManager : MonoBehaviour
 
     [SerializeField] private Transform coinDestPos;
 
-    [SerializeField] private TextMeshProUGUI coinAmountTxt;
+    [SerializeField] private Text coinAmountTxt;
 
     [SerializeField] private LoadingUI loading;
 

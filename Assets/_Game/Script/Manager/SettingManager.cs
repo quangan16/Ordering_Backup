@@ -18,7 +18,7 @@ namespace _Game.Script.Manager
         {
             IsSfxOn = DataManager.Instance.GetSoundState() == 1;
             IsMusicOn = DataManager.Instance.GetMusicState() == 1;
-            IsVibrationOn = DataManager.Instance.GetVibState() == 1;
+            IsVibrationOn = false;
             DontDestroyOnLoad(this);
         }
 

@@ -28,7 +28,7 @@ public class ChangeTMPToText : MonoBehaviour
             Debug.Log("Name: " + var_text_mesh.transform.name);
             ChangeChild(var_text_mesh.transform);
         }
-        EditorUtility.SetDirty(gameObject.transform.root.gameObject);
+        //EditorUtility.SetDirty(gameObject.transform.root.gameObject);
     }
 
     void ChangeChild(Transform child)
@@ -64,6 +64,7 @@ public class ChangeTMPToText : MonoBehaviour
 
         text.font = font;
         text.color = color;
+        text.raycastTarget = false;
         // text.lineSpacing = lineSpacing;
         SetAligment(horizontalAlignment, verticalAlignment, text);
 

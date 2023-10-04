@@ -31,9 +31,8 @@ public class SettingGUI : PopupManager
        
         SoundOn.SetActive(SettingManager.Instance.IsSfxOn);
         SoundOff.SetActive(!SettingManager.Instance.IsSfxOn);
-        
-        MusicOn.SetActive(SettingManager.Instance.IsMusicOn);
-        MusicOff.SetActive(!SettingManager.Instance.IsMusicOn);
+        // MusicOn.SetActive(SettingManager.Instance.IsMusicOn);
+        // MusicOff.SetActive(!SettingManager.Instance.IsMusicOn);
         VibOn.SetActive(SettingManager.Instance.IsVibrationOn);
         VibOff.SetActive(!SettingManager.Instance.IsVibrationOn);
         
@@ -46,7 +45,7 @@ public class SettingGUI : PopupManager
     public void ConfirmSettings()
     {
         DataManager.Instance.SetSoundState(Convert.ToInt16(SettingManager.Instance.IsSfxOn));
-        DataManager.Instance.SetMusicState(Convert.ToInt16(SettingManager.Instance.IsMusicOn));
+        // DataManager.Instance.SetMusicState(Convert.ToInt16(SettingManager.Instance.IsMusicOn));
         DataManager.Instance.SetVibState(Convert.ToInt16(SettingManager.Instance.IsVibrationOn));
         OnClose();
     }
@@ -71,23 +70,23 @@ public class SettingGUI : PopupManager
    
 
    
-    public void ToggleMusic()
-    {
-        if (SettingManager.Instance.IsMusicOn)
-        {
-            SettingManager.Instance.IsMusicOn = false;
-            MusicOn.SetActive(SettingManager.Instance.IsMusicOn);
-            SettingManager.Instance.MusicOff();
-        }
-        else
-        {
-            SettingManager.Instance.IsMusicOn = true;
-            MusicOn.SetActive(SettingManager.Instance.IsMusicOn);
-            SettingManager.Instance.MusicOn();
-        }
-
-        MusicOff.SetActive(!SettingManager.Instance.IsMusicOn);
-    }
+    // public void ToggleMusic()
+    // {
+    //     if (SettingManager.Instance.IsMusicOn)
+    //     {
+    //         SettingManager.Instance.IsMusicOn = false;
+    //         MusicOn.SetActive(SettingManager.Instance.IsMusicOn);
+    //         SettingManager.Instance.MusicOff();
+    //     }
+    //     else
+    //     {
+    //         SettingManager.Instance.IsMusicOn = true;
+    //         MusicOn.SetActive(SettingManager.Instance.IsMusicOn);
+    //         SettingManager.Instance.MusicOn();
+    //     }
+    //
+    //     MusicOff.SetActive(!SettingManager.Instance.IsMusicOn);
+    // }
 
   
     public void ToggleVib()

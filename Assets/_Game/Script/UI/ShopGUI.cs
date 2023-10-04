@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
@@ -20,9 +21,9 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] private Color textActiveColor;
     [SerializeField] private Color textInactiveColor;
 
-    [SerializeField] private TextMeshProUGUI skinTxt;
-    [SerializeField] private TextMeshProUGUI backgroundTxt;
-    [SerializeField] TextMeshProUGUI priceTxt;
+    [SerializeField] private Text skinTxt;
+    [SerializeField] private Text backgroundTxt;
+    [SerializeField] Text priceTxt;
 
     [SerializeField] private Image ringSkinLeft;
     [SerializeField] private Image ringSkinRight;
@@ -33,10 +34,10 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] Transform skinLayout;
     [SerializeField] Transform backgroundLayout;
 
-    [SerializeField] private TextMeshProUGUI coinTxt;
+    [SerializeField] private Text coinTxt;
     [SerializeField] GameObject buttonBuy;
     [SerializeField] GameObject buttonAd;
-
+    [SerializeField] private AudioSource buyAudio;
     
 
 
@@ -53,7 +54,22 @@ public class ShopGUI : MonoBehaviour, IUIControl
     public void SetCoin(int coin)
     {
         coinTxt.text = coin.ToString();
-    }    
+    }
+    
+    public void SetCoinAfterBuy()
+    {
+        int targetCoin = DataManager.Instance.GetCoin();
+        StartCoroutine(MinusCoinAnim(targetCoin));
+    }
+
+    private IEnumerator MinusCoinAnim(int coin)
+    {
+        while (coin < int.Parse(coinTxt.text))
+        {
+            coinTxt.text = (int.Parse(coinTxt.text) - 50).ToString();
+            yield return null;
+        }
+    }
     void OnDisable()
     {
         DOTween.KillAll();
@@ -280,7 +296,8 @@ public class ShopGUI : MonoBehaviour, IUIControl
         if(DataManager.Instance.GetCoin()>=price)
         {
             DataManager.Instance.AddCoin(-price);
-            UIManager.Instance.SetCoin();
+            SetCoinAfterBuy();
+            buyAudio.Play();
             Equip();
             if (type == ItemType.SKIN)
             {
