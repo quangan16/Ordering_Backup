@@ -759,7 +759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30EC\u30D9\u30EB {0}"
+  m_Text: LEVEL {0}
 --- !u!1 &1085089807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8AB2\u984C"
+  m_Text: Herausforderungen
 --- !u!1 &8306714938033238460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,6 +1489,32 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1181587829562916907, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+--- !u!1 &1181587828496006787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1181587828897321068, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}
+  m_PrefabInstance: {fileID: 406089455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &8347242650659365997
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181587828496006787}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 604069589
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!224 &1181587828496006788 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1181587828897321067, guid: 32c09a8bfae12fb4383b7a54bbd2f1f4, type: 3}

@@ -38,9 +38,7 @@ public class ShopGUI : MonoBehaviour, IUIControl
     [SerializeField] GameObject buttonBuy;
     [SerializeField] GameObject buttonAd;
     [SerializeField] private AudioSource buyAudio;
-    
-
-
+    [SerializeField] private Image transferImg;
 
     static int idSelect;
     int price;
@@ -88,21 +86,32 @@ public class ShopGUI : MonoBehaviour, IUIControl
 
     public void OnSkinPageSelect()
     {
-        backgroundSelected.transform.localScale = Vector3.one;
-      
+        transferImg.transform.DOLocalMoveX(-169.0f, 0.13f).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            backgroundSelected.transform.localScale = Vector3.one;
+            
+            skinTxt.color = textActiveColor;
+            backgroundTxt.color = textInactiveColor;
+        });
         skinPage.gameObject.SetActive(true);
         backgroundPage.gameObject.SetActive(false);
-        skinTxt.color = textActiveColor;
-        backgroundTxt.color = textInactiveColor;
+       
+        
     }
 
     public void OnBackgroundPageSelect()
     {
-        backgroundSelected.transform.localScale = new Vector3(-1, 1, 1);
+       
+      
+        transferImg.transform.DOLocalMoveX(169.0f, 0.13f).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            backgroundSelected.transform.localScale = new Vector3(-1, 1, 1);
+          
+            skinTxt.color = textInactiveColor;
+            backgroundTxt.color = textActiveColor;
+        });
         skinPage.gameObject.SetActive(false);
         backgroundPage.gameObject.SetActive(true);
-        skinTxt.color = textInactiveColor;
-        backgroundTxt.color = textActiveColor;
     }
 
     public void ResetLightEffect()
