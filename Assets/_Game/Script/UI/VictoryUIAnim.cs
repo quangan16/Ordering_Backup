@@ -9,7 +9,6 @@ public class VictoryUIAnim : MonoBehaviour
 {
     [SerializeField] Image titleAlpha;
     [SerializeField] private GameObject adsButton;
-    [SerializeField] private Image coinBanner;
     [SerializeField] private CanvasGroup canvas;
     private float fadeInDuration = 0.5f;
 
@@ -39,8 +38,6 @@ public class VictoryUIAnim : MonoBehaviour
     void Show()
     {
         canvas.DOFade(1, 0.4f);
-        coinBanner.DOFade(1, 0.5f).SetDelay(0.5f);
-        coinBanner.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(1, 0.5f).SetDelay(0.5f);
         titleAlpha.DOFade(1, 0.7f);
         titleAlpha.transform.DOScale(1, 1.0f).SetEase(Ease.OutBounce).SetDelay(0.5f);
     }
