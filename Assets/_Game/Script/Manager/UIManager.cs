@@ -256,4 +256,9 @@ public class UIManager : SingletonBehivour<UIManager>
     {
         control.ShowSkipAdsIcon();
     }
+
+    public void ChangeBackground()
+    {
+        
+    }
 }

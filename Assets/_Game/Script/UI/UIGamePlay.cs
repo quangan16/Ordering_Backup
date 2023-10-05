@@ -15,8 +15,8 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public Text tmp;
     public static bool getHint = false;
     [SerializeField] private List<Button> buttonsList;
-    
     [SerializeField] private Image background;
+    [SerializeField] private Image backgroundBanner;
     [SerializeField] private Text coinTxt;
     [SerializeField] private Button hintBtn;
     [SerializeField] private Image hintPriceHolder;
@@ -136,6 +136,7 @@ public class UIGamePlay : MonoBehaviour,IUIControl
     public void ChangeBackground()
     {
         background.sprite = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).sprite;
+        backgroundBanner.color = DataManager.Instance.GetBackGround(DataManager.Instance.GetLastBackground()).bannerColor;
     }
     
     public void DeactiveButtons()

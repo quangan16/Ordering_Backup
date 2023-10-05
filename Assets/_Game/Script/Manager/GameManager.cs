@@ -27,8 +27,6 @@ public class GameManager : SingletonBehivour<GameManager>
     public float timeLeftToShowAds = 60.0f;
     public int levelLeftToShowAds = 2;
 
-    public UIGamePlay uiGamePlay;
-
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -181,7 +179,7 @@ public class GameManager : SingletonBehivour<GameManager>
 
     public void ChangeBackground()
     {
-        uiGamePlay.ChangeBackground();
+        UIManager.Instance.ChangeBackground();
     }
 
     public void CheckFree()
