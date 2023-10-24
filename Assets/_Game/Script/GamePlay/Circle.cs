@@ -58,13 +58,10 @@ public class Circle : Solid
     }
     public void Stretch(GameObject _sprite, Vector3 _finalPosition)
     {
-        
-
         Vector3 direction = _sprite.transform.position- _finalPosition;
         direction.z = 0;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        _sprite.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward); 
-
+        _sprite.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         Vector3 scale = Vector3.one;
         scale.y = Vector3.Magnitude(direction);
         _sprite.transform.localScale = scale;

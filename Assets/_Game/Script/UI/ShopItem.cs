@@ -134,7 +134,6 @@ public class ShopItem : MonoBehaviour
     }
     public void Equip()
     {
-        Debug.Log("ok bitch");
         
         if (type == ItemType.SKIN)
         {
